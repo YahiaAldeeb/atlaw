@@ -126,7 +126,7 @@ const directLinks = [
   { label: "ABOUT US", to: "/about" },
   { label: "OUR TEAM", to: "/our-people" },
   { label: "GLOBAL REACH", to: "/" },
-  { label: "CONTACT", to: "/" },
+  { label: "CONTACT", to: "/contact" },
 ] as const;
 
 export const Header = (): JSX.Element => {
