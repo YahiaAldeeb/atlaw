@@ -49,7 +49,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        serifDisplay: ["Fraunces", "Georgia", "serif"],
+        serifDisplay: ["Georgia", "serif"],
         "button-text-2-regular": "var(--button-text-2-regular-font-family)",
         "button-text-semibold": "var(--button-text-semibold-font-family)",
         "displaytext-extra-bold": "var(--displaytext-extra-bold-font-family)",
