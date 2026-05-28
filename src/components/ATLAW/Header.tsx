@@ -7,9 +7,9 @@ import {
   type PracticeCategory,
 } from "../../data/practiceAreas";
 
-const NAVY = "#061B34";
-const NAVY_PANEL = "#07223D";
-const GOLD = "#D39A2A";
+const NAVY = "#0E1B2C";
+const NAVY_PANEL = "#102338";
+const GOLD = "#C6A04A";
 
 const ChevronDown = ({ open }: { open: boolean }): JSX.Element => (
   <svg
@@ -70,8 +70,8 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,3fr)] lg:gap-16">
           <div className="flex flex-col justify-between">
             <div>
-              <p className="font-sans text-[11px] font-semibold uppercase leading-none tracking-[0.28em] text-[#D39A2A]">
-                <span className="mr-3 inline-block h-px w-8 align-middle bg-[#D39A2A]" />
+              <p className="font-sans text-[11px] font-semibold uppercase leading-none tracking-[0.28em] text-[#C6A04A]">
+                <span className="mr-3 inline-block h-px w-8 align-middle bg-[#C6A04A]" />
                 Capabilities
               </p>
               <h3 className="mt-6 font-serifDisplay text-[26px] font-normal leading-[1.12] tracking-[-0.015em] text-[#F5EFE5]">
@@ -82,7 +82,7 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
               </p>
             </div>
             <Link
-              className="mt-10 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#F5EFE5] transition-colors hover:text-[#D39A2A]"
+              className="mt-10 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#F5EFE5] transition-colors hover:text-[#C6A04A]"
               onClick={onClose}
               to="/capabilities"
             >
@@ -94,16 +94,16 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
           <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {groups.map((group) => (
               <div key={group.category} className="flex flex-col">
-                <p className="font-sans text-[10.5px] font-semibold uppercase leading-none tracking-[0.24em] text-[#D39A2A]">
+                <p className="font-sans text-[10.5px] font-semibold uppercase leading-none tracking-[0.24em] text-[#C6A04A]">
                   {group.number} &mdash; {group.category}
                 </p>
                 <Link
-                  className="mt-4 inline-flex items-baseline gap-2 font-serifDisplay text-[19px] font-normal leading-[1.15] tracking-[-0.01em] text-[#F5EFE5] transition-colors hover:text-[#D39A2A]"
+                  className="mt-4 inline-flex items-baseline gap-2 font-serifDisplay text-[19px] font-normal leading-[1.15] tracking-[-0.01em] text-[#F5EFE5] transition-colors hover:text-[#C6A04A]"
                   onClick={onClose}
                   to={`/capabilities/${group.parent.slug}`}
                 >
                   {group.parent.name}
-                  <span aria-hidden="true" className="text-[#D39A2A]">.</span>
+                  <span aria-hidden="true" className="text-[#C6A04A]">.</span>
                 </Link>
 
                 <div className="mt-5 h-px w-10 bg-white/15" />
@@ -116,7 +116,7 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
                         onClick={onClose}
                         to={`/capabilities/${child.slug}`}
                       >
-                        <span className="mr-3 inline-block h-px w-0 bg-[#D39A2A] transition-[width] duration-200 group-hover:w-3" />
+                        <span className="mr-3 inline-block h-px w-0 bg-[#C6A04A] transition-[width] duration-200 group-hover:w-3" />
                         {child.navLabel ?? child.name}
                       </Link>
                     </li>
@@ -137,15 +137,15 @@ const NewsInsightsDropdown = ({ onClose }: { onClose: () => void }): JSX.Element
     style={{ backgroundColor: NAVY_PANEL }}
   >
     <div className="mx-auto w-full max-w-[1440px] px-6 py-10 sm:px-10 lg:px-16">
-      <p className="font-sans text-[11px] font-semibold uppercase leading-none tracking-[0.28em] text-[#D39A2A]">
-        <span className="mr-3 inline-block h-px w-8 align-middle bg-[#D39A2A]" />
+      <p className="font-sans text-[11px] font-semibold uppercase leading-none tracking-[0.28em] text-[#C6A04A]">
+        <span className="mr-3 inline-block h-px w-8 align-middle bg-[#C6A04A]" />
         News &amp; Insights
       </p>
       <p className="mt-5 max-w-[640px] font-serifDisplay text-[22px] font-normal leading-[1.2] tracking-[-0.015em] text-[#F5EFE5]">
         Editorials, firm announcements, and field briefings.
       </p>
       <Link
-        className="mt-6 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#F5EFE5] transition-colors hover:text-[#D39A2A]"
+        className="mt-6 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#F5EFE5] transition-colors hover:text-[#C6A04A]"
         onClick={onClose}
         to="/"
       >
@@ -245,7 +245,7 @@ export const Header = (): JSX.Element => {
               {label}
               <ChevronDown open={openMenu === label} />
               {openMenu === label && (
-                <span className="absolute bottom-[-1px] left-5 right-5 h-px bg-[#D39A2A]" />
+                <span className="absolute bottom-[-1px] left-5 right-5 h-px bg-[#C6A04A]" />
               )}
             </button>
           ))}
@@ -328,7 +328,7 @@ export const Header = (): JSX.Element => {
               <div className="border-b border-white/10 py-4" id="atlaw-mobile-caps">
                 {groups.map((group) => (
                   <div className="mb-6" key={group.category}>
-                    <p className="font-sans text-[10.5px] font-semibold uppercase tracking-[0.24em] text-[#D39A2A]">
+                    <p className="font-sans text-[10.5px] font-semibold uppercase tracking-[0.24em] text-[#C6A04A]">
                       {group.number} &mdash; {group.category}
                     </p>
                     <Link
@@ -354,7 +354,7 @@ export const Header = (): JSX.Element => {
                   </div>
                 ))}
                 <Link
-                  className="mt-2 inline-flex items-center font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#D39A2A]"
+                  className="mt-2 inline-flex items-center font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C6A04A]"
                   onClick={() => setMobileOpen(false)}
                   to="/capabilities"
                 >
