@@ -33,11 +33,11 @@ export const LeadershipStorySection = (): JSX.Element => {
       {/* Decorative background */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         {/* Oversized faint background typography — left */}
-        <span className="absolute -left-[3vw] top-[42%] hidden -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-[0.88] tracking-[-0.04em] text-[#0B1A2D] opacity-[0.04] md:block">
+        <span className="absolute -left-[3vw] top-[42%] hidden -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-[0.88] tracking-[-0.04em] text-[#0B1A2D] opacity-[0.02] md:block">
           LEA
         </span>
         {/* Oversized faint background typography — right */}
-        <span className="absolute -right-[2vw] top-[58%] hidden -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-[0.88] tracking-[-0.04em] text-[#0B1A2D] opacity-[0.04] md:block">
+        <span className="absolute -right-[2vw] top-[58%] hidden -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-[0.88] tracking-[-0.04em] text-[#0B1A2D] opacity-[0.02] md:block">
           RSHIP
         </span>
 

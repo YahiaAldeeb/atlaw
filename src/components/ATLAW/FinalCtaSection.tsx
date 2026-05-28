@@ -66,7 +66,7 @@ export const FinalCtaSection = (): JSX.Element => {
 
         {/* Oversized ghost wordmark — soft white, very low opacity, cropped at both edges */}
         <span
-          className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.045em] text-white opacity-[0.05] text-[clamp(140px,21vw,360px)] md:block"
+          className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.045em] text-white opacity-[0.025] text-[clamp(140px,21vw,360px)] md:block"
           style={{ fontVariationSettings: headlineAxes }}
         >
           Contact

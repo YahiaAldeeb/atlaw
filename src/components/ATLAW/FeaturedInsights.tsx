@@ -146,7 +146,7 @@ export const FeaturedInsights = (): JSX.Element => {
 
         {/* Huge faint background "INSIGHTS" wordmark */}
         <span
-          className="pointer-events-none absolute left-1/2 top-[60px] hidden -translate-x-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-[0.9] tracking-[-0.045em] text-[#A8C8F0] opacity-[0.04] md:block"
+          className="pointer-events-none absolute left-1/2 top-[60px] hidden -translate-x-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-[0.9] tracking-[-0.045em] text-[#A8C8F0] opacity-[0.02] md:block"
           style={{ fontSize: "clamp(150px, 17vw, 260px)" }}
         >
           INSIGHTS

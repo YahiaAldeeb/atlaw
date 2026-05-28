@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 
 // Subtle film grain over the bone canvas — same texture as the Hero/Capabilities so the page reads as one system.
 const grain =
@@ -29,27 +28,30 @@ const stats: Stat[] = [
 ];
 
 const StatValue = ({ stat }: { stat: Stat }): JSX.Element => {
-  // List values (cities/years) are longer, so they run a notch smaller and never wrap —
-  // keeps each value on one line, fully inside its own box.
   const isList = Boolean(stat.mainList);
+
+  if (isList) {
+    return (
+      <ul className="flex flex-col items-center gap-1 text-center">
+        {stat.mainList?.map((token) => (
+          <li
+            className="font-serifDisplay text-[14px] font-normal leading-[1.3] tracking-[-0.01em] text-[#0B1F3A]"
+            key={token}
+            style={{ fontVariationSettings: statAxes }}
+          >
+            {token}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   return (
     <p
-      className={`whitespace-nowrap font-serifDisplay font-normal leading-[1.3] tracking-[-0.01em] text-[#0B1F3A] ${
-        isList ? "text-[14px]" : "text-[16px] lg:text-[17px]"
-      }`}
+      className="whitespace-nowrap font-serifDisplay text-[16px] font-normal leading-[1.3] tracking-[-0.01em] text-[#0B1F3A] lg:text-[17px]"
       style={{ fontVariationSettings: statAxes }}
     >
       {stat.main}
-      {stat.mainList?.map((token, index) => (
-        <Fragment key={token}>
-          {index > 0 && (
-            <span aria-hidden="true" className="mx-1 text-[#B88A2D]">
-              &middot;
-            </span>
-          )}
-          {token}
-        </Fragment>
-      ))}
     </p>
   );
 };
@@ -82,7 +84,7 @@ export const AboutDewnyaSection = (): JSX.Element => {
           </g>
         </svg>
 
-        <span className="absolute -bottom-[6vw] left-1/2 hidden -translate-x-1/2 whitespace-nowrap font-serifDisplay text-[30vw] font-normal uppercase leading-none tracking-[-0.05em] text-[#0B1F3A] opacity-[0.04] md:block">
+        <span className="absolute -bottom-[6vw] left-1/2 hidden -translate-x-1/2 whitespace-nowrap font-serifDisplay text-[30vw] font-normal uppercase leading-none tracking-[-0.05em] text-[#0B1F3A] opacity-[0.02] md:block">
           ATLAW
         </span>
       </div>

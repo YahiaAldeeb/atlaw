@@ -436,7 +436,7 @@ export const GlobalReach = (): JSX.Element => {
         </svg>
 
         {/* Oversized GLOBAL REACH ghost text */}
-        <span className="absolute left-1/2 top-[4%] -translate-x-1/2 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-none tracking-[-0.04em] text-[#F7F3EA] opacity-[0.04] sm:text-[16vw] md:text-[13vw]">
+        <span className="absolute left-1/2 top-[4%] -translate-x-1/2 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-none tracking-[-0.04em] text-[#F7F3EA] opacity-[0.02] sm:text-[16vw] md:text-[13vw]">
           GLOBAL REACH
         </span>
       </div>

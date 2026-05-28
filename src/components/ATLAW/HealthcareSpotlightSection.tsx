@@ -265,14 +265,14 @@ export const HealthcareSpotlightSection = (): JSX.Element => {
 
         {/* Oversized vertical HEALTHCARE wordmark on the left */}
         <span
-          className="absolute left-[-3vw] top-1/2 hidden -translate-y-1/2 -rotate-90 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-none tracking-[-0.04em] text-[#0B1A2D] opacity-[0.045] md:block"
+          className="absolute left-[-3vw] top-1/2 hidden -translate-y-1/2 -rotate-90 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-none tracking-[-0.04em] text-[#0B1A2D] opacity-[0.022] md:block"
           style={{ transformOrigin: "left center" }}
         >
           HEALTHCARE
         </span>
 
         {/* Mobile: smaller HEALTHCARE word at top for ambience */}
-        <span className="absolute -right-[6vw] top-[4%] block whitespace-nowrap font-serifDisplay text-[28vw] font-normal uppercase leading-none tracking-[-0.04em] text-[#0B1A2D] opacity-[0.035] md:hidden">
+        <span className="absolute -right-[6vw] top-[4%] block whitespace-nowrap font-serifDisplay text-[28vw] font-normal uppercase leading-none tracking-[-0.04em] text-[#0B1A2D] opacity-[0.018] md:hidden">
           HEALTHCARE
         </span>
       </div>

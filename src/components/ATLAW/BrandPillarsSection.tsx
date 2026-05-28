@@ -77,7 +77,7 @@ export const BrandPillarsSection = (): JSX.Element => {
 
         {/* Huge ghosted serif "AT" letterform — anchored bottom-right */}
         <span
-          className="pointer-events-none absolute -bottom-[6vw] -right-[2vw] hidden whitespace-nowrap font-serifDisplay font-normal uppercase leading-[0.78] tracking-[-0.06em] text-ink opacity-[0.055] md:block"
+          className="pointer-events-none absolute -bottom-[6vw] -right-[2vw] hidden whitespace-nowrap font-serifDisplay font-normal uppercase leading-[0.78] tracking-[-0.06em] text-ink opacity-[0.028] md:block"
           style={{ fontSize: "clamp(360px, 46vw, 760px)" }}
         >
           AT
@@ -85,13 +85,13 @@ export const BrandPillarsSection = (): JSX.Element => {
 
         {/* Faint oversized background words (editorial wash) */}
         <span
-          className="pointer-events-none absolute right-[4vw] top-[6%] hidden whitespace-nowrap font-serifDisplay font-normal uppercase leading-[0.88] tracking-[-0.04em] text-ink opacity-[0.045] lg:block"
+          className="pointer-events-none absolute right-[4vw] top-[6%] hidden whitespace-nowrap font-serifDisplay font-normal uppercase leading-[0.88] tracking-[-0.04em] text-ink opacity-[0.022] lg:block"
           style={{ fontSize: "clamp(110px, 13vw, 200px)" }}
         >
           LIMITLESS
         </span>
         <span
-          className="pointer-events-none absolute -left-[3vw] top-[44%] hidden whitespace-nowrap font-serifDisplay font-normal uppercase leading-[0.88] tracking-[-0.04em] text-ink opacity-[0.035] lg:block"
+          className="pointer-events-none absolute -left-[3vw] top-[44%] hidden whitespace-nowrap font-serifDisplay font-normal uppercase leading-[0.88] tracking-[-0.04em] text-ink opacity-[0.018] lg:block"
           style={{ fontSize: "clamp(120px, 14vw, 220px)" }}
         >
           PERSISTENT

@@ -1,4 +1,13 @@
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
+
+const toSlug = (value: string): string =>
+  value
+    .toLowerCase()
+    .replace(/['‘’]/g, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 
 // Subtle film grain over the bone canvas — matches the Hero so the section reads as one system.
 const grain =
@@ -110,7 +119,12 @@ const CapabilityCard = ({ item }: { item: Capability }): JSX.Element => {
                   &middot;
                 </span>
               )}
-              <span>{area}</span>
+              <Link
+                className="rounded-sm underline-offset-[3px] transition-colors duration-150 hover:text-[#0B1F3A] hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                to={`/capabilities/${toSlug(area)}`}
+              >
+                {area}
+              </Link>
             </Fragment>
           ))}
         </p>
@@ -148,7 +162,7 @@ export const CapabilitiesSection = (): JSX.Element => {
           </g>
         </svg>
 
-        <span className="absolute left-1/2 top-[40%] hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[34vw] font-normal uppercase leading-none tracking-[-0.05em] text-[#F4EFE6] opacity-[0.035] md:block">
+        <span className="absolute left-1/2 top-[40%] hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[34vw] font-normal uppercase leading-none tracking-[-0.05em] text-[#F4EFE6] opacity-[0.018] md:block">
           ATLAW
         </span>
       </div>

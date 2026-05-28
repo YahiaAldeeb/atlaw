@@ -242,10 +242,10 @@ export const SelectedMattersSection = (): JSX.Element => {
         />
 
         {/* Oversized faint background typography */}
-        <span className="pointer-events-none absolute -left-[2vw] top-[8%] hidden whitespace-nowrap font-serifDisplay text-[16vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.035] lg:block">
+        <span className="pointer-events-none absolute -left-[2vw] top-[8%] hidden whitespace-nowrap font-serifDisplay text-[16vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.018] lg:block">
           SELECTED
         </span>
-        <span className="pointer-events-none absolute -right-[2vw] bottom-[6%] hidden whitespace-nowrap font-serifDisplay text-[16vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.03] lg:block">
+        <span className="pointer-events-none absolute -right-[2vw] bottom-[6%] hidden whitespace-nowrap font-serifDisplay text-[16vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.015] lg:block">
           MATTERS
         </span>
 

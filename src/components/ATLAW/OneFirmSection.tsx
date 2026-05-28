@@ -53,7 +53,7 @@ export const OneFirmSection = (): JSX.Element => {
         {/* Oversized ghost wordmark — centered behind the content, faint light tone, spans most of the width */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span
-            className="whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.04em] text-[#F7F3EA] opacity-[0.06] text-[clamp(140px,24vw,360px)]"
+            className="whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.04em] text-[#F7F3EA] opacity-[0.03] text-[clamp(140px,24vw,360px)]"
             style={{ fontVariationSettings: headlineAxes }}
           >
             ATLAW

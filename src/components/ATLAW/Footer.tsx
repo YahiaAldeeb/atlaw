@@ -262,7 +262,7 @@ export const Footer = (): JSX.Element => {
         </svg>
         {/* oversized ghost ATLAW wordmark behind the newsletter / bottom rows */}
         <span
-          className="absolute bottom-[-3%] left-1/2 hidden -translate-x-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.045em] text-white opacity-[0.05] md:block"
+          className="absolute bottom-[-3%] left-1/2 hidden -translate-x-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.045em] text-white opacity-[0.025] md:block"
           style={{ fontVariationSettings: headlineAxes, fontSize: "clamp(160px, 26vw, 460px)" }}
         >
           ATLAW

@@ -127,7 +127,7 @@ export const AtlawThesisSection = (): JSX.Element => {
 
         {/* Oversized ghosted typography */}
         <span
-          className="pointer-events-none absolute right-[-2vw] top-1/2 hidden -translate-y-1/2 whitespace-nowrap text-right font-serifDisplay text-[14vw] font-normal uppercase leading-[0.88] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.045] md:block"
+          className="pointer-events-none absolute right-[-2vw] top-1/2 hidden -translate-y-1/2 whitespace-nowrap text-right font-serifDisplay text-[14vw] font-normal uppercase leading-[0.88] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.022] md:block"
         >
           GLOBAL
           <br />

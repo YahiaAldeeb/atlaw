@@ -173,7 +173,7 @@ export const HowWeWorkSection = (): JSX.Element => {
 
         {/* Oversized OPERATING MODEL ghost text on the left */}
         <span
-          className="pointer-events-none absolute -left-[2vw] top-1/2 hidden -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[14vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.035] md:block"
+          className="pointer-events-none absolute -left-[2vw] top-1/2 hidden -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[14vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.018] md:block"
           style={{ writingMode: "vertical-rl", transform: "translateY(-50%) rotate(180deg)" }}
         >
           OPERATING&nbsp;MODEL
