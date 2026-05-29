@@ -92,7 +92,7 @@ export const HowWeWorkSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="how-we-work-heading"
-      className="relative isolate w-full overflow-hidden bg-[#061323] text-[#F7F3EA] scroll-mt-20"
+      className="relative isolate w-full overflow-hidden bg-[#061323] text-[#FFFFFF] scroll-mt-20"
       id="how-we-work"
     >
       {/* Decorative background */}
@@ -121,7 +121,7 @@ export const HowWeWorkSection = (): JSX.Element => {
               patternUnits="userSpaceOnUse"
               width="9"
             >
-              <circle cx="1" cy="1" fill="#F7F3EA" fillOpacity="0.35" r="0.75" />
+              <circle cx="1" cy="1" fill="#FFFFFF" fillOpacity="0.35" r="0.75" />
             </pattern>
             <radialGradient cx="80%" cy="22%" id="hww-map-mask" r="38%">
               <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
@@ -133,7 +133,7 @@ export const HowWeWorkSection = (): JSX.Element => {
           </defs>
 
           {/* Subtle grid lines */}
-          <g stroke="#F7F3EA" strokeOpacity="0.045" strokeWidth="1">
+          <g stroke="#FFFFFF" strokeOpacity="0.045" strokeWidth="1">
             <path d="M0 200 Q 720 150 1440 200" />
             <path d="M0 380 Q 720 330 1440 380" />
             <path d="M0 560 Q 720 510 1440 560" />
@@ -173,7 +173,7 @@ export const HowWeWorkSection = (): JSX.Element => {
 
         {/* Oversized OPERATING MODEL ghost text on the left */}
         <span
-          className="pointer-events-none absolute -left-[2vw] top-1/2 hidden -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[14vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.018] md:block"
+          className="pointer-events-none absolute -left-[2vw] top-1/2 hidden -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[14vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#FFFFFF] opacity-[0.018] md:block"
           style={{ writingMode: "vertical-rl", transform: "translateY(-50%) rotate(180deg)" }}
         >
           OPERATING&nbsp;MODEL
@@ -195,7 +195,7 @@ export const HowWeWorkSection = (): JSX.Element => {
           </p>
 
           <h2
-            className="mt-7 max-w-[1040px] font-serifDisplay text-[40px] font-normal leading-[1.06] tracking-[-0.025em] text-[#F7F3EA] sm:text-[52px] md:text-[62px] lg:text-[72px] xl:text-[78px]"
+            className="mt-7 max-w-[1040px] font-serifDisplay text-[40px] font-normal leading-[1.06] tracking-[-0.025em] text-[#FFFFFF] sm:text-[52px] md:text-[62px] lg:text-[72px] xl:text-[78px]"
             id="how-we-work-heading"
           >
             The firm runs on three things.
@@ -231,7 +231,7 @@ export const HowWeWorkSection = (): JSX.Element => {
                 {pillar.number}
               </p>
 
-              <h3 className="mt-6 font-serifDisplay text-[28px] font-normal leading-[1.14] tracking-[-0.015em] text-[#F7F3EA] md:mt-7 md:text-[32px] lg:text-[34px]">
+              <h3 className="mt-6 font-serifDisplay text-[28px] font-normal leading-[1.14] tracking-[-0.015em] text-[#FFFFFF] md:mt-7 md:text-[32px] lg:text-[34px]">
                 {pillar.title}
               </h3>
 
@@ -241,7 +241,7 @@ export const HowWeWorkSection = (): JSX.Element => {
 
               <div className="mt-8 h-px w-full bg-white/[0.14]" />
 
-              <p className="mt-5 font-sans text-[14px] leading-[1.6] text-[#F7F3EA]/[0.74] md:text-[15px] md:leading-[1.62]">
+              <p className="mt-5 font-sans text-[14px] leading-[1.6] text-[#FFFFFF]/[0.74] md:text-[15px] md:leading-[1.62]">
                 <span className="font-semibold text-[#6EA4E8]">Proof:</span>{" "}
                 {pillar.proof}
               </p>

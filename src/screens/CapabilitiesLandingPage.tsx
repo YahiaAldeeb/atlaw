@@ -10,7 +10,7 @@ import {
 } from "../data/practiceAreas";
 
 const NAVY_DEEP = "#061426";
-const IVORY = "#F5EFE5";
+const IVORY = "#FFFFFF";
 const GOLD = "#D39A2A";
 
 const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
@@ -110,7 +110,7 @@ const Hero = (): JSX.Element => (
             </li>
             <li aria-hidden="true" className="text-white/30">/</li>
             <li>
-              <span aria-current="page" className="text-[#F5EFE5]">Capabilities</span>
+              <span aria-current="page" className="text-[#FFFFFF]">Capabilities</span>
             </li>
           </ol>
         </nav>
@@ -123,7 +123,7 @@ const Hero = (): JSX.Element => (
         </p>
 
         <h1
-          className="font-serifDisplay font-normal tracking-[-0.025em] text-[#F5EFE5]"
+          className="font-serifDisplay font-normal tracking-[-0.025em] text-[#FFFFFF]"
           id="capabilities-title"
           style={{
             fontSize: "clamp(56px, 8.5vw, 125px)",
@@ -172,15 +172,15 @@ const CategoryBlock = ({ group, index }: { group: CategoryGroup; index: number }
         accent: GOLD,
         rule: GOLD,
         eyebrow: GOLD,
-        title: "#F5EFE5",
+        title: "#FFFFFF",
         body: "rgba(255,255,255,0.70)",
-        link: "#F5EFE5",
+        link: "#FFFFFF",
         linkHover: GOLD,
         cardBg: "rgba(255,255,255,0.03)",
         cardBorder: "rgba(255,255,255,0.08)",
         cardHoverBorder: "rgba(211,154,42,0.45)",
         cardHoverBg: "rgba(255,255,255,0.06)",
-        cardTitle: "#F5EFE5",
+        cardTitle: "#FFFFFF",
         cardBody: "rgba(255,255,255,0.55)",
         cardArrow: "rgba(255,255,255,0.30)",
       }
@@ -195,7 +195,7 @@ const CategoryBlock = ({ group, index }: { group: CategoryGroup; index: number }
         link: "#0B1F3A",
         linkHover: "#B88A2D",
         cardBg: "#FFFFFF",
-        cardBorder: "#E8E1D3",
+        cardBorder: "#FFFFFF",
         cardHoverBorder: "rgba(184,138,45,0.55)",
         cardHoverBg: "#FFFFFF",
         cardTitle: "#0B1F3A",
@@ -322,7 +322,7 @@ const FinalCta = (): JSX.Element => (
         className="grid grid-cols-1 items-center gap-10 rounded-[28px] border p-8 sm:p-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 lg:p-16"
         style={{
           backgroundColor: "#FFFFFF",
-          borderColor: "#E8E1D3",
+          borderColor: "#FFFFFF",
           boxShadow: "0 18px 50px rgba(11,31,58,0.08)",
         }}
       >
@@ -349,14 +349,14 @@ const FinalCta = (): JSX.Element => (
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-end">
           <Link
             className="inline-flex h-[54px] items-center justify-center px-8 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] transition-all hover:bg-[#0B1F3A]/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            style={{ backgroundColor: "#0B1F3A", color: "#F5EFE5" }}
+            style={{ backgroundColor: "#0B1F3A", color: "#FFFFFF" }}
             to="/contact"
           >
             Start a Conversation
             <span aria-hidden="true" className="ml-2">&rarr;</span>
           </Link>
           <a
-            className="inline-flex h-[54px] items-center justify-center border px-8 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] transition-colors hover:bg-[#F4EFE6]"
+            className="inline-flex h-[54px] items-center justify-center border px-8 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] transition-colors hover:bg-[#FFFFFF]"
             href="tel:+13134067606"
             style={{ borderColor: "rgba(11,31,58,0.2)", color: "#0B1F3A" }}
           >

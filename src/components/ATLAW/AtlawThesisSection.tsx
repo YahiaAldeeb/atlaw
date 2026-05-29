@@ -54,7 +54,7 @@ export const AtlawThesisSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="firm-thesis-heading"
-      className="relative isolate w-full overflow-hidden bg-[#071B33] text-[#F7F3EA] scroll-mt-20"
+      className="relative isolate w-full overflow-hidden bg-[#071B33] text-[#FFFFFF] scroll-mt-20"
       id="firm-thesis"
     >
       {/* Decorative background */}
@@ -77,7 +77,7 @@ export const AtlawThesisSection = (): JSX.Element => {
           xmlns="http://www.w3.org/2000/svg"
         >
           {/* Latitudes */}
-          <g stroke="#F7F3EA" strokeWidth="1">
+          <g stroke="#FFFFFF" strokeWidth="1">
             <path d="M0 160 Q 720 100 1440 160" />
             <path d="M0 280 Q 720 230 1440 280" />
             <path d="M0 400 Q 720 360 1440 400" />
@@ -86,7 +86,7 @@ export const AtlawThesisSection = (): JSX.Element => {
             <path d="M0 760 Q 720 720 1440 760" />
           </g>
           {/* Longitudes */}
-          <g stroke="#F7F3EA" strokeWidth="1">
+          <g stroke="#FFFFFF" strokeWidth="1">
             <path d="M220 0 Q 260 450 220 900" />
             <path d="M420 0 Q 460 450 420 900" />
             <path d="M620 0 Q 660 450 620 900" />
@@ -111,7 +111,7 @@ export const AtlawThesisSection = (): JSX.Element => {
             <circle cx="720" cy="420" r="2.4" />
           </g>
           {/* Light texture dots */}
-          <g fill="#F7F3EA" opacity="0.55">
+          <g fill="#FFFFFF" opacity="0.55">
             {Array.from({ length: 14 }).map((_, row) =>
               Array.from({ length: 26 }).map((__, col) => (
                 <circle
@@ -127,7 +127,7 @@ export const AtlawThesisSection = (): JSX.Element => {
 
         {/* Oversized ghosted typography */}
         <span
-          className="pointer-events-none absolute right-[-2vw] top-1/2 hidden -translate-y-1/2 whitespace-nowrap text-right font-serifDisplay text-[14vw] font-normal uppercase leading-[0.88] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.022] md:block"
+          className="pointer-events-none absolute right-[-2vw] top-1/2 hidden -translate-y-1/2 whitespace-nowrap text-right font-serifDisplay text-[14vw] font-normal uppercase leading-[0.88] tracking-[-0.04em] text-[#FFFFFF] opacity-[0.022] md:block"
         >
           GLOBAL
           <br />
@@ -143,7 +143,7 @@ export const AtlawThesisSection = (): JSX.Element => {
 
         {/* Headline */}
         <h2
-          className="mt-7 max-w-[950px] font-serifDisplay text-[40px] font-normal leading-[1.1] tracking-[-0.025em] text-[#F7F3EA] sm:text-[52px] md:text-[62px] lg:text-[72px] lg:leading-[1.08]"
+          className="mt-7 max-w-[950px] font-serifDisplay text-[40px] font-normal leading-[1.1] tracking-[-0.025em] text-[#FFFFFF] sm:text-[52px] md:text-[62px] lg:text-[72px] lg:leading-[1.08]"
           id="firm-thesis-heading"
         >
           Most law firms were built for the
@@ -178,7 +178,7 @@ export const AtlawThesisSection = (): JSX.Element => {
                 {pillar.number}
               </p>
 
-              <h3 className="mt-5 font-serifDisplay text-[26px] font-normal leading-[1.15] tracking-[-0.01em] text-[#F7F3EA] md:mt-6 md:text-[30px] lg:text-[32px]">
+              <h3 className="mt-5 font-serifDisplay text-[26px] font-normal leading-[1.15] tracking-[-0.01em] text-[#FFFFFF] md:mt-6 md:text-[30px] lg:text-[32px]">
                 {pillar.title}
               </h3>
 

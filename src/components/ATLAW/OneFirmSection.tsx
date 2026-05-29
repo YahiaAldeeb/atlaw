@@ -18,7 +18,7 @@ export const OneFirmSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="one-firm-heading"
-      className="relative isolate w-full overflow-hidden bg-[#0B1A2D] text-[#F7F3EA]"
+      className="relative isolate w-full overflow-hidden bg-[#0B1A2D] text-[#FFFFFF]"
     >
       {/* Deep-navy field — soft radial glow up top, same family as the "Firm, in numbers" band below */}
       <div
@@ -53,7 +53,7 @@ export const OneFirmSection = (): JSX.Element => {
         {/* Oversized ghost wordmark — centered behind the content, faint light tone, spans most of the width */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span
-            className="whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.04em] text-[#F7F3EA] opacity-[0.03] text-[clamp(140px,24vw,360px)]"
+            className="whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.04em] text-[#FFFFFF] opacity-[0.03] text-[clamp(140px,24vw,360px)]"
             style={{ fontVariationSettings: headlineAxes }}
           >
             ATLAW
@@ -80,7 +80,7 @@ export const OneFirmSection = (): JSX.Element => {
 
         {/* Main heading */}
         <h2
-          className="hero-rise mt-7 max-w-[1000px] font-serifDisplay font-normal leading-[1.08] tracking-[-0.02em] text-[#F7F3EA] text-[clamp(36px,6vw,76px)]"
+          className="hero-rise mt-7 max-w-[1000px] font-serifDisplay font-normal leading-[1.08] tracking-[-0.02em] text-[#FFFFFF] text-[clamp(36px,6vw,76px)]"
           id="one-firm-heading"
           style={{ fontVariationSettings: headlineAxes, animationDelay: "160ms" }}
         >
@@ -103,7 +103,7 @@ export const OneFirmSection = (): JSX.Element => {
 
         {/* Practice-area row — wraps into centered rows on narrow screens, amber dots between items */}
         <ul
-          className="hero-rise mt-[72px] flex max-w-[920px] flex-wrap items-center justify-center gap-x-3.5 gap-y-3 font-sans text-[13px] font-semibold uppercase tracking-[0.13em] text-[#F7F3EA] lg:mt-[80px]"
+          className="hero-rise mt-[72px] flex max-w-[920px] flex-wrap items-center justify-center gap-x-3.5 gap-y-3 font-sans text-[13px] font-semibold uppercase tracking-[0.13em] text-[#FFFFFF] lg:mt-[80px]"
           style={{ animationDelay: "320ms" }}
         >
           {practiceAreas.map((area, index) => (

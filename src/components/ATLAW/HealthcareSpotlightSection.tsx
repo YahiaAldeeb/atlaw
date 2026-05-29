@@ -60,7 +60,7 @@ const TennesseeMatterGraphic = (): JSX.Element => (
     <rect fill="url(#hc-glow)" height="420" width="800" />
 
     {/* Dotted texture */}
-    <g fill="#F7F3EA" opacity="0.10">
+    <g fill="#FFFFFF" opacity="0.10">
       {Array.from({ length: 9 }).map((_, row) =>
         Array.from({ length: 18 }).map((__, col) => (
           <circle
@@ -74,7 +74,7 @@ const TennesseeMatterGraphic = (): JSX.Element => (
     </g>
 
     {/* Faint document overlays */}
-    <g opacity="0.10" stroke="#F7F3EA" strokeWidth="1">
+    <g opacity="0.10" stroke="#FFFFFF" strokeWidth="1">
       <rect height="150" rx="3" width="110" x="60" y="60" />
       <line x1="78" x2="178" y1="92" y2="92" />
       <line x1="78" x2="170" y1="110" y2="110" />
@@ -90,7 +90,7 @@ const TennesseeMatterGraphic = (): JSX.Element => (
     </g>
 
     {/* Faint medical cross outline */}
-    <g opacity="0.08" stroke="#F7F3EA" strokeWidth="1.4">
+    <g opacity="0.08" stroke="#FFFFFF" strokeWidth="1.4">
       <path d="M708 80 h28 v22 h22 v28 h-22 v22 h-28 v-22 h-22 v-28 h22 z" />
     </g>
 
@@ -136,7 +136,7 @@ const TennesseeMatterGraphic = (): JSX.Element => (
       <circle cx="232" cy="254" fill="#EBD7A8" opacity="0.18" r="14" />
       <circle cx="232" cy="254" fill="#EBD7A8" r="5" />
       <text
-        fill="#F7F3EA"
+        fill="#FFFFFF"
         fontFamily="Inter, system-ui, sans-serif"
         fontSize="11"
         fontWeight="600"
@@ -149,10 +149,10 @@ const TennesseeMatterGraphic = (): JSX.Element => (
       </text>
 
       {/* Nashville */}
-      <circle cx="484" cy="244" fill="#F7F3EA" opacity="0.18" r="16" />
-      <circle cx="484" cy="244" fill="#F7F3EA" r="6" />
+      <circle cx="484" cy="244" fill="#FFFFFF" opacity="0.18" r="16" />
+      <circle cx="484" cy="244" fill="#FFFFFF" r="6" />
       <text
-        fill="#F7F3EA"
+        fill="#FFFFFF"
         fontFamily="Inter, system-ui, sans-serif"
         fontSize="11"
         fontWeight="700"
@@ -168,7 +168,7 @@ const TennesseeMatterGraphic = (): JSX.Element => (
       <circle cx="612" cy="260" fill="#EBD7A8" opacity="0.18" r="14" />
       <circle cx="612" cy="260" fill="#EBD7A8" r="5" />
       <text
-        fill="#F7F3EA"
+        fill="#FFFFFF"
         fontFamily="Inter, system-ui, sans-serif"
         fontSize="11"
         fontWeight="600"
@@ -208,7 +208,7 @@ const TennesseeMatterGraphic = (): JSX.Element => (
     {/* Bottom right legend */}
     <g opacity="0.65">
       <text
-        fill="#F7F3EA"
+        fill="#FFFFFF"
         fontFamily="Inter, system-ui, sans-serif"
         fontSize="10"
         letterSpacing="0.22em"
@@ -226,7 +226,7 @@ export const HealthcareSpotlightSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="healthcare-spotlight-heading"
-      className="relative isolate w-full overflow-hidden bg-[#F4F1EA] scroll-mt-20"
+      className="relative isolate w-full overflow-hidden bg-[#FFFFFF] scroll-mt-20"
       id="healthcare-spotlight"
     >
       {/* Decorative background */}
@@ -326,7 +326,7 @@ export const HealthcareSpotlightSection = (): JSX.Element => {
 
             <div className="mt-8 md:mt-10">
               <a
-                className="group inline-flex h-[54px] items-center gap-2.5 rounded-full bg-[#071B33] px-8 font-sans text-[15px] font-semibold text-white shadow-[0_10px_24px_rgba(7,27,51,0.18)] transition-all duration-200 hover:bg-[#0B2649] hover:shadow-[0_14px_30px_rgba(7,27,51,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2F67B1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F1EA] md:h-[56px] md:px-9 md:text-[16px]"
+                className="group inline-flex h-[54px] items-center gap-2.5 rounded-full bg-[#071B33] px-8 font-sans text-[15px] font-semibold text-white shadow-[0_10px_24px_rgba(7,27,51,0.18)] transition-all duration-200 hover:bg-[#0B2649] hover:shadow-[0_14px_30px_rgba(7,27,51,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2F67B1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF] md:h-[56px] md:px-9 md:text-[16px]"
                 href="https://www.atlahealthcare.com/"
                 rel="noopener noreferrer"
                 target="_blank"

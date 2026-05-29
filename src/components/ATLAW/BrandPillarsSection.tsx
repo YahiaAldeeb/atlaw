@@ -71,7 +71,7 @@ export const BrandPillarsSection = (): JSX.Element => {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 55% at 18% 22%, rgba(46, 95, 167, 0.06), transparent 70%), radial-gradient(ellipse 60% 60% at 82% 70%, rgba(20, 35, 59, 0.05), transparent 72%), linear-gradient(180deg, #F5F3ED 0%, #F3F1EB 45%, #EFEDE6 100%)",
+              "radial-gradient(ellipse 70% 55% at 18% 22%, rgba(46, 95, 167, 0.06), transparent 70%), radial-gradient(ellipse 60% 60% at 82% 70%, rgba(20, 35, 59, 0.05), transparent 72%), linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 45%, #FFFFFF 100%)",
           }}
         />
 

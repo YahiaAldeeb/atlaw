@@ -27,7 +27,7 @@ export const LeadershipStorySection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="leadership-story-heading"
-      className="relative isolate w-full overflow-hidden bg-[#F4F1EA] text-ink scroll-mt-20"
+      className="relative isolate w-full overflow-hidden bg-[#FFFFFF] text-ink scroll-mt-20"
       id="leadership"
     >
       {/* Decorative background */}
@@ -128,7 +128,7 @@ export const LeadershipStorySection = (): JSX.Element => {
               </cite>
 
               <Link
-                className="group inline-flex items-center gap-2 border-b border-[#4F8EDB]/40 pb-1 font-sans text-[16px] font-semibold text-[#4F8EDB] transition-colors duration-200 hover:border-[#4F8EDB] hover:text-[#2E5FA7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F8EDB] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F1EA] md:text-[17px]"
+                className="group inline-flex items-center gap-2 border-b border-[#4F8EDB]/40 pb-1 font-sans text-[16px] font-semibold text-[#4F8EDB] transition-colors duration-200 hover:border-[#4F8EDB] hover:text-[#2E5FA7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F8EDB] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF] md:text-[17px]"
                 to="/our-people"
               >
                 Meet the leadership team

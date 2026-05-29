@@ -74,11 +74,11 @@ const capabilities: Capability[] = [
 const CapabilityCard = ({ item }: { item: Capability }): JSX.Element => {
   // All cards render white on the navy section so the row reads as one clean set.
   const cardClasses =
-    "border-[#E8E1D3] bg-white shadow-[0_10px_30px_rgba(5,15,28,0.18)] hover:border-[#D8D2C4] hover:shadow-[0_18px_42px_rgba(5,15,28,0.30)]";
+    "border-[#FFFFFF] bg-white shadow-[0_10px_30px_rgba(5,15,28,0.18)] hover:border-[#FFFFFF] hover:shadow-[0_18px_42px_rgba(5,15,28,0.30)]";
 
   const titleColor = "text-[#0B1F3A]";
   const bodyColor = "text-[#3A4A63]";
-  const dividerColor = "bg-[#E8E1D3]";
+  const dividerColor = "bg-[#FFFFFF]";
   const keyAreaColor = "text-[#3A4A63]";
 
   return (
@@ -155,14 +155,14 @@ export const CapabilitiesSection = (): JSX.Element => {
           viewBox="0 0 1440 900"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g stroke="#F4EFE6" strokeWidth="1">
+          <g stroke="#FFFFFF" strokeWidth="1">
             <path d="M-50 230 Q 380 90 840 250 T 1500 210" />
             <path d="M-50 410 Q 440 270 920 410 T 1500 380" />
             <path d="M-50 690 Q 460 560 940 690 T 1500 660" />
           </g>
         </svg>
 
-        <span className="absolute left-1/2 top-[40%] hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[34vw] font-normal uppercase leading-none tracking-[-0.05em] text-[#F4EFE6] opacity-[0.018] md:block">
+        <span className="absolute left-1/2 top-[40%] hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[34vw] font-normal uppercase leading-none tracking-[-0.05em] text-[#FFFFFF] opacity-[0.018] md:block">
           ATLAW
         </span>
       </div>
@@ -175,7 +175,7 @@ export const CapabilitiesSection = (): JSX.Element => {
           </p>
 
           <h2
-            className="mt-5 max-w-[1000px] font-serifDisplay font-normal leading-[1.02] tracking-[-0.03em] text-[#F4EFE6] text-[clamp(40px,5.5vw,86px)]"
+            className="mt-5 max-w-[1000px] font-serifDisplay font-normal leading-[1.02] tracking-[-0.03em] text-[#FFFFFF] text-[clamp(40px,5.5vw,86px)]"
             id="capabilities-heading"
             style={{ fontVariationSettings: headlineAxes }}
           >

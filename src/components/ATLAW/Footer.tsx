@@ -201,7 +201,7 @@ const NewsletterForm = (): JSX.Element => {
         />
         <button
           type="submit"
-          className="group inline-flex h-[54px] shrink-0 items-center justify-center rounded-full bg-white px-8 font-sans text-[15px] font-medium text-[#0B1F3A] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#F4EFE6] hover:shadow-[0_8px_24px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A]"
+          className="group inline-flex h-[54px] shrink-0 items-center justify-center rounded-full bg-white px-8 font-sans text-[15px] font-medium text-[#0B1F3A] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#FFFFFF] hover:shadow-[0_8px_24px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A]"
         >
           Subscribe
           <ArrowRight className="ml-2 group-hover:translate-x-1" />

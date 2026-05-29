@@ -60,7 +60,7 @@ export const AboutDewnyaSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="about-dewnya-heading"
-      className="relative isolate w-full overflow-hidden bg-[#F4EFE6] text-[#0B1F3A]"
+      className="relative isolate w-full overflow-hidden bg-[#FFFFFF] text-[#0B1F3A]"
     >
       {/* 3% grain overlay on the canvas */}
       <div
@@ -136,11 +136,11 @@ export const AboutDewnyaSection = (): JSX.Element => {
           </div>
 
           {/* ── Right: founder feature card ── */}
-          <article className="group overflow-hidden rounded-[26px] border border-[#D8D2C4] bg-[#F8F3EA] transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[2px] hover:border-[#C2B79F]">
+          <article className="group overflow-hidden rounded-[26px] border border-[#FFFFFF] bg-[#FFFFFF] transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[2px] hover:border-[#C2B79F]">
             {/* Top zone: portrait + bio */}
             <div className="grid grid-cols-1 items-stretch sm:grid-cols-[minmax(0,48%)_minmax(0,52%)]">
               {/* Portrait — fills the column, bottom-aligned so the hands/desk stay anchored (reused from the Hero) */}
-              <div className="relative flex min-h-[360px] items-end justify-center overflow-hidden bg-[#F4EFE6] sm:min-h-[480px]">
+              <div className="relative flex min-h-[360px] items-end justify-center overflow-hidden bg-[#FFFFFF] sm:min-h-[480px]">
                 <img
                   alt="Dewnya Bazzi, ATLAW founder and CEO"
                   className="h-full w-full object-cover object-bottom"
@@ -149,7 +149,7 @@ export const AboutDewnyaSection = (): JSX.Element => {
               </div>
 
               {/* Bio — vertical hairline on desktop, horizontal on mobile */}
-              <div className="border-t border-[#D8D2C4] p-7 sm:border-l sm:border-t-0 lg:p-9">
+              <div className="border-t border-[#FFFFFF] p-7 sm:border-l sm:border-t-0 lg:p-9">
                 <h3
                   className="font-serifDisplay font-normal leading-[1.14] tracking-[-0.01em] text-[#0B1F3A] text-[clamp(25px,2.5vw,33px)]"
                   style={{ fontVariationSettings: founderTitleAxes }}
@@ -174,13 +174,13 @@ export const AboutDewnyaSection = (): JSX.Element => {
 
             {/* Bottom stat strip — 1 col → 2×2 → full 4-across only at ≥1440px (where the
                 values still fit one line). Keeps every value inside its own box. */}
-            <div className="grid grid-cols-1 gap-x-5 gap-y-7 border-t border-[#D8D2C4] px-6 py-7 min-[480px]:grid-cols-2 lg:px-9 lg:py-8 min-[1440px]:grid-cols-[0.85fr_0.9fr_1.55fr_1.4fr] min-[1440px]:gap-x-4 min-[1440px]:gap-y-0">
+            <div className="grid grid-cols-1 gap-x-5 gap-y-7 border-t border-[#FFFFFF] px-6 py-7 min-[480px]:grid-cols-2 lg:px-9 lg:py-8 min-[1440px]:grid-cols-[0.85fr_0.9fr_1.55fr_1.4fr] min-[1440px]:gap-x-4 min-[1440px]:gap-y-0">
               {stats.map((stat, index) => (
                 <div
                   className={[
                     "relative flex min-w-0 flex-col justify-center",
                     // thin vertical divider + amber dot between items on the widest layout
-                    index > 0 ? "min-[1440px]:border-l min-[1440px]:border-[#D8D2C4] min-[1440px]:pl-4" : "",
+                    index > 0 ? "min-[1440px]:border-l min-[1440px]:border-[#FFFFFF] min-[1440px]:pl-4" : "",
                   ].join(" ")}
                   key={stat.main ?? stat.mainList?.join("-") ?? index}
                 >

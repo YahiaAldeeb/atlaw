@@ -1,7 +1,7 @@
 const styles = `
   .landing-page-root {
-    --ivory: #f3f1eb;
-    --surface: #d8d4cc;
+    --ivory: #FFFFFF;
+    --surface: #FFFFFF;
     --bluegray: #9ca7b5;
     --accent: #2e5fa7;
     --ink: #14233b;
@@ -85,7 +85,7 @@ const styles = `
     height: 640px;
     border: 1px solid var(--ink-12);
     border-radius: 18px;
-    background: linear-gradient(160deg, #d8d4cc 0%, #9ca7b5 100%);
+    background: linear-gradient(160deg, #FFFFFF 0%, #9ca7b5 100%);
   }
   .section {
     padding: 100px 56px;

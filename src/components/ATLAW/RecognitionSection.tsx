@@ -41,8 +41,8 @@ const CornerMarks = ({ accent }: { accent?: boolean }): JSX.Element => {
 const AwardPlaque = ({ award }: { award: Award }): JSX.Element => {
   // Centre plaque: warmer fill, a fuller gold border, and a soft lift — emphasis without breaking the row.
   const surface = award.accent
-    ? "border-[#C9A85C] bg-[#F6EEDD] shadow-[0_18px_48px_rgba(11,31,58,0.10)]"
-    : "border-[#E1D8C8] bg-[#FAF6EE] shadow-[0_8px_26px_rgba(11,31,58,0.05)]";
+    ? "border-[#C9A85C] bg-[#FFFFFF] shadow-[0_18px_48px_rgba(11,31,58,0.10)]"
+    : "border-[#FFFFFF] bg-[#FFFFFF] shadow-[0_8px_26px_rgba(11,31,58,0.05)]";
 
   return (
     <article
@@ -90,7 +90,7 @@ export const RecognitionSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="recognition-heading"
-      className="relative isolate w-full overflow-hidden bg-[#F4EFE6] text-[#0B1F3A]"
+      className="relative isolate w-full overflow-hidden bg-[#FFFFFF] text-[#0B1F3A]"
     >
       {/* 3% grain overlay on the canvas */}
       <div

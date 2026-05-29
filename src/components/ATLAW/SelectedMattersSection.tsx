@@ -78,13 +78,13 @@ const FeaturedMatterVisual = (): JSX.Element => (
         <path
           d="M22 0H0V22"
           fill="none"
-          stroke="#F7F3EA"
+          stroke="#FFFFFF"
           strokeOpacity="0.05"
           strokeWidth="0.6"
         />
       </pattern>
       <pattern height="8" id="sm-feat-dots" patternUnits="userSpaceOnUse" width="8">
-        <circle cx="1" cy="1" fill="#F7F3EA" fillOpacity="0.32" r="0.7" />
+        <circle cx="1" cy="1" fill="#FFFFFF" fillOpacity="0.32" r="0.7" />
       </pattern>
       <radialGradient id="sm-feat-mask" cx="48%" cy="48%" r="46%">
         <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
@@ -105,7 +105,7 @@ const FeaturedMatterVisual = (): JSX.Element => (
         fill="#0E2440"
         height="240"
         rx="6"
-        stroke="#F7F3EA"
+        stroke="#FFFFFF"
         strokeOpacity="0.08"
         strokeWidth="1"
         transform="rotate(-7 110 380)"
@@ -117,7 +117,7 @@ const FeaturedMatterVisual = (): JSX.Element => (
         fill="#0E2440"
         height="240"
         rx="6"
-        stroke="#F7F3EA"
+        stroke="#FFFFFF"
         strokeOpacity="0.12"
         strokeWidth="1"
         transform="rotate(-2 150 360)"
@@ -129,14 +129,14 @@ const FeaturedMatterVisual = (): JSX.Element => (
         fill="#10263F"
         height="240"
         rx="6"
-        stroke="#F7F3EA"
+        stroke="#FFFFFF"
         strokeOpacity="0.18"
         strokeWidth="1"
         width="190"
         x="120"
         y="250"
       />
-      <g stroke="#F7F3EA" strokeOpacity="0.22" strokeWidth="1">
+      <g stroke="#FFFFFF" strokeOpacity="0.22" strokeWidth="1">
         <line x1="140" x2="290" y1="278" y2="278" />
         <line x1="140" x2="270" y1="298" y2="298" />
         <line x1="140" x2="290" y1="318" y2="318" />
@@ -191,30 +191,30 @@ const FeaturedMatterVisual = (): JSX.Element => (
       />
 
       {/* Origin node */}
-      <circle cx="250" cy="380" fill="#F7F3EA" r="3.5" />
-      <circle cx="250" cy="380" fill="none" r="8" stroke="#F7F3EA" strokeOpacity="0.35" strokeWidth="1" />
+      <circle cx="250" cy="380" fill="#FFFFFF" r="3.5" />
+      <circle cx="250" cy="380" fill="none" r="8" stroke="#FFFFFF" strokeOpacity="0.35" strokeWidth="1" />
       {/* Mid waypoint */}
       <circle cx="460" cy="278" fill="#6EA4E8" r="2.5" />
       {/* Destination (Tennessee) */}
-      <circle cx="600" cy="248" fill="#F7F3EA" r="4.5" />
-      <circle cx="600" cy="248" fill="none" r="11" stroke="#F7F3EA" strokeOpacity="0.5" strokeWidth="1" />
+      <circle cx="600" cy="248" fill="#FFFFFF" r="4.5" />
+      <circle cx="600" cy="248" fill="none" r="11" stroke="#FFFFFF" strokeOpacity="0.5" strokeWidth="1" />
       <circle cx="600" cy="248" fill="none" r="18" stroke="#6EA4E8" strokeOpacity="0.3" strokeWidth="1" />
     </g>
 
     {/* Top labels */}
-    <g fill="#F7F3EA" fillOpacity="0.55" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2.4">
+    <g fill="#FFFFFF" fillOpacity="0.55" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2.4">
       <text x="56" y="58">DEAL · 2023</text>
       <text textAnchor="end" x="744" y="58">
         TENNESSEE
       </text>
     </g>
-    <g stroke="#F7F3EA" strokeOpacity="0.16" strokeWidth="0.8">
+    <g stroke="#FFFFFF" strokeOpacity="0.16" strokeWidth="0.8">
       <line x1="56" x2="180" y1="70" y2="70" />
       <line x1="630" x2="744" y1="70" y2="70" />
     </g>
 
     {/* Bottom corner tick marks */}
-    <g stroke="#F7F3EA" strokeOpacity="0.22" strokeWidth="1">
+    <g stroke="#FFFFFF" strokeOpacity="0.22" strokeWidth="1">
       <path d="M40 460 H 76 M40 460 V 484" />
       <path d="M760 460 H 724 M760 460 V 484" />
     </g>
@@ -227,7 +227,7 @@ export const SelectedMattersSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="selected-matters-heading"
-      className="relative isolate w-full overflow-hidden bg-[#071B33] text-[#F7F3EA] scroll-mt-20"
+      className="relative isolate w-full overflow-hidden bg-[#071B33] text-[#FFFFFF] scroll-mt-20"
       id="selected-matters"
     >
       {/* Decorative background */}
@@ -242,10 +242,10 @@ export const SelectedMattersSection = (): JSX.Element => {
         />
 
         {/* Oversized faint background typography */}
-        <span className="pointer-events-none absolute -left-[2vw] top-[8%] hidden whitespace-nowrap font-serifDisplay text-[16vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.018] lg:block">
+        <span className="pointer-events-none absolute -left-[2vw] top-[8%] hidden whitespace-nowrap font-serifDisplay text-[16vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#FFFFFF] opacity-[0.018] lg:block">
           SELECTED
         </span>
-        <span className="pointer-events-none absolute -right-[2vw] bottom-[6%] hidden whitespace-nowrap font-serifDisplay text-[16vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#F7F3EA] opacity-[0.015] lg:block">
+        <span className="pointer-events-none absolute -right-[2vw] bottom-[6%] hidden whitespace-nowrap font-serifDisplay text-[16vw] font-normal uppercase leading-[0.86] tracking-[-0.04em] text-[#FFFFFF] opacity-[0.015] lg:block">
           MATTERS
         </span>
 
@@ -257,7 +257,7 @@ export const SelectedMattersSection = (): JSX.Element => {
           viewBox="0 0 1440 1400"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g stroke="#F7F3EA" strokeOpacity="0.05" strokeWidth="1">
+          <g stroke="#FFFFFF" strokeOpacity="0.05" strokeWidth="1">
             <path d="M0 240 Q 720 180 1440 240" />
             <path d="M0 520 Q 720 460 1440 520" />
             <path d="M0 880 Q 720 820 1440 880" />
@@ -290,7 +290,7 @@ export const SelectedMattersSection = (): JSX.Element => {
           </p>
 
           <h2
-            className="mt-7 max-w-[980px] font-serifDisplay text-[40px] font-normal leading-[1.06] tracking-[-0.025em] text-[#F7F3EA] sm:text-[52px] md:text-[64px] lg:text-[74px] xl:text-[80px]"
+            className="mt-7 max-w-[980px] font-serifDisplay text-[40px] font-normal leading-[1.06] tracking-[-0.025em] text-[#FFFFFF] sm:text-[52px] md:text-[64px] lg:text-[74px] xl:text-[80px]"
             id="selected-matters-heading"
           >
             Proof in the work.
@@ -326,7 +326,7 @@ export const SelectedMattersSection = (): JSX.Element => {
               </p>
 
               <h3
-                className="mt-6 max-w-[640px] font-serifDisplay text-[28px] font-normal leading-[1.16] tracking-[-0.018em] text-[#F7F3EA] md:mt-7 md:text-[36px] md:leading-[1.14] lg:text-[42px] lg:leading-[1.12]"
+                className="mt-6 max-w-[640px] font-serifDisplay text-[28px] font-normal leading-[1.16] tracking-[-0.018em] text-[#FFFFFF] md:mt-7 md:text-[36px] md:leading-[1.14] lg:text-[42px] lg:leading-[1.12]"
                 id="selected-matters-featured-title"
               >
                 ATLAW represented Personic Healthcare in the $2M acquisition

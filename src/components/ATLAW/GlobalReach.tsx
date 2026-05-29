@@ -159,7 +159,7 @@ const GlobalMapVisual = (): JSX.Element => (
         patternUnits="userSpaceOnUse"
         width="7"
       >
-        <circle cx="1" cy="1" fill="#F7F3EA" fillOpacity="0.5" r="0.9" />
+        <circle cx="1" cy="1" fill="#FFFFFF" fillOpacity="0.5" r="0.9" />
       </pattern>
       <pattern
         height="9"
@@ -167,7 +167,7 @@ const GlobalMapVisual = (): JSX.Element => (
         patternUnits="userSpaceOnUse"
         width="9"
       >
-        <circle cx="1" cy="1" fill="#F7F3EA" fillOpacity="0.28" r="0.75" />
+        <circle cx="1" cy="1" fill="#FFFFFF" fillOpacity="0.28" r="0.75" />
       </pattern>
     </defs>
 
@@ -179,7 +179,7 @@ const GlobalMapVisual = (): JSX.Element => (
     {/* Longitude / latitude curved lines */}
     <g
       fill="none"
-      stroke="#F7F3EA"
+      stroke="#FFFFFF"
       strokeOpacity="0.07"
       strokeWidth="1"
     >
@@ -372,13 +372,13 @@ const GlobalMapVisual = (): JSX.Element => (
               cy={c.y}
               fill="none"
               r={ringR}
-              stroke="#F7F3EA"
+              stroke="#FFFFFF"
               strokeOpacity="0.5"
               strokeWidth="1"
             />
-            <circle cx={c.x} cy={c.y} fill="#F7F3EA" r={dotR} />
+            <circle cx={c.x} cy={c.y} fill="#FFFFFF" r={dotR} />
             <text
-              fill="#F7F3EA"
+              fill="#FFFFFF"
               fillOpacity="0.85"
               fontFamily="Inter, system-ui, sans-serif"
               fontSize="10"
@@ -427,7 +427,7 @@ export const GlobalReach = (): JSX.Element => {
             </radialGradient>
           </defs>
           <rect fill="url(#gr-bg-wash)" height="1000" width="1440" />
-          <g stroke="#F7F3EA" strokeOpacity="0.05" strokeWidth="1">
+          <g stroke="#FFFFFF" strokeOpacity="0.05" strokeWidth="1">
             <path d="M -40 220 Q 480 120 960 240 T 1500 220" />
             <path d="M -40 440 Q 520 340 980 440 T 1500 420" />
             <path d="M -40 660 Q 480 560 940 660 T 1500 640" />
@@ -436,7 +436,7 @@ export const GlobalReach = (): JSX.Element => {
         </svg>
 
         {/* Oversized GLOBAL REACH ghost text */}
-        <span className="absolute left-1/2 top-[4%] -translate-x-1/2 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-none tracking-[-0.04em] text-[#F7F3EA] opacity-[0.02] sm:text-[16vw] md:text-[13vw]">
+        <span className="absolute left-1/2 top-[4%] -translate-x-1/2 whitespace-nowrap font-serifDisplay text-[18vw] font-normal uppercase leading-none tracking-[-0.04em] text-[#FFFFFF] opacity-[0.02] sm:text-[16vw] md:text-[13vw]">
           GLOBAL REACH
         </span>
       </div>
@@ -450,7 +450,7 @@ export const GlobalReach = (): JSX.Element => {
             </p>
 
             <h2
-              className="mt-7 max-w-[620px] font-serifDisplay text-[36px] font-normal leading-[1.06] tracking-[-0.025em] text-[#F7F3EA] sm:text-[44px] md:text-[54px] lg:text-[46px] xl:text-[58px] 2xl:text-[64px]"
+              className="mt-7 max-w-[620px] font-serifDisplay text-[36px] font-normal leading-[1.06] tracking-[-0.025em] text-[#FFFFFF] sm:text-[44px] md:text-[54px] lg:text-[46px] xl:text-[58px] 2xl:text-[64px]"
               id="global-reach-heading"
             >
               Built across markets,
@@ -515,7 +515,7 @@ export const GlobalReach = (): JSX.Element => {
                   {region.label}
                 </h3>
 
-                <p className="font-serifDisplay text-[19px] font-normal leading-[1.32] tracking-[-0.005em] text-[#F7F3EA] md:text-[20px] lg:text-[21px]">
+                <p className="font-serifDisplay text-[19px] font-normal leading-[1.32] tracking-[-0.005em] text-[#FFFFFF] md:text-[20px] lg:text-[21px]">
                   {region.cities}
                 </p>
 

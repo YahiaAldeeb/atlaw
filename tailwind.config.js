@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ivory: "#F3F1EB",
-        surface: "#D8D4CC",
+        ivory: "#FFFFFF",
+        surface: "#FFFFFF",
         bluegray: "#9CA7B5",
         accent: "#2E5FA7",
         ink: "#14233B",

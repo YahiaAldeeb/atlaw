@@ -24,7 +24,7 @@ const ArrowRight = ({ className = "" }: { className?: string }) => (
 
 export const Hero = (): JSX.Element => {
   return (
-    <section className="relative isolate w-full overflow-hidden bg-[#F1ECE2] lg:h-[clamp(620px,82vh,820px)]">
+    <section className="relative isolate w-full overflow-hidden bg-[#FFFFFF] lg:h-[clamp(620px,82vh,820px)]">
       {/* Cream-grain texture */}
       <div
         aria-hidden="true"
@@ -96,7 +96,7 @@ export const Hero = (): JSX.Element => {
             {/* CTA pair */}
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center lg:mt-9">
               <a
-                className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full bg-[#0E1B2C] px-8 font-sans text-[15px] font-medium text-white transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#16263B] hover:shadow-[0_8px_24px_rgba(14,27,44,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F1ECE2] lg:h-[60px] lg:px-9"
+                className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full bg-[#0E1B2C] px-8 font-sans text-[15px] font-medium text-white transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#16263B] hover:shadow-[0_8px_24px_rgba(14,27,44,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF] lg:h-[60px] lg:px-9"
                 href="https://j098jiq3pk7.typeform.com/to/Mslg7Y7f"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -105,7 +105,7 @@ export const Hero = (): JSX.Element => {
                 <ArrowRight className="group-hover:translate-x-1" />
               </a>
               <a
-                className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full border border-[rgba(14,27,44,0.35)] bg-transparent px-8 font-sans text-[15px] font-medium text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[#0E1B2C] hover:bg-[#0E1B2C] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F1ECE2] lg:h-[60px] lg:px-9"
+                className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full border border-[rgba(14,27,44,0.35)] bg-transparent px-8 font-sans text-[15px] font-medium text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[#0E1B2C] hover:bg-[#0E1B2C] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF] lg:h-[60px] lg:px-9"
                 href="#firm-thesis"
               >
                 See what we do

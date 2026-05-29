@@ -26,7 +26,7 @@ export const TrustBandSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="trust-band-eyebrow"
-      className="relative isolate w-full overflow-hidden bg-[#0B1A2D] text-[#F7F3EA]"
+      className="relative isolate w-full overflow-hidden bg-[#0B1A2D] text-[#FFFFFF]"
     >
       {/* Decorative background: radial vignette + faint global latitude/longitude grid */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -47,7 +47,7 @@ export const TrustBandSection = (): JSX.Element => {
           xmlns="http://www.w3.org/2000/svg"
         >
           {/* Latitudes (curved horizontals) */}
-          <g stroke="#F7F3EA" strokeWidth="1">
+          <g stroke="#FFFFFF" strokeWidth="1">
             <path d="M0 120 Q 720 60 1440 120" />
             <path d="M0 220 Q 720 170 1440 220" />
             <path d="M0 320 Q 720 280 1440 320" />
@@ -56,7 +56,7 @@ export const TrustBandSection = (): JSX.Element => {
             <path d="M0 620 Q 720 580 1440 620" />
           </g>
           {/* Longitudes (curved verticals) */}
-          <g stroke="#F7F3EA" strokeWidth="1">
+          <g stroke="#FFFFFF" strokeWidth="1">
             <path d="M180 0 Q 220 360 180 720" />
             <path d="M360 0 Q 400 360 360 720" />
             <path d="M540 0 Q 580 360 540 720" />
@@ -66,7 +66,7 @@ export const TrustBandSection = (): JSX.Element => {
             <path d="M1260 0 Q 1220 360 1260 720" />
           </g>
           {/* Faint dot grid for extra texture */}
-          <g fill="#F7F3EA">
+          <g fill="#FFFFFF">
             {Array.from({ length: 16 }).map((_, row) =>
               Array.from({ length: 28 }).map((__, col) => (
                 <circle
@@ -101,7 +101,7 @@ export const TrustBandSection = (): JSX.Element => {
               ].join(" ")}
               key={stat.value}
             >
-              <dd className="font-serifDisplay text-[64px] font-normal leading-[0.9] tracking-[-0.03em] text-[#F7F3EA] sm:text-[88px] md:text-[110px] lg:text-[128px] xl:text-[140px]">
+              <dd className="font-serifDisplay text-[64px] font-normal leading-[0.9] tracking-[-0.03em] text-[#FFFFFF] sm:text-[88px] md:text-[110px] lg:text-[128px] xl:text-[140px]">
                 {stat.value}
               </dd>
               <dt className="mt-8 space-y-1 font-sans text-[13px] font-semibold uppercase leading-[1.75] tracking-[0.2em] text-white/70 md:text-[15px] md:tracking-[0.22em] lg:mt-10 lg:text-[16px] lg:leading-[1.85]">

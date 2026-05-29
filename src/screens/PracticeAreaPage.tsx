@@ -12,7 +12,7 @@ const subHeadlineAxes = "'opsz' 96, 'wght' 400, 'SOFT' 25, 'WONK' 0";
 
 const NAVY_HERO = "#071B34";
 const NAVY_DEEP = "#061426";
-const IVORY = "#F5EFE5";
+const IVORY = "#FFFFFF";
 const GOLD = "#D39A2A";
 
 const microcopyByCategory: Record<PracticeArea["category"], string> = {
@@ -131,7 +131,7 @@ const Hero = ({ area }: { area: PracticeArea }): JSX.Element => {
                 /
               </li>
               <li>
-                <span aria-current="page" className="text-[#F5EFE5]">
+                <span aria-current="page" className="text-[#FFFFFF]">
                   {area.name}
                 </span>
               </li>
@@ -150,7 +150,7 @@ const Hero = ({ area }: { area: PracticeArea }): JSX.Element => {
 
           {/* H1 */}
           <h1
-            className="font-serifDisplay font-normal tracking-[-0.025em] text-[#F5EFE5]"
+            className="font-serifDisplay font-normal tracking-[-0.025em] text-[#FFFFFF]"
             id="practice-area-title"
             style={{
               fontSize: "clamp(52px, 8.5vw, 125px)",
@@ -243,7 +243,7 @@ const WhatWeHandle = ({ area }: { area: PracticeArea }): JSX.Element => (
             Key Areas
           </p>
           <h2
-            className="mt-6 font-serifDisplay text-[32px] font-normal leading-[1.08] tracking-[-0.02em] text-[#F5EFE5] lg:text-[42px]"
+            className="mt-6 font-serifDisplay text-[32px] font-normal leading-[1.08] tracking-[-0.02em] text-[#FFFFFF] lg:text-[42px]"
             id="key-areas-heading"
             style={{ fontVariationSettings: subHeadlineAxes }}
           >
@@ -255,7 +255,7 @@ const WhatWeHandle = ({ area }: { area: PracticeArea }): JSX.Element => (
         <ul className="grid grid-cols-1 divide-y divide-white/10 border-y border-white/10">
           {area.whatWeHandle.map((item, index) => (
             <li
-              className="flex items-start gap-6 py-5 font-sans text-[16px] leading-[1.55] text-[#F5EFE5] lg:text-[17.5px]"
+              className="flex items-start gap-6 py-5 font-sans text-[16px] leading-[1.55] text-[#FFFFFF] lg:text-[17.5px]"
               key={item}
             >
               <span
@@ -302,7 +302,7 @@ const WhenToCall = ({ area }: { area: PracticeArea }): JSX.Element => (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {area.whenToCall.map((item) => (
             <div
-              className="flex h-full flex-col rounded-[18px] border border-[#E8E1D3] bg-white p-6 shadow-[0_6px_22px_rgba(11,31,58,0.06)] transition-colors hover:border-[#D8D2C4]"
+              className="flex h-full flex-col rounded-[18px] border border-[#FFFFFF] bg-white p-6 shadow-[0_6px_22px_rgba(11,31,58,0.06)] transition-colors hover:border-[#FFFFFF]"
               key={item}
             >
               <span
@@ -336,7 +336,7 @@ const Approach = ({ area }: { area: PracticeArea }): JSX.Element => (
         Our approach
       </p>
       <blockquote
-        className="mx-auto mt-8 max-w-[960px] text-center font-serifDisplay font-normal leading-[1.2] tracking-[-0.015em] text-[#F5EFE5]"
+        className="mx-auto mt-8 max-w-[960px] text-center font-serifDisplay font-normal leading-[1.2] tracking-[-0.015em] text-[#FFFFFF]"
         style={{
           fontSize: "clamp(26px, 2.8vw, 42px)",
           fontVariationSettings: subHeadlineAxes,
@@ -382,7 +382,7 @@ const RelatedAreas = ({ area }: { area: PracticeArea }): JSX.Element => {
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {related.map((entry) => (
             <Link
-              className="group flex h-full flex-col rounded-[20px] border border-[#E8E1D3] bg-white p-6 shadow-[0_8px_24px_rgba(11,31,58,0.06)] transition-all duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px] hover:border-[rgba(184,138,45,0.5)] hover:shadow-[0_18px_38px_rgba(11,31,58,0.14)]"
+              className="group flex h-full flex-col rounded-[20px] border border-[#FFFFFF] bg-white p-6 shadow-[0_8px_24px_rgba(11,31,58,0.06)] transition-all duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px] hover:border-[rgba(184,138,45,0.5)] hover:shadow-[0_18px_38px_rgba(11,31,58,0.14)]"
               key={entry.slug}
               to={`/capabilities/${entry.slug}`}
             >
@@ -432,7 +432,7 @@ const ContactCta = ({ area }: { area: PracticeArea }): JSX.Element => (
             Speak with a {area.name.toLowerCase()} attorney
           </p>
           <h2
-            className="mt-5 font-serifDisplay text-[30px] font-normal leading-[1.1] tracking-[-0.02em] text-[#F5EFE5] lg:text-[42px]"
+            className="mt-5 font-serifDisplay text-[30px] font-normal leading-[1.1] tracking-[-0.02em] text-[#FFFFFF] lg:text-[42px]"
             id="cta-heading"
             style={{ fontVariationSettings: subHeadlineAxes }}
           >
@@ -455,7 +455,7 @@ const ContactCta = ({ area }: { area: PracticeArea }): JSX.Element => (
             <span aria-hidden="true" className="ml-2">&rarr;</span>
           </Link>
           <a
-            className="inline-flex h-[54px] items-center justify-center border border-white/20 bg-transparent px-8 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#F5EFE5] transition-colors hover:border-white/40 hover:bg-white/[0.05]"
+            className="inline-flex h-[54px] items-center justify-center border border-white/20 bg-transparent px-8 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#FFFFFF] transition-colors hover:border-white/40 hover:bg-white/[0.05]"
             href="tel:+13134067606"
           >
             +1 (313) 406-7606

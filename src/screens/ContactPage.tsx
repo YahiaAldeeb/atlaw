@@ -165,7 +165,7 @@ export const ContactPage = (): JSX.Element => {
       <main>
         <section
           aria-labelledby="contact-heading"
-          className="relative bg-[#F4EFE7]"
+          className="relative bg-[#FFFFFF]"
         >
           {/* subtle warmth */}
           <div

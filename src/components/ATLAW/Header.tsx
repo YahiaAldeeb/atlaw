@@ -74,7 +74,7 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
                 <span className="mr-3 inline-block h-px w-8 align-middle bg-[#C6A04A]" />
                 Capabilities
               </p>
-              <h3 className="mt-6 font-serifDisplay text-[26px] font-normal leading-[1.12] tracking-[-0.015em] text-[#F5EFE5]">
+              <h3 className="mt-6 font-serifDisplay text-[26px] font-normal leading-[1.12] tracking-[-0.015em] text-[#FFFFFF]">
                 Strategic counsel for serious moments.
               </h3>
               <p className="mt-4 max-w-[280px] font-sans text-[13.5px] leading-[1.6] text-white/60">
@@ -82,7 +82,7 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
               </p>
             </div>
             <Link
-              className="mt-10 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#F5EFE5] transition-colors hover:text-[#C6A04A]"
+              className="mt-10 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#FFFFFF] transition-colors hover:text-[#C6A04A]"
               onClick={onClose}
               to="/capabilities"
             >
@@ -98,7 +98,7 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
                   {group.number} &mdash; {group.category}
                 </p>
                 <Link
-                  className="mt-4 inline-flex items-baseline gap-2 font-serifDisplay text-[19px] font-normal leading-[1.15] tracking-[-0.01em] text-[#F5EFE5] transition-colors hover:text-[#C6A04A]"
+                  className="mt-4 inline-flex items-baseline gap-2 font-serifDisplay text-[19px] font-normal leading-[1.15] tracking-[-0.01em] text-[#FFFFFF] transition-colors hover:text-[#C6A04A]"
                   onClick={onClose}
                   to={`/capabilities/${group.parent.slug}`}
                 >
@@ -112,7 +112,7 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
                   {group.children.map((child) => (
                     <li key={child.slug}>
                       <Link
-                        className="group inline-flex items-center font-sans text-[13.5px] leading-[1.45] text-white/75 transition-colors hover:text-[#F5EFE5]"
+                        className="group inline-flex items-center font-sans text-[13.5px] leading-[1.45] text-white/75 transition-colors hover:text-[#FFFFFF]"
                         onClick={onClose}
                         to={`/capabilities/${child.slug}`}
                       >
@@ -141,11 +141,11 @@ const NewsInsightsDropdown = ({ onClose }: { onClose: () => void }): JSX.Element
         <span className="mr-3 inline-block h-px w-8 align-middle bg-[#C6A04A]" />
         News &amp; Insights
       </p>
-      <p className="mt-5 max-w-[640px] font-serifDisplay text-[22px] font-normal leading-[1.2] tracking-[-0.015em] text-[#F5EFE5]">
+      <p className="mt-5 max-w-[640px] font-serifDisplay text-[22px] font-normal leading-[1.2] tracking-[-0.015em] text-[#FFFFFF]">
         Editorials, firm announcements, and field briefings.
       </p>
       <Link
-        className="mt-6 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#F5EFE5] transition-colors hover:text-[#C6A04A]"
+        className="mt-6 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#FFFFFF] transition-colors hover:text-[#C6A04A]"
         onClick={onClose}
         to="/"
       >
@@ -235,8 +235,8 @@ export const Header = (): JSX.Element => {
             <button
               aria-expanded={openMenu === label}
               aria-haspopup="true"
-              className={`relative flex items-center whitespace-nowrap border-r border-white/10 px-5 font-sans text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#F5EFE5]/85 transition-all duration-150 hover:text-[#F5EFE5] focus-visible:bg-white/10 focus-visible:outline-none xl:px-6 ${
-                openMenu === label ? "bg-white/[0.07] text-[#F5EFE5]" : "hover:bg-white/[0.04]"
+              className={`relative flex items-center whitespace-nowrap border-r border-white/10 px-5 font-sans text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#FFFFFF]/85 transition-all duration-150 hover:text-[#FFFFFF] focus-visible:bg-white/10 focus-visible:outline-none xl:px-6 ${
+                openMenu === label ? "bg-white/[0.07] text-[#FFFFFF]" : "hover:bg-white/[0.04]"
               }`}
               key={label}
               onClick={() => toggle(label)}
@@ -252,7 +252,7 @@ export const Header = (): JSX.Element => {
 
           {directLinks.map(({ label, to }) => (
             <Link
-              className="relative flex items-center whitespace-nowrap border-r border-white/10 px-5 font-sans text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#F5EFE5]/85 transition-all duration-150 hover:bg-white/[0.04] hover:text-[#F5EFE5] focus-visible:bg-white/10 focus-visible:outline-none xl:px-6"
+              className="relative flex items-center whitespace-nowrap border-r border-white/10 px-5 font-sans text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#FFFFFF]/85 transition-all duration-150 hover:bg-white/[0.04] hover:text-[#FFFFFF] focus-visible:bg-white/10 focus-visible:outline-none xl:px-6"
               key={label}
               onClick={() => setOpenMenu(null)}
               to={to}
@@ -286,7 +286,7 @@ export const Header = (): JSX.Element => {
           aria-controls="atlaw-mobile-nav"
           aria-expanded={mobileOpen}
           aria-label="Toggle navigation menu"
-          className="ml-auto flex items-center px-5 text-[#F5EFE5] focus-visible:outline-none focus-visible:bg-white/10 lg:hidden"
+          className="ml-auto flex items-center px-5 text-[#FFFFFF] focus-visible:outline-none focus-visible:bg-white/10 lg:hidden"
           onClick={() => setMobileOpen((v) => !v)}
           type="button"
         >
@@ -317,7 +317,7 @@ export const Header = (): JSX.Element => {
             <button
               aria-controls="atlaw-mobile-caps"
               aria-expanded={mobileCapsOpen}
-              className="flex w-full items-center justify-between border-b border-white/10 py-4 text-left font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#F5EFE5]"
+              className="flex w-full items-center justify-between border-b border-white/10 py-4 text-left font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#FFFFFF]"
               onClick={() => setMobileCapsOpen((v) => !v)}
               type="button"
             >
@@ -332,7 +332,7 @@ export const Header = (): JSX.Element => {
                       {group.number} &mdash; {group.category}
                     </p>
                     <Link
-                      className="mt-3 block font-serifDisplay text-[18px] leading-[1.2] tracking-[-0.01em] text-[#F5EFE5]"
+                      className="mt-3 block font-serifDisplay text-[18px] leading-[1.2] tracking-[-0.01em] text-[#FFFFFF]"
                       onClick={() => setMobileOpen(false)}
                       to={`/capabilities/${group.parent.slug}`}
                     >
@@ -365,7 +365,7 @@ export const Header = (): JSX.Element => {
 
             {/* News & Insights */}
             <Link
-              className="block border-b border-white/10 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#F5EFE5]"
+              className="block border-b border-white/10 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#FFFFFF]"
               onClick={() => setMobileOpen(false)}
               to="/"
             >
@@ -374,7 +374,7 @@ export const Header = (): JSX.Element => {
 
             {directLinks.map(({ label, to }) => (
               <Link
-                className="block border-b border-white/10 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#F5EFE5]"
+                className="block border-b border-white/10 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#FFFFFF]"
                 key={label}
                 onClick={() => setMobileOpen(false)}
                 to={to}
