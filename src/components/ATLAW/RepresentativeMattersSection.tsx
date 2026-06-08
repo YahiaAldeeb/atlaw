@@ -70,7 +70,7 @@ const matters: Matter[] = [
       "Advisory support for clients moving between the United States, MENA, and international markets, including entity planning, commercial agreements, and jurisdiction-sensitive legal strategy.",
     metadata: "Advisory · Global Reach",
     cta: "Explore advisory",
-    href: "/capabilities/advisory",
+    href: "/practice-areas/advisory",
   },
   {
     category: "COMMERCIAL DISPUTES",
@@ -79,7 +79,7 @@ const matters: Matter[] = [
       "Counsel for businesses facing commercial disputes, contract conflicts, regulatory pressure, and litigation risk that requires coordinated legal strategy from intake through resolution.",
     metadata: "Litigation · Dispute Resolution",
     cta: "Explore litigation",
-    href: "/capabilities/litigation",
+    href: "/practice-areas/litigation",
   },
   {
     category: "TRANSACTIONS",
@@ -88,7 +88,7 @@ const matters: Matter[] = [
       "Transactional counsel for companies, founders, investors, and operators handling acquisitions, capital movement, commercial finance, governance, and long-form business agreements.",
     metadata: "Transactions · Corporate Counsel",
     cta: "Explore transactions",
-    href: "/capabilities/transactions",
+    href: "/practice-areas/transactions",
   },
   {
     category: "HEALTHCARE",
@@ -106,8 +106,8 @@ const matters: Matter[] = [
     description:
       "Strategic legal support for clients operating in heavily regulated industries where business decisions require awareness of public policy, government relations, and commercial risk.",
     metadata: "Advisory · Government Relations",
-    cta: "Explore capability",
-    href: "/capabilities/government-relations-policy",
+    cta: "Explore practice area",
+    href: "/practice-areas/government-relations-policy",
   },
   {
     category: "ESTATE & SUCCESSION",
@@ -115,8 +115,8 @@ const matters: Matter[] = [
     description:
       "Counsel for estate planning, trusts, succession planning, asset protection, and long-term family or business continuity needs.",
     metadata: "Advisory · Private Client",
-    cta: "Explore capability",
-    href: "/capabilities/trusts-estate",
+    cta: "Explore practice area",
+    href: "/practice-areas/trusts-estate",
   },
 ];
 

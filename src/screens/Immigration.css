@@ -1,0 +1,32 @@
+/* ───────────────────────────────────────────────────────────────
+   ATLAW · Immigration capability page
+   Scoped helpers under .atlaw-immig for the staggered reveal motion.
+   Layout/colour live in Tailwind utilities, matching the
+   Personal Injury template page.
+   ─────────────────────────────────────────────────────────────── */
+
+.atlaw-immig {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ── Staggered fade-and-rise reveal ── */
+.atlaw-immig .immig-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: immig-rise 900ms cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+@keyframes immig-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .atlaw-immig .immig-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

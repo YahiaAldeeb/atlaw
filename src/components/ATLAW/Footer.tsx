@@ -14,7 +14,7 @@ const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 // Fraunces variable axes for the display lockup (mirrors Hero / Final CTA).
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 
 type NavLink = { label: string; to: string; external?: boolean };
 type NavGroup = { title: string; links: NavLink[] };
@@ -228,7 +228,7 @@ export const Footer = (): JSX.Element => {
 
   return (
     <footer
-      className="relative isolate w-full overflow-hidden bg-[#0B1F3A] text-white"
+      className="relative isolate w-full overflow-hidden bg-[linear-gradient(180deg,#0e1b33_0%,#0a1428_100%)] text-white"
       aria-labelledby="site-footer-heading"
     >
       <h2 id="site-footer-heading" className="sr-only">

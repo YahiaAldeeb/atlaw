@@ -1,0 +1,150 @@
+/* ───────────────────────────────────────────────────────────────
+   ATLAW · Personal Injury capability page
+   Scoped helpers under .atlaw-pi for the reveal motion, FAQ accordion,
+   watermark and grain. Layout/colour live in Tailwind utilities.
+   ─────────────────────────────────────────────────────────────── */
+
+.atlaw-pi {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ── Staggered fade-and-rise reveal ── */
+.atlaw-pi .pi-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: pi-rise 900ms cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+@keyframes pi-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Criminal Defense hero background ──
+   AVIF served through image-set() for ~70x smaller transfer than the PNG.
+   The plain url() declaration comes first as the fallback: browsers that don't
+   understand image-set ignore the later declarations and keep the PNG, while
+   AVIF-capable browsers use the image-set override. */
+.atlaw-pi .cd-hero-bg {
+  background-image: url("/assets/criminal-defense-hero.png");
+  background-image: -webkit-image-set(
+    url("/assets/criminal-defense-hero.avif") type("image/avif"),
+    url("/assets/criminal-defense-hero.png") type("image/png")
+  );
+  background-image: image-set(
+    url("/assets/criminal-defense-hero.avif") type("image/avif"),
+    url("/assets/criminal-defense-hero.png") type("image/png")
+  );
+}
+
+/* ── DUI hero background ──
+   Placeholder asset (currently a copy of the Criminal Defense hero) — swap
+   /assets/dui-hero.{avif,png} to change it. Same navy-veil treatment applies
+   via the gradient overlays on the Hero section, so any dark image works. */
+.atlaw-pi .dui-hero-bg {
+  background-image: url("/assets/dui-hero.png");
+  background-image: -webkit-image-set(
+    url("/assets/dui-hero.avif") type("image/avif"),
+    url("/assets/dui-hero.png") type("image/png")
+  );
+  background-image: image-set(
+    url("/assets/dui-hero.avif") type("image/avif"),
+    url("/assets/dui-hero.png") type("image/png")
+  );
+}
+
+/* ── Federal Criminal hero background ──
+   Capitol-dome hero. Swap /assets/federal-criminal-hero.{avif,png} to change it
+   and bump the ?v= query below so browsers/Vite don't serve a cached copy.
+   Same navy-veil treatment applies via the gradient overlays on the Hero
+   section, so any dark image works. */
+.atlaw-pi .fc-hero-bg {
+  background-image: url("/assets/federal-criminal-hero.png?v=2");
+  background-image: -webkit-image-set(
+    url("/assets/federal-criminal-hero.avif?v=2") type("image/avif"),
+    url("/assets/federal-criminal-hero.png?v=2") type("image/png")
+  );
+  background-image: image-set(
+    url("/assets/federal-criminal-hero.avif?v=2") type("image/avif"),
+    url("/assets/federal-criminal-hero.png?v=2") type("image/png")
+  );
+}
+
+/* ── White-Collar hero background ──
+   Placeholder asset (currently a copy of the Criminal Defense hero) — swap
+   /assets/white-collar-hero.{avif,png} to change it. Same navy-veil treatment
+   applies via the gradient overlays on the Hero section, so any dark image works. */
+.atlaw-pi .wc-hero-bg {
+  background-image: url("/assets/white-collar-hero.png?v=2");
+  background-image: -webkit-image-set(
+    url("/assets/white-collar-hero.avif?v=2") type("image/avif"),
+    url("/assets/white-collar-hero.png?v=2") type("image/png")
+  );
+  background-image: image-set(
+    url("/assets/white-collar-hero.avif?v=2") type("image/avif"),
+    url("/assets/white-collar-hero.png?v=2") type("image/png")
+  );
+}
+
+/* ── Civil Litigation hero background ──
+   AVIF (37 KB) served via image-set() with a PNG fallback for browsers without
+   AVIF support. Swap /assets/civil-litigation-hero.{avif,png} to change it; bump
+   the ?v= query when replacing in place to bust browser cache. Same navy-veil
+   treatment applies via the gradient overlays on the Hero section. */
+.atlaw-pi .cl-hero-bg {
+  background-image: url("/assets/civil-litigation-hero.png?v=2");
+  background-image: -webkit-image-set(
+    url("/assets/civil-litigation-hero.avif?v=2") type("image/avif"),
+    url("/assets/civil-litigation-hero.png?v=2") type("image/png")
+  );
+  background-image: image-set(
+    url("/assets/civil-litigation-hero.avif?v=2") type("image/avif"),
+    url("/assets/civil-litigation-hero.png?v=2") type("image/png")
+  );
+}
+
+/* ── Oversized watermark wordmark ── */
+.atlaw-pi .pi-watermark {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  font-family: "Fraunces", "Canela", "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+/* ── FAQ accordion (grid-rows 0fr → 1fr animates height cleanly) ── */
+.atlaw-pi .pi-faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 420ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.atlaw-pi .pi-faq-item[data-open="true"] .pi-faq-panel {
+  grid-template-rows: 1fr;
+}
+.atlaw-pi .pi-faq-panel > div {
+  overflow: hidden;
+}
+.atlaw-pi .pi-faq-icon {
+  transition: transform 320ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.atlaw-pi .pi-faq-item[data-open="true"] .pi-faq-icon {
+  transform: rotate(45deg);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .atlaw-pi .pi-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .atlaw-pi .pi-faq-panel,
+  .atlaw-pi .pi-faq-icon {
+    transition: none;
+  }
+}

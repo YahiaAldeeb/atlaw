@@ -49,7 +49,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        serifDisplay: ["Fraunces", "Cormorant Garamond", "Libre Baskerville", "Georgia", "serif"],
+        serifDisplay: ["Lustria", "Cormorant Garamond", "Libre Baskerville", "Georgia", "serif"],
         "button-text-2-regular": "var(--button-text-2-regular-font-family)",
         "button-text-semibold": "var(--button-text-semibold-font-family)",
         "displaytext-extra-bold": "var(--displaytext-extra-bold-font-family)",
@@ -63,7 +63,7 @@ module.exports = {
         "heading-h6-semibold": "var(--heading-h6-semibold-font-family)",
         "outlined-extra-bold": "var(--outlined-extra-bold-font-family)",
         "paragraph-p2-regular": "var(--paragraph-p2-regular-font-family)",
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Mulish", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

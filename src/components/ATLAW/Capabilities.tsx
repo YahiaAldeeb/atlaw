@@ -10,17 +10,17 @@ type Props = {
 };
 
 const capabilityImages: Record<string, string> = {
-  Compensation: "/assets/cap-compensation.png",
-  "Employee Benefits": "/assets/cap-employee-benefits.png",
-  "Franchising & Scaling": "/assets/cap-franchising-scaling.png",
-  "Government Relations & Policy": "/assets/cap-government-relations-policy.png",
-  "Impact & ESG": "/assets/cap-impact-esg.png",
-  "Mergers & Acquisitions": "/assets/cap-mergers-acquisitions.png",
-  Planning: "/assets/cap-planning.png",
-  "Privacy & Cybersecurity": "/assets/cap-privacy-cybersecurity.png",
-  "Recovery & Renewal": "/assets/cap-recovery-renewal.png",
-  Residency: "/assets/cap-residency.png",
-  "Trusts & Estate": "/assets/cap-trusts-estate.png",
+  Compensation: "/assets/cap-compensation.avif",
+  "Employee Benefits": "/assets/cap-employee-benefits.avif",
+  "Franchising & Scaling": "/assets/cap-franchising-scaling.avif",
+  "Government Relations & Policy": "/assets/cap-government-relations-policy.avif",
+  "Impact & ESG": "/assets/cap-impact-esg.avif",
+  "Mergers & Acquisitions": "/assets/cap-mergers-acquisitions.avif",
+  Planning: "/assets/cap-planning.avif",
+  "Privacy & Cybersecurity": "/assets/cap-privacy-cybersecurity.avif",
+  "Recovery & Renewal": "/assets/cap-recovery-renewal.avif",
+  Residency: "/assets/cap-residency.avif",
+  "Trusts & Estate": "/assets/cap-trusts-estate.avif",
 };
 
 export const Capabilities = ({ items }: Props): JSX.Element => {
@@ -42,10 +42,10 @@ export const Capabilities = ({ items }: Props): JSX.Element => {
     <section className="overflow-hidden bg-ivory">
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.22em] text-ink/60">
-          CAPABILITIES
+          PRACTICE AREAS
         </p>
         <h2 className="mt-4 text-center font-serifDisplay text-4xl leading-tight text-ink md:text-6xl">
-          Capabilities Built for Complex Business Needs
+          Practice Areas Built for Complex Business Needs
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-center text-ink/80">
           Counsel across advisory, litigation, and transactions - built for complex business needs
@@ -77,7 +77,7 @@ export const Capabilities = ({ items }: Props): JSX.Element => {
 
         <div className="mt-7 flex items-center justify-end gap-3">
           <button
-            aria-label="Scroll capabilities left"
+            aria-label="Scroll practice areas left"
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-accent/55 text-ink transition hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             onClick={() => scrollCards("prev")}
             type="button"
@@ -85,7 +85,7 @@ export const Capabilities = ({ items }: Props): JSX.Element => {
             <span aria-hidden>&larr;</span>
           </button>
           <button
-            aria-label="Scroll capabilities right"
+            aria-label="Scroll practice areas right"
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-accent/55 text-ink transition hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             onClick={() => scrollCards("next")}
             type="button"
@@ -96,7 +96,7 @@ export const Capabilities = ({ items }: Props): JSX.Element => {
 
         <div className="mt-7">
           <a className="group inline-flex items-center text-sm font-medium text-ink" href="#">
-            View All Capabilities
+            View All Practice Areas
             <span className="ml-2 transition duration-200 group-hover:translate-x-1">&rarr;</span>
           </a>
         </div>

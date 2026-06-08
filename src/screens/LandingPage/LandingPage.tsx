@@ -156,7 +156,7 @@ export const LandingPage = (): JSX.Element => {
             <a className="active" href="#">
               About Us
             </a>
-            <a href="#">Capabilities</a>
+            <a href="#">Practice Areas</a>
             <a href="#">Insights</a>
             <a href="#">Contact</a>
           </nav>
@@ -179,7 +179,7 @@ export const LandingPage = (): JSX.Element => {
         </section>
 
         <section className="section">
-          <h2>Capabilities Built for Complex Business Needs.</h2>
+          <h2>Practice Areas Built for Complex Business Needs.</h2>
           <div className="cards">
             <article className="card">Planning</article>
             <article className="card">Trusts & Estate</article>

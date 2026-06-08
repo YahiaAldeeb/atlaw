@@ -3,7 +3,7 @@ const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 // Fraunces variable axes for the display lockup.
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 
 const ArrowRight = ({ className = "" }: { className?: string }) => (
   <svg
@@ -25,28 +25,25 @@ const ArrowRight = ({ className = "" }: { className?: string }) => (
 export const Hero = (): JSX.Element => {
   return (
     <section className="relative isolate w-full overflow-hidden bg-[#FFFFFF] lg:h-[clamp(620px,82vh,820px)]">
+      {/* Editorial background — sunlit library with ghost "A" watermark */}
+      <img
+        aria-hidden="true"
+        alt=""
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover object-right"
+        src="/assets/hero/home-hero-bg.avif"
+      />
+      {/* Soft white wash so foreground text/portrait stay legible over the image */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#FFFFFF] via-[rgba(255,255,255,0.82)] to-[rgba(255,255,255,0.45)]"
+      />
+
       {/* Cream-grain texture */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-multiply"
         style={{ backgroundImage: grain }}
       />
-
-      {/* Oversized ghost "A" watermark — partially off-canvas, far left */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute select-none font-serifDisplay leading-[0.8] hidden md:block"
-        style={{
-          left: "-6vw",
-          top: "-4vw",
-          fontSize: "min(52vw, 920px)",
-          color: "#0E1B2C",
-          opacity: 0.04,
-          fontVariationSettings: "'opsz' 144, 'wght' 600",
-        }}
-      >
-        A
-      </span>
 
       <div className="relative flex w-full flex-col lg:h-full lg:flex-row">
         {/* ── Left column: editorial text block ── */}
@@ -106,7 +103,7 @@ export const Hero = (): JSX.Element => {
               </a>
               <a
                 className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full border border-[rgba(14,27,44,0.35)] bg-transparent px-8 font-sans text-[15px] font-medium text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[#0E1B2C] hover:bg-[#0E1B2C] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF] lg:h-[60px] lg:px-9"
-                href="#firm-thesis"
+                href="#capabilities"
               >
                 See what we do
                 <ArrowRight className="group-hover:translate-x-1" />

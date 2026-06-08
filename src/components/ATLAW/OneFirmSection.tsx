@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 
 // Fraunces variable axes for the display lockup (resolves to Georgia until Fraunces loads) — matches the Hero/About headings.
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 
 // Single source of truth for the centered practice-area row.
 const practiceAreas = [
@@ -18,7 +18,7 @@ export const OneFirmSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="one-firm-heading"
-      className="relative isolate w-full overflow-hidden bg-[#0B1A2D] text-[#FFFFFF]"
+      className="relative isolate w-full overflow-hidden bg-[#0e1b33] text-[#FFFFFF]"
     >
       {/* Deep-navy field — soft radial glow up top, same family as the "Firm, in numbers" band below */}
       <div
@@ -26,7 +26,7 @@ export const OneFirmSection = (): JSX.Element => {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 18%, rgba(46, 95, 167, 0.20), transparent 65%), linear-gradient(180deg, #0B1A2D 0%, #10243D 45%, #061323 100%)",
+            "radial-gradient(ellipse 80% 60% at 50% 18%, rgba(46, 95, 167, 0.20), transparent 65%), linear-gradient(180deg, #0e1b33 0%, #0a1428 100%)",
         }}
       />
 
@@ -62,7 +62,7 @@ export const OneFirmSection = (): JSX.Element => {
       </div>
 
       {/* ── Centered editorial column ── */}
-      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-6 py-[90px] text-center sm:px-10 md:py-[120px] lg:px-20 lg:py-[165px]">
+      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-6 py-[56px] text-center sm:px-10 md:py-[80px] lg:px-20 lg:py-[96px]">
         {/* Top gold divider */}
         <span
           aria-hidden="true"

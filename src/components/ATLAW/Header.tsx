@@ -7,8 +7,10 @@ import {
   type PracticeCategory,
 } from "../../data/practiceAreas";
 
-const NAVY = "#0E1B2C";
-const NAVY_PANEL = "#102338";
+// Canonical navy — matches the Service Areas band (linear-gradient #0e1b33 → #0a1428)
+// so every blue surface across the site reads as one scheme.
+const NAVY = "#0e1b33";
+const NAVY_PANEL = "#0a1428";
 const GOLD = "#C6A04A";
 
 const ChevronDown = ({ open }: { open: boolean }): JSX.Element => (
@@ -72,7 +74,7 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
             <div>
               <p className="font-sans text-[11px] font-semibold uppercase leading-none tracking-[0.28em] text-[#C6A04A]">
                 <span className="mr-3 inline-block h-px w-8 align-middle bg-[#C6A04A]" />
-                Capabilities
+                Practice Areas
               </p>
               <h3 className="mt-6 font-serifDisplay text-[26px] font-normal leading-[1.12] tracking-[-0.015em] text-[#FFFFFF]">
                 Strategic counsel for serious moments.
@@ -81,14 +83,6 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
                 Four core practice categories. Twenty-one focused areas. One firm.
               </p>
             </div>
-            <Link
-              className="mt-10 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#FFFFFF] transition-colors hover:text-[#C6A04A]"
-              onClick={onClose}
-              to="/capabilities"
-            >
-              View all capabilities
-              <ArrowRight />
-            </Link>
           </div>
 
           <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -100,7 +94,7 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
                 <Link
                   className="mt-4 inline-flex items-baseline gap-2 font-serifDisplay text-[19px] font-normal leading-[1.15] tracking-[-0.01em] text-[#FFFFFF] transition-colors hover:text-[#C6A04A]"
                   onClick={onClose}
-                  to={`/capabilities/${group.parent.slug}`}
+                  to={`/practice-areas/${group.parent.slug}`}
                 >
                   {group.parent.name}
                   <span aria-hidden="true" className="text-[#C6A04A]">.</span>
@@ -114,7 +108,7 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
                       <Link
                         className="group inline-flex items-center font-sans text-[13.5px] leading-[1.45] text-white/75 transition-colors hover:text-[#FFFFFF]"
                         onClick={onClose}
-                        to={`/capabilities/${child.slug}`}
+                        to={`/practice-areas/${child.slug}`}
                       >
                         <span className="mr-3 inline-block h-px w-0 bg-[#C6A04A] transition-[width] duration-200 group-hover:w-3" />
                         {child.navLabel ?? child.name}
@@ -131,35 +125,98 @@ const CapabilitiesMegaMenu = ({ onClose }: { onClose: () => void }): JSX.Element
   );
 };
 
+type NewsItem = {
+  category: string;
+  title: string;
+  image: string;
+  href: string;
+};
+
+// Latest articles surfaced directly in the header dropdown.
+const newsItems: NewsItem[] = [
+  {
+    category: "Advisory",
+    title: "Seeking New Frontiers: ATLAW Team Explores Investment Prospects in Kuwait",
+    image: "/assets/insight-kuwait.avif",
+    href: "/news-insights/seeking-new-frontiers-kuwait",
+  },
+  {
+    category: "Blog",
+    title: "Mohamed Ali Banoon Joins ATLAW's Estate Planning Team",
+    image: "/assets/insight-mohamed.avif",
+    href: "/news-insights/mohamed-ali-banoon-joins-atlaw",
+  },
+  {
+    category: "Blog",
+    title: "Nadia Hamade Joins ATLAW's Corporate Team",
+    image: "/assets/insight-nadia.avif",
+    href: "/news-insights/nadia-hamade-joins-atlaw",
+  },
+];
+
 const NewsInsightsDropdown = ({ onClose }: { onClose: () => void }): JSX.Element => (
   <div
     className="absolute left-0 right-0 top-full z-50 border-t border-white/10 shadow-[0_36px_70px_rgba(0,0,0,0.5)]"
     style={{ backgroundColor: NAVY_PANEL }}
   >
-    <div className="mx-auto w-full max-w-[1440px] px-6 py-10 sm:px-10 lg:px-16">
-      <p className="font-sans text-[11px] font-semibold uppercase leading-none tracking-[0.28em] text-[#C6A04A]">
-        <span className="mr-3 inline-block h-px w-8 align-middle bg-[#C6A04A]" />
-        News &amp; Insights
-      </p>
-      <p className="mt-5 max-w-[640px] font-serifDisplay text-[22px] font-normal leading-[1.2] tracking-[-0.015em] text-[#FFFFFF]">
-        Editorials, firm announcements, and field briefings.
-      </p>
-      <Link
-        className="mt-6 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#FFFFFF] transition-colors hover:text-[#C6A04A]"
-        onClick={onClose}
-        to="/"
-      >
-        Browse latest
-        <ArrowRight />
-      </Link>
+    <div className="mx-auto w-full max-w-[1440px] px-6 py-10 sm:px-10 lg:px-16 lg:py-14">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,3fr)] lg:gap-16">
+        {/* Intro */}
+        <div className="flex flex-col justify-between">
+          <div>
+            <p className="font-sans text-[11px] font-semibold uppercase leading-none tracking-[0.28em] text-[#C6A04A]">
+              <span className="mr-3 inline-block h-px w-8 align-middle bg-[#C6A04A]" />
+              News &amp; Insights
+            </p>
+            <h3 className="mt-6 font-serifDisplay text-[26px] font-normal leading-[1.12] tracking-[-0.015em] text-[#FFFFFF]">
+              Editorials, firm announcements, and field briefings.
+            </h3>
+          </div>
+          <Link
+            className="mt-10 inline-flex items-center font-sans text-[12px] font-semibold uppercase tracking-[0.24em] text-[#FFFFFF] transition-colors hover:text-[#C6A04A]"
+            onClick={onClose}
+            to="/news-insights"
+          >
+            Browse latest
+            <ArrowRight />
+          </Link>
+        </div>
+
+        {/* Latest articles */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {newsItems.map((item) => (
+            <Link
+              className="group flex flex-col"
+              key={item.href}
+              onClick={onClose}
+              to={item.href}
+            >
+              <div className="overflow-hidden rounded-[10px] border border-white/10">
+                <img
+                  alt={item.title}
+                  className="h-[132px] w-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.04]"
+                  loading="lazy"
+                  src={item.image}
+                />
+              </div>
+              <p className="mt-4 font-sans text-[10.5px] font-semibold uppercase leading-none tracking-[0.24em] text-[#C6A04A]">
+                {item.category}
+              </p>
+              <h4 className="mt-3 font-serifDisplay text-[16px] font-normal leading-[1.3] tracking-[-0.01em] text-[#FFFFFF] transition-colors group-hover:text-[#C6A04A]">
+                {item.title}
+              </h4>
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 );
 
-type DropdownLabel = "CAPABILITIES" | "NEWS & INSIGHTS";
+type DropdownLabel = "PRACTICE AREAS" | "NEWS & INSIGHTS";
 
 const dropdownLinks: { label: DropdownLabel }[] = [
-  { label: "CAPABILITIES" },
+  { label: "PRACTICE AREAS" },
   { label: "NEWS & INSIGHTS" },
 ];
 
@@ -216,6 +273,10 @@ export const Header = (): JSX.Element => {
     <header
       ref={headerRef}
       className="sticky top-0 z-50 w-full border-b border-white/10"
+      // Close any open dropdown once the cursor leaves the header entirely.
+      // The panels are DOM children of <header>, so moving down into a panel
+      // does NOT fire this — the menu stays open while you're inside it.
+      onMouseLeave={() => setOpenMenu(null)}
       style={{ backgroundColor: NAVY }}
     >
       <div className="flex h-[72px] w-full items-stretch lg:h-[88px]">
@@ -223,7 +284,15 @@ export const Header = (): JSX.Element => {
         <Link
           aria-label="ATLAW home"
           className="flex shrink-0 items-center border-r border-white/10 px-6 lg:px-8"
-          onClick={() => setOpenMenu(null)}
+          onClick={() => {
+            setOpenMenu(null);
+            setMobileOpen(false);
+            // Bring the visitor back to the hero. <Link to="/"> alone won't
+            // scroll when we're already on home (or after a route swap), so
+            // nudge to the top explicitly.
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onMouseEnter={() => setOpenMenu(null)}
           to="/"
         >
           <img alt="ATLAW" className="h-6 w-auto lg:h-7" src="/assets/atlaw logo.svg" />
@@ -240,6 +309,7 @@ export const Header = (): JSX.Element => {
               }`}
               key={label}
               onClick={() => toggle(label)}
+              onMouseEnter={() => setOpenMenu(label)}
               type="button"
             >
               {label}
@@ -255,6 +325,7 @@ export const Header = (): JSX.Element => {
               className="relative flex items-center whitespace-nowrap border-r border-white/10 px-5 font-sans text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#FFFFFF]/85 transition-all duration-150 hover:bg-white/[0.04] hover:text-[#FFFFFF] focus-visible:bg-white/10 focus-visible:outline-none xl:px-6"
               key={label}
               onClick={() => setOpenMenu(null)}
+              onMouseEnter={() => setOpenMenu(null)}
               to={to}
             >
               {label}
@@ -270,6 +341,7 @@ export const Header = (): JSX.Element => {
           aria-label="I need help — contact ATLAW"
           className="hidden items-center whitespace-nowrap px-7 font-sans text-[11.5px] font-semibold uppercase tracking-[0.22em] transition-all duration-150 hover:bg-[#0E2C4F] focus-visible:outline-none focus-visible:bg-[#0E2C4F] lg:flex"
           onClick={() => setOpenMenu(null)}
+          onMouseEnter={() => setOpenMenu(null)}
           style={{
             backgroundColor: "rgba(211,154,42,0.06)",
             color: GOLD,
@@ -301,7 +373,7 @@ export const Header = (): JSX.Element => {
       </div>
 
       {/* Desktop dropdowns */}
-      {openMenu === "CAPABILITIES" && <CapabilitiesMegaMenu onClose={() => setOpenMenu(null)} />}
+      {openMenu === "PRACTICE AREAS" && <CapabilitiesMegaMenu onClose={() => setOpenMenu(null)} />}
       {openMenu === "NEWS & INSIGHTS" && <NewsInsightsDropdown onClose={() => setOpenMenu(null)} />}
 
       {/* Mobile nav drawer */}
@@ -321,7 +393,7 @@ export const Header = (): JSX.Element => {
               onClick={() => setMobileCapsOpen((v) => !v)}
               type="button"
             >
-              Capabilities
+              Practice Areas
               <ChevronDown open={mobileCapsOpen} />
             </button>
             {mobileCapsOpen && (
@@ -334,7 +406,7 @@ export const Header = (): JSX.Element => {
                     <Link
                       className="mt-3 block font-serifDisplay text-[18px] leading-[1.2] tracking-[-0.01em] text-[#FFFFFF]"
                       onClick={() => setMobileOpen(false)}
-                      to={`/capabilities/${group.parent.slug}`}
+                      to={`/practice-areas/${group.parent.slug}`}
                     >
                       {group.parent.name}
                     </Link>
@@ -344,7 +416,7 @@ export const Header = (): JSX.Element => {
                           <Link
                             className="block font-sans text-[13.5px] leading-[1.45] text-white/75"
                             onClick={() => setMobileOpen(false)}
-                            to={`/capabilities/${child.slug}`}
+                            to={`/practice-areas/${child.slug}`}
                           >
                             {child.navLabel ?? child.name}
                           </Link>
@@ -356,9 +428,9 @@ export const Header = (): JSX.Element => {
                 <Link
                   className="mt-2 inline-flex items-center font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C6A04A]"
                   onClick={() => setMobileOpen(false)}
-                  to="/capabilities"
+                  to="/practice-areas"
                 >
-                  View all capabilities <ArrowRight />
+                  View all practice areas <ArrowRight />
                 </Link>
               </div>
             )}
@@ -367,7 +439,7 @@ export const Header = (): JSX.Element => {
             <Link
               className="block border-b border-white/10 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#FFFFFF]"
               onClick={() => setMobileOpen(false)}
-              to="/"
+              to="/news-insights"
             >
               News &amp; Insights
             </Link>

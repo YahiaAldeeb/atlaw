@@ -1,0 +1,327 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Header } from "../components/ATLAW/Header";
+import { Footer } from "../components/ATLAW/Footer";
+// Reuse the Personal Injury / Business Law capability-page styling (reveal motion + grain).
+import "./PersonalInjury.css";
+
+const GOLD = "#C9A24B";
+const headlineAxes = "'opsz' 144, 'wght' 360, 'SOFT' 0, 'WONK' 0";
+const subHeadAxes = "'opsz' 96, 'wght' 400, 'SOFT' 0, 'WONK' 0";
+
+const navyCanvas = "linear-gradient(180deg, #0E1B33 0%, #0A1428 100%)";
+
+// Hero photo — full-width background with a dark overlay for text legibility.
+// AVIF is the primary source (matches the rest of the site); the PNG is a fallback.
+// Calm, in-system imagery already shipped for the "Trusts & Estate" capability tile.
+const heroImageAvif = "/assets/cap-trusts-estate.avif";
+const heroImagePng = "/assets/cap-trusts-estate.png";
+
+// Soft grain over the navy canvas — same texture language as the rest of the site.
+const grain =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
+
+/* ─────────────────────────────── shared bits ─────────────────────────────── */
+
+const Grain = (): JSX.Element => (
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute inset-0 opacity-[0.05]"
+    style={{ backgroundImage: grain }}
+  />
+);
+
+/* ─────────────────────────────── content (verbatim copy) ─────────────────── */
+
+const intro =
+  "Estate planning is how you decide what happens to your property, your money, and your care if you can't manage things yourself or after you pass away. A lot of people put it off because it feels uncomfortable, or because they assume it's only for the wealthy. Neither is true. Our attorneys make the process clear, draft the documents correctly, and make sure your wishes actually hold up when they're needed. We work with individuals, young families, and business owners at every stage of life.";
+
+type Topic = { id: string; title: string; body: string; items: string[] };
+
+const topics: Topic[] = [
+  {
+    id: "wills-and-trusts",
+    title: "Wills and trusts",
+    body: "A will tells the court how you want your property divided and who should raise your minor children. A trust can do more than that. It can keep your family out of probate, keep your affairs private, and manage assets over time on your terms. We help you pick the right tools and draft them so they do what you actually intend.",
+    items: [
+      "Last will and testament",
+      "Revocable living trusts",
+      "Irrevocable trusts",
+      "Special needs trusts",
+      "Pet trusts",
+      "Trust funding and asset transfers",
+    ],
+  },
+  {
+    id: "powers-of-attorney",
+    title: "Powers of attorney and health care directives",
+    body: "If you're ever unable to speak for yourself, someone you trust should be allowed to step in. These documents name that person and set out what they can and can't decide, so your family isn't left guessing or fighting in court.",
+    items: [
+      "Durable power of attorney for finances",
+      "Medical power of attorney",
+      "Living wills and advance health care directives",
+      "HIPAA authorizations",
+      "Guardianship and conservatorship designations",
+    ],
+  },
+  {
+    id: "probate-and-administration",
+    title: "Probate and estate administration",
+    body: "When someone dies, their estate usually has to go through probate before anything can be distributed. We guide executors and families through the court process, deal with creditor claims, and step in when disputes come up.",
+    items: [
+      "Probate of wills",
+      "Estate and trust administration",
+      "Executor and trustee representation",
+      "Creditor claims and debt settlement",
+      "Will and trust contests",
+      "Heirship determinations",
+    ],
+  },
+  {
+    id: "tax-and-asset-protection",
+    title: "Tax and asset protection",
+    body: "For larger estates, taxes can take a real bite out of what you leave behind. We build plans that lower estate and gift tax exposure and protect assets from lawsuits and creditors while you're still living.",
+    items: [
+      "Estate and gift tax planning",
+      "Generation-skipping transfer planning",
+      "Charitable trusts and gifting strategies",
+      "Family limited partnerships",
+      "Asset protection trusts",
+    ],
+  },
+  {
+    id: "business-succession",
+    title: "Business succession",
+    body: "If you own a business, your plan should say what happens to it. We help owners hand the company to the next generation or sell on their own terms, instead of leaving partners and family to sort it out later.",
+    items: [
+      "Succession and continuity plans",
+      "Buy-sell agreements",
+      "Ownership transfers",
+      "Coordination with your corporate documents",
+    ],
+  },
+  {
+    id: "guardianship",
+    title: "Guardianship for children and dependents",
+    body: "Naming a guardian is one of the hardest calls a parent makes, and one of the most important. We help you put it in writing so a judge isn't the one deciding who raises your kids.",
+    items: [
+      "Guardianship nominations for minor children",
+      "Standby guardianship",
+      "Care plans for dependents with special needs",
+    ],
+  },
+  {
+    id: "reviewing-and-updating",
+    title: "Reviewing and updating your plan",
+    body: "Marriage, divorce, a new child, a move to another state, a death in the family: a plan that fit five years ago may not fit now. We review what you already have and update it so it keeps up with your life.",
+    items: [
+      "Plan reviews and updates",
+      "Beneficiary designation reviews",
+      "Out-of-state document review",
+      "Coordination after major life events",
+    ],
+  },
+];
+
+/* ─────────────────────────────── sections ─────────────────────────────── */
+
+const Hero = (): JSX.Element => (
+  <section
+    aria-labelledby="ep-hero-title"
+    className="relative isolate w-full overflow-hidden"
+    style={{ background: navyCanvas, color: "#F4F1EA" }}
+  >
+    {/* Full-width background photo — AVIF primary source with a PNG fallback for older browsers */}
+    <picture className="pointer-events-none absolute inset-0 z-0">
+      <source srcSet={heroImageAvif} type="image/avif" />
+      <img
+        alt="A quiet family home — the kind of legacy an estate plan protects."
+        className="h-full w-full object-cover object-center"
+        src={heroImagePng}
+      />
+    </picture>
+    {/* Dark overlay across the whole image so the heading stays legible */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 z-0"
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(19,29,56,0.92) 0%, rgba(19,29,56,0.78) 45%, rgba(19,29,56,0.55) 100%)",
+      }}
+    />
+    {/* Extra veil on narrow screens, where the text column runs full-width over the image */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 z-0 bg-[rgba(19,29,56,0.55)] md:hidden"
+    />
+
+    <Grain />
+
+    <div className="relative z-10 mx-auto w-full max-w-[1180px] px-6 pb-[96px] pt-[72px] sm:px-10 md:pb-[120px] md:pt-[104px] lg:px-16 lg:pb-[140px] lg:pt-[120px]">
+      <div className="max-w-[820px]">
+        {/* Breadcrumb / eyebrow — Capabilities → Advisory */}
+        <nav
+          aria-label="Breadcrumb"
+          className="pi-reveal mb-9 font-sans text-[11.5px] font-semibold uppercase leading-none tracking-[0.2em]"
+          style={{ animationDelay: "0ms" }}
+        >
+          <ol className="flex flex-wrap items-center gap-x-3 gap-y-1 text-white/55">
+            <li>
+              <Link className="transition-colors hover:text-white/90" to="/practice-areas">
+                Capabilities
+              </Link>
+            </li>
+            <li aria-hidden="true" className="text-white/30">/</li>
+            <li><span aria-current="page" className="text-white">Advisory</span></li>
+          </ol>
+        </nav>
+
+        {/* H1 */}
+        <h1
+          className="pi-reveal font-serifDisplay font-normal tracking-[-0.03em] text-[#F4F1EA]"
+          id="ep-hero-title"
+          style={{
+            animationDelay: "200ms",
+            fontSize: "clamp(52px, 8.5vw, 118px)",
+            lineHeight: "0.95",
+            fontVariationSettings: headlineAxes,
+          }}
+        >
+          Estate Planning
+          <span aria-hidden="true" style={{ color: GOLD }}>.</span>
+        </h1>
+
+        {/* Gold accent rule */}
+        <span
+          aria-hidden="true"
+          className="pi-reveal block"
+          style={{ animationDelay: "280ms", width: "56px", height: "2px", background: GOLD, marginTop: "28px", marginBottom: "28px" }}
+        />
+
+        {/* Tagline */}
+        <p
+          className="pi-reveal max-w-[680px] font-sans text-[18px] leading-[1.55] text-[rgba(244,241,234,0.85)] md:text-[20px]"
+          style={{ animationDelay: "340ms" }}
+        >
+          Make the decisions now, so your family doesn&rsquo;t have to.
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
+// Body — one continuous section: intro paragraph, then each sub-topic as a
+// lightweight serif subheading + short paragraph + a plain bulleted list.
+// No dividers between subheadings; no boxes, cards, or shaded panels.
+const Body = (): JSX.Element => (
+  <section
+    aria-labelledby="ep-body-heading"
+    className="relative w-full overflow-hidden"
+    style={{ backgroundColor: "#FFFFFF", color: "#0B1F3A" }}
+  >
+    <div className="relative mx-auto w-full max-w-[820px] px-6 pb-20 pt-20 sm:px-10 lg:pb-[120px] lg:pt-[120px]">
+      {/* Overview eyebrow + intro */}
+      <p className="pi-reveal flex items-center gap-3 font-sans text-[12px] font-semibold uppercase leading-none tracking-[0.22em] text-[#0B1F3A]">
+        <span aria-hidden="true" className="h-px w-8" style={{ backgroundColor: "#B88A2D" }} />
+        Overview
+      </p>
+      <h2 className="sr-only" id="ep-body-heading">What estate planning is and how we approach it</h2>
+
+      {/* Intro paragraph — normal body size */}
+      <p
+        className="pi-reveal mt-7 font-sans text-[18px] leading-[1.7] text-[#3A4A63] lg:text-[19px]"
+        style={{ animationDelay: "80ms" }}
+      >
+        {intro}
+      </p>
+
+      {/* Sub-topics — single continuous block, no boxes, no per-heading dividers */}
+      <div className="mt-16 space-y-14 lg:mt-20 lg:space-y-16">
+        {topics.map((topic) => (
+          <article id={topic.id} key={topic.id} className="scroll-mt-28">
+            <h3
+              className="font-serifDisplay font-normal leading-[1.15] tracking-[-0.02em] text-[#0B1F3A]"
+              style={{ fontSize: "clamp(24px, 3vw, 32px)", fontVariationSettings: subHeadAxes }}
+            >
+              {topic.title}
+            </h3>
+            <p className="mt-4 font-sans text-[18px] leading-[1.7] text-[#3A4A63] lg:text-[19px]">
+              {topic.body}
+            </p>
+            <ul className="mt-5 space-y-2.5">
+              {topic.items.map((item) => (
+                <li className="flex items-start gap-3 font-sans text-[17px] leading-[1.55] text-[#3A4A63]" key={item}>
+                  <span aria-hidden="true" className="mt-[8px] h-[5px] w-[5px] shrink-0 rounded-full" style={{ backgroundColor: "#B88A2D" }} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// 05 — Service Areas: a clean two-column text list of the seven topics.
+// No boxes, no icons. Each item links down to its sub-topic in the body.
+const ServiceAreasSection = (): JSX.Element => (
+  <section
+    aria-labelledby="ep-services-heading"
+    className="relative w-full overflow-hidden"
+    style={{ backgroundColor: "#FFFFFF", color: "#0B1F3A" }}
+  >
+    <div className="relative mx-auto w-full max-w-[820px] px-6 pb-20 pt-4 sm:px-10 lg:pb-[120px] lg:pt-6">
+      {/* Numbered eyebrow — "05 — Service Areas" in the site's numbered style (accented number) */}
+      <p
+        className="pi-reveal font-sans text-[12px] font-semibold uppercase leading-none tracking-[0.24em] text-[#0B1F3A]"
+        id="ep-services-heading"
+      >
+        <span style={{ color: GOLD }}>05</span>
+        <span aria-hidden="true" className="mx-3 text-[rgba(201,162,75,0.55)]">&mdash;</span>
+        <span>Service Areas</span>
+      </p>
+
+      <ul className="mt-10 grid grid-cols-1 gap-x-12 gap-y-3.5 border-t border-[#0B1F3A]/12 pt-10 sm:grid-cols-2">
+        {topics.map((topic) => (
+          <li key={topic.id}>
+            <a
+              className="group inline-flex items-start gap-3 font-sans text-[18px] leading-[1.5] text-[#3A4A63] transition-colors hover:text-[#0B1F3A]"
+              href={`#${topic.id}`}
+            >
+              <span aria-hidden="true" className="mt-[9px] h-[5px] w-[5px] shrink-0 rounded-full" style={{ backgroundColor: "#B88A2D" }} />
+              <span>{topic.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
+
+export const EstatePlanningPage = (): JSX.Element => {
+  useEffect(() => {
+    document.title = "Estate Planning | ATLAW Advisory";
+    let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.name = "description";
+      document.head.appendChild(meta);
+    }
+    meta.content =
+      "Estate planning attorneys for wills, trusts, powers of attorney, probate, tax and asset protection, business succession, and guardianship. ATLAW makes the process clear and keeps your plan current.";
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, []);
+
+  return (
+    <div className="atlaw-pi min-h-screen bg-ivory text-ink">
+      <Header />
+      <main>
+        <Hero />
+        <Body />
+        <ServiceAreasSection />
+      </main>
+      <Footer />
+    </div>
+  );
+};

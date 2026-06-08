@@ -4,9 +4,9 @@ const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 // Fraunces variable axes (kept for consistency with the Hero lockup; resolves to Georgia until Fraunces is loaded).
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
-const founderTitleAxes = "'opsz' 72, 'wght' 400, 'SOFT' 20, 'WONK' 0";
-const statAxes = "'opsz' 36, 'wght' 400, 'SOFT' 20, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
+const founderTitleAxes = "'opsz' 72, 'wght' 400, 'SOFT' 0, 'WONK' 0";
+const statAxes = "'opsz' 36, 'wght' 400, 'SOFT' 0, 'WONK' 0";
 
 type Stat = {
   // optional small label above the main value
@@ -136,7 +136,7 @@ export const AboutDewnyaSection = (): JSX.Element => {
           </div>
 
           {/* ── Right: founder feature card ── */}
-          <article className="group overflow-hidden rounded-[26px] border border-[#FFFFFF] bg-[#FFFFFF] transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[2px] hover:border-[#C2B79F]">
+          <article className="group overflow-hidden rounded-[26px] border-2 border-[rgba(11,31,58,0.25)] bg-[#FFFFFF] transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[2px] hover:border-[#C2B79F]">
             {/* Top zone: portrait + bio */}
             <div className="grid grid-cols-1 items-stretch sm:grid-cols-[minmax(0,48%)_minmax(0,52%)]">
               {/* Portrait — fills the column, bottom-aligned so the hands/desk stay anchored (reused from the Hero) */}
@@ -144,7 +144,7 @@ export const AboutDewnyaSection = (): JSX.Element => {
                 <img
                   alt="Dewnya Bazzi, ATLAW founder and CEO"
                   className="h-full w-full object-cover object-bottom"
-                  src="/assets/atlaw-portrait.png"
+                  src="/assets/atlaw-portrait.avif"
                 />
               </div>
 

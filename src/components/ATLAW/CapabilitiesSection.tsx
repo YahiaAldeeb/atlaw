@@ -14,9 +14,9 @@ const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 // Fraunces variable axes — large editorial headline (mirrors the Hero lockup).
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 // Lighter optical size for the smaller card titles.
-const cardTitleAxes = "'opsz' 48, 'wght' 400, 'SOFT' 20, 'WONK' 0";
+const cardTitleAxes = "'opsz' 48, 'wght' 400, 'SOFT' 0, 'WONK' 0";
 
 type Variant = "light" | "dark";
 
@@ -121,7 +121,7 @@ const CapabilityCard = ({ item }: { item: Capability }): JSX.Element => {
               )}
               <Link
                 className="rounded-sm underline-offset-[3px] transition-colors duration-150 hover:text-[#0B1F3A] hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                to={`/capabilities/${toSlug(area)}`}
+                to={`/practice-areas/${toSlug(area)}`}
               >
                 {area}
               </Link>
@@ -137,7 +137,8 @@ export const CapabilitiesSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="capabilities-heading"
-      className="relative isolate w-full overflow-hidden bg-[#0B1F3A]"
+      className="relative isolate w-full overflow-hidden bg-[linear-gradient(180deg,#0e1b33_0%,#0a1428_100%)] scroll-mt-[72px] lg:scroll-mt-[88px]"
+      id="capabilities"
     >
       {/* 3% grain overlay — same texture as the Hero canvas */}
       <div
@@ -171,11 +172,11 @@ export const CapabilitiesSection = (): JSX.Element => {
         {/* ── Centered editorial header ── */}
         <header className="mx-auto flex flex-col items-center text-center">
           <p className="font-sans text-[12px] font-semibold uppercase leading-none tracking-[0.22em] text-[#B88A2D]">
-            01 &mdash; CAPABILITIES
+            01 &mdash; PRACTICE AREAS
           </p>
 
           <h2
-            className="mt-5 max-w-[1000px] font-serifDisplay font-normal leading-[1.02] tracking-[-0.03em] text-[#FFFFFF] text-[clamp(40px,5.5vw,86px)]"
+            className="mt-5 max-w-full whitespace-nowrap font-serifDisplay font-normal leading-[1.02] tracking-[-0.03em] text-[#FFFFFF] text-[clamp(22px,4.3vw,58px)]"
             id="capabilities-heading"
             style={{ fontVariationSettings: headlineAxes }}
           >
@@ -189,7 +190,7 @@ export const CapabilitiesSection = (): JSX.Element => {
         </header>
 
         {/* ── Card row: 1 col mobile · 2 col tablet · 4 col desktop ── */}
-        <div className="mt-14 grid grid-cols-1 items-stretch gap-6 md:mt-16 md:grid-cols-2 lg:mt-[64px] lg:gap-8 xl:grid-cols-4">
+        <div className="mt-14 grid grid-cols-1 items-stretch gap-4 md:mt-16 md:grid-cols-2 lg:mt-[64px] lg:gap-5 xl:grid-cols-4">
           {capabilities.map((item) => (
             <CapabilityCard item={item} key={item.label} />
           ))}

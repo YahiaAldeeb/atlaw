@@ -1,0 +1,32 @@
+/* ───────────────────────────────────────────────────────────────
+   ATLAW · Real Estate capability page
+   Scoped helpers under .atlaw-re for the reveal motion and grain.
+   Mirrors PersonalInjury.css so the two dedicated pages move alike.
+   Layout/colour live in Tailwind utilities.
+   ─────────────────────────────────────────────────────────────── */
+
+.atlaw-re {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ── Staggered fade-and-rise reveal ── */
+.atlaw-re .re-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: re-rise 900ms cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+@keyframes re-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .atlaw-re .re-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

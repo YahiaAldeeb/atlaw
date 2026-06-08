@@ -1,0 +1,214 @@
+/* ───────────────────────────────────────────────────────────────
+   ATLAW · Service Locations (white band)
+   The light-background counterpart to the dark Service Areas intro.
+   Scoped under .atlaw-service-locations so nothing leaks out.
+   ─────────────────────────────────────────────────────────────── */
+
+.atlaw-service-locations {
+  position: relative;
+  background: #ffffff;
+  color: #0e1b33;
+  padding: clamp(56px, 6vw, 96px) 24px clamp(72px, 8vw, 128px);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.atlaw-service-locations .sl-inner {
+  position: relative;
+  max-width: 1320px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ── Filter / group tabs ── */
+.atlaw-service-locations .sl-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.atlaw-service-locations .sl-tab {
+  position: relative;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: #6b7384;
+  cursor: pointer;
+  transition: color 220ms ease;
+}
+.atlaw-service-locations .sl-tab:hover {
+  color: #0e1b33;
+}
+.atlaw-service-locations .sl-tab:focus-visible {
+  outline: 1px solid #c9a24b;
+  outline-offset: 4px;
+}
+.atlaw-service-locations .sl-tab.is-active,
+.atlaw-service-locations .sl-tab.is-active:hover {
+  color: #c9a24b;
+}
+.atlaw-service-locations .sl-tab.is-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 38px;
+  height: 1px;
+  transform: translateX(-50%);
+  background: #c9a24b;
+}
+.atlaw-service-locations .sl-tab-sep {
+  width: 1px;
+  height: 14px;
+  background: rgba(14, 27, 51, 0.2);
+}
+
+/* ── Location grid ── */
+.atlaw-service-locations .sl-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 48px;
+  text-align: left;
+  border-top: 1px solid rgba(14, 27, 51, 0.12);
+  animation: sl-fade-up 280ms cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+.atlaw-service-locations .sl-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 134px;
+  padding: 30px 34px;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(14, 27, 51, 0.12);
+  border-right: 1px solid rgba(14, 27, 51, 0.12);
+  transition:
+    transform 700ms cubic-bezier(0.19, 1, 0.22, 1),
+    background-color 700ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.atlaw-service-locations .sl-grid .sl-item:nth-child(4n) {
+  border-right: 0;
+}
+
+.atlaw-service-locations .sl-city {
+  font-family: "Fraunces", "Cormorant Garamond", "Libre Baskerville", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(22px, 1.8vw, 26px);
+  line-height: 1.1;
+  color: #0e1b33;
+  transition: color 700ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.atlaw-service-locations .sl-region {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #6b7384;
+}
+.atlaw-service-locations .sl-underline {
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin-top: 14px;
+  background: #c9a24b;
+  transform-origin: left center;
+  transition: width 700ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.atlaw-service-locations .sl-arrow {
+  flex: none;
+  margin-top: 2px;
+  color: #c9a24b;
+  font-size: 19px;
+  line-height: 1;
+  transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.atlaw-service-locations .sl-item:hover,
+.atlaw-service-locations .sl-item:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(14, 27, 51, 0.03);
+}
+.atlaw-service-locations .sl-item:hover .sl-city,
+.atlaw-service-locations .sl-item:focus-visible .sl-city {
+  color: #000000;
+}
+.atlaw-service-locations .sl-item:hover .sl-underline,
+.atlaw-service-locations .sl-item:focus-visible .sl-underline {
+  width: 72px;
+}
+.atlaw-service-locations .sl-item:hover .sl-arrow,
+.atlaw-service-locations .sl-item:focus-visible .sl-arrow {
+  transform: translateX(6px);
+}
+.atlaw-service-locations .sl-item:focus-visible {
+  outline: 1px solid #c9a24b;
+  outline-offset: -2px;
+}
+
+@keyframes sl-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .atlaw-service-locations .sl-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .atlaw-service-locations .sl-grid .sl-item:nth-child(4n) {
+    border-right: 1px solid rgba(14, 27, 51, 0.12);
+  }
+  .atlaw-service-locations .sl-grid .sl-item:nth-child(2n) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .atlaw-service-locations {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .atlaw-service-locations .sl-grid {
+    grid-template-columns: 1fr;
+  }
+  .atlaw-service-locations .sl-grid .sl-item,
+  .atlaw-service-locations .sl-grid .sl-item:nth-child(2n),
+  .atlaw-service-locations .sl-grid .sl-item:nth-child(4n) {
+    border-right: 0;
+  }
+  .atlaw-service-locations .sl-item {
+    min-height: 0;
+    padding: 26px 4px;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .atlaw-service-locations .sl-grid {
+    animation: none;
+  }
+  .atlaw-service-locations .sl-item,
+  .atlaw-service-locations .sl-city,
+  .atlaw-service-locations .sl-underline,
+  .atlaw-service-locations .sl-arrow {
+    transition: none;
+  }
+}

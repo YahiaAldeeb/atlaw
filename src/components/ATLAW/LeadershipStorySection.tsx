@@ -68,7 +68,7 @@ export const LeadershipStorySection = (): JSX.Element => {
                 <img
                   alt="Dewnya Bazzi, Chief Executive Officer and Founding Partner of ATLAW"
                   className="block h-auto w-full object-cover"
-                  src="/assets/atlaw-portrait.png"
+                  src="/assets/atlaw-portrait.avif"
                   style={{ aspectRatio: "4 / 5", objectPosition: "center top" }}
                 />
               </div>

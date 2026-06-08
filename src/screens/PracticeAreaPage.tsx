@@ -1,17 +1,20 @@
 import { useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { Header } from "../components/ATLAW/Header";
+import { ServiceAreas } from "../components/ATLAW/ServiceAreas";
 import { Footer } from "../components/ATLAW/Footer";
 import {
   practiceAreasBySlug,
   type PracticeArea,
 } from "../data/practiceAreas";
 
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
-const subHeadlineAxes = "'opsz' 96, 'wght' 400, 'SOFT' 25, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
+const subHeadlineAxes = "'opsz' 96, 'wght' 400, 'SOFT' 0, 'WONK' 0";
 
-const NAVY_HERO = "#071B34";
-const NAVY_DEEP = "#061426";
+const NAVY_HERO = "#0e1b33";
+const NAVY_DEEP = "#0a1428";
+// Canonical navy band — matches the Service Areas scheme used site-wide.
+const NAVY_CANVAS = "linear-gradient(180deg, #0e1b33 0%, #0a1428 100%)";
 const IVORY = "#FFFFFF";
 const GOLD = "#D39A2A";
 
@@ -80,7 +83,7 @@ const Hero = ({ area }: { area: PracticeArea }): JSX.Element => {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 65% 55% at 22% 18%, rgba(38,72,124,0.32), transparent 70%), radial-gradient(ellipse 55% 60% at 82% 80%, rgba(20,42,76,0.45), transparent 70%), linear-gradient(180deg, #071B34 0%, #061426 65%, #050F1F 100%)",
+            "radial-gradient(ellipse 65% 55% at 22% 18%, rgba(38,72,124,0.32), transparent 70%), radial-gradient(ellipse 55% 60% at 82% 80%, rgba(20,42,76,0.45), transparent 70%), linear-gradient(180deg, #0e1b33 0%, #0a1428 100%)",
         }}
       />
 
@@ -122,9 +125,9 @@ const Hero = ({ area }: { area: PracticeArea }): JSX.Element => {
               <li>
                 <Link
                   className="text-white/55 transition-colors hover:text-white/90"
-                  to="/capabilities"
+                  to="/practice-areas"
                 >
-                  Capabilities
+                  Practice Areas
                 </Link>
               </li>
               <li aria-hidden="true" className="text-white/30">
@@ -233,7 +236,7 @@ const WhatWeHandle = ({ area }: { area: PracticeArea }): JSX.Element => (
   <section
     aria-labelledby="key-areas-heading"
     className="relative w-full"
-    style={{ backgroundColor: "#0B1F3A", color: IVORY }}
+    style={{ background: NAVY_CANVAS, color: IVORY }}
   >
     <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-20 pt-20 sm:px-10 lg:px-20 lg:pb-[120px] lg:pt-[120px]">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] lg:gap-20">
@@ -325,7 +328,7 @@ const Approach = ({ area }: { area: PracticeArea }): JSX.Element => (
   <section
     aria-labelledby="approach-heading"
     className="relative w-full"
-    style={{ backgroundColor: "#0B1F3A", color: IVORY }}
+    style={{ background: NAVY_CANVAS, color: IVORY }}
   >
     <div className="relative mx-auto w-full max-w-[1180px] px-6 pb-24 pt-24 sm:px-10 lg:px-20 lg:pb-[140px] lg:pt-[140px]">
       <p
@@ -366,7 +369,7 @@ const RelatedAreas = ({ area }: { area: PracticeArea }): JSX.Element => {
           <div>
             <p className="font-sans text-[11.5px] font-semibold uppercase leading-none tracking-[0.24em] text-[#B88A2D]">
               <span className="mr-3 inline-block h-px w-8 align-middle bg-[#B88A2D]" />
-              Related capabilities
+              Related practice areas
             </p>
             <h2
               className="mt-6 font-serifDisplay text-[28px] font-normal leading-[1.1] tracking-[-0.02em] text-[#0B1F3A] lg:text-[38px]"
@@ -384,7 +387,7 @@ const RelatedAreas = ({ area }: { area: PracticeArea }): JSX.Element => {
             <Link
               className="group flex h-full flex-col rounded-[20px] border border-[#FFFFFF] bg-white p-6 shadow-[0_8px_24px_rgba(11,31,58,0.06)] transition-all duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px] hover:border-[rgba(184,138,45,0.5)] hover:shadow-[0_18px_38px_rgba(11,31,58,0.14)]"
               key={entry.slug}
-              to={`/capabilities/${entry.slug}`}
+              to={`/practice-areas/${entry.slug}`}
             >
               <p className="font-sans text-[10.5px] font-semibold uppercase leading-none tracking-[0.22em] text-[#B88A2D]">
                 {entry.categoryNumber} &mdash; {entry.category}
@@ -410,62 +413,6 @@ const RelatedAreas = ({ area }: { area: PracticeArea }): JSX.Element => {
   );
 };
 
-const ContactCta = ({ area }: { area: PracticeArea }): JSX.Element => (
-  <section
-    aria-labelledby="cta-heading"
-    className="relative w-full"
-    style={{ backgroundColor: "#0B1F3A", color: IVORY }}
-  >
-    <div className="relative mx-auto w-full max-w-[1180px] px-6 pb-24 pt-20 sm:px-10 lg:px-20 lg:pb-[140px] lg:pt-[120px]">
-      <div
-        className="grid grid-cols-1 items-center gap-10 rounded-[28px] border p-8 sm:p-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 lg:p-16"
-        style={{
-          backgroundColor: "rgba(255,255,255,0.03)",
-          borderColor: "rgba(255,255,255,0.08)",
-        }}
-      >
-        <div>
-          <p
-            className="font-sans text-[11.5px] font-semibold uppercase leading-none tracking-[0.28em]"
-            style={{ color: GOLD }}
-          >
-            Speak with a {area.name.toLowerCase()} attorney
-          </p>
-          <h2
-            className="mt-5 font-serifDisplay text-[30px] font-normal leading-[1.1] tracking-[-0.02em] text-[#FFFFFF] lg:text-[42px]"
-            id="cta-heading"
-            style={{ fontVariationSettings: subHeadlineAxes }}
-          >
-            Need guidance on this matter
-            <span aria-hidden="true" style={{ color: GOLD }}>?</span>
-          </h2>
-          <p className="mt-5 max-w-[560px] font-sans text-[16px] leading-[1.65] text-white/70">
-            Initial consultations are confidential. We&rsquo;ll review the facts and tell you,
-            directly, whether this is something we can help with and what the next steps look like.
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-end">
-          <Link
-            className="inline-flex h-[54px] items-center justify-center px-8 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] transition-all hover:bg-[#E6AE3F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D39A2A]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#061426]"
-            style={{ backgroundColor: GOLD, color: NAVY_HERO }}
-            to="/contact"
-          >
-            Start a Conversation
-            <span aria-hidden="true" className="ml-2">&rarr;</span>
-          </Link>
-          <a
-            className="inline-flex h-[54px] items-center justify-center border border-white/20 bg-transparent px-8 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#FFFFFF] transition-colors hover:border-white/40 hover:bg-white/[0.05]"
-            href="tel:+13134067606"
-          >
-            +1 (313) 406-7606
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
 export const PracticeAreaPage = (): JSX.Element => {
   const { slug } = useParams<{ slug: string }>();
   const area = slug ? practiceAreasBySlug[slug] : undefined;
@@ -486,7 +433,7 @@ export const PracticeAreaPage = (): JSX.Element => {
   }, [area]);
 
   if (!area) {
-    return <Navigate replace to="/capabilities" />;
+    return <Navigate replace to="/practice-areas" />;
   }
 
   return (
@@ -499,7 +446,7 @@ export const PracticeAreaPage = (): JSX.Element => {
         <WhenToCall area={area} />
         <Approach area={area} />
         <RelatedAreas area={area} />
-        <ContactCta area={area} />
+        <ServiceAreas />
       </main>
       <Footer />
     </div>

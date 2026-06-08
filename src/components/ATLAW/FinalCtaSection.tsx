@@ -6,7 +6,7 @@ const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 // Fraunces variable axes — large editorial headline (mirrors the Hero/Recognition lockup).
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 // Tighter optical size for the small refined serif lines (location + supporting italic).
 const fineAxes = "'opsz' 24, 'wght' 400";
 
@@ -34,7 +34,7 @@ export const FinalCtaSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="final-cta-heading"
-      className="relative isolate w-full overflow-hidden bg-[#0B1F3A] text-white"
+      className="relative isolate w-full overflow-hidden bg-[linear-gradient(180deg,#0e1b33_0%,#0a1428_100%)] text-white"
     >
       {/* Subtle grain overlay on the navy canvas */}
       <div
@@ -74,7 +74,7 @@ export const FinalCtaSection = (): JSX.Element => {
       </div>
 
       {/* ── Centered editorial column ── */}
-      <div className="relative mx-auto flex w-full max-w-[1180px] flex-col items-center px-6 py-[90px] text-center sm:px-10 md:py-[140px] lg:px-20 lg:py-[160px]">
+      <div className="relative mx-auto flex w-full max-w-[1180px] flex-col items-center px-6 py-[56px] text-center sm:px-10 md:py-[80px] lg:px-20 lg:py-[96px]">
         {/* Top location line — white serif with gold dot separators */}
         <p
           className="hero-rise flex items-center gap-3.5 font-serifDisplay text-[15px] tracking-[0.05em] text-white lg:text-[16px]"

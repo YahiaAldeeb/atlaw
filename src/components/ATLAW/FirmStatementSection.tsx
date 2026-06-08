@@ -5,7 +5,7 @@
    ──────────────────────────────────────────────────────────────────────────── */
 
 // Fraunces variable axes for the display lockup (mirrors Hero / Final CTA / Footer).
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 
 // Gold quatrefoil — same ornament motif used across the homepage.
 const Quatrefoil = (): JSX.Element => (

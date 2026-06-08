@@ -5,9 +5,9 @@ const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 // Fraunces variable axes — large editorial headline (mirrors the Hero/About/One Firm lockup).
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 // Tighter optical size for the big plaque years.
-const yearAxes = "'opsz' 96, 'wght' 360, 'SOFT' 20, 'WONK' 0";
+const yearAxes = "'opsz' 96, 'wght' 360, 'SOFT' 0, 'WONK' 0";
 
 type Award = {
   year: string;
@@ -120,7 +120,7 @@ export const RecognitionSection = (): JSX.Element => {
 
         {/* Oversized ghost wordmark — pale taupe, low opacity, sits behind the content */}
         <span
-          className="absolute left-1/2 top-[16%] hidden -translate-x-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.04em] text-[#C9B89C] opacity-[0.30] text-[clamp(80px,13vw,210px)] md:block"
+          className="absolute left-1/2 top-[16%] hidden -translate-x-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.04em] text-[#C9B89C] opacity-[0.14] text-[clamp(80px,13vw,210px)] md:block"
           style={{ fontVariationSettings: headlineAxes }}
         >
           Recognition
@@ -128,7 +128,7 @@ export const RecognitionSection = (): JSX.Element => {
       </div>
 
       {/* ── Centered editorial column ── */}
-      <div className="relative mx-auto flex w-full max-w-[1320px] flex-col items-center px-6 py-[88px] text-center sm:px-10 md:py-[120px] lg:px-20 lg:py-[150px]">
+      <div className="relative mx-auto flex w-full max-w-[1320px] flex-col items-center px-6 py-[56px] text-center sm:px-10 md:py-[80px] lg:px-20 lg:py-[96px]">
         {/* Top gold divider */}
         <span
           aria-hidden="true"

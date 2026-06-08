@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Header } from "../components/ATLAW/Header";
+import { ServiceAreas } from "../components/ATLAW/ServiceAreas";
 import { Footer } from "../components/ATLAW/Footer";
 
 const reasons = [
@@ -187,6 +188,7 @@ export const ContactPage = (): JSX.Element => {
             </div>
           </div>
         </section>
+        <ServiceAreas />
       </main>
       <Footer />
     </div>

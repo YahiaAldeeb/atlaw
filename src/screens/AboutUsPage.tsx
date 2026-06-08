@@ -1,4 +1,6 @@
 import { Header } from "../components/ATLAW/Header";
+import { AboutHero } from "../components/ATLAW/AboutHero";
+import { ServiceAreas } from "../components/ATLAW/ServiceAreas";
 import { Footer } from "../components/ATLAW/Footer";
 
 type Commitment = {
@@ -111,61 +113,14 @@ export const AboutUsPage = (): JSX.Element => {
       <main>
 
         {/* ── 1. HERO ────────────────────────────────────────────────── */}
-        <section className="relative min-h-[78vh] overflow-hidden" aria-label="About ATLAW hero">
-          {/* background image */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 scale-105 bg-cover bg-center bg-no-repeat blur-sm"
-            style={{ backgroundImage: "url('/about%20us.png')" }}
-          />
-          {/* dark overlay for text legibility */}
-          <div aria-hidden="true" className="absolute inset-0 bg-ink/70" />
-
-          <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-20 md:flex-row md:items-center md:px-6 md:py-28 lg:py-32">
-            {/* left — headline block */}
-            <div className="flex-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-                ABOUT ATLAW
-              </p>
-              <h1 className="mt-5 font-serifDisplay text-[clamp(2.4rem,5vw,4.8rem)] leading-[0.95] tracking-[-0.02em] text-ivory">
-                Providing Innovative
-                <br />
-                <span className="italic text-accent">Global Legal</span>
-                <br />
-                Solutions.
-              </h1>
-              <p className="mt-6 max-w-md text-base leading-relaxed text-ivory/75">
-                ATLAW's focus on expanding globally and collaborating with law firms across different
-                continents sets it apart from traditional law firms and allows it to offer a unique
-                perspective on legal issues.
-              </p>
-            </div>
-
-            {/* right — floating consultation card */}
-            <div className="w-full shrink-0 md:w-80 lg:w-96">
-              <article className="rounded-2xl border border-ivory/15 bg-white/8 p-7 backdrop-blur-md">
-                <div className="mb-1 h-0.5 w-8 bg-accent" />
-                <h2 className="mt-4 font-serifDisplay text-2xl leading-snug text-ivory">
-                  Global Legal Counsel
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-ivory/80">
-                  Advanced technology, data-driven insight, and global collaboration help ATLAW
-                  deliver efficient, effective legal solutions.
-                </p>
-                <a
-                  className="group mt-6 inline-flex items-center rounded-full bg-accent px-5 py-3 text-sm font-medium text-ivory transition duration-200 hover:bg-accent/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ivory"
-                  href="/"
-                >
-                  Explore Capabilities
-                  <span className="ml-2 transition duration-200 group-hover:translate-x-1">&rarr;</span>
-                </a>
-              </article>
-            </div>
-          </div>
-        </section>
+        <AboutHero />
 
         {/* ── 2. WHY WE EXIST ────────────────────────────────────────── */}
-        <section className="bg-ivory" aria-labelledby="why-heading">
+        <section
+          aria-labelledby="why-heading"
+          className="scroll-mt-[72px] bg-ivory lg:scroll-mt-[88px]"
+          id="our-story"
+        >
           <div className="mx-auto w-full max-w-6xl px-4 py-16 md:px-6 md:py-24">
             <div className="grid gap-12 md:grid-cols-2 md:items-start">
               <div>
@@ -319,7 +274,7 @@ export const AboutUsPage = (): JSX.Element => {
                   className="group inline-flex items-center rounded-full bg-ivory px-5 py-3 text-sm font-medium text-ink transition duration-200 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ivory"
                   href="/"
                 >
-                  Explore Capabilities
+                  Explore Practice Areas
                   <span className="ml-2 transition duration-200 group-hover:translate-x-1">&rarr;</span>
                 </a>
                 <a
@@ -334,6 +289,7 @@ export const AboutUsPage = (): JSX.Element => {
           </div>
         </section>
 
+        <ServiceAreas />
       </main>
       <Footer />
     </div>

@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "../components/ATLAW/Header";
+import { ServiceAreas } from "../components/ATLAW/ServiceAreas";
 import { Footer } from "../components/ATLAW/Footer";
 import {
   categoryParentSlug,
@@ -9,12 +10,12 @@ import {
   type PracticeCategory,
 } from "../data/practiceAreas";
 
-const NAVY_DEEP = "#061426";
+const NAVY_DEEP = "#0a1428";
 const IVORY = "#FFFFFF";
 const GOLD = "#D39A2A";
 
-const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 30, 'WONK' 0";
-const subHeadlineAxes = "'opsz' 96, 'wght' 400, 'SOFT' 25, 'WONK' 0";
+const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
+const subHeadlineAxes = "'opsz' 96, 'wght' 400, 'SOFT' 0, 'WONK' 0";
 
 type CategoryGroup = {
   category: PracticeCategory;
@@ -45,7 +46,7 @@ const Hero = (): JSX.Element => (
       className="pointer-events-none absolute inset-0"
       style={{
         background:
-          "radial-gradient(ellipse 65% 55% at 20% 18%, rgba(38,72,124,0.34), transparent 70%), radial-gradient(ellipse 55% 60% at 82% 80%, rgba(20,42,76,0.45), transparent 70%), linear-gradient(180deg, #071B34 0%, #061426 60%, #050F1F 100%)",
+          "radial-gradient(ellipse 65% 55% at 20% 18%, rgba(38,72,124,0.34), transparent 70%), radial-gradient(ellipse 55% 60% at 82% 80%, rgba(20,42,76,0.45), transparent 70%), linear-gradient(180deg, #0e1b33 0%, #0a1428 100%)",
       }}
     />
 
@@ -110,7 +111,7 @@ const Hero = (): JSX.Element => (
             </li>
             <li aria-hidden="true" className="text-white/30">/</li>
             <li>
-              <span aria-current="page" className="text-[#FFFFFF]">Capabilities</span>
+              <span aria-current="page" className="text-[#FFFFFF]">Practice Areas</span>
             </li>
           </ol>
         </nav>
@@ -132,7 +133,7 @@ const Hero = (): JSX.Element => (
             marginBottom: "28px",
           }}
         >
-          Capabilities
+          Practice Areas
           <span aria-hidden="true" style={{ color: GOLD }}>.</span>
         </h1>
 
@@ -244,7 +245,7 @@ const CategoryBlock = ({ group, index }: { group: CategoryGroup; index: number }
               onMouseEnter={(e) => (e.currentTarget.style.color = v.linkHover)}
               onMouseLeave={(e) => (e.currentTarget.style.color = v.link)}
               style={{ color: v.link }}
-              to={`/capabilities/${group.parent.slug}`}
+              to={`/practice-areas/${group.parent.slug}`}
             >
               Explore {group.parent.name.toLowerCase()}
               <span aria-hidden="true" className="ml-2">&rarr;</span>
@@ -272,7 +273,7 @@ const CategoryBlock = ({ group, index }: { group: CategoryGroup; index: number }
                       e.currentTarget.style.backgroundColor = v.cardBg;
                     }}
                     style={{ backgroundColor: v.cardBg, borderColor: v.cardBorder }}
-                    to={`/capabilities/${child.slug}`}
+                    to={`/practice-areas/${child.slug}`}
                   >
                     <span
                       aria-hidden="true"
@@ -311,68 +312,11 @@ const CategoryBlock = ({ group, index }: { group: CategoryGroup; index: number }
   );
 };
 
-const FinalCta = (): JSX.Element => (
-  <section
-    aria-labelledby="caps-cta"
-    className="relative w-full"
-    style={{ backgroundColor: "#FFFFFF", color: "#0B1F3A" }}
-  >
-    <div className="relative mx-auto w-full max-w-[1180px] px-6 pb-28 pt-20 sm:px-10 lg:px-20 lg:pb-[160px] lg:pt-[120px]">
-      <div
-        className="grid grid-cols-1 items-center gap-10 rounded-[28px] border p-8 sm:p-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 lg:p-16"
-        style={{
-          backgroundColor: "#FFFFFF",
-          borderColor: "#FFFFFF",
-          boxShadow: "0 18px 50px rgba(11,31,58,0.08)",
-        }}
-      >
-        <div>
-          <p
-            className="font-sans text-[11.5px] font-semibold uppercase leading-none tracking-[0.28em]"
-            style={{ color: "#B88A2D" }}
-          >
-            Need guidance on a matter
-          </p>
-          <h2
-            className="mt-5 font-serifDisplay text-[30px] font-normal leading-[1.1] tracking-[-0.02em] text-[#0B1F3A] lg:text-[42px]"
-            id="caps-cta"
-            style={{ fontVariationSettings: subHeadlineAxes }}
-          >
-            Tell us what you&rsquo;re facing
-            <span aria-hidden="true" style={{ color: GOLD }}>.</span>
-          </h2>
-          <p className="mt-5 max-w-[560px] font-sans text-[16px] leading-[1.65] text-[#3A4A63]">
-            Initial consultations are confidential. We&rsquo;ll listen, give you a direct read on
-            the next move, and tell you whether this is something we&rsquo;re the right firm for.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-end">
-          <Link
-            className="inline-flex h-[54px] items-center justify-center px-8 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] transition-all hover:bg-[#0B1F3A]/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            style={{ backgroundColor: "#0B1F3A", color: "#FFFFFF" }}
-            to="/contact"
-          >
-            Start a Conversation
-            <span aria-hidden="true" className="ml-2">&rarr;</span>
-          </Link>
-          <a
-            className="inline-flex h-[54px] items-center justify-center border px-8 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] transition-colors hover:bg-[#FFFFFF]"
-            href="tel:+13134067606"
-            style={{ borderColor: "rgba(11,31,58,0.2)", color: "#0B1F3A" }}
-          >
-            +1 (313) 406-7606
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
 export const CapabilitiesLandingPage = (): JSX.Element => {
   const groups = useCategoryGroups();
 
   useEffect(() => {
-    document.title = "Capabilities — ATLAW Group";
+    document.title = "Practice Areas — ATLAW Group";
     let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
     if (!meta) {
       meta = document.createElement("meta");
@@ -392,7 +336,7 @@ export const CapabilitiesLandingPage = (): JSX.Element => {
         {groups.map((group, index) => (
           <CategoryBlock group={group} index={index} key={group.category} />
         ))}
-        <FinalCta />
+        <ServiceAreas />
       </main>
       <Footer />
     </div>
