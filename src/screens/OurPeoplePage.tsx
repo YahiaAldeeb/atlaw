@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Header } from "../components/ATLAW/Header";
 import { ServiceAreas } from "../components/ATLAW/ServiceAreas";
 import { Footer } from "../components/ATLAW/Footer";
@@ -50,6 +50,85 @@ function matchesFilter(member: Member, filter: LocationFilter): boolean {
   return member.location === filter;
 }
 
+// Section-local palette (team-page hero only — self-contained, not global tokens):
+//   navy #0A1B33 · paper #FAF8F4 · gold #C9A24B · steel #7E9CC4
+const HeroArrow = ({ className = "" }: { className?: string }) => (
+  <svg
+    aria-hidden="true"
+    className={`h-[14px] w-[14px] transition-transform duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${className}`}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+  </svg>
+);
+
+// Engraved stat number that counts up from 0 once it scrolls into view.
+// Respects prefers-reduced-motion (jumps straight to the final value).
+const CountUpStat = ({
+  target,
+  suffix = "",
+  label,
+}: {
+  target: number;
+  suffix?: string;
+  label: string;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setValue(target);
+      return;
+    }
+
+    let raf = 0;
+    let start = 0;
+    const duration = 900;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        const step = (ts: number) => {
+          if (!start) start = ts;
+          const progress = Math.min((ts - start) / duration, 1);
+          // ease-out
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setValue(Math.round(eased * target));
+          if (progress < 1) raf = window.requestAnimationFrame(step);
+        };
+        raf = window.requestAnimationFrame(step);
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      window.cancelAnimationFrame(raf);
+    };
+  }, [target]);
+
+  return (
+    <div ref={ref}>
+      <p className="font-serifDisplay text-[34px] leading-none text-[#7E9CC4] tabular-nums">
+        {value}
+        {suffix}
+      </p>
+      <p className="mt-2 font-sans text-[12px] uppercase tracking-[0.16em] text-white/55">
+        {label}
+      </p>
+    </div>
+  );
+};
+
 const LocationPinIcon = () => (
   <svg className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} />
@@ -99,56 +178,114 @@ export const OurPeoplePage = (): JSX.Element => {
       <Header />
       <main>
 
-        {/* ── 1. HERO ────────────────────────────────────────────────── */}
-        <section className="relative min-h-[72vh] overflow-hidden" aria-label="Our People hero">
+        {/* ── 1. HERO — one full-bleed cinematic layer + one floating data layer ─ */}
+        <section
+          className="relative isolate w-full overflow-hidden bg-[#0A1B33] lg:min-h-[calc(100svh-88px)]"
+          aria-label="Our People hero"
+        >
+          {/* Layer 1 — full-bleed navy environmental photograph (brand watermark
+              + gold arc + bookshelf light are baked into the source image) */}
+          <img
+            aria-hidden="true"
+            alt=""
+            className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-center"
+            src="/assets/our-people-hero.avif"
+          />
+          {/* Navy multiply wash + edge-darkening gradient so both text zones stay readable */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 scale-105 bg-cover bg-center bg-no-repeat blur-sm"
-            style={{ backgroundImage: "url('/about%20us.avif')" }}
+            className="pointer-events-none absolute inset-0 -z-10 bg-[#0A1B33]/80 mix-blend-multiply"
           />
-          <div aria-hidden="true" className="absolute inset-0 bg-ink/75" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#0A1B33] via-[#0A1B33]/45 to-[#0A1B33]/70"
+          />
 
-          <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-20 md:flex-row md:items-center md:px-6 md:py-28 lg:py-32">
-            <div className="flex-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-                OUR PEOPLE
+          <div className="relative mx-auto flex w-full max-w-[1760px] flex-col gap-12 px-6 py-20 sm:px-10 md:py-28 lg:flex-row lg:items-center lg:gap-16 lg:px-[clamp(48px,5vw,80px)] lg:py-32">
+            {/* ── Copy block ── */}
+            <div className="hero-fade flex-1 lg:max-w-[46%]">
+              {/* Eyebrow */}
+              <p className="flex items-center gap-4">
+                <span aria-hidden="true" className="h-px w-[32px] shrink-0 bg-[#C9A24B]" />
+                <span className="font-sans text-[13px] font-medium uppercase tracking-[0.24em] text-[#C9A24B]">
+                  02 &mdash; Our People
+                </span>
               </p>
-              <h1 className="mt-5 font-serifDisplay text-[clamp(2.4rem,5vw,4.8rem)] leading-[0.95] tracking-[-0.02em] text-ivory">
-                The Skilled
-                <br />
-                <span className="italic text-accent">Professionals</span>
-                <br />
-                Behind ATLAW.
+
+              {/* Headline lockup */}
+              <h1 className="mt-7 font-serifDisplay leading-[1.04] tracking-[-0.015em] text-[#FAF8F4] text-[clamp(2.75rem,7vw,5.5rem)]">
+                <span className="hero-rise block" style={{ animationDelay: "120ms" }}>
+                  The skilled
+                </span>
+                <span
+                  className="hero-rise block italic text-[#7E9CC4]"
+                  style={{ animationDelay: "200ms" }}
+                >
+                  professionals
+                </span>
+                <span className="hero-rise block" style={{ animationDelay: "280ms" }}>
+                  behind ATLAW
+                  <span
+                    aria-hidden="true"
+                    className="ml-[0.04em] inline-block h-[0.13em] w-[0.13em] rounded-full bg-[#C9A24B] align-baseline"
+                  />
+                </span>
               </h1>
-              <p className="mt-6 max-w-md text-base leading-relaxed text-ivory/75">
-                A diverse, global team of attorneys, consultants, and professionals united by a
-                commitment to delivering exceptional legal solutions across borders.
+
+              {/* Supporting paragraph */}
+              <p className="mt-7 max-w-[460px] font-serifDisplay text-[19px] leading-[1.6] text-white/80">
+                Attorneys, consultants, and specialists working as one firm &mdash; matched to your
+                matter by what it actually needs, not by who&rsquo;s available.
+              </p>
+
+              {/* CTA row — navy bg, so the primary inverts to white fill */}
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full bg-[#FAF8F4] px-7 font-sans text-[15px] font-medium text-[#0A1B33] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A24B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1B33]"
+                  href="#team-heading"
+                >
+                  Meet the team
+                  <HeroArrow className="group-hover:translate-x-1" />
+                </a>
+                <a
+                  className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full border border-white/40 px-7 font-sans text-[15px] font-medium text-[#FAF8F4] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A24B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1B33]"
+                  href="/about"
+                >
+                  How we work
+                  <HeroArrow className="group-hover:translate-x-1" />
+                </a>
+              </div>
+
+              {/* Microcopy */}
+              <p className="mt-7 flex items-center gap-2.5 font-serifDisplay text-[15px] italic text-white/60">
+                <span aria-hidden="true" className="h-[6px] w-[6px] shrink-0 rounded-full bg-[#C9A24B]" />
+                Every matter is led by a named attorney. You&rsquo;ll always know who.
               </p>
             </div>
 
-            {/* stats card */}
-            <div className="w-full shrink-0 md:w-80 lg:w-96">
-              <article className="rounded-2xl border border-ivory/15 bg-white/8 p-7 backdrop-blur-md">
-                <div className="mb-1 h-0.5 w-8 bg-accent" />
-                <h2 className="mt-4 font-serifDisplay text-2xl leading-snug text-ivory">
+            {/* ── Stat card — glassmorphic evidence layer floating over the portrait ── */}
+            <div className="hero-fade w-full shrink-0 lg:w-[440px]" style={{ animationDelay: "200ms" }}>
+              <article className="rounded-2xl border border-white/12 bg-white/[0.04] p-9 backdrop-blur-2xl">
+                <div className="h-[2px] w-[28px] bg-[#C9A24B]" />
+                <h2 className="mt-5 font-serifDisplay text-[26px] leading-snug text-[#FAF8F4]">
                   Global Team
                 </h2>
-                <p className="mt-3 text-sm leading-relaxed text-ivory/80">
-                  Spanning six cities across four continents, our team brings deep local expertise
-                  to every international engagement.
+                <p className="mt-3 font-sans text-[15px] leading-[1.6] text-white/75">
+                  Spanning six cities across four continents, our team brings local insight to every
+                  cross-border matter.
                 </p>
-                <div className="mt-6 grid grid-cols-3 gap-4 border-t border-ivory/15 pt-6">
-                  {[
-                    { val: "22+", label: "Professionals" },
-                    { val: "6", label: "Cities" },
-                    { val: "4", label: "Continents" },
-                  ].map(({ val, label }) => (
-                    <div key={label}>
-                      <p className="font-serifDisplay text-2xl text-accent">{val}</p>
-                      <p className="mt-0.5 text-xs text-ivory/60">{label}</p>
-                    </div>
-                  ))}
+                <div className="mt-7 grid grid-cols-3 gap-4 border-t border-white/12 pt-7">
+                  <CountUpStat target={22} suffix="+" label="Professionals" />
+                  <CountUpStat target={6} label="Cities" />
+                  <CountUpStat target={4} label="Continents" />
                 </div>
+                <a
+                  className="group mt-7 inline-flex items-center gap-2 font-sans text-[13px] font-medium text-[#C9A24B] transition-colors hover:text-[#dcb868] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A24B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1B33]"
+                  href="#team-heading"
+                >
+                  Where we show up
+                  <HeroArrow className="group-hover:translate-x-1" />
+                </a>
               </article>
             </div>
           </div>

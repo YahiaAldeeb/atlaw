@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { RevealStagger, DrawRule } from "../../motion/primitives";
+import { STAGGER } from "../../motion/config";
 
 /* ────────────────────────────────────────────────────────────────────────────
    ATLAW global footer — dark editorial direction.
@@ -17,41 +19,26 @@ const grain =
 const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 
 type NavLink = { label: string; to: string; external?: boolean };
-type NavGroup = { title: string; links: NavLink[] };
 
-const navGroups: NavGroup[] = [
-  {
-    title: "CAPABILITIES",
-    links: [
-      { label: "Advisory", to: "/advisory" },
-      { label: "Litigation", to: "/litigation" },
-      { label: "Transactions", to: "/transactions" },
-      {
-        label: "Healthcare",
-        to: "https://www.atlahealthcare.com/",
-        external: true,
-      },
-      { label: "Global Reach", to: "/global-reach" },
-    ],
-  },
-  {
-    title: "COMPANY",
-    links: [
-      { label: "About", to: "/about" },
-      { label: "Our People", to: "/our-people" },
-      { label: "Careers", to: "/careers" },
-      { label: "Connect With Us", to: "/contact" },
-    ],
-  },
-  {
-    title: "RESOURCES",
-    links: [
-      { label: "News & Insights", to: "/news-insights" },
-      { label: "Consumer Insights", to: "/consumer-insights" },
-      { label: "Business Insights", to: "/business-insights" },
-      { label: "C-Level Insights", to: "/c-level-insights" },
-    ],
-  },
+// Footer surfaces the highest-demand practice areas only — not all 21, which
+// would flatten the hierarchy. Slugs verified against routing in src/index.tsx.
+const practiceAreaLinks: NavLink[] = [
+  { label: "Personal Injury", to: "/practice-areas/personal-injury" },
+  { label: "Auto Accidents", to: "/practice-areas/auto-accidents" },
+  { label: "Criminal Defense", to: "/practice-areas/criminal-defense" },
+  { label: "Business Law", to: "/practice-areas/business-law" },
+  { label: "Estate Planning", to: "/practice-areas/estate-planning" },
+];
+
+// Labels mirror the primary nav (Header.tsx) exactly: "Our Team" → /our-people,
+// "News & Insights" → /news-insights. Careers is intentionally dropped (no page);
+// a careers mailto lives in the sub-footer instead.
+const companyLinks: NavLink[] = [
+  { label: "About", to: "/about" },
+  { label: "Our Team", to: "/our-people" },
+  { label: "Global Reach", to: "/global-reach" },
+  { label: "News & Insights", to: "/news-insights" },
+  { label: "Contact", to: "/contact" },
 ];
 
 const socialLinks: { label: string; href: string }[] = [
@@ -60,11 +47,10 @@ const socialLinks: { label: string; href: string }[] = [
   { label: "Facebook", href: "https://www.facebook.com/atlawgroup/" },
 ];
 
+// Only the two pages that actually exist as routes (placeholder content pending).
 const legalLinks: { label: string; to: string }[] = [
   { label: "Privacy Policy", to: "/privacy" },
   { label: "Terms of Use", to: "/terms" },
-  { label: "Attorney Advertising", to: "/attorney-advertising" },
-  { label: "Disclaimer", to: "/disclaimer" },
 ];
 
 const MAP_URL =
@@ -164,20 +150,28 @@ const ArrowRight = ({ className = "" }: { className?: string }): JSX.Element => 
   </svg>
 );
 
+// NOTE: this is a static Vite/React-Router SPA — there is no backend or
+// serverless function, so there is no real subscribe endpoint to POST to and
+// no email provider is configured. Rather than fake a "you're on the list"
+// success state, we validate the address client-side and then tell the visitor
+// the honest status, pointing them at a real inbox. Wire a provider here when
+// one exists (e.g. POST to a hosted form/Mailchimp endpoint) and swap the
+// "notice" branch for genuine loading/success/error handling.
 const NewsletterForm = (): JSX.Element => {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "invalid" | "notice">("idle");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: wire to the firm's newsletter integration when available.
-    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-      setStatus("error");
+    const value = email.trim();
+    if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      setStatus("invalid");
       return;
     }
-    setStatus("success");
-    setEmail("");
+    setStatus("notice");
   };
+
+  const describedBy = status === "idle" ? undefined : "newsletter-status";
 
   return (
     <form onSubmit={handleSubmit} className="w-full" aria-label="Newsletter signup">
@@ -193,6 +187,8 @@ const NewsletterForm = (): JSX.Element => {
           autoComplete="email"
           placeholder="Email address"
           value={email}
+          aria-invalid={status === "invalid"}
+          aria-describedby={describedBy}
           onChange={(e) => {
             setEmail(e.target.value);
             if (status !== "idle") setStatus("idle");
@@ -209,15 +205,28 @@ const NewsletterForm = (): JSX.Element => {
       </div>
 
       <p
+        id="newsletter-status"
+        role="status"
         aria-live="polite"
-        className={`mt-2.5 text-[13px] transition ${
+        className={`mt-2.5 text-[13px] leading-[1.5] transition ${
           status === "idle" ? "h-0 overflow-hidden opacity-0" : "opacity-100"
-        } ${status === "success" ? "text-[#86D996]" : ""} ${
-          status === "error" ? "text-[#F2A3A9]" : ""
+        } ${status === "invalid" ? "text-[#F2A3A9]" : ""} ${
+          status === "notice" ? "text-white/75" : ""
         }`}
       >
-        {status === "success" && "Thank you — you're on the list."}
-        {status === "error" && "Please enter a valid email address."}
+        {status === "invalid" && "Please enter a valid email address."}
+        {status === "notice" && (
+          <>
+            Subscriptions are launching soon — email us at{" "}
+            <a
+              href="mailto:info@atlawgroup.com"
+              className="font-medium text-[#B88A2D] underline underline-offset-2 transition hover:text-white"
+            >
+              info@atlawgroup.com
+            </a>
+            .
+          </>
+        )}
       </p>
     </form>
   );
@@ -271,7 +280,10 @@ export const Footer = (): JSX.Element => {
 
       <div className="relative mx-auto w-full max-w-[1280px] px-6 pb-12 pt-[88px] sm:px-10 md:pb-14 md:pt-[112px] lg:px-16">
         {/* ── Main grid ── */}
-        <div className="grid grid-cols-1 gap-y-12 gap-x-8 sm:grid-cols-2 lg:grid-cols-[1.65fr_1fr_1fr_1fr_1.35fr] lg:gap-y-0">
+        <RevealStagger
+          amount={STAGGER.items}
+          className="grid grid-cols-1 gap-y-12 gap-x-8 sm:grid-cols-2 lg:grid-cols-[1.7fr_1.05fr_1.05fr_1.35fr] lg:gap-y-0"
+        >
           {/* Brand block */}
           <div className="sm:col-span-2 lg:col-span-1 lg:pr-8">
             <Link to="/" className="inline-flex items-center" aria-label="ATLAW home">
@@ -281,32 +293,39 @@ export const Footer = (): JSX.Element => {
                 src="/assets/atlaw-wordmark.svg"
               />
             </Link>
-            <div className="mt-5 h-px w-14 bg-[#B88A2D]/70" />
-            <p className="mt-6 max-w-[320px] font-sans text-[14.5px] leading-[1.65] text-white/75">
-              A boutique law firm built on trust, strategy, and results. We connect
-              every client with the right attorney for the issue in front of them.
+            <DrawRule className="mt-5 block h-px w-14 bg-[#B88A2D]/70" origin="left" />
+            <p className="mt-6 max-w-[340px] font-sans text-[14.5px] leading-[1.65] text-white/75">
+              A Detroit-founded law firm for serious legal matters. We connect every
+              client with the right attorney for the issue in front of them.
             </p>
           </div>
 
-          {/* Nav groups */}
-          {navGroups.map((group, idx) => (
-            <nav
-              key={group.title}
-              aria-label={group.title}
-              className={`min-w-0 ${
-                idx === 0 ? "lg:border-l lg:border-white/[0.12] lg:pl-8" : ""
-              }`}
-            >
-              <h4 className="font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-[#B88A2D]">
-                {group.title}
-              </h4>
-              <ul className="mt-6 space-y-3">
-                {group.links.map((link) => (
-                  <li key={link.label}>{renderNavLink(link)}</li>
-                ))}
-              </ul>
-            </nav>
-          ))}
+          {/* Practice areas — top 8 by client demand + full index */}
+          <nav
+            aria-label="Practice areas"
+            className="min-w-0 lg:border-l lg:border-white/[0.12] lg:pl-8"
+          >
+            <h4 className="font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-[#B88A2D]">
+              PRACTICE AREAS
+            </h4>
+            <ul className="mt-6 space-y-3">
+              {practiceAreaLinks.map((link) => (
+                <li key={link.label}>{renderNavLink(link)}</li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Company */}
+          <nav aria-label="Company" className="min-w-0">
+            <h4 className="font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-[#B88A2D]">
+              COMPANY
+            </h4>
+            <ul className="mt-6 space-y-3">
+              {companyLinks.map((link) => (
+                <li key={link.label}>{renderNavLink(link)}</li>
+              ))}
+            </ul>
+          </nav>
 
           {/* Contact */}
           <div className="sm:col-span-2 lg:col-span-1 lg:border-l lg:border-white/[0.12] lg:pl-8">
@@ -363,7 +382,7 @@ export const Footer = (): JSX.Element => {
               </div>
             </address>
           </div>
-        </div>
+        </RevealStagger>
 
         {/* ── Newsletter bar ── */}
         <div className="mt-16 flex flex-col gap-7 rounded-2xl border border-[#B88A2D]/35 bg-white/[0.05] px-6 py-7 md:mt-20 md:flex-row md:items-center md:justify-between md:gap-10 md:px-10 md:py-8">
@@ -393,7 +412,7 @@ export const Footer = (): JSX.Element => {
         <div className="mt-12 border-t border-[#B88A2D]/20 pt-7">
           <div className="flex flex-col items-center gap-5 text-center lg:flex-row lg:justify-between lg:gap-8 lg:text-left">
             <p className="order-3 font-sans text-[13px] text-white/55 lg:order-1">
-              &copy; {year} ATLAW. All rights reserved.
+              &copy; {year} ATLAW Group. All rights reserved.
             </p>
 
             <ul className="order-1 flex flex-wrap items-center justify-center gap-y-2 lg:order-2">
@@ -435,6 +454,23 @@ export const Footer = (): JSX.Element => {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Attorney advertising disclaimer + careers (replaces the Careers link) */}
+          <div className="mt-6 flex flex-col items-center gap-3 text-center lg:flex-row lg:justify-between lg:gap-8 lg:text-left">
+            <p className="max-w-[640px] font-sans text-[12px] leading-[1.6] text-white/45">
+              This website is attorney advertising. Prior results do not guarantee a
+              similar outcome.
+            </p>
+            <p className="shrink-0 font-sans text-[12px] leading-[1.6] text-white/45">
+              Interested in joining ATLAW?{" "}
+              <a
+                href="mailto:careers@atlawgroup.com"
+                className="text-white/65 underline underline-offset-2 transition hover:text-[#B88A2D]"
+              >
+                careers@atlawgroup.com
+              </a>
+            </p>
           </div>
         </div>
       </div>

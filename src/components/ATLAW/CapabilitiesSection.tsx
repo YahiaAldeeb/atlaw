@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { RevealText, RevealBlock, RevealStagger } from "../../motion/primitives";
+import { STAGGER } from "../../motion/config";
 
 const toSlug = (value: string): string =>
   value
@@ -171,30 +173,34 @@ export const CapabilitiesSection = (): JSX.Element => {
       <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-20 pt-20 sm:px-10 md:pb-24 md:pt-28 lg:px-20 lg:pb-[120px] lg:pt-[140px]">
         {/* ── Centered editorial header ── */}
         <header className="mx-auto flex flex-col items-center text-center">
-          <p className="font-sans text-[12px] font-semibold uppercase leading-none tracking-[0.22em] text-[#B88A2D]">
+          <RevealBlock as="p" className="font-sans text-[12px] font-semibold uppercase leading-none tracking-[0.22em] text-[#B88A2D]">
             01 &mdash; PRACTICE AREAS
-          </p>
+          </RevealBlock>
 
-          <h2
+          <RevealText
+            as="h2"
             className="mt-5 max-w-full whitespace-nowrap font-serifDisplay font-normal leading-[1.02] tracking-[-0.03em] text-[#FFFFFF] text-[clamp(22px,4.3vw,58px)]"
             id="capabilities-heading"
             style={{ fontVariationSettings: headlineAxes }}
           >
             What we do, by what brought you in<span className="text-[#B88A2D]">.</span>
-          </h2>
+          </RevealText>
 
-          <p className="mt-7 max-w-[760px] font-sans text-[18px] leading-[1.6] text-[rgba(244,239,230,0.80)] lg:text-[19px]">
+          <RevealBlock as="p" className="mt-7 max-w-[760px] font-sans text-[18px] leading-[1.6] text-[rgba(244,239,230,0.80)] lg:text-[19px]">
             Legal problems rarely arrive in one category. We help you figure out where yours sits and
             what to do about it.
-          </p>
+          </RevealBlock>
         </header>
 
         {/* ── Card row: 1 col mobile · 2 col tablet · 4 col desktop ── */}
-        <div className="mt-14 grid grid-cols-1 items-stretch gap-4 md:mt-16 md:grid-cols-2 lg:mt-[64px] lg:gap-5 xl:grid-cols-4">
+        <RevealStagger
+          amount={STAGGER.grid}
+          className="mt-14 grid grid-cols-1 items-stretch gap-4 md:mt-16 md:grid-cols-2 lg:mt-[64px] lg:gap-5 xl:grid-cols-4"
+        >
           {capabilities.map((item) => (
             <CapabilityCard item={item} key={item.label} />
           ))}
-        </div>
+        </RevealStagger>
       </div>
     </section>
   );

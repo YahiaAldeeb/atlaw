@@ -1,11 +1,16 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   categoryParentSlug,
   practiceAreas,
   type PracticeArea,
   type PracticeCategory,
 } from "../../data/practiceAreas";
+import { prefersReducedMotion } from "../../motion/config";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Canonical navy — matches the Service Areas band (linear-gradient #0e1b33 → #0a1428)
 // so every blue surface across the site reads as one scheme.
@@ -223,7 +228,7 @@ const dropdownLinks: { label: DropdownLabel }[] = [
 const directLinks: { label: string; to: string }[] = [
   { label: "ABOUT US", to: "/about" },
   { label: "OUR TEAM", to: "/our-people" },
-  { label: "GLOBAL REACH", to: "/#global-reach" },
+  { label: "GLOBAL REACH", to: "/global-reach" },
   { label: "CONTACT", to: "/contact" },
 ];
 
@@ -231,7 +236,12 @@ export const Header = (): JSX.Element => {
   const [openMenu, setOpenMenu] = useState<DropdownLabel | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileCapsOpen, setMobileCapsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  // Live mirrors of open-state so the scroll callback reads them without
+  // re-subscribing the ScrollTrigger each time a menu toggles.
+  const openMenuRef = useRef(false);
+  const mobileOpenRef = useRef(false);
   const location = useLocation();
 
   // Close dropdowns on route change
@@ -264,6 +274,39 @@ export const Header = (): JSX.Element => {
     return () => document.removeEventListener("keydown", handleKey);
   }, []);
 
+  // Hide-on-scroll-down / reveal-on-scroll-up + a translucent blurred bar once
+  // scrolled. Driven by ScrollTrigger so it shares Lenis' scroll clock. Reduced
+  // motion keeps the bar permanently visible (no translate).
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    if (prefersReducedMotion()) return;
+
+    const st = ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      onUpdate: (self) => {
+        const y = self.scroll();
+        setScrolled(y > 8);
+        // Never hide while a menu/drawer is open or near the very top.
+        if (y < 120 || openMenuRef.current || mobileOpenRef.current) {
+          gsap.to(el, { yPercent: 0, duration: 0.4, ease: "power3.out", overwrite: true });
+          return;
+        }
+        gsap.to(el, {
+          yPercent: self.direction === 1 ? -100 : 0,
+          duration: 0.4,
+          ease: "power3.out",
+          overwrite: true,
+        });
+      },
+    });
+    return () => st.kill();
+  }, []);
+
+  openMenuRef.current = openMenu !== null;
+  mobileOpenRef.current = mobileOpen;
+
   const groups = useCategoryGroups();
 
   const toggle = (label: DropdownLabel) =>
@@ -272,12 +315,14 @@ export const Header = (): JSX.Element => {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 w-full border-b border-white/10"
+      className={`sticky top-0 z-50 w-full border-b border-white/10 transition-colors duration-300 ${
+        scrolled ? "backdrop-blur-md" : ""
+      }`}
       // Close any open dropdown once the cursor leaves the header entirely.
       // The panels are DOM children of <header>, so moving down into a panel
       // does NOT fire this — the menu stays open while you're inside it.
       onMouseLeave={() => setOpenMenu(null)}
-      style={{ backgroundColor: NAVY }}
+      style={{ backgroundColor: scrolled ? "rgba(14,27,51,0.82)" : NAVY }}
     >
       <div className="flex h-[72px] w-full items-stretch lg:h-[88px]">
         {/* Logo */}

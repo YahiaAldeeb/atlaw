@@ -1,4 +1,6 @@
 import { Fragment } from "react";
+import { RevealText, RevealBlock, RevealStagger, DrawRule, Parallax } from "../../motion/primitives";
+import { STAGGER } from "../../motion/config";
 
 // Subtle film grain over the bone canvas — same texture as the Hero/About so the page reads as one system.
 const grain =
@@ -119,61 +121,62 @@ export const RecognitionSection = (): JSX.Element => {
         </svg>
 
         {/* Oversized ghost wordmark — pale taupe, low opacity, sits behind the content */}
-        <span
+        <Parallax
+          as="span"
           className="absolute left-1/2 top-[16%] hidden -translate-x-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.04em] text-[#C9B89C] opacity-[0.14] text-[clamp(80px,13vw,210px)] md:block"
           style={{ fontVariationSettings: headlineAxes }}
         >
           Recognition
-        </span>
+        </Parallax>
       </div>
 
       {/* ── Centered editorial column ── */}
       <div className="relative mx-auto flex w-full max-w-[1320px] flex-col items-center px-6 py-[56px] text-center sm:px-10 md:py-[80px] lg:px-20 lg:py-[96px]">
         {/* Top gold divider */}
-        <span
-          aria-hidden="true"
-          className="hero-rise block h-px w-[64px] bg-[#B88A2D]"
-          style={{ animationDelay: "0ms" }}
+        <DrawRule
+          origin="center"
+          className="block h-px w-[64px] bg-[#B88A2D]"
         />
 
         {/* Section label */}
-        <p
-          className="hero-rise mt-9 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#B88A2D]"
-          style={{ animationDelay: "80ms" }}
+        <RevealBlock
+          as="p"
+          className="mt-9 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-[#B88A2D]"
         >
           05 &mdash; Recognition
-        </p>
+        </RevealBlock>
 
         {/* Main heading */}
-        <h2
-          className="hero-rise mt-6 font-serifDisplay font-normal leading-[1.04] tracking-[-0.02em] text-[#0B1F3A] text-[clamp(44px,6.5vw,84px)]"
+        <RevealText
+          as="h2"
+          className="mt-6 font-serifDisplay font-normal leading-[1.04] tracking-[-0.02em] text-[#0B1F3A] text-[clamp(44px,6.5vw,84px)]"
           id="recognition-heading"
-          style={{ fontVariationSettings: headlineAxes, animationDelay: "160ms" }}
+          style={{ fontVariationSettings: headlineAxes }}
         >
           Recognition
-        </h2>
+        </RevealText>
 
         {/* Supporting paragraph */}
-        <p
-          className="hero-rise mt-7 max-w-[780px] font-sans text-[18px] leading-[1.65] text-[#3A4A63] [text-wrap:balance] lg:text-[19px]"
-          style={{ animationDelay: "240ms" }}
+        <RevealBlock
+          as="p"
+          className="mt-7 max-w-[780px] font-sans text-[18px] leading-[1.65] text-[#3A4A63] [text-wrap:balance] lg:text-[19px]"
         >
           Super Lawyers selects under 2.5% of attorneys in each state for its Rising Stars list.
           Dewnya has been on the Michigan list three years running.
-        </p>
+        </RevealBlock>
 
         {/* ── Three plaques: 1 col mobile · 3 across from sm up ── */}
-        <div
-          className="hero-rise mt-14 grid w-full max-w-[1040px] grid-cols-1 items-stretch gap-6 sm:grid-cols-3 lg:mt-[72px] lg:gap-8"
-          style={{ animationDelay: "320ms" }}
+        <RevealStagger
+          amount={STAGGER.grid}
+          className="mt-14 grid w-full max-w-[1040px] grid-cols-1 items-stretch gap-6 sm:grid-cols-3 lg:mt-[72px] lg:gap-8"
         >
           {awards.map((award) => (
             <AwardPlaque award={award} key={award.year} />
           ))}
-        </div>
+        </RevealStagger>
 
         {/* ── Metadata line: gold dots between tokens, thin gold rules left & right ── */}
-        <div className="hero-fade mt-16 flex w-full max-w-[860px] items-center gap-5" style={{ animationDelay: "480ms" }}>
+        <RevealBlock as="div" className="mt-16 flex w-full max-w-[860px] items-center gap-5">
           <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-l from-[#B88A2D]/40 to-transparent" />
           <p className="flex shrink-0 items-center gap-3 font-sans text-[13px] tracking-[0.04em] text-[#0B1F3A]">
             {metaTokens.map((token, index) => (
@@ -186,7 +189,7 @@ export const RecognitionSection = (): JSX.Element => {
             ))}
           </p>
           <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-[#B88A2D]/40 to-transparent" />
-        </div>
+        </RevealBlock>
 
         {/* ── Quatrefoil ornament — CSS/SVG only, no stock award art ── */}
         <svg
@@ -208,13 +211,14 @@ export const RecognitionSection = (): JSX.Element => {
         </svg>
 
         {/* Bottom supporting statement */}
-        <p
+        <RevealBlock
+          as="p"
           className="mt-8 max-w-[680px] font-serifDisplay text-[15px] leading-[1.6] tracking-[-0.005em] text-[#3A4A63] lg:text-[16px]"
           style={{ fontVariationSettings: "'opsz' 24, 'wght' 400" }}
         >
           She is also rated 10/10 on Avvo and was named to the National Academy of Personal Injury
           Attorneys&rsquo; Top 10 Under 40 list.
-        </p>
+        </RevealBlock>
       </div>
     </section>
   );

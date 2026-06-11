@@ -4,6 +4,8 @@
    editorial system (serif display, hairline gold rules) but on a clean white BG.
    ──────────────────────────────────────────────────────────────────────────── */
 
+import { RevealText, RevealBlock } from "../../motion/primitives";
+
 // Fraunces variable axes for the display lockup (mirrors Hero / Final CTA / Footer).
 const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 
@@ -34,33 +36,34 @@ export const FirmStatementSection = (): JSX.Element => {
     >
       <div className="mx-auto flex max-w-[1060px] flex-col items-center px-6 py-[88px] text-center sm:px-10 md:py-[120px] lg:px-16">
         {/* gold ornament flanked by hairline rules */}
-        <div
-          className="hero-rise flex w-full max-w-[520px] items-center justify-center gap-5"
-          style={{ animationDelay: "0ms" }}
+        <RevealBlock
+          as="div"
+          className="flex w-full max-w-[520px] items-center justify-center gap-5"
         >
           <span className="h-px flex-1 bg-gradient-to-l from-[#B88A2D]/45 to-transparent" />
           <Quatrefoil />
           <span className="h-px flex-1 bg-gradient-to-r from-[#B88A2D]/45 to-transparent" />
-        </div>
+        </RevealBlock>
 
         {/* positioning statement — deep navy */}
-        <h2
+        <RevealText
+          as="h2"
           id="firm-statement-heading"
-          className="hero-rise mt-9 max-w-[1000px] font-serifDisplay font-normal leading-[1.18] tracking-[-0.015em] text-[#0B1F3A] text-[clamp(30px,4.6vw,54px)]"
-          style={{ fontVariationSettings: headlineAxes, animationDelay: "80ms" }}
+          className="mt-9 max-w-[1000px] font-serifDisplay font-normal leading-[1.18] tracking-[-0.015em] text-[#0B1F3A] text-[clamp(30px,4.6vw,54px)]"
+          style={{ fontVariationSettings: headlineAxes }}
         >
           ATLAW is a Detroit law firm serving people, families, and businesses
           across the United States.
-        </h2>
+        </RevealText>
 
         {/* supporting SEO line — softer navy */}
-        <p
-          className="hero-rise mt-6 max-w-[760px] font-sans text-[15px] leading-[1.6] text-[#3A4A63] [text-wrap:balance] lg:text-[17px]"
-          style={{ animationDelay: "160ms" }}
+        <RevealBlock
+          as="p"
+          className="mt-6 max-w-[760px] font-sans text-[15px] leading-[1.6] text-[#3A4A63] [text-wrap:balance] lg:text-[17px]"
         >
           ATLAW handles injury, business, estate, criminal, tax, and immigration
           matters for clients in Michigan and beyond.
-        </p>
+        </RevealBlock>
       </div>
     </section>
   );

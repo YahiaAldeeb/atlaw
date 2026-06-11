@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { RevealText, RevealBlock, DrawRule, Parallax } from "../../motion/primitives";
 
 // Subtle film grain over the bone canvas — same texture as the Hero/Recognition so the page reads as one system.
 const grain =
@@ -65,20 +66,22 @@ export const FinalCtaSection = (): JSX.Element => {
         </svg>
 
         {/* Oversized ghost wordmark — soft white, very low opacity, cropped at both edges */}
-        <span
+        <Parallax
+          as="span"
           className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.045em] text-white opacity-[0.025] text-[clamp(140px,21vw,360px)] md:block"
           style={{ fontVariationSettings: headlineAxes }}
         >
           Contact
-        </span>
+        </Parallax>
       </div>
 
       {/* ── Centered editorial column ── */}
       <div className="relative mx-auto flex w-full max-w-[1180px] flex-col items-center px-6 py-[56px] text-center sm:px-10 md:py-[80px] lg:px-20 lg:py-[96px]">
         {/* Top location line — white serif with gold dot separators */}
-        <p
-          className="hero-rise flex items-center gap-3.5 font-serifDisplay text-[15px] tracking-[0.05em] text-white lg:text-[16px]"
-          style={{ fontVariationSettings: fineAxes, animationDelay: "0ms" }}
+        <RevealBlock
+          as="p"
+          className="flex items-center gap-3.5 font-serifDisplay text-[15px] tracking-[0.05em] text-white lg:text-[16px]"
+          style={{ fontVariationSettings: fineAxes }}
         >
           {cities.map((city, index) => (
             <Fragment key={city}>
@@ -88,47 +91,44 @@ export const FinalCtaSection = (): JSX.Element => {
               <span>{city}</span>
             </Fragment>
           ))}
-        </p>
+        </RevealBlock>
 
         {/* Short gold divider beneath the location line */}
-        <span
-          aria-hidden="true"
-          className="hero-rise mt-8 block h-px w-[64px] bg-[#B88A2D]"
-          style={{ animationDelay: "80ms" }}
+        <DrawRule
+          origin="center"
+          className="mt-8 block h-px w-[64px] bg-[#B88A2D]"
         />
 
         {/* Section label */}
-        <p
-          className="hero-rise mt-8 font-sans text-[12px] font-semibold uppercase tracking-[0.28em] text-[#B88A2D] lg:text-[13px]"
-          style={{ animationDelay: "140ms" }}
+        <RevealBlock
+          as="p"
+          className="mt-8 font-sans text-[12px] font-semibold uppercase tracking-[0.28em] text-[#B88A2D] lg:text-[13px]"
         >
           06 &mdash; Final CTA
-        </p>
+        </RevealBlock>
 
         {/* Main heading — single amber "brand period" */}
-        <h2
-          className="hero-rise mt-6 font-serifDisplay font-normal leading-[1.04] tracking-[-0.02em] text-white text-[clamp(42px,7vw,92px)]"
+        <RevealText
+          as="h2"
+          className="mt-6 font-serifDisplay font-normal leading-[1.04] tracking-[-0.02em] text-white text-[clamp(42px,7vw,92px)]"
           id="final-cta-heading"
-          style={{ fontVariationSettings: headlineAxes, animationDelay: "220ms" }}
+          style={{ fontVariationSettings: headlineAxes }}
         >
           Tell us what happened<span className="text-[#B88A2D]">.</span>
-        </h2>
+        </RevealText>
 
         {/* Supporting paragraph */}
-        <p
-          className="hero-rise mt-8 max-w-[820px] font-sans text-[18px] leading-[1.6] text-white/80 [text-wrap:balance] lg:text-[21px]"
-          style={{ animationDelay: "300ms" }}
+        <RevealBlock
+          as="p"
+          className="mt-8 max-w-[820px] font-sans text-[18px] leading-[1.6] text-white/80 [text-wrap:balance] lg:text-[21px]"
         >
           The first conversation is free, and it stays between us. We&rsquo;ll listen, give you our
           honest read, and tell you whether we can help. If we can&rsquo;t, we&rsquo;ll point you to
           someone who can.
-        </p>
+        </RevealBlock>
 
         {/* ── CTA pair: filled navy primary + outlined navy phone ── */}
-        <div
-          className="hero-fade mt-12 flex w-full flex-col items-center justify-center gap-5 sm:flex-row sm:gap-10 lg:mt-14"
-          style={{ animationDelay: "420ms" }}
-        >
+        <RevealBlock className="mt-12 flex w-full flex-col items-center justify-center gap-5 sm:flex-row sm:gap-10 lg:mt-14">
           <Link
             className="group inline-flex h-[64px] w-full max-w-[340px] items-center justify-center gap-2.5 rounded-full bg-white px-9 font-sans text-[15px] font-medium text-[#0B1F3A] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#FFFFFF] hover:shadow-[0_10px_30px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A] sm:w-[350px] lg:h-[68px]"
             to="/contact"
@@ -142,7 +142,7 @@ export const FinalCtaSection = (): JSX.Element => {
           >
             (313) 406-7606
           </a>
-        </div>
+        </RevealBlock>
 
         {/* ── Gold divider with a centred gold dot ── */}
         <span aria-hidden="true" className="mt-16 flex w-full max-w-[260px] items-center gap-3">

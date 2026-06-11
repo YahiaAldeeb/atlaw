@@ -28,19 +28,33 @@ import { FederalCriminalPage } from "./screens/FederalCriminalPage";
 import { WhiteCollarPage } from "./screens/WhiteCollarPage";
 import { CivilLitigationPage } from "./screens/CivilLitigationPage";
 import { CapabilitiesLandingPage } from "./screens/CapabilitiesLandingPage";
+import { GlobalReachPage } from "./screens/GlobalReachPage";
+import { PrivacyPolicyPage } from "./screens/PrivacyPolicyPage";
+import { TermsOfUsePage } from "./screens/TermsOfUsePage";
+import { NewsInsightsPage } from "./screens/NewsInsightsPage";
 import { BackToTop } from "./components/ATLAW/BackToTop";
+import { NavigationLoader } from "./components/ATLAW/NavigationLoader";
 import { ScrollToTop } from "./components/ATLAW/ScrollToTop";
+import { SmoothScroll } from "./motion/SmoothScroll";
+import { MotionReady } from "./motion/MotionReady";
 import "../tailwind.css";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
+    <SmoothScroll>
     <BrowserRouter>
+      <NavigationLoader />
       <ScrollToTop />
+      <MotionReady />
       <Routes>
         <Route path="/" element={<ATLAWLandingPage />} />
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/our-people" element={<OurPeoplePage />} />
+        <Route path="/global-reach" element={<GlobalReachPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsOfUsePage />} />
+        <Route path="/news-insights" element={<NewsInsightsPage />} />
         <Route path="/practice-areas" element={<CapabilitiesLandingPage />} />
         <Route path="/practice-areas/business-law" element={<BusinessLawPage />} />
         <Route path="/practice-areas/personal-injury" element={<PersonalInjuryPage />} />
@@ -67,5 +81,6 @@ createRoot(document.getElementById("app") as HTMLElement).render(
       </Routes>
       <BackToTop />
     </BrowserRouter>
+    </SmoothScroll>
   </StrictMode>,
 );
