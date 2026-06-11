@@ -1,4 +1,5 @@
 import "./ServiceAreas.css";
+import { RevealText, RevealBlock, RevealStagger, DrawRule } from "../../motion/primitives";
 import { ServiceLocations } from "./ServiceLocations";
 
 export const ServiceAreas = (): JSX.Element => {
@@ -31,31 +32,30 @@ export const ServiceAreas = (): JSX.Element => {
         </div>
 
         <div className="sa-inner">
-          <div className="sa-reveal sa-top-rule" style={{ animationDelay: "0ms" }} />
+          <DrawRule origin="center" className="block sa-top-rule" />
 
-          <p className="sa-reveal sa-eyebrow" style={{ animationDelay: "80ms" }}>
+          <RevealBlock as="p" className="sa-eyebrow">
             <span className="sa-num">05</span>
             <span className="sa-dash">&mdash;</span>
             <span className="sa-label">Service Areas</span>
-          </p>
+          </RevealBlock>
 
-          <h2
-            className="sa-reveal sa-headline"
+          <RevealText
+            as="h2"
+            className="sa-headline"
             id="service-areas-title"
-            style={{ animationDelay: "180ms" }}
           >
             Where we show up<span className="sa-gold-dot">.</span>
-          </h2>
+          </RevealText>
 
-          <p className="sa-reveal sa-intro" style={{ animationDelay: "300ms" }}>
+          <RevealBlock as="p" className="sa-intro">
             A connected network of attorneys and affiliates, so the right counsel
             is never far from you.
-          </p>
+          </RevealBlock>
 
-          <div
+          <RevealStagger
             aria-label="Headquarters cities"
-            className="sa-reveal sa-hq"
-            style={{ animationDelay: "420ms" }}
+            className="sa-hq"
           >
             <span>Detroit</span>
             <span aria-hidden="true" className="sa-hq-dot">
@@ -66,12 +66,8 @@ export const ServiceAreas = (): JSX.Element => {
               &bull;
             </span>
             <span>Manila</span>
-          </div>
-          <div
-            aria-hidden="true"
-            className="sa-reveal sa-hq-rule"
-            style={{ animationDelay: "420ms" }}
-          />
+          </RevealStagger>
+          <DrawRule origin="center" className="block sa-hq-rule" />
         </div>
       </section>
 

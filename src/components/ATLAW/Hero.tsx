@@ -30,6 +30,8 @@ export const Hero = (): JSX.Element => {
         aria-hidden="true"
         alt=""
         className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover object-right"
+        decoding="async"
+        fetchPriority="high"
         src="/assets/hero/home-hero-bg.avif"
       />
       {/* Soft white wash so foreground text/portrait stay legible over the image */}
@@ -129,6 +131,8 @@ export const Hero = (): JSX.Element => {
           <img
             alt="Dewnya Bazzi, ATLAW founder and CEO"
             className="hero-fade block h-auto w-[92vw] max-w-[460px] object-contain object-bottom lg:absolute lg:bottom-0 lg:right-[clamp(16px,2vw,48px)] lg:top-auto lg:h-full lg:max-h-full lg:w-auto lg:max-w-[46vw]"
+            decoding="async"
+            fetchPriority="high"
             height={941}
             src="/assets/hero/atlaw-founder-cutout.avif"
             style={{ animationDelay: "200ms", animationDuration: "1000ms" }}

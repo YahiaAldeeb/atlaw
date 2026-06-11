@@ -1,1 +1,0 @@
-export { BioOverviewSection } from "./BioOverviewSection";

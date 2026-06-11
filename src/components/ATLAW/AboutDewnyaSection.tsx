@@ -1,3 +1,5 @@
+import { RevealText, RevealBlock, RevealStagger, RevealImage, DrawRule, Counter } from "../../motion/primitives";
+import { STAGGER } from "../../motion/config";
 
 // Subtle film grain over the bone canvas — same texture as the Hero/Capabilities so the page reads as one system.
 const grain =
@@ -46,11 +48,25 @@ const StatValue = ({ stat }: { stat: Stat }): JSX.Element => {
     );
   }
 
+  // Count up numeric stats (e.g. "100+"); leave word stats (e.g. "Detroit") plain.
+  const numericMatch = stat.main?.match(/^(\d+)(\D*)$/);
+  const className =
+    "whitespace-nowrap font-serifDisplay text-[16px] font-normal leading-[1.3] tracking-[-0.01em] text-[#0B1F3A] lg:text-[17px]";
+
+  if (numericMatch) {
+    return (
+      <Counter
+        as="p"
+        className={className}
+        style={{ fontVariationSettings: statAxes }}
+        value={Number(numericMatch[1])}
+        suffix={numericMatch[2]}
+      />
+    );
+  }
+
   return (
-    <p
-      className="whitespace-nowrap font-serifDisplay text-[16px] font-normal leading-[1.3] tracking-[-0.01em] text-[#0B1F3A] lg:text-[17px]"
-      style={{ fontVariationSettings: statAxes }}
-    >
+    <p className={className} style={{ fontVariationSettings: statAxes }}>
       {stat.main}
     </p>
   );
@@ -94,27 +110,28 @@ export const AboutDewnyaSection = (): JSX.Element => {
           {/* ── Left: editorial narrative ── */}
           <div>
             {/* Eyebrow — amber broadsheet rule + stone tracked label */}
-            <p className="flex items-center gap-3.5">
+            <RevealBlock as="p" className="flex items-center gap-3.5">
               <span aria-hidden="true" className="h-px w-[44px] shrink-0 bg-[#B88A2D]" />
               <span className="font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-[#7A7466]">
                 03 &mdash; About Dewnya + ATLAW
               </span>
-            </p>
+            </RevealBlock>
 
             {/* Headline */}
-            <h2
+            <RevealText
+              as="h2"
               className="mt-6 max-w-[620px] font-serifDisplay font-normal leading-[1.08] tracking-[-0.02em] text-[#0B1F3A] text-[clamp(42px,5vw,78px)]"
               id="about-dewnya-heading"
               style={{ fontVariationSettings: headlineAxes }}
             >
               A law firm organized around your situation<span className="text-[#B88A2D]">.</span>
-            </h2>
+            </RevealText>
 
             {/* Amber rule */}
-            <div aria-hidden="true" className="mt-9 h-px w-[56px] bg-[#B88A2D]" />
+            <DrawRule className="mt-9 block h-px w-[56px] bg-[#B88A2D]" />
 
             {/* Body copy */}
-            <div className="mt-10 max-w-[610px] space-y-7">
+            <RevealStagger className="mt-10 max-w-[610px] space-y-7">
               <p
                 className="font-serifDisplay text-[18px] leading-[1.7] tracking-[-0.005em] text-[#3A4A63] lg:text-[19px]"
                 style={{ fontVariationSettings: "'opsz' 24, 'wght' 400" }}
@@ -132,7 +149,7 @@ export const AboutDewnyaSection = (): JSX.Element => {
                 These are the matters we built the firm around. One firm. Attorneys with real depth in
                 the practice you came in for. A team that picks up the phone when you call back.
               </p>
-            </div>
+            </RevealStagger>
           </div>
 
           {/* ── Right: founder feature card ── */}
@@ -141,10 +158,11 @@ export const AboutDewnyaSection = (): JSX.Element => {
             <div className="grid grid-cols-1 items-stretch sm:grid-cols-[minmax(0,48%)_minmax(0,52%)]">
               {/* Portrait — fills the column, bottom-aligned so the hands/desk stay anchored (reused from the Hero) */}
               <div className="relative flex min-h-[360px] items-end justify-center overflow-hidden bg-[#FFFFFF] sm:min-h-[480px]">
-                <img
+                <RevealImage
                   alt="Dewnya Bazzi, ATLAW founder and CEO"
                   className="h-full w-full object-cover object-bottom"
                   src="/assets/atlaw-portrait.avif"
+                  wrapperClassName="h-full w-full"
                 />
               </div>
 
@@ -174,7 +192,7 @@ export const AboutDewnyaSection = (): JSX.Element => {
 
             {/* Bottom stat strip — 1 col → 2×2 → full 4-across only at ≥1440px (where the
                 values still fit one line). Keeps every value inside its own box. */}
-            <div className="grid grid-cols-1 gap-x-5 gap-y-7 border-t border-[#FFFFFF] px-6 py-7 min-[480px]:grid-cols-2 lg:px-9 lg:py-8 min-[1440px]:grid-cols-[0.85fr_0.9fr_1.55fr_1.4fr] min-[1440px]:gap-x-4 min-[1440px]:gap-y-0">
+            <RevealStagger className="grid grid-cols-1 gap-x-5 gap-y-7 border-t border-[#FFFFFF] px-6 py-7 min-[480px]:grid-cols-2 lg:px-9 lg:py-8 min-[1440px]:grid-cols-[0.85fr_0.9fr_1.55fr_1.4fr] min-[1440px]:gap-x-4 min-[1440px]:gap-y-0">
               {stats.map((stat, index) => (
                 <div
                   className={[
@@ -206,7 +224,7 @@ export const AboutDewnyaSection = (): JSX.Element => {
                   )}
                 </div>
               ))}
-            </div>
+            </RevealStagger>
           </article>
         </div>
       </div>
