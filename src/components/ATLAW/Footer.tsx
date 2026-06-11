@@ -1,7 +1,16 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RevealStagger, DrawRule } from "../../motion/primitives";
 import { STAGGER } from "../../motion/config";
+import {
+  practiceAreaLinks,
+  companyLinks,
+  socialLinks,
+  legalLinks,
+  MAP_URL,
+} from "../../data/footer";
+import { renderNavLink } from "./footer/navLink";
+import { PhoneIcon, MailIcon, PinIcon } from "./footer/icons";
+import { NewsletterForm } from "./footer/NewsletterForm";
 
 /* ────────────────────────────────────────────────────────────────────────────
    ATLAW global footer — dark editorial direction.
@@ -17,220 +26,6 @@ const grain =
 
 // Fraunces variable axes for the display lockup (mirrors Hero / Final CTA).
 const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
-
-type NavLink = { label: string; to: string; external?: boolean };
-
-// Footer surfaces the highest-demand practice areas only — not all 21, which
-// would flatten the hierarchy. Slugs verified against routing in src/index.tsx.
-const practiceAreaLinks: NavLink[] = [
-  { label: "Personal Injury", to: "/practice-areas/personal-injury" },
-  { label: "Auto Accidents", to: "/practice-areas/auto-accidents" },
-  { label: "Criminal Defense", to: "/practice-areas/criminal-defense" },
-  { label: "Business Law", to: "/practice-areas/business-law" },
-  { label: "Estate Planning", to: "/practice-areas/estate-planning" },
-];
-
-// Labels mirror the primary nav (Header.tsx) exactly: "Our Team" → /our-people,
-// "News & Insights" → /news-insights. Careers is intentionally dropped (no page);
-// a careers mailto lives in the sub-footer instead.
-const companyLinks: NavLink[] = [
-  { label: "About", to: "/about" },
-  { label: "Our Team", to: "/our-people" },
-  { label: "Global Reach", to: "/global-reach" },
-  { label: "News & Insights", to: "/news-insights" },
-  { label: "Contact", to: "/contact" },
-];
-
-const socialLinks: { label: string; href: string }[] = [
-  { label: "Instagram", href: "https://www.instagram.com/atlawgroup/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/at-law-group/" },
-  { label: "Facebook", href: "https://www.facebook.com/atlawgroup/" },
-];
-
-// Only the two pages that actually exist as routes (placeholder content pending).
-const legalLinks: { label: string; to: string }[] = [
-  { label: "Privacy Policy", to: "/privacy" },
-  { label: "Terms of Use", to: "/terms" },
-];
-
-const MAP_URL =
-  "https://www.google.com/maps/search/?api=1&query=3+Park+Ln+Blvd+Suite+1500%2C+Dearborn%2C+MI+48126";
-
-const navLinkClass =
-  "inline-block font-sans text-[15px] leading-[1.45] text-white/75 transition-colors duration-200 hover:text-[#B88A2D] focus-visible:outline-none focus-visible:text-[#B88A2D]";
-
-const renderNavLink = (link: NavLink): JSX.Element => {
-  if (link.external) {
-    return (
-      <a
-        href={link.to}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={navLinkClass}
-      >
-        {link.label}
-      </a>
-    );
-  }
-  return (
-    <Link to={link.to} className={navLinkClass}>
-      {link.label}
-    </Link>
-  );
-};
-
-/* ── Icons — drawn in amber to stay within the micro-accent discipline ── */
-
-const PhoneIcon = (): JSX.Element => (
-  <svg
-    aria-hidden="true"
-    className="h-[17px] w-[17px] shrink-0 text-[#B88A2D]"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      d="M3 5.5A2.5 2.5 0 015.5 3h1.4a1 1 0 01.97.757l.94 3.76a1 1 0 01-.27.96l-1.5 1.5a13 13 0 006 6l1.5-1.5a1 1 0 01.96-.27l3.76.94a1 1 0 01.76.97V18.5A2.5 2.5 0 0118.5 21h-.5C9.716 21 3 14.284 3 6v-.5z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={1.4}
-    />
-  </svg>
-);
-
-const MailIcon = ({ className = "h-[17px] w-[17px]" }: { className?: string }): JSX.Element => (
-  <svg
-    aria-hidden="true"
-    className={`${className} shrink-0`}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      d="M3 8l9 6 9-6M5 6h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={1.4}
-    />
-  </svg>
-);
-
-const PinIcon = (): JSX.Element => (
-  <svg
-    aria-hidden="true"
-    className="h-[17px] w-[17px] shrink-0 text-[#B88A2D]"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={1.4}
-    />
-    <circle cx="12" cy="9" r="2.5" strokeWidth={1.4} />
-  </svg>
-);
-
-const ArrowRight = ({ className = "" }: { className?: string }): JSX.Element => (
-  <svg
-    aria-hidden="true"
-    className={`h-[14px] w-[14px] transition-transform duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${className}`}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      d="M5 12h14M13 5l7 7-7 7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={1.5}
-    />
-  </svg>
-);
-
-// NOTE: this is a static Vite/React-Router SPA — there is no backend or
-// serverless function, so there is no real subscribe endpoint to POST to and
-// no email provider is configured. Rather than fake a "you're on the list"
-// success state, we validate the address client-side and then tell the visitor
-// the honest status, pointing them at a real inbox. Wire a provider here when
-// one exists (e.g. POST to a hosted form/Mailchimp endpoint) and swap the
-// "notice" branch for genuine loading/success/error handling.
-const NewsletterForm = (): JSX.Element => {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "invalid" | "notice">("idle");
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const value = email.trim();
-    if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-      setStatus("invalid");
-      return;
-    }
-    setStatus("notice");
-  };
-
-  const describedBy = status === "idle" ? undefined : "newsletter-status";
-
-  return (
-    <form onSubmit={handleSubmit} className="w-full" aria-label="Newsletter signup">
-      <label htmlFor="newsletter-email" className="sr-only">
-        Email address
-      </label>
-      <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-stretch sm:gap-3">
-        <input
-          id="newsletter-email"
-          type="email"
-          name="email"
-          required
-          autoComplete="email"
-          placeholder="Email address"
-          value={email}
-          aria-invalid={status === "invalid"}
-          aria-describedby={describedBy}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            if (status !== "idle") setStatus("idle");
-          }}
-          className="h-[54px] w-full rounded-full border border-white/25 bg-white/10 px-6 font-sans text-[15px] text-white placeholder:text-white/50 outline-none transition focus:border-[#B88A2D] focus:ring-2 focus:ring-[#B88A2D]/30 sm:w-[260px] lg:w-[280px]"
-        />
-        <button
-          type="submit"
-          className="group inline-flex h-[54px] shrink-0 items-center justify-center rounded-full bg-white px-8 font-sans text-[15px] font-medium text-[#0B1F3A] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#FFFFFF] hover:shadow-[0_8px_24px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A]"
-        >
-          Subscribe
-          <ArrowRight className="ml-2 group-hover:translate-x-1" />
-        </button>
-      </div>
-
-      <p
-        id="newsletter-status"
-        role="status"
-        aria-live="polite"
-        className={`mt-2.5 text-[13px] leading-[1.5] transition ${
-          status === "idle" ? "h-0 overflow-hidden opacity-0" : "opacity-100"
-        } ${status === "invalid" ? "text-[#F2A3A9]" : ""} ${
-          status === "notice" ? "text-white/75" : ""
-        }`}
-      >
-        {status === "invalid" && "Please enter a valid email address."}
-        {status === "notice" && (
-          <>
-            Subscriptions are launching soon — email us at{" "}
-            <a
-              href="mailto:info@atlawgroup.com"
-              className="font-medium text-[#B88A2D] underline underline-offset-2 transition hover:text-white"
-            >
-              info@atlawgroup.com
-            </a>
-            .
-          </>
-        )}
-      </p>
-    </form>
-  );
-};
 
 export const Footer = (): JSX.Element => {
   const year = new Date().getFullYear();
