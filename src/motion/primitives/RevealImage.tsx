@@ -58,7 +58,9 @@ export const RevealImage = ({
       style={{ overflow: "hidden", ...wrapperStyle }}
     >
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <img ref={imgRef} className={className} {...imgProps} />
+      {/* Reveal images are below-fold by definition; default to lazy/async
+          decode (callers can override via imgProps). */}
+      <img ref={imgRef} loading="lazy" decoding="async" className={className} {...imgProps} />
     </div>
   );
 };

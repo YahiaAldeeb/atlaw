@@ -8,6 +8,12 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<!-- Preload the two above-the-fold font weights (self-hosted, latin) -->
+<link rel="preload" as="font" type="font/woff2" href="/fonts/mulish-latin-var.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="/fonts/lustria-latin-400.woff2" crossorigin />
+<!-- Preload the home hero LCP images so they start downloading before the JS boots -->
+<link rel="preload" as="image" href="/assets/hero/home-hero-bg.avif" type="image/avif" fetchpriority="high" />
+<link rel="preload" as="image" href="/assets/hero/atlaw-founder-cutout.avif" type="image/avif" />
 <link href="tailwind.css" rel="stylesheet" />
 </head>
 <body>
