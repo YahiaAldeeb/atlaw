@@ -5,4 +5,3 @@ export { DrawRule } from "./DrawRule";
 export { Counter } from "./Counter";
 export { Parallax } from "./Parallax";
 export { RevealImage } from "./RevealImage";
-export { MagneticButton } from "./MagneticButton";

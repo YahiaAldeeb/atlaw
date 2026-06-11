@@ -105,5 +105,3 @@ export const NavigationLoader = (): JSX.Element | null => {
     </div>
   );
 };
-
-export default NavigationLoader;
