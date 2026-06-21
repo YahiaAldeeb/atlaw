@@ -26,8 +26,8 @@ import { FounderSection, HowWeWorkSection, PracticeAreasSection } from "./about/
 
 // Intake + key destinations (real, not placeholder — verified against Footer / Hero).
 const TYPEFORM = "https://j098jiq3pk7.typeform.com/to/Mslg7Y7f";
-const PRACTICE_AREAS = "/practice-areas";
-const OUR_PEOPLE = "/our-people";
+const PRACTICE_AREAS = "/personal-injury";
+const OUR_PEOPLE = "/team";
 const EMAIL = "info@atlawgroup.com";
 const PHONE_DISPLAY = "(313) 406-7606";
 const PHONE_HREF = "tel:+13134067606";

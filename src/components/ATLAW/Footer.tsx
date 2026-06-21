@@ -90,8 +90,8 @@ export const Footer = (): JSX.Element => {
             </Link>
             <DrawRule className="mt-5 block h-px w-14 bg-[#B88A2D]/70" origin="left" />
             <p className="mt-6 max-w-[340px] font-sans text-[14.5px] leading-[1.65] text-white/75">
-              A Detroit-founded law firm for serious legal matters. We connect every
-              client with the right attorney for the issue in front of them.
+              Dearborn's personal injury law firm. We fight for the injured and
+              hold negligent parties accountable — because your recovery matters.
             </p>
           </div>
 
