@@ -32,7 +32,7 @@ export const IntakeFormSection = (): JSX.Element => {
         aria-hidden="true"
         alt=""
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20"
-        src="/assets/dewnya-intake-bg.avif"
+        src="/assets/dewnya/dewnya-navy-pinstripe.avif"
       />
 
       <div

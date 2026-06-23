@@ -29,7 +29,7 @@ export const Hero = (): JSX.Element => {
         className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover object-center"
         decoding="async"
         fetchPriority="high"
-        src="/assets/hero/office-hero-bg.jpg"
+        src="/assets/office/office-reception-desk.avif"
       />
       <div
         aria-hidden="true"
@@ -107,7 +107,7 @@ export const Hero = (): JSX.Element => {
             decoding="async"
             fetchPriority="high"
             height={941}
-            src="/assets/atlaw-portrait.png"
+            src="/assets/hero/dewnya-founder-cutout.avif"
             style={{ animationDelay: "200ms", animationDuration: "1000ms" }}
             width={1037}
           />

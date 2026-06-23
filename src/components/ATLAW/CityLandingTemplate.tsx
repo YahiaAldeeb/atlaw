@@ -606,7 +606,7 @@ const IntakeFormSection = () => (
       alt=""
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20"
-      src="/assets/dewnya-intake-bg.avif"
+      src="/assets/dewnya/dewnya-navy-pinstripe.avif"
     />
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1b33] via-[rgba(14,27,51,0.92)] to-[rgba(14,27,51,0.6)]" />
     <Grain opacity="0.05" />

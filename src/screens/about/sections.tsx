@@ -89,7 +89,7 @@ export const FounderFeatureSection = (): JSX.Element => {
                 className="block h-auto w-full object-cover"
                 height={1000}
                 loading="lazy"
-                src="/assets/team/dewnya-creative-1.avif"
+                src="/assets/dewnya/dewnya-chair-portrait.avif"
                 width={800}
               />
             </div>
@@ -317,7 +317,7 @@ export const InlineIntakeCta = (): JSX.Element => (
       aria-hidden="true"
       alt=""
       className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20"
-      src="/assets/dewnya-intake-bg.avif"
+      src="/assets/dewnya/dewnya-navy-pinstripe.avif"
     />
     <div
       aria-hidden="true"

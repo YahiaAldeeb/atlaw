@@ -171,7 +171,7 @@ export const AboutDewnyaSection = (): JSX.Element => {
             <RevealImage
               alt="Dewnya Bazzi, ATLAW founder and CEO"
               className="h-auto w-full rounded-[24px] object-cover object-top"
-              src="/assets/dewnya-creative.jpg"
+              src="/assets/dewnya/dewnya-seated-desk.avif"
               wrapperClassName="w-full overflow-hidden rounded-[24px] shadow-[0_18px_48px_rgba(11,31,58,0.12)]"
             />
           </div>

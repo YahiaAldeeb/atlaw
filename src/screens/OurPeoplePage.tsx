@@ -161,7 +161,7 @@ export const OurPeoplePage = (): JSX.Element => {
                     alt="Dewnya Bazzi, Founder & CEO of ATLAW"
                     className="h-full min-h-[320px] w-full object-cover object-top lg:min-h-[480px]"
                     loading="lazy"
-                    src="/assets/team/dewnya-creative-2.avif"
+                    src="/assets/dewnya/dewnya-standing-black.avif"
                   />
                 </div>
               </div>

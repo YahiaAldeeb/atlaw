@@ -207,9 +207,41 @@
   - Every page has unique `<title>` and meta description — no duplicates
   - Zero build errors
 
+- [x] Implement Spec 08 — Photo & Asset Integration (June 23, 2026)
+  - Dewnya Creative Shots: 5 selected from 18, converted to AVIF, placed in `public/assets/dewnya/`
+    - dewnya-standing-black (IMG_5303) — full-body black suit, hero/featured
+    - dewnya-seated-desk (IMG_5341) — warm approachable desk shot, about section
+    - dewnya-chair-portrait (IMG_5377) — white suit chair portrait, founder feature
+    - dewnya-navy-pinstripe (IMG_5585) — navy close-up, intake backgrounds
+    - dewnya-merch-branded (IMG_5633) — ATLAW merch shop, brand imagery
+  - Office Photos: 6 selected from 24, converted to AVIF, placed in `public/assets/office/`
+    - office-entrance-sign (DSC06554) — AT LAW GROUP entrance sign
+    - office-case-posters (DSC06558) — client case story posters
+    - office-tagline-poster (DSC06562) — "If it's law, it's ATLAW" poster
+    - office-reception-entry (DSC06572) — reception through glass doors
+    - office-reception-desk (DSC06574) — reception desk with 3D ATLAW letters
+    - office-lounge-area (DSC06576) — client lounge with case posters
+  - Corporate Portrait: Dewnya Bazzi white-bg cutout → `hero/dewnya-corporate-cutout.avif` + `dewnya/dewnya-corporate-portrait.avif`
+  - Team additions: nehme-bazzi.avif, team-composite-2026.avif, group-shot-hero.avif
+  - Image replacements:
+    - Hero cutout: `atlaw-portrait.png` → `hero/dewnya-corporate-cutout.avif` (real corporate portrait)
+    - Hero background: `hero/office-hero-bg.jpg` → `office/office-reception-desk.avif` (real office)
+    - About Dewnya: `dewnya-creative.jpg` → `dewnya/dewnya-seated-desk.avif`
+    - Intake backgrounds (5 files): `dewnya-intake-bg.avif` → `dewnya/dewnya-navy-pinstripe.avif`
+    - About founder: `team/dewnya-creative-1.avif` → `dewnya/dewnya-chair-portrait.avif`
+    - Team page founder: `team/dewnya-creative-2.avif` → `dewnya/dewnya-standing-black.avif`
+    - Contact office: `team/group-shot.avif` → `office/office-reception-desk.avif`
+  - LCP hero images preloaded in `index.html` (updated to new paths)
+  - All images AVIF format, quality 75-80, max 1920px wide (heroes) / 800px (portraits)
+  - Conversion script: `scripts/convert-photos.mjs`
+  - Originals untouched in `Website Materials/`
+  - Team headshots already done in Spec 05 — kept as-is
+  - Existing SVG logos kept per spec (no updated versions from client)
+  - No broken image links — all 12 code references verified against actual files
+  - Zero TypeScript errors, zero build errors
+
 ### Next — Implementation Order
 
-8. **Spec 08 — Photo Assets** — Convert and integrate photos.
 9. **Spec 09 — Legal Compliance** — Disclaimers, privacy, terms.
 
 ### Open Questions

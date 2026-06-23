@@ -106,7 +106,7 @@ const ContactHero = () => (
       aria-hidden="true"
       alt=""
       className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20"
-      src="/assets/dewnya-intake-bg.avif"
+      src="/assets/dewnya/dewnya-navy-pinstripe.avif"
     />
     <div
       aria-hidden="true"
@@ -424,7 +424,7 @@ const OfficeLocation = () => (
             alt="ATLAW Group office in Dearborn, Michigan"
             className="mb-8 h-auto w-full rounded-[16px] object-cover shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
             loading="lazy"
-            src="/assets/team/group-shot.avif"
+            src="/assets/office/office-reception-desk.avif"
           />
 
           <address className="not-italic">
@@ -622,7 +622,7 @@ const IntakeCTA = () => (
         aria-hidden="true"
         alt=""
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-15"
-        src="/assets/dewnya-intake-bg.avif"
+        src="/assets/dewnya/dewnya-navy-pinstripe.avif"
       />
       <div
         aria-hidden="true"
