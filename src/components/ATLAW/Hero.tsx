@@ -1,8 +1,6 @@
-// Subtle film grain over the cream canvas — keeps the background from feeling digital/flat.
 const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
-// Fraunces variable axes for the display lockup.
 const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
 
 const ArrowRight = ({ className = "" }: { className?: string }) => (
@@ -24,43 +22,37 @@ const ArrowRight = ({ className = "" }: { className?: string }) => (
 
 export const Hero = (): JSX.Element => {
   return (
-    <section className="relative isolate w-full overflow-hidden bg-[#FFFFFF] lg:h-[clamp(620px,82vh,820px)]">
-      {/* Editorial background — sunlit library with ghost "A" watermark */}
+    <section className="relative isolate w-full overflow-hidden bg-[#0e1b33] lg:h-[clamp(620px,82vh,820px)]">
       <img
         aria-hidden="true"
         alt=""
-        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover object-right"
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover object-center"
         decoding="async"
         fetchPriority="high"
-        src="/assets/hero/home-hero-bg.avif"
+        src="/assets/hero/office-hero-bg.jpg"
       />
-      {/* Soft white wash so foreground text/portrait stay legible over the image */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#FFFFFF] via-[rgba(255,255,255,0.82)] to-[rgba(255,255,255,0.45)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[rgba(10,20,40,0.92)] via-[rgba(14,27,51,0.82)] to-[rgba(14,27,51,0.55)]"
       />
 
-      {/* Cream-grain texture */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-multiply"
+        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
         style={{ backgroundImage: grain }}
       />
 
       <div className="relative flex w-full flex-col lg:h-full lg:flex-row">
-        {/* ── Left column: editorial text block ── */}
-        <div className="relative z-20 flex flex-col px-6 pb-14 pt-12 sm:px-10 lg:basis-[55%] lg:max-w-[55%] lg:pb-[clamp(32px,4vh,64px)] lg:pl-[clamp(48px,7vw,160px)] lg:pr-[clamp(24px,3vw,72px)] lg:pt-[clamp(48px,6vh,96px)]">
-          {/* Eyebrow */}
+        <div className="relative z-20 flex flex-col justify-center px-6 pb-14 pt-12 sm:px-10 lg:basis-[55%] lg:max-w-[55%] lg:pb-[clamp(32px,4vh,64px)] lg:pl-[clamp(48px,7vw,160px)] lg:pr-[clamp(24px,3vw,72px)] lg:pt-[clamp(48px,6vh,96px)]">
           <p className="flex items-center gap-4">
             <span aria-hidden="true" className="h-px w-[72px] shrink-0 bg-[#C6A04A]" />
-            <span className="font-sans text-[12px] font-medium uppercase tracking-[0.24em] text-[#3A4A5E]">
-              Detroit. National network. Founded by Dewnya Bazzi.
+            <span className="font-sans text-[12px] font-medium uppercase tracking-[0.24em] text-[rgba(255,255,255,0.7)]">
+              Dearborn Personal Injury Attorneys
             </span>
           </p>
 
-          {/* Headline lockup */}
           <h1
-            className="mt-8 font-serifDisplay leading-[0.92] tracking-[-0.02em] text-[#0E1B2C] lg:mt-10"
+            className="mt-8 font-serifDisplay leading-[0.92] tracking-[-0.02em] text-white lg:mt-10"
             style={{ fontVariationSettings: headlineAxes }}
           >
             <span
@@ -81,63 +73,90 @@ export const Hero = (): JSX.Element => {
             </span>
           </h1>
 
-          {/* Body + CTAs + reassurance fade in together */}
-          <div className="hero-fade" style={{ animationDelay: "800ms" }}>
-            <p
-              className="mt-8 max-w-[640px] font-serifDisplay text-[18px] leading-[1.55] tracking-[-0.005em] text-[#3A4A5E] lg:mt-9 lg:text-[19px]"
-              style={{ fontVariationSettings: "'opsz' 36, 'wght' 400" }}
-            >
-              ATLAW represents individuals, families, and businesses across injury,
-              criminal, business, estate, tax, and immigration matters. We connect
-              every client with the right attorney for the issue in front of them.
-            </p>
+          <p
+            className="hero-rise mt-4 font-serifDisplay text-[clamp(18px,2.5vw,24px)] leading-[1.4] tracking-[-0.005em] text-[rgba(255,255,255,0.85)]"
+            style={{ animationDelay: "160ms", fontVariationSettings: "'opsz' 36, 'wght' 400" }}
+          >
+            You focus on healing. We focus on fighting for you.
+          </p>
 
-            {/* CTA pair */}
+          <div className="hero-fade" style={{ animationDelay: "800ms" }}>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center lg:mt-9">
               <a
-                className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full bg-[#0E1B2C] px-8 font-sans text-[15px] font-medium text-white transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#16263B] hover:shadow-[0_8px_24px_rgba(14,27,44,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF] lg:h-[60px] lg:px-9"
+                className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full bg-[#C6A04A] px-8 font-sans text-[15px] font-semibold uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#d4a94f] hover:shadow-[0_8px_24px_rgba(198,160,74,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e1b33] lg:h-[60px] lg:px-9"
                 href="https://j098jiq3pk7.typeform.com/to/Mslg7Y7f"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Talk to a lawyer
-                <ArrowRight className="group-hover:translate-x-1" />
-              </a>
-              <a
-                className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full border border-[rgba(14,27,44,0.35)] bg-transparent px-8 font-sans text-[15px] font-medium text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[#0E1B2C] hover:bg-[#0E1B2C] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF] lg:h-[60px] lg:px-9"
-                href="#capabilities"
-              >
-                See what we do
+                Start Your Free Case Review
                 <ArrowRight className="group-hover:translate-x-1" />
               </a>
             </div>
 
-            {/* Reassurance */}
-            <p className="mt-6 flex items-center gap-2.5 font-serifDisplay text-[15px] italic text-[#3A4A5E] lg:mt-7 lg:text-[16px]">
+            <p className="mt-6 flex items-center gap-2.5 font-sans text-[14px] font-medium uppercase tracking-[0.08em] text-[rgba(255,255,255,0.55)] lg:mt-7 lg:text-[15px]">
               <span aria-hidden="true" className="h-[6px] w-[6px] shrink-0 rounded-full bg-[#C6A04A]" />
-              30-minute first call. Free. No pressure to hire us.
+              No fees unless we win
             </p>
           </div>
         </div>
 
-        {/* ── Right column: founder portrait ── */}
         <div className="relative z-10 flex flex-1 items-end justify-center lg:basis-[45%]">
-          {/* Subtle vertical divider — anchored to ~55% of the hero on desktop */}
-          <div
-            aria-hidden="true"
-            className="absolute left-0 top-[60px] bottom-[40px] hidden w-px bg-[rgba(14,27,44,0.12)] lg:block"
-          />
-
           <img
             alt="Dewnya Bazzi, ATLAW founder and CEO"
             className="hero-fade block h-auto w-[92vw] max-w-[460px] object-contain object-bottom lg:absolute lg:bottom-0 lg:right-[clamp(16px,2vw,48px)] lg:top-auto lg:h-full lg:max-h-full lg:w-auto lg:max-w-[46vw]"
             decoding="async"
             fetchPriority="high"
             height={941}
-            src="/assets/hero/atlaw-founder-cutout.avif"
+            src="/assets/atlaw-portrait.png"
             style={{ animationDelay: "200ms", animationDuration: "1000ms" }}
             width={1037}
           />
+        </div>
+      </div>
+
+      <div className="hero-fade relative z-20 border-t border-[rgba(255,255,255,0.1)] bg-[rgba(10,20,40,0.5)]" style={{ animationDelay: "1000ms" }}>
+        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-center gap-x-8 gap-y-3 px-6 py-5 sm:px-10 lg:gap-x-12 lg:px-20">
+          <div className="flex flex-col items-center">
+            <span className="font-serifDisplay text-[28px] font-normal leading-none tracking-[-0.02em] text-white sm:text-[32px]">
+              2013
+            </span>
+            <span className="mt-1 font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-white/40 sm:text-[10px]">
+              Founded
+            </span>
+          </div>
+
+          <span aria-hidden="true" className="hidden h-8 w-px bg-white/15 sm:block" />
+
+          <div className="flex flex-col items-center">
+            <span className="font-serifDisplay text-[28px] font-normal leading-none tracking-[-0.02em] text-[#C6A04A] sm:text-[32px]">
+              10.0
+            </span>
+            <span className="mt-1 font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-white/40 sm:text-[10px]">
+              Avvo Rating
+            </span>
+          </div>
+
+          <span aria-hidden="true" className="hidden h-8 w-px bg-white/15 sm:block" />
+
+          <div className="flex flex-col items-center">
+            <span className="font-serifDisplay text-[28px] font-normal leading-none tracking-[-0.02em] text-white sm:text-[32px]">
+              3<span className="text-[20px] text-white/60 sm:text-[22px]">×</span>
+            </span>
+            <span className="mt-1 font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-white/40 sm:text-[10px]">
+              Super Lawyers
+            </span>
+          </div>
+
+          <span aria-hidden="true" className="hidden h-8 w-px bg-white/15 sm:block" />
+
+          <div className="flex flex-col items-center">
+            <span className="font-sans text-[12px] font-bold uppercase tracking-[0.14em] text-[#C6A04A] sm:text-[13px]">
+              Top 10
+            </span>
+            <span className="mt-1 font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-white/40 sm:text-[10px]">
+              Under 40
+            </span>
+          </div>
         </div>
       </div>
     </section>

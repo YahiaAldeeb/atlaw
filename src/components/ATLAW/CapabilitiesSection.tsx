@@ -1,206 +1,228 @@
-import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { RevealText, RevealBlock, RevealStagger } from "../../motion/primitives";
 import { STAGGER } from "../../motion/config";
 
-const toSlug = (value: string): string =>
-  value
-    .toLowerCase()
-    .replace(/['‘’]/g, "")
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-
-// Subtle film grain over the bone canvas — matches the Hero so the section reads as one system.
 const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
-// Fraunces variable axes — large editorial headline (mirrors the Hero lockup).
 const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
-// Lighter optical size for the smaller card titles.
-const cardTitleAxes = "'opsz' 48, 'wght' 400, 'SOFT' 0, 'WONK' 0";
 
-type Variant = "light" | "dark";
+const ArrowRight = ({ className = "" }: { className?: string }) => (
+  <svg
+    aria-hidden="true"
+    className={`h-[14px] w-[14px] transition-transform duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${className}`}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M5 12h14M13 5l7 7-7 7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+    />
+  </svg>
+);
 
-type Capability = {
-  number: string;
-  label: string;
+type CaseType = {
   title: string;
-  body: string;
-  keyAreas: string[];
-  variant: Variant;
+  description: string;
+  href: string;
+  icon: JSX.Element;
 };
 
-// Single source of truth for the section's content — edit copy here, not in the markup.
-const capabilities: Capability[] = [
+const iconClass = "h-10 w-10 stroke-[#B88A2D] fill-none";
+
+const caseTypes: CaseType[] = [
   {
-    number: "01",
-    label: "RECOVER",
-    title: "For people hurt in accidents, collisions, medical errors, or on the job.",
-    body: "We handle the insurance carriers and the recovery process so you don’t have to do both.",
-    keyAreas: [
-      "Personal Injury",
-      "Auto Accidents",
-      "Medical Malpractice",
-      "Workers’ Compensation",
-      "Wrongful Death",
-    ],
-    variant: "light",
+    title: "Auto Accidents",
+    description:
+      "Car crashes, truck collisions, rideshare accidents, and hit-and-runs. We fight the insurance companies so you can focus on recovering.",
+    href: "/personal-injury/auto-accidents",
+    icon: (
+      <svg className={iconClass} viewBox="0 0 40 40" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+        <rect x="6" y="16" width="28" height="12" rx="3" />
+        <path d="M10 16l3-7h14l3 7" />
+        <circle cx="12" cy="28" r="3" />
+        <circle cx="28" cy="28" r="3" />
+        <line x1="14" y1="22" x2="26" y2="22" />
+      </svg>
+    ),
   },
   {
-    number: "02",
-    label: "BUILD",
-    title: "For founders, owners, and investors.",
-    body: "Legal work for decisions that need to hold up later, not just close today.",
-    keyAreas: ["Business Law", "Franchising", "M&A", "Securities", "Contracts", "Intellectual Property"],
-    variant: "dark",
+    title: "Medical Malpractice",
+    description:
+      "Surgical errors, misdiagnosis, birth injuries, and medication mistakes. Holding healthcare providers accountable when they fall short.",
+    href: "/personal-injury/medical-malpractice",
+    icon: (
+      <svg className={iconClass} viewBox="0 0 40 40" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="20" cy="14" r="8" />
+        <path d="M20 10v8M16 14h8" />
+        <path d="M14 22l-2 12h16l-2-12" />
+      </svg>
+    ),
   },
   {
-    number: "03",
-    label: "PROTECT",
-    title: "For families planning ahead or sorting out a dispute.",
-    body: "Estate plans, trusts, and the disputes that show up around a will, trust, or piece of property.",
-    keyAreas: ["Estate Planning", "Trust Litigation", "Real Estate", "Tax", "Immigration"],
-    variant: "light",
+    title: "Wrongful Death",
+    description:
+      "When negligence takes a life, families deserve justice and financial security. We pursue full compensation for your loss.",
+    href: "/personal-injury/wrongful-death",
+    icon: (
+      <svg className={iconClass} viewBox="0 0 40 40" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 6v20" />
+        <path d="M14 12h12" />
+        <path d="M12 26h16" />
+        <path d="M16 26v8" />
+        <path d="M24 26v8" />
+        <path d="M10 34h20" />
+      </svg>
+    ),
   },
   {
-    number: "04",
-    label: "DEFEND",
-    title: "For clients facing criminal charges, a DUI, or a federal investigation.",
-    body: "A quiet, fast response, with a defense built from the first phone call.",
-    keyAreas: ["Criminal Defense", "DUI", "Federal Criminal", "White-Collar", "Civil Litigation"],
-    variant: "light",
+    title: "Premises Liability",
+    description:
+      "Slip-and-fall injuries, unsafe conditions, inadequate security, and building code violations. Property owners owe you a duty of care.",
+    href: "/personal-injury/premises-liability",
+    icon: (
+      <svg className={iconClass} viewBox="0 0 40 40" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 36h28" />
+        <path d="M10 36V18l10-12 10 12v18" />
+        <rect x="17" y="24" width="6" height="12" />
+        <rect x="13" y="18" width="4" height="4" />
+        <rect x="23" y="18" width="4" height="4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Dog Bite Injuries",
+    description:
+      "Michigan's strict liability law holds dog owners responsible. We help you recover medical costs, lost wages, and damages for scarring.",
+    href: "/personal-injury/dog-bites",
+    icon: (
+      <svg className={iconClass} viewBox="0 0 40 40" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8 12c0-3 2-6 5-6s4 3 4 6" />
+        <path d="M32 12c0-3-2-6-5-6s-4 3-4 6" />
+        <ellipse cx="20" cy="22" rx="12" ry="10" />
+        <circle cx="16" cy="20" r="1.5" fill="#B88A2D" stroke="none" />
+        <circle cx="24" cy="20" r="1.5" fill="#B88A2D" stroke="none" />
+        <ellipse cx="20" cy="25" rx="3" ry="2" />
+        <path d="M14 32l-2 4M26 32l2 4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Workers' Compensation",
+    description:
+      "Workplace injuries, repetitive stress, toxic exposure, and on-the-job accidents. Get the benefits and compensation you're owed.",
+    href: "/personal-injury/workers-compensation",
+    icon: (
+      <svg className={iconClass} viewBox="0 0 40 40" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 6h8v6h-8z" />
+        <circle cx="20" cy="6" r="0" />
+        <path d="M14 12h12l2 22H12z" />
+        <path d="M20 18v8M16 22h8" />
+        <path d="M10 16l-4 2M30 16l4 2" />
+      </svg>
+    ),
   },
 ];
 
-const CapabilityCard = ({ item }: { item: Capability }): JSX.Element => {
-  // All cards render white on the navy section so the row reads as one clean set.
-  const cardClasses =
-    "border-[#FFFFFF] bg-white shadow-[0_10px_30px_rgba(5,15,28,0.18)] hover:border-[#FFFFFF] hover:shadow-[0_18px_42px_rgba(5,15,28,0.30)]";
+const CaseCard = ({ item }: { item: CaseType }): JSX.Element => (
+  <Link
+    to={item.href}
+    className="group flex h-full flex-col rounded-[24px] border border-[rgba(11,31,58,0.08)] bg-white p-6 shadow-[0_4px_20px_rgba(11,31,58,0.06)] transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px] hover:shadow-[0_12px_36px_rgba(11,31,58,0.12)] sm:p-7 lg:p-8"
+  >
+    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F7F7F5]">
+      {item.icon}
+    </div>
 
-  const titleColor = "text-[#0B1F3A]";
-  const bodyColor = "text-[#3A4A63]";
-  const dividerColor = "bg-[#FFFFFF]";
-  const keyAreaColor = "text-[#3A4A63]";
+    <h3 className="mt-5 font-serifDisplay text-[20px] font-normal leading-[1.18] tracking-[-0.015em] text-[#0B1F3A] lg:text-[22px]">
+      {item.title}
+    </h3>
 
-  return (
-    <article
-      className={`group flex h-full flex-col rounded-[24px] border p-6 transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px] sm:p-7 lg:min-h-[420px] lg:p-8 ${cardClasses}`}
-    >
-      {/* 1 — tracked uppercase label (amber on both variants) */}
-      <p className="font-sans text-[11.5px] font-semibold uppercase leading-none tracking-[0.2em] text-[#B88A2D]">
-        {item.number} &mdash; {item.label}
-      </p>
+    <p className="mt-3 font-sans text-[14px] leading-[1.6] text-[#3A4A63]">
+      {item.description}
+    </p>
 
-      {/* 2 — serif title */}
-      <h3
-        className={`mt-5 font-serifDisplay text-[21px] font-normal leading-[1.18] tracking-[-0.015em] lg:text-[23px] ${titleColor}`}
-        style={{ fontVariationSettings: cardTitleAxes }}
-      >
-        {item.title}
-      </h3>
-
-      {/* 3 — supporting body */}
-      <p className={`mt-4 font-sans text-[14px] leading-[1.55] ${bodyColor}`}>{item.body}</p>
-
-      {/* 4–6 — divider + KEY AREAS pinned to the bottom so all four align across the row */}
-      <div className="mt-auto pt-6">
-        <div className={`h-px w-full ${dividerColor}`} />
-
-        <p className="mt-6 font-sans text-[10.5px] font-semibold uppercase leading-none tracking-[0.22em] text-[#B88A2D]">
-          Key Areas
-        </p>
-
-        <p
-          className={`mt-3.5 flex flex-wrap items-center gap-x-2 gap-y-1.5 font-sans text-[12.5px] leading-[1.65] ${keyAreaColor}`}
-        >
-          {item.keyAreas.map((area, index) => (
-            <Fragment key={area}>
-              {index > 0 && (
-                <span aria-hidden="true" className="text-[#B88A2D]">
-                  &middot;
-                </span>
-              )}
-              <Link
-                className="rounded-sm underline-offset-[3px] transition-colors duration-150 hover:text-[#0B1F3A] hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                to={`/practice-areas/${toSlug(area)}`}
-              >
-                {area}
-              </Link>
-            </Fragment>
-          ))}
-        </p>
-      </div>
-    </article>
-  );
-};
+    <div className="mt-auto pt-6">
+      <span className="inline-flex items-center gap-2 font-sans text-[13px] font-medium uppercase tracking-[0.06em] text-[#B88A2D] transition-colors duration-150 group-hover:text-[#0B1F3A]">
+        Learn more
+        <ArrowRight className="group-hover:translate-x-1" />
+      </span>
+    </div>
+  </Link>
+);
 
 export const CapabilitiesSection = (): JSX.Element => {
   return (
     <section
       aria-labelledby="capabilities-heading"
-      className="relative isolate w-full overflow-hidden bg-[linear-gradient(180deg,#0e1b33_0%,#0a1428_100%)] scroll-mt-[72px] lg:scroll-mt-[88px]"
+      className="relative isolate w-full overflow-hidden bg-[#F7F7F5] scroll-mt-[72px] lg:scroll-mt-[88px]"
       id="capabilities"
     >
-      {/* 3% grain overlay — same texture as the Hero canvas */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-multiply"
         style={{ backgroundImage: grain }}
       />
 
-      {/* Decorative background: ghost "ATLAW" wordmark + faint curved linework (behind content) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 select-none overflow-hidden">
         <svg
-          className="absolute inset-0 h-full w-full opacity-[0.06]"
+          className="absolute inset-0 h-full w-full opacity-[0.05]"
           fill="none"
           preserveAspectRatio="xMidYMid slice"
           viewBox="0 0 1440 900"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g stroke="#FFFFFF" strokeWidth="1">
+          <g stroke="#0B1F3A" strokeWidth="1">
             <path d="M-50 230 Q 380 90 840 250 T 1500 210" />
             <path d="M-50 410 Q 440 270 920 410 T 1500 380" />
-            <path d="M-50 690 Q 460 560 940 690 T 1500 660" />
           </g>
         </svg>
 
-        <span className="absolute left-1/2 top-[40%] hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[34vw] font-normal uppercase leading-none tracking-[-0.05em] text-[#FFFFFF] opacity-[0.018] md:block">
+        <span className="absolute left-1/2 top-[40%] hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay text-[34vw] font-normal uppercase leading-none tracking-[-0.05em] text-[#0B1F3A] opacity-[0.015] md:block">
           ATLAW
         </span>
       </div>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-20 pt-20 sm:px-10 md:pb-24 md:pt-28 lg:px-20 lg:pb-[120px] lg:pt-[140px]">
-        {/* ── Centered editorial header ── */}
         <header className="mx-auto flex flex-col items-center text-center">
           <RevealBlock as="p" className="font-sans text-[12px] font-semibold uppercase leading-none tracking-[0.22em] text-[#B88A2D]">
-            01 &mdash; PRACTICE AREAS
+            Practice Areas
           </RevealBlock>
 
           <RevealText
             as="h2"
-            className="mt-5 max-w-full whitespace-nowrap font-serifDisplay font-normal leading-[1.02] tracking-[-0.03em] text-[#FFFFFF] text-[clamp(22px,4.3vw,58px)]"
+            className="mt-5 font-serifDisplay font-normal leading-[1.06] tracking-[-0.02em] text-[#0B1F3A] text-[clamp(32px,5vw,58px)]"
             id="capabilities-heading"
             style={{ fontVariationSettings: headlineAxes }}
           >
-            What we do, by what brought you in<span className="text-[#B88A2D]">.</span>
+            Types of Injury Cases We Handle<span className="text-[#B88A2D]">.</span>
           </RevealText>
 
-          <RevealBlock as="p" className="mt-7 max-w-[760px] font-sans text-[18px] leading-[1.6] text-[rgba(244,239,230,0.80)] lg:text-[19px]">
-            Legal problems rarely arrive in one category. We help you figure out where yours sits and
-            what to do about it.
+          <RevealBlock as="p" className="mt-7 max-w-[680px] font-sans text-[18px] leading-[1.6] text-[#3A4A63] lg:text-[19px]">
+            From car accidents to workplace injuries, we fight for maximum recovery so you can focus on healing.
           </RevealBlock>
         </header>
 
-        {/* ── Card row: 1 col mobile · 2 col tablet · 4 col desktop ── */}
         <RevealStagger
           amount={STAGGER.grid}
-          className="mt-14 grid grid-cols-1 items-stretch gap-4 md:mt-16 md:grid-cols-2 lg:mt-[64px] lg:gap-5 xl:grid-cols-4"
+          className="mt-14 grid grid-cols-1 items-stretch gap-5 md:mt-16 md:grid-cols-2 lg:mt-[64px] lg:gap-6 xl:grid-cols-3"
         >
-          {capabilities.map((item) => (
-            <CapabilityCard item={item} key={item.label} />
+          {caseTypes.map((item) => (
+            <CaseCard item={item} key={item.title} />
           ))}
         </RevealStagger>
+
+        <RevealBlock className="mt-14 flex justify-center lg:mt-16">
+          <Link
+            className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full border border-[rgba(11,31,58,0.35)] bg-transparent px-8 font-sans text-[15px] font-medium text-[#0B1F3A] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[#0B1F3A] hover:bg-[#0B1F3A] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F7F5] lg:h-[60px] lg:px-9"
+            to="/personal-injury"
+          >
+            SEE ALL PRACTICE AREAS
+            <ArrowRight className="group-hover:translate-x-1" />
+          </Link>
+        </RevealBlock>
       </div>
     </section>
   );

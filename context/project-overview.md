@@ -11,6 +11,7 @@ The site is modeled after mikemorris.com: a single authority landing page for th
 - **Codebase:** `C:\Users\yahia\OneDrive\Desktop\ATLAW\atlaw_start`
 - **Website materials:** `C:\Users\yahia\OneDrive\Desktop\ATLAW\Website Materials` (photos, logos, briefs, staff directory)
 - **Mike Morris screenshots:** `C:\Users\yahia\OneDrive\Desktop\ATLAW\screenshots` (166 screenshots, 20 folders)
+- **Mike Morris saved HTML:** `C:\Users\yahia\OneDrive\Desktop\ATLAW\Mike Morris Website` (20 full pages with _files folders)
 - **Meeting notes:** `C:\Users\yahia\OneDrive\Desktop\ATLAW\ATLAW Website - 2026_06_17 13_59 EDT - Notes by Gemini.md`
 
 ## Goals

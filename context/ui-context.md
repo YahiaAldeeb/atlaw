@@ -92,17 +92,20 @@ Every homepage section follows this editorial pattern:
 
 ## Section Rhythm (Homepage)
 
-| # | Section         | Background | Canvas   |
-| - | --------------- | ---------- | -------- |
-| 1 | Hero            | White      | Light    |
-| 2 | Capabilities    | Navy       | Dark     |
-| 3 | About Dewnya    | White      | Light    |
-| 4 | One Firm        | Navy       | Dark     |
-| 5 | Recognition     | White      | Light    |
-| 6 | Final CTA       | Navy       | Dark     |
-| 7 | Firm Statement  | White      | Light    |
-| 8 | Service Areas   | Navy       | Dark     |
-| 9 | Footer          | Navy       | Dark     |
+| #  | Section          | Background  | Canvas |
+| -- | ---------------- | ----------- | ------ |
+| 1  | Hero             | Navy/Dark   | Dark   |
+| 2  | Trust Bar        | White       | Light  |
+| 3  | Case Results     | White       | Light  |
+| 4  | What We Handle   | Light Gray  | Light  |
+| 5  | About Dewnya     | White       | Light  |
+| 6  | No Fee Banner    | Navy        | Dark   |
+| 7  | How It Works     | White       | Light  |
+| 8  | Testimonials     | White       | Light  |
+| 9  | FAQ Preview      | Light Gray  | Light  |
+| 10 | Intake Form      | Navy/Dark   | Dark   |
+| 11 | Final CTA        | Navy        | Dark   |
+| 12 | Footer           | Navy        | Dark   |
 
 ## Responsive Approach
 

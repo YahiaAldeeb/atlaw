@@ -1,29 +1,20 @@
-import { Fragment } from "react";
-import { Link } from "react-router-dom";
-import { RevealText, RevealBlock, DrawRule, Parallax } from "../../motion/primitives";
+import { RevealText, RevealBlock } from "../../motion/primitives";
 
-// Subtle film grain over the bone canvas — same texture as the Hero/Recognition so the page reads as one system.
 const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
-// Fraunces variable axes — large editorial headline (mirrors the Hero/Recognition lockup).
 const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
-// Tighter optical size for the small refined serif lines (location + supporting italic).
-const fineAxes = "'opsz' 24, 'wght' 400";
 
-// Top location line — gold middots between cities.
-const cities = ["Detroit", "Dubai", "Manila"];
-
-const ArrowRight = ({ className = "" }: { className?: string }): JSX.Element => (
+const PhoneIcon = (): JSX.Element => (
   <svg
     aria-hidden="true"
-    className={`h-[14px] w-[14px] transition-transform duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${className}`}
+    className="h-[18px] w-[18px]"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
   >
     <path
-      d="M5 12h14M13 5l7 7-7 7"
+      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
@@ -31,152 +22,78 @@ const ArrowRight = ({ className = "" }: { className?: string }): JSX.Element => 
   </svg>
 );
 
+const MailIcon = (): JSX.Element => (
+  <svg
+    aria-hidden="true"
+    className="h-[18px] w-[18px]"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <rect height="16" rx="2" width="20" x="2" y="4" strokeWidth={1.5} />
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+  </svg>
+);
+
 export const FinalCtaSection = (): JSX.Element => {
   return (
-    <section
-      aria-labelledby="final-cta-heading"
-      className="relative isolate w-full overflow-hidden bg-[linear-gradient(180deg,#0e1b33_0%,#0a1428_100%)] text-white"
-    >
-      {/* Subtle grain overlay on the navy canvas */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
-        style={{ backgroundImage: grain }}
-      />
-
-      {/* Decorative background: faint curved linework + oversized ghost "CONTACT" wordmark */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 select-none overflow-hidden">
-        <svg
-          className="absolute inset-0 h-full w-full"
-          fill="none"
-          preserveAspectRatio="xMidYMid slice"
-          viewBox="0 0 1440 760"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* one line sweeping in from the top-left — soft gold */}
-          <g className="opacity-[0.14]" stroke="#B88A2D" strokeWidth="1">
-            <path d="M-160 80 C 280 250 580 120 960 280" />
-            <path d="M-160 -10 C 300 160 520 60 820 170" />
-          </g>
-          {/* one line sweeping in from the bottom-right — soft white */}
-          <g className="opacity-[0.07]" stroke="#FFFFFF" strokeWidth="1">
-            <path d="M1600 690 C 1180 520 880 650 480 500" />
-            <path d="M1600 780 C 1140 600 900 700 620 610" />
-          </g>
-        </svg>
-
-        {/* Oversized ghost wordmark — soft white, very low opacity, cropped at both edges */}
-        <Parallax
-          as="span"
-          className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serifDisplay font-normal uppercase leading-none tracking-[-0.045em] text-white opacity-[0.025] text-[clamp(140px,21vw,360px)] md:block"
-          style={{ fontVariationSettings: headlineAxes }}
-        >
-          Contact
-        </Parallax>
-      </div>
-
-      {/* ── Centered editorial column ── */}
-      <div className="relative mx-auto flex w-full max-w-[1180px] flex-col items-center px-6 py-[56px] text-center sm:px-10 md:py-[80px] lg:px-20 lg:py-[96px]">
-        {/* Top location line — white serif with gold dot separators */}
-        <RevealBlock
-          as="p"
-          className="flex items-center gap-3.5 font-serifDisplay text-[15px] tracking-[0.05em] text-white lg:text-[16px]"
-          style={{ fontVariationSettings: fineAxes }}
-        >
-          {cities.map((city, index) => (
-            <Fragment key={city}>
-              {index > 0 && (
-                <span aria-hidden="true" className="h-[5px] w-[5px] shrink-0 rounded-full bg-[#B88A2D]" />
-              )}
-              <span>{city}</span>
-            </Fragment>
-          ))}
-        </RevealBlock>
-
-        {/* Short gold divider beneath the location line */}
-        <DrawRule
-          origin="center"
-          className="mt-8 block h-px w-[64px] bg-[#B88A2D]"
+    <section aria-labelledby="final-cta-heading" className="w-full">
+      <div className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#0e1b33_0%,#0a1428_100%)] text-white">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
+          style={{ backgroundImage: grain }}
         />
 
-        {/* Section label */}
-        <RevealBlock
-          as="p"
-          className="mt-8 font-sans text-[12px] font-semibold uppercase tracking-[0.28em] text-[#B88A2D] lg:text-[13px]"
-        >
-          06 &mdash; Final CTA
-        </RevealBlock>
-
-        {/* Main heading — single amber "brand period" */}
-        <RevealText
-          as="h2"
-          className="mt-6 font-serifDisplay font-normal leading-[1.04] tracking-[-0.02em] text-white text-[clamp(42px,7vw,92px)]"
-          id="final-cta-heading"
-          style={{ fontVariationSettings: headlineAxes }}
-        >
-          Tell us what happened<span className="text-[#B88A2D]">.</span>
-        </RevealText>
-
-        {/* Supporting paragraph */}
-        <RevealBlock
-          as="p"
-          className="mt-8 max-w-[820px] font-sans text-[18px] leading-[1.6] text-white/80 [text-wrap:balance] lg:text-[21px]"
-        >
-          The first conversation is free, and it stays between us. We&rsquo;ll listen, give you our
-          honest read, and tell you whether we can help. If we can&rsquo;t, we&rsquo;ll point you to
-          someone who can.
-        </RevealBlock>
-
-        {/* ── CTA pair: filled navy primary + outlined navy phone ── */}
-        <RevealBlock className="mt-12 flex w-full flex-col items-center justify-center gap-5 sm:flex-row sm:gap-10 lg:mt-14">
-          <Link
-            className="group inline-flex h-[64px] w-full max-w-[340px] items-center justify-center gap-2.5 rounded-full bg-white px-9 font-sans text-[15px] font-medium text-[#0B1F3A] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#FFFFFF] hover:shadow-[0_10px_30px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A] sm:w-[350px] lg:h-[68px]"
-            to="/contact"
+        <div className="relative mx-auto flex w-full max-w-[1180px] flex-col items-center px-6 py-14 text-center sm:px-10 md:py-16 lg:px-20 lg:py-20">
+          <RevealText
+            as="h2"
+            className="font-serifDisplay font-normal leading-[1.06] tracking-[-0.02em] text-white text-[clamp(34px,5.5vw,64px)]"
+            id="final-cta-heading"
+            style={{ fontVariationSettings: headlineAxes }}
           >
-            Schedule a call
-            <ArrowRight className="group-hover:translate-x-1" />
-          </Link>
+            Get a FREE Case Evaluation Today!
+          </RevealText>
+
+          <RevealBlock
+            as="p"
+            className="mt-5 font-sans text-[17px] leading-[1.5] text-white/75 lg:text-[19px]"
+          >
+            You Pay Nothing Unless We Win Your Case &mdash; Guaranteed.
+          </RevealBlock>
+
+          <RevealBlock className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+            <a
+              className="group inline-flex h-[60px] w-full max-w-[320px] items-center justify-center gap-2.5 rounded-full bg-[#C6A04A] px-8 font-sans text-[15px] font-semibold uppercase tracking-[0.04em] text-[#0B1F3A] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#d4b05e] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A] sm:w-auto lg:h-[64px]"
+              href="tel:+13134067606"
+            >
+              <PhoneIcon />
+              CALL
+            </a>
+            <a
+              className="group inline-flex h-[60px] w-full max-w-[320px] items-center justify-center gap-2.5 rounded-full border border-white/40 bg-transparent px-8 font-sans text-[15px] font-semibold uppercase tracking-[0.04em] text-white transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A] sm:w-auto lg:h-[64px]"
+              href="mailto:info@atlawfirm.com"
+            >
+              <MailIcon />
+              EMAIL
+            </a>
+          </RevealBlock>
+        </div>
+      </div>
+
+      <div className="w-full bg-[#081120]">
+        <div className="mx-auto flex max-w-[1180px] flex-col items-center gap-2 px-6 py-8 text-center sm:px-10 lg:py-10">
           <a
-            className="group inline-flex h-[64px] w-full max-w-[340px] items-center justify-center rounded-full border border-white/40 bg-transparent px-9 font-sans text-[15px] font-medium tracking-[0.02em] text-white transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A] sm:w-[350px] lg:h-[68px]"
+            className="font-serifDisplay font-normal leading-none tracking-[-0.02em] text-white transition-colors duration-200 hover:text-[#C6A04A] text-[clamp(28px,4.5vw,48px)]"
             href="tel:+13134067606"
+            style={{ fontVariationSettings: headlineAxes }}
           >
             (313) 406-7606
           </a>
-        </RevealBlock>
-
-        {/* ── Gold divider with a centred gold dot ── */}
-        <span aria-hidden="true" className="mt-16 flex w-full max-w-[260px] items-center gap-3">
-          <span className="h-px flex-1 bg-gradient-to-l from-[#B88A2D]/45 to-transparent" />
-          <span className="h-[5px] w-[5px] shrink-0 rounded-full bg-[#B88A2D]" />
-          <span className="h-px flex-1 bg-gradient-to-r from-[#B88A2D]/45 to-transparent" />
-        </span>
-
-        {/* Supporting italic line — refined serif, understated */}
-        <p
-          className="mt-8 font-serifDisplay text-[16px] italic leading-[1.6] tracking-[-0.005em] text-white/70 lg:text-[19px]"
-          style={{ fontVariationSettings: fineAxes }}
-        >
-          Office in Dearborn. Clients across the U.S.
-        </p>
-
-        {/* ── Quatrefoil ornament — same gold line motif as the Recognition section ── */}
-        <svg
-          aria-hidden="true"
-          className="mt-10"
-          fill="none"
-          height="26"
-          stroke="#B88A2D"
-          strokeWidth="1"
-          viewBox="0 0 26 26"
-          width="26"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="13" cy="7" r="4" />
-          <circle cx="13" cy="19" r="4" />
-          <circle cx="7" cy="13" r="4" />
-          <circle cx="19" cy="13" r="4" />
-          <circle cx="13" cy="13" fill="#B88A2D" r="1.2" stroke="none" />
-        </svg>
+          <p className="font-sans text-[14px] tracking-[0.02em] text-white/55 lg:text-[15px]">
+            We&rsquo;re here to help.
+          </p>
+        </div>
       </div>
     </section>
   );

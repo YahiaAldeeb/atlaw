@@ -3,6 +3,7 @@
 Full analysis of 855mikewins.com / mikemorris.com, extracted from 166 screenshots across 20 page types. This is the model site for ATLAW's PI rebuild.
 
 **Screenshots location:** `C:\Users\yahia\OneDrive\Desktop\ATLAW\screenshots`
+**Saved HTML pages:** `C:\Users\yahia\OneDrive\Desktop\ATLAW\Mike Morris Website` (20 full pages saved as .html with companion _files folders)
 
 Organized into 20 folders: homepage, practice-areas-landing, practice-area-detail, results, team-grid, attorney-profile, FAQ, locations, city-pages, contact, settlement-calculator, free-consultation, blog-listing, blog-post, community-initiative, mike-stands, no-fault-guide, areas-served, careers, and more.
 
