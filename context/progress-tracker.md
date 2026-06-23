@@ -151,9 +151,30 @@
   - Mobile responsive (single-column on mobile, full grid on desktop)
   - Zero TypeScript errors, zero build errors
 
+- [x] Implement Spec 06 — Contact & Intake (June 23, 2026)
+  - Full rewrite of ContactPage with 8 sections per spec:
+    - ContactHero: dark bg with Dewnya photo overlay, two-column (left text + right CTA card), gold "Start Your Free Case Review" → Typeform popup card with glassmorphic border
+    - StatsBar: white strip with Founded 2013 · Dearborn, MI · Super Lawyers Rising Star · Avvo 10.0, gold dot separators
+    - DirectContact: "3 Ways to Reach Us" — 3 icon cards (Call/Email/Visit) with gold icon circles, hover lift, clickable links
+    - WhatToExpect: "What Happens Next" — 3 navy gradient step cards (Free Consultation → Case Evaluation → We Get to Work) matching ProcessSection pattern
+    - OfficeLocation: two-column (Google Maps embed left, group photo + address/phone/email right), serving Michigan cities note
+    - ReassuranceSection: navy bg, centered "You Don't Pay Unless We Win." white serif, confidentiality message, gold Typeform CTA
+    - ContactFAQ: 6 intake-specific questions, accordion with CSS grid-rows animation, chevron rotation, proper aria-expanded
+    - IntakeCTA: dark section with Dewnya portrait bg, "Get a FREE Case Evaluation Today!" + Call/Email buttons + phone number band
+  - Typeform integration: popup-style CTA card in hero, direct link buttons throughout, URL = https://j098jiq3pk7.typeform.com/to/Mslg7Y7f
+  - Contact info updated: phone (313) 406-7606, email db@atlawgroup.com, address 3 Park Lane Blvd Suite 400W
+  - MobileFloatingCTA included for persistent mobile phone button
+  - Phone number visible without scrolling (hero + direct contact)
+  - CTA appears every 2-3 sections (hero, reassurance, intake — 3+ CTAs)
+  - "No fee unless we win" messaging in hero, reassurance, and intake sections
+  - Mike Morris patterns followed: dark hero with form/CTA, stats bar, office section, FAQ accordion
+  - Removed old ContactForm (custom form replaced by Typeform), removed ServiceAreas import
+  - Motion primitives: RevealText, RevealBlock, RevealStagger with consistent grain overlay
+  - Mobile responsive (single-column → two-column on lg)
+  - Zero TypeScript errors, zero build errors
+
 ### Next — Implementation Order
 
-4. **Spec 06 — Contact & Intake** — Typeform integration + office info.
 7. **Spec 07 — SEO Meta & Schema** — Page titles, meta, structured data.
 8. **Spec 08 — Photo Assets** — Convert and integrate photos.
 9. **Spec 09 — Legal Compliance** — Disclaimers, privacy, terms.
