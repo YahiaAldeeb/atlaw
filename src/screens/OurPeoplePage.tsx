@@ -1,7 +1,8 @@
-import { useEffect } from "react";
 import { Header } from "../components/ATLAW/Header";
 import { Footer } from "../components/ATLAW/Footer";
+import { PageMeta } from "../components/ATLAW/PageMeta";
 import { founder, attorneys, staff, type TeamMember } from "../data/team";
+import { attorneySchema } from "../data/schema-org";
 
 const GOLD = "#C9A24B";
 const NAVY = "#0B1F3A";
@@ -62,13 +63,14 @@ const TeamCard = ({ member }: { member: TeamMember }) => (
 );
 
 export const OurPeoplePage = (): JSX.Element => {
-  useEffect(() => {
-    document.title = "Meet Our Team | Personal Injury Attorneys | ATLAW — Dearborn, MI";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Meet the ATLAW team — Dewnya Bazzi and the attorneys and advocates fighting for injured clients across Dearborn, Detroit, and Southeast Michigan.");
-  }, []);
-
   return (
     <div className="min-h-screen bg-white text-[#0E1B2C]">
+      <PageMeta
+        title="Meet Our Team | Personal Injury Attorneys | ATLAW — Dearborn, MI"
+        description="Meet the ATLAW team — Dewnya Bazzi and the attorneys and advocates fighting for injured clients across Dearborn, Detroit, and Southeast Michigan."
+        canonical="/team"
+        schema={attorneySchema()}
+      />
       <Header />
       <main>
         {/* ══ 01 — HERO ═══════════════════════════════════════════════ */}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "../components/ATLAW/Header";
 import { Footer } from "../components/ATLAW/Footer";
+import { PageMeta } from "../components/ATLAW/PageMeta";
 import { cities } from "../data/cities";
 import "./PersonalInjury.css";
 
@@ -55,19 +56,15 @@ const MailIcon = () => (
 export const AreasServedPage = (): JSX.Element => {
   const [activeCity, setActiveCity] = useState(cities[0].slug);
 
-  useEffect(() => {
-    document.title = "Areas Served | Personal Injury Lawyers | ATLAW";
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute(
-        "content",
-        "ATLAW represents injured clients across Southeast Michigan — Dearborn, Detroit, Dearborn Heights, Ann Arbor, Wayne County, Oakland County, and Macomb County. Free case review."
-      );
-    window.scrollTo(0, 0);
-  }, []);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-white">
+      <PageMeta
+        title="Areas Served | Personal Injury Lawyers | ATLAW"
+        description="ATLAW represents injured clients across Southeast Michigan — Dearborn, Detroit, Dearborn Heights, Ann Arbor, Wayne County, Oakland County, and Macomb County. Free case review."
+        canonical="/areas-served"
+      />
       <Header />
       <main className="flex-1">
         {/* Hero */}

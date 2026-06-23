@@ -1,4 +1,5 @@
 import { Header } from "../components/ATLAW/Header";
+import { PageMeta } from "../components/ATLAW/PageMeta";
 import { Hero } from "../components/ATLAW/Hero";
 import { AwardsMarquee } from "../components/ATLAW/AwardsMarquee";
 import { CaseResultsSection } from "../components/ATLAW/CaseResultsSection";
@@ -14,10 +15,17 @@ import { FAQPreviewSection } from "../components/ATLAW/FAQPreviewSection";
 import { FinalCtaSection } from "../components/ATLAW/FinalCtaSection";
 import { MobileFloatingCTA } from "../components/ATLAW/MobileFloatingCTA";
 import { Footer } from "../components/ATLAW/Footer";
+import { homepageSchema } from "../data/schema-org";
 
 export const ATLAWLandingPage = (): JSX.Element => {
   return (
     <div className="min-h-screen bg-ivory text-ink [zoom:1.12]">
+      <PageMeta
+        title="ATLAW — Dearborn Personal Injury Lawyers"
+        description="Dearborn personal injury lawyers fighting for injured clients across Southeast Michigan. Auto accidents, medical malpractice, wrongful death. Free consultation — no fee unless we win."
+        canonical="/"
+        schema={homepageSchema()}
+      />
       <Header />
       <main>
         <Hero />

@@ -173,9 +173,42 @@
   - Mobile responsive (single-column → two-column on lg)
   - Zero TypeScript errors, zero build errors
 
+- [x] Implement Spec 07 — SEO Meta & Schema (June 23, 2026)
+  - Installed `react-helmet-async` for full `<head>` management
+  - Created `PageMeta` component (`src/components/ATLAW/PageMeta.tsx`):
+    - Props: title, description, canonical, schema (single or array), ogImage, ogType
+    - Renders: `<title>`, meta description, canonical link, OG tags, Twitter card, JSON-LD structured data
+    - Default OG image: `/assets/atlaw-og-share.png`
+    - Base URL: `https://atlawgroup.com`
+  - Wrapped app with `<HelmetProvider>` in `src/index.tsx`
+  - Created `src/data/schema-org.ts` with Schema.org structured data generators:
+    - `homepageSchema()` — LegalService with full firm details
+    - `practiceAreaSchema()` — LegalService per practice area
+    - `cityPracticeSchema()` — LegalService with city-specific areaServed
+    - `attorneySchema()` — Attorney (Dewnya Bazzi) with awards
+    - `aboutPageSchema()` — Organization with founding details
+    - `contactPageSchema()` — LegalService with contact info + hours
+  - Added `<PageMeta>` to all 15 active pages:
+    - Homepage: unique title + LegalService schema
+    - 7 PI practice area pages: seoTitle from data + practiceAreaSchema
+    - City landing pages (49 dynamic): city+practice title + cityPracticeSchema
+    - About page: Organization schema
+    - Team page: Attorney schema
+    - Contact page: LegalService + contact schema
+    - Areas Served page
+    - Privacy Policy page
+    - Terms of Use page
+  - Replaced all `document.title` / `querySelector('meta[name="description"]')` patterns with Helmet
+  - Open Graph tags on every page: og:title, og:description, og:image, og:type, og:site_name, og:url
+  - Twitter Card tags on every page: summary_large_image
+  - Fixed `index.html`: removed duplicate charset/viewport, updated default title, added OG defaults
+  - Created `public/robots.txt`: Allow all crawlers, Sitemap reference
+  - Created `public/sitemap.xml`: 63 URLs (7 static + 7 practice areas + 49 city pages)
+  - Every page has unique `<title>` and meta description — no duplicates
+  - Zero build errors
+
 ### Next — Implementation Order
 
-7. **Spec 07 — SEO Meta & Schema** — Page titles, meta, structured data.
 8. **Spec 08 — Photo Assets** — Convert and integrate photos.
 9. **Spec 09 — Legal Compliance** — Disclaimers, privacy, terms.
 

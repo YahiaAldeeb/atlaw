@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "../components/ATLAW/Header";
 import { Footer } from "../components/ATLAW/Footer";
+import { PageMeta } from "../components/ATLAW/PageMeta";
 import { EMAIL, LAST_UPDATED, sections } from "../data/legal/terms";
 import {
   ArrowRight,
@@ -72,6 +73,11 @@ export const TermsOfUsePage = (): JSX.Element => {
 
   return (
     <div className="min-h-screen bg-white text-[#0E1B2C]">
+      <PageMeta
+        title="Terms of Use | ATLAW — Dearborn Personal Injury Lawyers"
+        description="ATLAW terms of use. Review the terms and conditions governing your use of the ATLAW website."
+        canonical="/terms"
+      />
       {/* Print stylesheet — this page gets printed: single column, black on
           white, summaries retained, chrome + decorative numerals dropped. */}
       <style>{`

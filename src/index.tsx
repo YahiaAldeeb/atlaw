@@ -1,6 +1,7 @@
 import { StrictMode, Suspense, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { ATLAWLandingPage } from "./screens/ATLAWLandingPage";
 import { BackToTop } from "./components/ATLAW/BackToTop";
 import { NavigationLoader } from "./components/ATLAW/NavigationLoader";
@@ -27,6 +28,7 @@ const TermsOfUsePage = lazy(() => import("./screens/TermsOfUsePage").then((m) =>
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
+    <HelmetProvider>
     <SmoothScroll>
     <BrowserRouter>
       <NavigationLoader />
@@ -69,5 +71,6 @@ createRoot(document.getElementById("app") as HTMLElement).render(
       <BackToTop />
     </BrowserRouter>
     </SmoothScroll>
+    </HelmetProvider>
   </StrictMode>,
 );

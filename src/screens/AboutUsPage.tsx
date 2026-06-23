@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import { Header } from "../components/ATLAW/Header";
 import { Footer } from "../components/ATLAW/Footer";
+import { PageMeta } from "../components/ATLAW/PageMeta";
 import { Reveal, Eyebrow, Period, grain, SECTION, NAVY } from "./about/primitives";
 import {
   FounderFeatureSection,
@@ -10,15 +10,17 @@ import {
   ByTheNumbersSection,
   InlineIntakeCta,
 } from "./about/sections";
+import { aboutPageSchema } from "../data/schema-org";
 
 export const AboutUsPage = (): JSX.Element => {
-  useEffect(() => {
-    document.title = "About ATLAW | Dewnya Bazzi | Personal Injury Lawyers in Dearborn, MI";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Meet Dewnya Bazzi, founder of ATLAW. A Dearborn-based personal injury firm built on unreasonable hospitality — fighting for injured clients across Southeast Michigan since 2013.");
-  }, []);
-
   return (
     <div className="min-h-screen bg-white text-[#0E1B2C]">
+      <PageMeta
+        title="About ATLAW | Dewnya Bazzi | Personal Injury Lawyers in Dearborn, MI"
+        description="Meet Dewnya Bazzi, founder of ATLAW. A Dearborn-based personal injury firm built on unreasonable hospitality — fighting for injured clients across Southeast Michigan since 2013."
+        canonical="/about"
+        schema={aboutPageSchema()}
+      />
       <Header />
       <main>
         {/* ══ 01 — HERO (dark overlay on group photo) ═════════════════ */}

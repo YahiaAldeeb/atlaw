@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Header } from "../components/ATLAW/Header";
 import { Footer } from "../components/ATLAW/Footer";
+import { PageMeta } from "../components/ATLAW/PageMeta";
 import { MobileFloatingCTA } from "../components/ATLAW/MobileFloatingCTA";
 import { RevealText, RevealBlock, RevealStagger } from "../motion/primitives";
 import { STAGGER } from "../motion/config";
+import { contactPageSchema } from "../data/schema-org";
 
 const TYPEFORM_URL = "https://j098jiq3pk7.typeform.com/to/Mslg7Y7f";
 
@@ -690,6 +692,12 @@ const IntakeCTA = () => (
 export const ContactPage = (): JSX.Element => {
   return (
     <div className="min-h-screen bg-ivory text-ink [zoom:1.12]">
+      <PageMeta
+        title="Contact Us | Free Case Evaluation | ATLAW — Dearborn Personal Injury Lawyers"
+        description="Contact ATLAW for a free personal injury case evaluation. Call (313) 406-7606 or visit our Dearborn office. No fee unless we win your case."
+        canonical="/contact"
+        schema={contactPageSchema()}
+      />
       <Header />
       <main>
         <ContactHero />

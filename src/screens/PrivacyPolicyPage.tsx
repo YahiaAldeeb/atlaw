@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "../components/ATLAW/Header";
 import { Footer } from "../components/ATLAW/Footer";
+import { PageMeta } from "../components/ATLAW/PageMeta";
 import { EMAIL, LAST_UPDATED, sections } from "../data/legal/privacy";
 import { ArrowRight, Chevron, Dot, Period, Reveal } from "../components/ATLAW/privacyPrimitives";
 import { SectionBlock, scrollToSection } from "../components/ATLAW/privacySection";
@@ -71,6 +72,11 @@ export const PrivacyPolicyPage = (): JSX.Element => {
 
   return (
     <div className="min-h-screen bg-white text-[#0E1B2C]">
+      <PageMeta
+        title="Privacy Policy | ATLAW — Dearborn Personal Injury Lawyers"
+        description="ATLAW privacy policy. How we collect, use, and protect your personal information. We do not sell your data."
+        canonical="/privacy"
+      />
       {/* Print stylesheet — single column, black on white, summaries retained,
           chrome + decorative numerals dropped. Twin of the Terms page. */}
       <style>{`
