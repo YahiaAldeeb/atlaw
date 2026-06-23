@@ -20,6 +20,8 @@ const WrongfulDeathPage = lazy(() => import("./screens/WrongfulDeathPage").then(
 const PremisesLiabilityPage = lazy(() => import("./screens/PremisesLiabilityPage").then((m) => ({ default: m.PremisesLiabilityPage })));
 const DogBitesPage = lazy(() => import("./screens/DogBitesPage").then((m) => ({ default: m.DogBitesPage })));
 const WorkersCompensationPage = lazy(() => import("./screens/WorkersCompensationPage").then((m) => ({ default: m.WorkersCompensationPage })));
+const CityLandingPage = lazy(() => import("./screens/CityLandingPage").then((m) => ({ default: m.CityLandingPage })));
+const AreasServedPage = lazy(() => import("./screens/AreasServedPage").then((m) => ({ default: m.AreasServedPage })));
 const PrivacyPolicyPage = lazy(() => import("./screens/PrivacyPolicyPage").then((m) => ({ default: m.PrivacyPolicyPage })));
 const TermsOfUsePage = lazy(() => import("./screens/TermsOfUsePage").then((m) => ({ default: m.TermsOfUsePage })));
 
@@ -47,6 +49,8 @@ createRoot(document.getElementById("app") as HTMLElement).render(
         <Route path="/personal-injury/premises-liability" element={<PremisesLiabilityPage />} />
         <Route path="/personal-injury/dog-bites" element={<DogBitesPage />} />
         <Route path="/personal-injury/workers-compensation" element={<WorkersCompensationPage />} />
+        <Route path="/personal-injury/:practice/:city" element={<CityLandingPage />} />
+        <Route path="/areas-served" element={<AreasServedPage />} />
 
         {/* Legacy redirects */}
         <Route path="/our-people" element={<Navigate to="/team" replace />} />

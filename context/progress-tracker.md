@@ -92,11 +92,38 @@
   - pi-reveal CSS animations (existing PersonalInjury.css)
   - Zero TypeScript errors, zero build errors
 
+- [x] Implement Spec 04 — SEO City Landing Pages (June 23, 2026)
+  - CityData interface + 7 city data objects in `src/data/cities.ts`
+    - Dearborn, Detroit, Dearborn Heights, Ann Arbor, Wayne County, Oakland County, Macomb County
+    - Each: slug, name, county, localContext (3 paragraphs), localExpertise (6 bullets), nearbyLandmarks, localCourts, hospitals, faqs (6 city-specific FAQs)
+  - Practice area slug→data lookup in `src/data/practice/pi/index.ts`
+  - CityLandingTemplate: 10-section template in `src/components/ATLAW/CityLandingTemplate.tsx`
+    - Hero: breadcrumb (ATLAW > PI > Practice > City), city-specific h1, tagline, gold CTA → Typeform
+    - StatsBar: Founded 2013, county, Super Lawyers, Avvo 10.0
+    - CityContext: two-column (62%/35%), city-specific paragraphs left, sticky sidebar CTA right
+    - PracticeOverview: reuses parent practice area overview + first Michigan law section, localized heading
+    - LocalExpertise: 2-col grid of 6 city-specific bullet cards
+    - CaseResults: 3-card carousel with insurance offer vs. recovered, [CONFIRM] placeholders
+    - CityFAQ: 6 city-specific questions, accordion with CSS grid-rows animation
+    - OtherPracticeAreas: 3-col card grid linking to other PI sub-practices in same city
+    - OtherCities: pill-shaped links to same practice area in other cities
+    - IntakeForm + FinalCTABand: dark section with Dewnya portrait bg, Typeform CTA, phone band
+  - CityLandingPage screen: reads `:practice` and `:city` params, looks up both, 404 → redirect if invalid
+  - AreasServedPage: hero + sticky sidebar nav (7 cities) + stacked city cards with county/context/learn more
+  - Routes added: `/personal-injury/:practice/:city` → CityLandingPage, `/areas-served` → AreasServedPage
+  - Footer updated: "Areas Served" link added to company links
+  - Unique `<title>` and meta description per city page
+  - CTA appears every 2-3 sections (5+ per page)
+  - Internal linking: practice ↔ city, city ↔ sibling cities, city ↔ other practices
+  - [CONFIRM] placeholders on case results
+  - Mobile responsive (sidebar collapses inline)
+  - 7 practice areas × 7 cities = 49 city pages + 1 areas-served index
+  - Zero TypeScript errors, zero build errors
+
 ### Next — Implementation Order
 
 3. **Spec 05 — About & Team Pages** — Founder story + team grid.
 4. **Spec 06 — Contact & Intake** — Typeform integration + office info.
-5. **Spec 04 — SEO City Pages** — 49 city × practice pages.
 7. **Spec 07 — SEO Meta & Schema** — Page titles, meta, structured data.
 8. **Spec 08 — Photo Assets** — Convert and integrate photos.
 9. **Spec 09 — Legal Compliance** — Disclaimers, privacy, terms.

@@ -13,6 +13,7 @@ export const practiceAreaLinks: NavLink[] = [
 export const companyLinks: NavLink[] = [
   { label: "About", to: "/about" },
   { label: "Our Team", to: "/team" },
+  { label: "Areas Served", to: "/areas-served" },
   { label: "Contact", to: "/contact" },
 ];
 
