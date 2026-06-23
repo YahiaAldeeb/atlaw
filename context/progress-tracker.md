@@ -120,9 +120,39 @@
   - 7 practice areas × 7 cities = 49 city pages + 1 areas-served index
   - Zero TypeScript errors, zero build errors
 
+- [x] Implement Spec 05 — About & Team Pages (June 23, 2026)
+  - About page rebuilt with 8 sections per spec:
+    - Hero: dark overlay on group photo, "Our Story" heading, firm mission subtitle
+    - Founder Feature: two-column (55%/45%), "Hi, I'm Dewnya Bazzi." personal heading, gold "Founder & CEO", multi-paragraph bio with "unreasonable hospitality" philosophy, "See More" expandable, navy CTA → /contact
+    - Timeline: vertical timeline layout, 6 milestones (2013 founding → 2026 3rd Rising Star), gold year markers, navy dot on vertical line, alternating left/right on desktop, mobile single-column
+    - Firm Values: 3 cards with icons (Unreasonable Hospitality, Strategic Advocacy, Cultural Awareness)
+    - Awards/Media Strip: "Awarded. Featured. Trusted." + 5 gold badge chips (SL 2024-2026, Avvo, NAOPIA)
+    - By The Numbers: navy stats strip (Founded 2013 · 29 Team Members · Dearborn, MI · 3× Rising Star)
+    - Inline Intake CTA: dark section with Dewnya portrait bg, Typeform CTA, phone number
+    - Footer
+  - Team page rebuilt with 6 sections per spec:
+    - Hero: dark overlay on group photo, "Meet Your Team" centered, subtitle
+    - Founder Feature Card: full-width white card, two-column (bio left 55%, photo right 45%), name in large serif, gold "Founder & CEO", shorter bio, navy "View Full Bio" → /about
+    - Attorneys Grid: 3 columns centered, circular-cropped headshots (Deanna Leila, Hassan Harp, Ahmad Berry)
+    - Key Staff Grid: 4 columns, circular headshots (Lamis Baydoun, Abeer Almalahi, Mazen Alsamawi, Madison Misovich)
+    - Bottom CTA: "Get a FREE Case Evaluation Today!" + CALL/EMAIL buttons + phone band
+    - Footer
+  - Team data rebuilt: typed TeamMember interface, founder/attorneys/staff arrays, PI-focused team only
+  - 13 photos converted from source JPGs to AVIF in public/assets/team/
+    - Professional Headshots: 10 team members (dewnya-bazzi, deanna-leila, hassan-harp, ahmad-berry, lamis-baydoun, abeer-almalahi, mazen-alsamawi, madison-misovich, deema-ghamloush, mahmoud-mansour)
+    - DB Creative Shots: 2 Dewnya feature photos (dewnya-creative-1, dewnya-creative-2)
+    - Group Shot: 1 team photo (group-shot) for hero backgrounds
+  - About data rebuilt: timeline events, firm values, founder bio content, by-the-numbers stats
+  - Removed: old multi-location team data (Dubai/Manila/Baghdad/Kuwait/Beirut), OurPeoplePieces component, ServiceAreas import, location filters
+  - Unique SEO titles and meta descriptions per page
+  - Mike Morris patterns followed: founder card above grid, circular headshots, dark hero with overlay, vertical timeline with year markers, personal storytelling
+  - No "100+ team members," no "Dubai/Manila" — accurate PI-focused team only
+  - Bio tone: warm, personal, "unreasonable hospitality" — not corporate
+  - Mobile responsive (single-column on mobile, full grid on desktop)
+  - Zero TypeScript errors, zero build errors
+
 ### Next — Implementation Order
 
-3. **Spec 05 — About & Team Pages** — Founder story + team grid.
 4. **Spec 06 — Contact & Intake** — Typeform integration + office info.
 7. **Spec 07 — SEO Meta & Schema** — Page titles, meta, structured data.
 8. **Spec 08 — Photo Assets** — Convert and integrate photos.

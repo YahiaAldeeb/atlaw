@@ -1,54 +1,81 @@
-/* ── ATLAW About Us — content data ────────────────────────────────────────────
-   Module-level CONTENT DATA for src/screens/AboutUsPage.tsx, extracted verbatim.
-   Copy is final and approved — see the About master prompt. Do not reword.
-   ──────────────────────────────────────────────────────────────────────────── */
-
-export const practiceTags = [
-  "Personal Injury",
-  "Business",
-  "Criminal",
-  "Estate",
-  "Tax",
-  "Immigration",
-  "Litigation",
+export const timelineEvents = [
+  {
+    year: "2013",
+    title: "Founded ATLAW in Dearborn",
+    description:
+      "Dewnya Bazzi opened the doors with one mission: give every client the attention and advocacy they deserve.",
+  },
+  {
+    year: "2016",
+    title: "Expanded to Full PI Practice",
+    description:
+      "Added dedicated auto accident, premises liability, and workers’ compensation divisions.",
+  },
+  {
+    year: "2019",
+    title: "Grew to a Team of 20+",
+    description:
+      "Brought on additional attorneys and client advocates to handle growing caseloads without sacrificing personal service.",
+  },
+  {
+    year: "2024",
+    title: "Super Lawyers Rising Star",
+    description:
+      "Dewnya named a Super Lawyers Rising Star — a peer-reviewed honor given to a small percentage of attorneys in Michigan.",
+  },
+  {
+    year: "2025",
+    title: "Rising Star, Second Consecutive Year",
+    description:
+      "Recognized again for exceptional work in personal injury law across Southeast Michigan.",
+  },
+  {
+    year: "2026",
+    title: "Rising Star, Third Year Running",
+    description:
+      "Three consecutive years of peer-reviewed recognition. 29 team members. Still founder-led.",
+  },
 ];
 
-export const steps = [
+export const firmValues = [
   {
-    num: "01",
-    title: "One call.",
-    body:
-      "Tell us what's going on. The first 30 minutes are free, and you'll leave the call knowing whether you have a matter worth pursuing — even if it's not with us.",
+    title: "Unreasonable Hospitality",
+    description:
+      "Every client gets more than they expect. We return calls the same day, explain every step, and treat your case like it’s our only one.",
+    icon: "hospitality" as const,
   },
   {
-    num: "02",
-    title: "The right attorney.",
-    body:
-      "We match your matter to the attorney who handles that area for us. No generalists stretching outside their lane.",
+    title: "Strategic Advocacy",
+    description:
+      "We prepare cases to win, not just to settle. When insurance companies lowball, we have the evidence and the will to fight.",
+    icon: "advocacy" as const,
   },
   {
-    num: "03",
-    title: "One firm, start to finish.",
-    body:
-      "You get straight answers, regular updates, and a single firm accountable for the outcome — from the first call through resolution.",
+    title: "Cultural Awareness",
+    description:
+      "A bilingual team that understands its community. We serve Dearborn, Detroit, and Southeast Michigan with cultural sensitivity and local knowledge.",
+    icon: "culture" as const,
   },
 ];
 
-export const practiceAreas = [
-  { title: "Personal Injury", desc: "Real injuries, fully documented, properly valued." },
-  { title: "Auto Accidents", desc: "Michigan no-fault claims handled from day one." },
-  { title: "Business Law", desc: "Formation, contracts, disputes, and exits." },
-  { title: "Franchising", desc: "Both sides of the franchise relationship." },
-  { title: "Estate Planning", desc: "Wills, trusts, and plans that hold up." },
-  { title: "Trust Litigation", desc: "When an estate plan becomes a fight." },
-  { title: "Criminal Defense", desc: "Your side, prepared and presented properly." },
-  { title: "DUI", desc: "Fast deadlines. We move first." },
-  { title: "Tax", desc: "Planning, disputes, and IRS matters." },
-  { title: "Intellectual Property", desc: "Protecting what you've built." },
-  { title: "Immigration", desc: "Family, employment, and status matters." },
-  { title: "Real Estate", desc: "Transactions and disputes, residential and commercial." },
-  { title: "Litigation", desc: "When negotiation ends, we're ready." },
-  { title: "Employment", desc: "For employees and employers alike." },
-  { title: "Bankruptcy", desc: "A reset, handled with dignity." },
-  { title: "Civil Rights", desc: "When institutions cross the line." },
+export const founderBio = {
+  greeting: "Hi, I’m Dewnya Bazzi.",
+  subtitle: "Founder & CEO",
+  paragraphs: [
+    "I became a personal injury attorney because I watched people in my community get taken advantage of by insurance companies. They didn’t know their rights. They settled for less than they deserved. I decided to do something about it.",
+    "I founded ATLAW in 2013 in Dearborn, Michigan — the community where I grew up. From day one, the firm has been built on what I call “unreasonable hospitality.” That means returning every call the same day, explaining every step of the legal process in plain language, and fighting for every dollar our clients are owed.",
+    "When you hire ATLAW, you’re hiring a team that cares as much about how we treat you as what we recover for you. That’s not a tagline — it’s how I run this firm.",
+  ],
+  expandedParagraphs: [
+    "I’ve been named a Super Lawyers Rising Star three years in a row — a peer-reviewed recognition given to fewer than 2.5% of attorneys in Michigan. I hold a 10.0 Superb rating on Avvo and was selected as a Top 10 Under 40 by the National Academy of Personal Injury Attorneys.",
+    "But the recognition I care about most is the trust of my clients. Many come to us through referrals from people we’ve already helped. That tells me we’re doing this right.",
+    "Outside the office, I’m active in the Dearborn community, and I speak Arabic fluently — which matters when many of our clients feel more comfortable discussing sensitive legal matters in their first language.",
+  ],
+};
+
+export const byTheNumbers = [
+  { label: "Founded", value: "2013" },
+  { label: "Team Members", value: "29" },
+  { label: "Home Base", value: "Dearborn, MI" },
+  { label: "Rising Star", value: "3×" },
 ];
