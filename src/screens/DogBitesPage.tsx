@@ -1,30 +1,24 @@
 import { useEffect } from "react";
 import { Header } from "../components/ATLAW/Header";
 import { Footer } from "../components/ATLAW/Footer";
+import { PracticeAreaDetailTemplate } from "../components/ATLAW/PracticeAreaDetailTemplate";
+import { dogBitesData } from "../data/practice/pi/dog-bites";
+import "./PersonalInjury.css";
 
 export const DogBitesPage = (): JSX.Element => {
   useEffect(() => {
-    document.title = "Dog Bite Injury Attorney | ATLAW Group";
+    document.title = dogBitesData.seoTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", dogBitesData.seoDescription);
+    window.scrollTo(0, 0);
   }, []);
 
   return (
-    <>
+    <div className="flex min-h-screen w-full flex-col bg-white">
       <Header />
-      <main className="min-h-screen bg-[#0e1b33] pt-24 text-white">
-        <div className="mx-auto max-w-3xl px-6 py-20 text-center">
-          <h1
-            className="font-serifDisplay text-4xl tracking-tight md:text-5xl"
-            style={{ fontVariationSettings: "'opsz' 144, 'wght' 360, 'SOFT' 0, 'WONK' 0" }}
-          >
-            Dog Bite Injuries
-          </h1>
-          <p className="mt-6 font-sans text-lg text-white/70">
-            Full page coming soon. If you or a loved one suffered a dog bite injury,
-            contact us for a free consultation.
-          </p>
-        </div>
+      <main className="flex-1">
+        <PracticeAreaDetailTemplate data={dogBitesData} />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };

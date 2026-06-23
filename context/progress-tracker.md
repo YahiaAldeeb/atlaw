@@ -57,12 +57,46 @@
   - Removed TrustBar import (replaced by AwardsMarquee)
   - Zero build errors, zero TypeScript errors
 
+- [x] Implement Spec 03 — PI Practice Area Pages (June 23, 2026)
+  - PracticeAreaDetailTemplate: 14-section reusable template component
+    - StickySubNav: dark navy bar, 5 anchor tabs (Overview/What To Do/Testimonials/FAQ/Related), IntersectionObserver active highlighting, gold underline
+    - Hero: light bg, breadcrumb nav, clamp-sized h1, gold social proof line, dark CTA pill → Typeform
+    - Overview: two-column (62%/35%), "Why Choose ATLAW?" content left, sticky sidebar CTA right (3 gold buttons: Call/Email/Free Case Review), collapses inline on mobile
+    - CaseResultsComparison: dark navy bg, 3-card carousel with prev/next, insurance offer (struck through) vs recovered amount, gold case type pill, [CONFIRM] placeholders
+    - WhatToDoSteps: 4 navy gradient step cards + No Fee Banner (full-width dark strip with Call/Email)
+    - LongFormContent: Michigan law sections, serif headings, centered max-width column, CTA at bottom
+    - Testimonials: light gray bg, 3-card carousel with gold stars, speech bubble cards with avatar pointers, pagination, [CONFIRM] placeholders
+    - FAQAccordion: 10-15 questions per page, CSS grid-rows animation, chevron rotation, proper aria-expanded
+    - RelatedCasesStrip: dark navy bg, horizontal scroll with prev/next, dollar amounts + case types, [CONFIRM]
+    - RelatedPages: 3-card grid linking to sibling sub-practices, dark navy cards with gold "Learn More"
+    - IntakeForm: dark section with Dewnya portrait bg, Typeform CTA, "See How Much We Can Win"
+    - AdditionalResources: two-column bulleted links to other practice areas
+    - CityLinks: pill-shaped city links grid, routes to city SEO pages
+    - FinalCTABand: navy gradient, gold Call + ghost Email buttons, phone number band
+  - 7 data files in src/data/practice/pi/:
+    - personal-injury.ts — landing page, links to all 6 sub-practices
+    - auto-accidents.ts — Michigan No-Fault, PIP, mini-tort, 15 FAQs
+    - medical-malpractice.ts — NOI/Affidavit of Merit, 2-year SOL, 10 FAQs
+    - wrongful-death.ts — MCL 600.2922, estate vs survivor damages, sensitive tone, 10 FAQs
+    - premises-liability.ts — invitee/licensee/trespasser duty, comparative fault, 10 FAQs
+    - dog-bites.ts — MCL 287.351 strict liability, insurance coverage, 10 FAQs
+    - workers-compensation.ts — no-fault system, denial appeals, retaliation protections, 12 FAQs
+  - PracticeAreaPI type interface at src/data/practice/pi/types.ts
+  - All 7 screen files rewritten to use template + data pattern
+  - Unique h1, seoTitle, seoDescription per page
+  - CTA every 2-3 sections (5+ per page)
+  - Related practice areas link to siblings
+  - City links connect to city SEO pages
+  - [CONFIRM] placeholders on case results, testimonials, related cases
+  - Mobile responsive (sidebar collapses inline)
+  - pi-reveal CSS animations (existing PersonalInjury.css)
+  - Zero TypeScript errors, zero build errors
+
 ### Next — Implementation Order
 
 3. **Spec 05 — About & Team Pages** — Founder story + team grid.
 4. **Spec 06 — Contact & Intake** — Typeform integration + office info.
-5. **Spec 03 — PI Practice Area Pages** — 7 sub-practice pages with 14-section depth.
-6. **Spec 04 — SEO City Pages** — 49 city × practice pages.
+5. **Spec 04 — SEO City Pages** — 49 city × practice pages.
 7. **Spec 07 — SEO Meta & Schema** — Page titles, meta, structured data.
 8. **Spec 08 — Photo Assets** — Convert and integrate photos.
 9. **Spec 09 — Legal Compliance** — Disclaimers, privacy, terms.
