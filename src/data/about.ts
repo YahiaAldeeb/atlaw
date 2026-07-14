@@ -75,6 +75,8 @@ export const founderBio = {
 
 export const byTheNumbers = [
   { label: "Founded", value: "2013" },
+  { label: "Cases Closed", value: "538" },
+  { label: "Recovered for Clients", value: "$7,163,973" },
   { label: "Team Members", value: "29" },
   { label: "Home Base", value: "Dearborn, MI" },
   { label: "Rising Star", value: "3×" },

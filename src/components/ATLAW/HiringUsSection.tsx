@@ -1,4 +1,5 @@
 import { RevealText, RevealBlock, Counter } from "../../motion/primitives";
+import { openIntakeModal } from "./IntakeModal";
 
 const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
@@ -122,16 +123,23 @@ export const HiringUsSection = (): JSX.Element => {
           </div>
         </RevealBlock>
 
+        <RevealBlock
+          as="p"
+          className="mx-auto mt-8 max-w-[600px] text-center font-sans text-[12px] leading-[1.6] text-white/40"
+        >
+          Case results depend on a variety of factors unique to each case. Case
+          results do not guarantee or predict a similar result in any future case.
+        </RevealBlock>
+
         <RevealBlock className="mt-12 flex justify-center lg:mt-14">
-          <a
+          <button
             className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full bg-[#C6A04A] px-8 font-sans text-[15px] font-semibold uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#d4a94f] hover:shadow-[0_8px_24px_rgba(198,160,74,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1428] lg:h-[60px] lg:px-9"
-            href="https://j098jiq3pk7.typeform.com/to/Mslg7Y7f"
-            rel="noopener noreferrer"
-            target="_blank"
+            onClick={openIntakeModal}
+            type="button"
           >
             Get Your Free Case Review
             <ArrowRight className="group-hover:translate-x-1" />
-          </a>
+          </button>
         </RevealBlock>
       </div>
     </section>

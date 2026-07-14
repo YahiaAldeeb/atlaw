@@ -19,7 +19,7 @@ export const DogBitesPage = (): JSX.Element => {
         schema={practiceAreaSchema(dogBitesData.title, "Dog Bite Legal Representation")}
       />
       <Header />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <PracticeAreaDetailTemplate data={dogBitesData} />
       </main>
       <Footer />

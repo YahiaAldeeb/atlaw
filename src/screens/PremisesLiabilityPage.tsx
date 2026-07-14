@@ -19,7 +19,7 @@ export const PremisesLiabilityPage = (): JSX.Element => {
         schema={practiceAreaSchema(premisesLiabilityData.title, "Premises Liability Legal Representation")}
       />
       <Header />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <PracticeAreaDetailTemplate data={premisesLiabilityData} />
       </main>
       <Footer />

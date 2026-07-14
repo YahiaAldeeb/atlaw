@@ -19,7 +19,7 @@ export const MedicalMalpracticePage = (): JSX.Element => {
         schema={practiceAreaSchema(medicalMalpracticeData.title, "Medical Malpractice Legal Representation")}
       />
       <Header />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <PracticeAreaDetailTemplate data={medicalMalpracticeData} />
       </main>
       <Footer />

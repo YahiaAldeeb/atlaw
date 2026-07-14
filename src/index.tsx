@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ATLAWLandingPage } from "./screens/ATLAWLandingPage";
 import { BackToTop } from "./components/ATLAW/BackToTop";
+import { IntakeModal } from "./components/ATLAW/IntakeModal";
 import { NavigationLoader } from "./components/ATLAW/NavigationLoader";
 import { LoaderOverlay } from "./components/ATLAW/LoaderOverlay";
 import { ScrollToTop } from "./components/ATLAW/ScrollToTop";
@@ -23,6 +24,8 @@ const DogBitesPage = lazy(() => import("./screens/DogBitesPage").then((m) => ({ 
 const WorkersCompensationPage = lazy(() => import("./screens/WorkersCompensationPage").then((m) => ({ default: m.WorkersCompensationPage })));
 const CityLandingPage = lazy(() => import("./screens/CityLandingPage").then((m) => ({ default: m.CityLandingPage })));
 const AreasServedPage = lazy(() => import("./screens/AreasServedPage").then((m) => ({ default: m.AreasServedPage })));
+const NewsPage = lazy(() => import("./screens/NewsPage").then((m) => ({ default: m.NewsPage })));
+const NewsPostPage = lazy(() => import("./screens/NewsPostPage").then((m) => ({ default: m.NewsPostPage })));
 const PrivacyPolicyPage = lazy(() => import("./screens/PrivacyPolicyPage").then((m) => ({ default: m.PrivacyPolicyPage })));
 const TermsOfUsePage = lazy(() => import("./screens/TermsOfUsePage").then((m) => ({ default: m.TermsOfUsePage })));
 
@@ -40,6 +43,8 @@ createRoot(document.getElementById("app") as HTMLElement).render(
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/team" element={<OurPeoplePage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/news/:slug" element={<NewsPostPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsOfUsePage />} />
 
@@ -68,6 +73,7 @@ createRoot(document.getElementById("app") as HTMLElement).render(
         <Route path="/news-insights" element={<Navigate to="/" replace />} />
       </Routes>
       </Suspense>
+      <IntakeModal />
       <BackToTop />
     </BrowserRouter>
     </SmoothScroll>

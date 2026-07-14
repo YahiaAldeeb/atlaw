@@ -35,7 +35,8 @@ export const Counter = ({
   start = REVEAL_START,
 }: CounterProps): JSX.Element => {
   const ref = useRef<HTMLElement>(null);
-  const label = `${prefix}${value}${suffix}`;
+  const fmt = (n: number) => n.toLocaleString("en-US");
+  const label = `${prefix}${fmt(value)}${suffix}`;
 
   useGSAP(
     () => {
@@ -54,7 +55,7 @@ export const Counter = ({
         snap: { v: 1 },
         scrollTrigger: { trigger: el, start, once: true },
         onUpdate: () => {
-          el.textContent = `${prefix}${Math.round(proxy.v)}${suffix}`;
+          el.textContent = `${prefix}${fmt(Math.round(proxy.v))}${suffix}`;
         },
       });
     },

@@ -93,7 +93,7 @@ export const TermsOfUsePage = (): JSX.Element => {
 
       <Header />
 
-      <main className="terms-page">
+      <main id="main-content" className="terms-page">
         {/* ── 01 — HERO (compact, light) ── */}
         <section className="border-b border-[#0E1B2C]/10">
           <div className="mx-auto flex min-h-[46vh] w-full max-w-[1180px] flex-col justify-center px-6 pb-14 pt-20 sm:px-10 md:pt-24 lg:px-16">

@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 const SITE_NAME = "ATLAW — Dearborn Personal Injury Lawyers";
-const DEFAULT_OG_IMAGE = "/assets/atlaw-og-share.png";
+const DEFAULT_OG_IMAGE = "/assets/atlaw-portrait.png"; // stopgap until atlaw-og-share.png (1200×630) added
 const BASE_URL = "https://atlawgroup.com";
 
 interface PageMetaProps {

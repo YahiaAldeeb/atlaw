@@ -101,6 +101,31 @@ export function aboutPageSchema() {
   };
 }
 
+export function newsArticleSchema(opts: {
+  title: string;
+  description: string;
+  datePublished: string;
+  slug: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: opts.title,
+    description: opts.description,
+    datePublished: opts.datePublished,
+    dateModified: opts.datePublished,
+    url: `${FIRM.url}/news/${opts.slug}`,
+    ...(opts.image ? { image: `${FIRM.url}${opts.image}` } : {}),
+    author: { "@type": "Organization", name: FIRM.name },
+    publisher: {
+      "@type": "Organization",
+      name: FIRM.name,
+      logo: { "@type": "ImageObject", url: `${FIRM.url}/assets/atlaw-portrait.png` },
+    },
+  };
+}
+
 export function contactPageSchema() {
   return {
     "@context": "https://schema.org",

@@ -4,6 +4,8 @@ export const medicalMalpracticeData: PracticeAreaPI = {
   slug: "medical-malpractice",
   title: "Medical Malpractice",
   heroTitle: "Michigan Medical Malpractice Lawyer",
+  heroImage: "/assets/practice/medical-malpractice.webp",
+  heroImageAlt: "Medical malpractice case representation in Michigan",
   tagline: "When the care that was supposed to help you causes harm, we hold the provider accountable.",
   seoTitle: "Medical Malpractice Lawyer | Dearborn & Detroit | ATLAW",
   seoDescription: "Harmed by a medical error in Michigan? ATLAW handles the records, experts, and deadlines. Surgical errors, misdiagnosis, birth injuries. Free case review.",

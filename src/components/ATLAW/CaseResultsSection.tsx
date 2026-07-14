@@ -110,7 +110,7 @@ export const CaseResultsSection = (): JSX.Element => {
         style={{ backgroundImage: grain }}
       />
 
-      <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-20 pt-10 sm:px-10 md:pb-24 md:pt-12 lg:px-20 lg:pb-[100px] lg:pt-14">
+      <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-14 pt-10 sm:px-10 md:pb-16 md:pt-12 lg:px-20 lg:pb-[64px] lg:pt-14">
         <header className="mx-auto flex flex-col items-center text-center">
           <RevealText
             as="h2"
@@ -193,7 +193,12 @@ export const CaseResultsSection = (): JSX.Element => {
           </div>
         </div>
 
-        <RevealBlock as="div" className="mt-14 flex justify-center lg:mt-16">
+        <RevealBlock as="p" className="mx-auto mt-10 max-w-[600px] text-center font-sans text-[12px] leading-[1.6] text-[#3A4A63]/60">
+          Case results depend on a variety of factors unique to each case. Case
+          results do not guarantee or predict a similar result in any future case.
+        </RevealBlock>
+
+        <RevealBlock as="div" className="mt-8 flex justify-center">
           <span aria-hidden="true" className="h-px w-full max-w-[400px] bg-gradient-to-r from-transparent via-[#B88A2D]/30 to-transparent" />
         </RevealBlock>
       </div>

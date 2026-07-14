@@ -1,4 +1,5 @@
 import { RevealText, RevealBlock } from "../../motion/primitives";
+import { openIntakeModal } from "./IntakeModal";
 
 const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
@@ -31,13 +32,13 @@ export const IntakeFormSection = (): JSX.Element => {
       <img
         aria-hidden="true"
         alt=""
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_20%] opacity-[0.12] lg:hidden"
         src="/assets/dewnya/dewnya-navy-pinstripe.avif"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1b33] via-[rgba(14,27,51,0.92)] to-[rgba(14,27,51,0.6)]"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1b33] via-[rgba(14,27,51,0.92)] to-[rgba(14,27,51,0.75)]"
       />
 
       <div
@@ -65,17 +66,38 @@ export const IntakeFormSection = (): JSX.Element => {
           </RevealBlock>
 
           <RevealBlock className="mt-10 lg:mt-12">
-            <a
+            <button
               className="group inline-flex h-[60px] items-center justify-center gap-2.5 rounded-full bg-[#C6A04A] px-9 font-sans text-[15px] font-medium uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#d4b35a] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e1b33] lg:h-[64px] lg:px-10"
-              href="https://j098jiq3pk7.typeform.com/to/Mslg7Y7f"
-              rel="noopener noreferrer"
-              target="_blank"
+              onClick={openIntakeModal}
+              type="button"
             >
               Get a Free Case Review
               <ArrowRight className="group-hover:translate-x-1" />
-            </a>
+            </button>
           </RevealBlock>
         </div>
+
+        {/* Right: framed portrait — fits cleanly instead of a stretched bleed */}
+        <RevealBlock className="mt-12 hidden lg:mt-0 lg:block lg:basis-[45%]">
+          <div className="relative ml-auto w-full max-w-[440px]">
+            <div
+              aria-hidden="true"
+              className="absolute -inset-3 rounded-[24px] bg-[radial-gradient(circle_at_70%_30%,rgba(198,160,74,0.22),transparent_70%)] blur-xl"
+            />
+            <div className="relative overflow-hidden rounded-[20px] border border-[#C6A04A]/25 shadow-[0_24px_60px_rgba(5,15,28,0.5)]">
+              <img
+                alt="Dewnya, ATLAW attorney"
+                className="aspect-[4/5] w-full object-cover object-[center_18%]"
+                loading="lazy"
+                src="/assets/dewnya/dewnya-navy-pinstripe.avif"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,27,51,0.45)] via-transparent to-transparent"
+              />
+            </div>
+          </div>
+        </RevealBlock>
       </div>
     </section>
   );

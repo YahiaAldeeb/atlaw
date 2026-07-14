@@ -4,6 +4,8 @@ export const autoAccidentsData: PracticeAreaPI = {
   slug: "auto-accidents",
   title: "Auto Accident & No-Fault Claims",
   heroTitle: "Michigan Auto Accident Lawyer",
+  heroImage: "/assets/practice/auto-accidents.webp",
+  heroImageAlt: "Aftermath of a Michigan auto accident",
   tagline: "The insurer is already working to pay you less. We make sure you get what the law says you’re owed.",
   seoTitle: "Auto Accident & No-Fault Lawyer | Dearborn & Detroit | ATLAW",
   seoDescription: "Hurt in a car crash in Michigan? ATLAW handles No-Fault claims, PIP benefits, and third-party lawsuits. No fee unless we win. Free case review.",

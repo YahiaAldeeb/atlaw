@@ -8,8 +8,9 @@ import {
   FirmValuesSection,
   AwardsStripSection,
   ByTheNumbersSection,
-  InlineIntakeCta,
 } from "./about/sections";
+import { TestimonialsSection } from "../components/ATLAW/TestimonialsSection";
+import { IntakeFormSection } from "../components/ATLAW/IntakeFormSection";
 import { aboutPageSchema } from "../data/schema-org";
 
 export const AboutUsPage = (): JSX.Element => {
@@ -22,7 +23,7 @@ export const AboutUsPage = (): JSX.Element => {
         schema={aboutPageSchema()}
       />
       <Header />
-      <main>
+      <main id="main-content">
         {/* ══ 01 — HERO (dark overlay on group photo) ═════════════════ */}
         <section
           aria-labelledby="about-hero-heading"
@@ -81,8 +82,9 @@ export const AboutUsPage = (): JSX.Element => {
         {/* ══ 06 — BY THE NUMBERS ════════════════════════════════════ */}
         <ByTheNumbersSection />
 
-        {/* ══ 07 — INLINE INTAKE CTA ═════════════════════════════════ */}
-        <InlineIntakeCta />
+        {/* ══ 07 — TESTIMONIALS + INTAKE CTA (shared) ════════════════ */}
+        <TestimonialsSection />
+        <IntakeFormSection />
       </main>
 
       {/* ══ 08 — FOOTER ═════════════════════════════════════════════ */}

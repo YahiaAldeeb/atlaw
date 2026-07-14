@@ -4,6 +4,8 @@ export const wrongfulDeathData: PracticeAreaPI = {
   slug: "wrongful-death",
   title: "Wrongful Death",
   heroTitle: "Michigan Wrongful Death Lawyer",
+  heroImage: "/assets/practice/wrongful-death.jpg",
+  heroImageAlt: "Wrongful death case representation in Michigan",
   tagline: "No case undoes the loss. We hold those responsible to account and take the financial weight off your family.",
   seoTitle: "Wrongful Death Attorney | Dearborn & Detroit | ATLAW",
   seoDescription: "Lost a loved one due to someone else’s negligence? ATLAW handles wrongful death claims with compassion and strength. Free consultation. No fee unless we win.",

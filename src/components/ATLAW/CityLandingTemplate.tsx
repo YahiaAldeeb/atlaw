@@ -1,9 +1,11 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { PracticeAreaPI } from "../../data/practice/pi/types";
 import type { CityData } from "../../data/cities";
-import { cities, citySlug } from "../../data/cities";
+import { cities } from "../../data/cities";
 import { practiceAreaBySlug } from "../../data/practice/pi";
+import { openIntakeModal } from "./IntakeModal";
+import { IntakeFormSection } from "./IntakeFormSection";
 
 const GOLD = "#C9A24B";
 const GOLD_ACCENT = "#B88A2D";
@@ -11,7 +13,6 @@ const GOLD_BRIGHT = "#C6A04A";
 const INK = "#0B1F3A";
 const STONE = "#3A4A63";
 const NAVY_CANVAS = "linear-gradient(180deg, #0E1B33 0%, #0A1428 100%)";
-const TYPEFORM_URL = "https://j098jiq3pk7.typeform.com/to/Mslg7Y7f";
 
 const headlineAxes = "'opsz' 144, 'wght' 360, 'SOFT' 0, 'WONK' 0";
 const subHeadAxes = "'opsz' 96, 'wght' 400, 'SOFT' 0, 'WONK' 0";
@@ -51,12 +52,6 @@ const MailIcon = () => (
   <svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} viewBox="0 0 24 24">
     <rect height="16" rx="2" width="20" x="2" y="4" />
     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-  </svg>
-);
-
-const StarIcon = ({ size = 18 }: { size?: number }) => (
-  <svg aria-hidden="true" fill={GOLD_BRIGHT} style={{ height: size, width: size }} viewBox="0 0 20 20">
-    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
   </svg>
 );
 
@@ -138,16 +133,37 @@ const Hero = ({ practice, city }: { practice: PracticeAreaPI; city: CityData }) 
         {practice.tagline}
       </p>
 
-      <a
+      <button
         className="pi-reveal group mt-8 inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full px-9 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-white transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_8px_24px_rgba(14,27,44,0.3)] lg:h-[60px]"
-        href={TYPEFORM_URL}
-        rel="noopener noreferrer"
+        onClick={openIntakeModal}
         style={{ animationDelay: "340ms", backgroundColor: "#0E1B2C" }}
-        target="_blank"
+        type="button"
       >
         Start Your Free Case Review
         <ArrowRight className="group-hover:translate-x-1" />
-      </a>
+      </button>
+
+      <div
+        className="pi-reveal relative mt-12 aspect-[16/7] w-full overflow-hidden rounded-[18px] md:mt-14"
+        style={{ animationDelay: "420ms" }}
+      >
+        <img
+          alt={`${city.name}, ${city.county}`}
+          className="h-full w-full object-cover"
+          loading="lazy"
+          src={`/assets/cities/${city.slug}.avif`}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-[rgba(11,31,58,0.72)] via-[rgba(11,31,58,0.12)] to-transparent"
+        />
+        <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 p-6 sm:p-8">
+          <span aria-hidden="true" className="h-px w-10 shrink-0" style={{ backgroundColor: GOLD }} />
+          <p className="font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-white sm:text-[13px]">
+            Serving {city.name} &amp; {city.county}
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 );
@@ -209,15 +225,14 @@ const SidebarCTA = () => (
         Email Us
       </a>
 
-      <a
+      <button
         className="flex h-[50px] items-center justify-center gap-2.5 rounded-full font-sans text-[13px] font-semibold uppercase tracking-[0.06em] text-[#0E1B2C] transition-all duration-200 hover:shadow-[0_6px_18px_rgba(198,160,74,0.35)]"
-        href={TYPEFORM_URL}
-        rel="noopener noreferrer"
+        onClick={openIntakeModal}
         style={{ backgroundColor: GOLD_BRIGHT }}
-        target="_blank"
+        type="button"
       >
         Free Case Review
-      </a>
+      </button>
     </div>
 
     <p className="relative mt-5 text-center font-sans text-[12px] leading-[1.5] text-white/60">
@@ -251,16 +266,15 @@ const CityContextSection = ({ practice, city }: { practice: PracticeAreaPI; city
           ))}
         </div>
 
-        <a
+        <button
           className="group mt-8 inline-flex h-[52px] items-center justify-center gap-2.5 rounded-full px-8 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-white transition-all duration-[240ms] hover:shadow-[0_8px_24px_rgba(14,27,44,0.3)]"
-          href={TYPEFORM_URL}
-          rel="noopener noreferrer"
+          onClick={openIntakeModal}
           style={{ backgroundColor: "#0E1B2C" }}
-          target="_blank"
+          type="button"
         >
           Contact Us About Your {practice.title} Case
           <ArrowRight className="group-hover:translate-x-1" />
-        </a>
+        </button>
       </div>
 
       <div className="lg:hidden">
@@ -319,16 +333,15 @@ const PracticeOverviewSection = ({ practice, city }: { practice: PracticeAreaPI;
         </div>
       )}
 
-      <a
+      <button
         className="group mt-10 inline-flex h-[52px] items-center justify-center gap-2.5 rounded-full px-8 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-white transition-all duration-[240ms] hover:shadow-[0_8px_24px_rgba(14,27,44,0.3)]"
-        href={TYPEFORM_URL}
-        rel="noopener noreferrer"
+        onClick={openIntakeModal}
         style={{ backgroundColor: "#0E1B2C" }}
-        target="_blank"
+        type="button"
       >
         Get a Free Case Review
         <ArrowRight className="group-hover:translate-x-1" />
-      </a>
+      </button>
     </div>
   </section>
 );
@@ -460,6 +473,11 @@ const CaseResultsSection = ({ practice }: { practice: PracticeAreaPI }) => {
             ))}
           </div>
         </div>
+
+        <p className="mx-auto mt-10 max-w-[600px] text-center font-sans text-[12px] leading-[1.6] text-white/45">
+          Case results depend on a variety of factors unique to each case. Case
+          results do not guarantee or predict a similar result in any future case.
+        </p>
       </div>
     </section>
   );
@@ -595,50 +613,7 @@ const OtherCitiesSection = ({ practice, city }: { practice: PracticeAreaPI; city
   );
 };
 
-/* ─────────────────── 10. Inline CTA + Final Band ─────────────────── */
-
-const IntakeFormSection = () => (
-  <section
-    aria-labelledby="city-intake-heading"
-    className="relative isolate w-full overflow-hidden bg-[#0e1b33]"
-  >
-    <img
-      alt=""
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20"
-      src="/assets/dewnya/dewnya-navy-pinstripe.avif"
-    />
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1b33] via-[rgba(14,27,51,0.92)] to-[rgba(14,27,51,0.6)]" />
-    <Grain opacity="0.05" />
-
-    <div className="relative mx-auto flex w-full max-w-[1180px] flex-col justify-center px-6 py-16 sm:px-10 md:py-20 lg:px-16 lg:py-24">
-      <div className="max-w-[560px]">
-        <h2
-          className="font-serifDisplay font-normal leading-[1.06] tracking-[-0.02em] text-white"
-          id="city-intake-heading"
-          style={{ fontSize: "clamp(32px, 5vw, 56px)", fontVariationSettings: headlineAxes }}
-        >
-          See How Much We Can Win for You<span style={{ color: GOLD_ACCENT }}>.</span>
-        </h2>
-
-        <p className="mt-5 font-sans text-[17px] leading-[1.6] text-white/80 lg:text-[18px]">
-          Pay nothing unless we win.
-        </p>
-
-        <a
-          className="group mt-8 inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full px-9 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] lg:h-[60px]"
-          href={TYPEFORM_URL}
-          rel="noopener noreferrer"
-          style={{ backgroundColor: GOLD_BRIGHT }}
-          target="_blank"
-        >
-          Get a Free Case Review
-          <ArrowRight className="group-hover:translate-x-1" />
-        </a>
-      </div>
-    </div>
-  </section>
-);
+/* ─────────────────── 10. Final Band ─────────────────── */
 
 const FinalCTABand = () => (
   <section aria-labelledby="city-final-cta" className="w-full">

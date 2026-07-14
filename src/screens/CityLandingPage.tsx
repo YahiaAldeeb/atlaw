@@ -30,7 +30,7 @@ export const CityLandingPage = (): JSX.Element => {
         schema={cityPracticeSchema(practiceData.title, `${practiceData.title} Legal Representation`, cityData.name)}
       />
       <Header />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <CityLandingTemplate practice={practiceData} city={cityData} />
       </main>
       <Footer />

@@ -4,15 +4,14 @@ import { Header } from "../components/ATLAW/Header";
 import { Footer } from "../components/ATLAW/Footer";
 import { PageMeta } from "../components/ATLAW/PageMeta";
 import { cities } from "../data/cities";
+import { openIntakeModal } from "../components/ATLAW/IntakeModal";
+import { IntakeFormSection } from "../components/ATLAW/IntakeFormSection";
 import "./PersonalInjury.css";
 
-const GOLD = "#C9A24B";
 const GOLD_ACCENT = "#B88A2D";
 const GOLD_BRIGHT = "#C6A04A";
-const INK = "#0B1F3A";
 const STONE = "#3A4A63";
 const NAVY_CANVAS = "linear-gradient(180deg, #0E1B33 0%, #0A1428 100%)";
-const TYPEFORM_URL = "https://j098jiq3pk7.typeform.com/to/Mslg7Y7f";
 
 const headlineAxes = "'opsz' 144, 'wght' 360, 'SOFT' 0, 'WONK' 0";
 const subHeadAxes = "'opsz' 96, 'wght' 400, 'SOFT' 0, 'WONK' 0";
@@ -40,18 +39,6 @@ const ArrowRight = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-const PhoneIcon = () => (
-  <svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} viewBox="0 0 24 24">
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-  </svg>
-);
-
-const MailIcon = () => (
-  <svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} viewBox="0 0 24 24">
-    <rect height="16" rx="2" width="20" x="2" y="4" />
-    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-  </svg>
-);
 
 export const AreasServedPage = (): JSX.Element => {
   const [activeCity, setActiveCity] = useState(cities[0].slug);
@@ -66,13 +53,27 @@ export const AreasServedPage = (): JSX.Element => {
         canonical="/areas-served"
       />
       <Header />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero */}
         <section
           aria-labelledby="areas-hero-title"
           className="relative w-full overflow-hidden"
           style={{ background: NAVY_CANVAS }}
         >
+          <img
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover opacity-25"
+            src="/assets/cities/michigan.avif"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(14,27,51,0.75) 0%, rgba(10,20,40,0.9) 100%)",
+            }}
+          />
           <Grain opacity="0.05" />
           <div className="relative mx-auto w-full max-w-[1180px] px-6 pb-14 pt-20 text-center sm:px-10 md:pb-20 md:pt-28 lg:px-16">
             <h1
@@ -95,16 +96,15 @@ export const AreasServedPage = (): JSX.Element => {
               From our Dearborn headquarters, ATLAW fights for injury victims throughout Southeast Michigan.
             </p>
 
-            <a
+            <button
               className="pi-reveal group mt-8 inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full px-9 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] lg:h-[60px]"
-              href={TYPEFORM_URL}
-              rel="noopener noreferrer"
+              onClick={openIntakeModal}
               style={{ animationDelay: "200ms", backgroundColor: GOLD_BRIGHT }}
-              target="_blank"
+              type="button"
             >
               Start Your Free Case Review
               <ArrowRight className="group-hover:translate-x-1" />
-            </a>
+            </button>
           </div>
         </section>
 
@@ -155,6 +155,21 @@ export const AreasServedPage = (): JSX.Element => {
                     className="relative flex min-h-[200px] flex-col justify-end px-8 pb-8 pt-16 sm:min-h-[240px] md:min-h-[260px]"
                     style={{ background: NAVY_CANVAS }}
                   >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute inset-0 h-full w-full object-cover opacity-45 transition-transform duration-[600ms] group-hover:scale-[1.04]"
+                      loading="lazy"
+                      src={`/assets/cities/${c.slug}.avif`}
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(11,31,58,0.55) 0%, rgba(11,31,58,0.72) 55%, rgba(10,20,40,0.92) 100%)",
+                      }}
+                    />
                     <Grain opacity="0.06" />
 
                     <p
@@ -192,51 +207,7 @@ export const AreasServedPage = (): JSX.Element => {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section aria-labelledby="areas-final-cta" className="w-full">
-          <div className="relative isolate overflow-hidden text-white" style={{ background: NAVY_CANVAS }}>
-            <Grain opacity="0.06" />
-            <div className="relative mx-auto flex w-full max-w-[1180px] flex-col items-center px-6 py-12 text-center sm:px-10 md:py-16 lg:py-20">
-              <h2
-                className="font-serifDisplay font-normal leading-[1.06] tracking-[-0.02em] text-white"
-                id="areas-final-cta"
-                style={{ fontSize: "clamp(30px, 5vw, 56px)", fontVariationSettings: headlineAxes }}
-              >
-                Get a FREE Case Evaluation Today!
-              </h2>
-              <p className="mt-4 font-sans text-[16px] leading-[1.5] text-white/75 lg:text-[18px]">
-                You Pay Nothing Unless We Win Your Case &mdash; Guaranteed.
-              </p>
-              <div className="mt-8 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
-                <a
-                  className="inline-flex h-[56px] w-full max-w-[280px] items-center justify-center gap-2.5 rounded-full px-8 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-[#0B1F3A] transition-all duration-[240ms] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] sm:w-auto lg:h-[60px]"
-                  href="tel:+13134067606"
-                  style={{ backgroundColor: GOLD_BRIGHT }}
-                >
-                  <PhoneIcon /> CALL
-                </a>
-                <a
-                  className="inline-flex h-[56px] w-full max-w-[280px] items-center justify-center gap-2.5 rounded-full border border-white/40 bg-transparent px-8 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-white transition-all duration-[240ms] hover:border-white hover:bg-white/10 sm:w-auto lg:h-[60px]"
-                  href="mailto:info@atlawgroup.com"
-                >
-                  <MailIcon /> EMAIL
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="w-full bg-[#081120]">
-            <div className="mx-auto flex max-w-[1180px] flex-col items-center gap-1.5 px-6 py-7 text-center sm:px-10">
-              <a
-                className="font-serifDisplay font-normal leading-none tracking-[-0.02em] text-white transition-colors duration-200 hover:text-[#C6A04A] text-[clamp(24px, 4vw, 42px)]"
-                href="tel:+13134067606"
-                style={{ fontVariationSettings: headlineAxes }}
-              >
-                (313) 406-7606
-              </a>
-              <p className="font-sans text-[13px] tracking-[0.02em] text-white/55">We&rsquo;re here to help.</p>
-            </div>
-          </div>
-        </section>
+        <IntakeFormSection />
       </main>
       <Footer />
     </div>

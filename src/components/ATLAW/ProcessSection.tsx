@@ -5,14 +5,54 @@ const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 const headlineAxes = "'opsz' 144, 'wght' 380, 'SOFT' 0, 'WONK' 0";
-const numberAxes = "'opsz' 96, 'wght' 360, 'SOFT' 0, 'WONK' 0";
 
 type Step = {
   number: string;
   title: string;
   description: string;
   gradient: string;
+  icon: JSX.Element;
+  image: string;
+  imageAlt: string;
 };
+
+const iconCls = "h-11 w-11";
+const iconProps = {
+  className: iconCls,
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.6,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  viewBox: "0 0 24 24",
+  "aria-hidden": true,
+};
+
+const PhoneIcon = (): JSX.Element => (
+  <svg {...iconProps}>
+    <path d="M3 5.5C3 4.1 4.1 3 5.5 3H7l1.6 4-2 1.3a12 12 0 0 0 5.1 5.1l1.3-2 4 1.6v1.5c0 1.4-1.1 2.5-2.5 2.5A13.5 13.5 0 0 1 3 5.5Z" />
+  </svg>
+);
+
+const SearchIcon = (): JSX.Element => (
+  <svg {...iconProps}>
+    <circle cx="11" cy="11" r="6.5" />
+    <path d="m20 20-3.8-3.8" />
+  </svg>
+);
+
+const ScalesIcon = (): JSX.Element => (
+  <svg {...iconProps}>
+    <path d="M12 3v16M7 20h10M5 7h14M12 5 6 8m6-3 6 3" />
+    <path d="M6 8 3.5 13.5a2.5 2.5 0 0 0 5 0L6 8Zm12 0-2.5 5.5a2.5 2.5 0 0 0 5 0L18 8Z" />
+  </svg>
+);
+
+const HeartIcon = (): JSX.Element => (
+  <svg {...iconProps}>
+    <path d="M12 20s-7-4.4-7-9.3A3.7 3.7 0 0 1 12 8a3.7 3.7 0 0 1 7-.7C19 12.6 12 20 12 20Z" />
+  </svg>
+);
 
 const steps: Step[] = [
   {
@@ -20,62 +60,77 @@ const steps: Step[] = [
     title: "Call ATLAW",
     description: "Contact us for a free case review.",
     gradient: "linear-gradient(170deg, #162d50 0%, #0e1b33 40%, #0a1428 100%)",
+    icon: <PhoneIcon />,
+    image: "/assets/steps/step-1.jpg",
+    imageAlt: "Client reaching out to ATLAW for a free case review",
   },
   {
     number: "02",
     title: "We Investigate",
     description: "We gather evidence and handle the paperwork.",
     gradient: "linear-gradient(170deg, #1a2a3e 0%, #12243c 35%, #0e1b33 70%, #0a1428 100%)",
+    icon: <SearchIcon />,
+    image: "/assets/steps/step-2.jpg",
+    imageAlt: "ATLAW attorney consulting with a client",
   },
   {
     number: "03",
     title: "We Fight",
     description: "We negotiate or litigate for maximum recovery.",
     gradient: "linear-gradient(170deg, #0e1b33 0%, #0a1428 100%)",
+    icon: <ScalesIcon />,
+    image: "/assets/steps/step-3.jpg",
+    imageAlt: "Scales of justice and gavel representing ATLAW fighting your case",
   },
   {
     number: "04",
     title: "You Recover",
     description: "Focus on healing. We handle the rest.",
     gradient: "linear-gradient(170deg, #142640 0%, #0f1e35 50%, #0c1729 100%)",
+    icon: <HeartIcon />,
+    image: "/assets/steps/step-4.jpg",
+    imageAlt: "Client celebrating a successful case resolution",
   },
 ];
 
 const StepCard = ({ step }: { step: Step }): JSX.Element => (
-  <article
-    className="group relative flex min-h-[280px] flex-col overflow-hidden rounded-[16px] px-7 pb-9 pt-10 shadow-[0_10px_30px_rgba(5,15,28,0.18)] transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px] hover:shadow-[0_18px_42px_rgba(5,15,28,0.30)] lg:min-h-[320px] lg:px-8 lg:pb-10 lg:pt-12"
-    style={{ background: step.gradient }}
-  >
+  <article className="group relative flex min-h-[440px] flex-col justify-end overflow-hidden rounded-[18px] shadow-[0_12px_34px_rgba(5,15,28,0.28)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[6px] hover:shadow-[0_24px_54px_rgba(5,15,28,0.42)] lg:min-h-[500px]">
+    {/* full-bleed photo */}
+    <img
+      alt={step.imageAlt}
+      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+      loading="lazy"
+      src={step.image}
+    />
+    {/* dark readability overlay */}
+    <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0a1428] via-[#0a1428]/55 to-[#0a1428]/25" />
+    <div aria-hidden="true" className="absolute inset-0 bg-[#0a1428]/20" />
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay"
+      className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
       style={{ backgroundImage: grain }}
     />
-
-    <span
-      className="relative font-serifDisplay font-normal leading-none tracking-[-0.02em] text-[#C6A04A] text-[clamp(48px,5vw,72px)]"
-      style={{ fontVariationSettings: numberAxes }}
-    >
-      {step.number}
-    </span>
-
-    <span aria-hidden="true" className="relative mt-6 block h-px w-12 bg-gradient-to-r from-[#B88A2D] to-[#B88A2D]/20" />
-
-    <h3
-      className="relative mt-6 font-serifDisplay text-[22px] font-normal leading-[1.18] tracking-[-0.01em] text-white lg:text-[24px]"
-      style={{ fontVariationSettings: "'opsz' 48, 'wght' 400" }}
-    >
-      {step.title}
-    </h3>
-
-    <p className="relative mt-3 font-sans text-[15px] leading-[1.6] text-white/70">
-      {step.description}
-    </p>
-
+    {/* gold accent bar reveals on hover */}
     <span
       aria-hidden="true"
-      className="pointer-events-none absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#B88A2D]/25 to-transparent"
+      className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-[#C6A04A] via-[#E4C36A] to-[#C6A04A]/40 transition-transform duration-300 group-hover:scale-x-100"
     />
+
+    <div className="relative z-10 flex flex-col p-7 pb-8 lg:p-8 lg:pb-9">
+      <span className="text-white drop-shadow-[0_2px_8px_rgba(5,15,28,0.5)]">
+        {step.icon}
+      </span>
+
+      <p className="mt-7 font-sans text-[27px] font-bold leading-none tracking-[-0.01em] text-white lg:text-[30px]">
+        Step {Number(step.number)}
+      </p>
+      <p className="mt-2.5 font-sans text-[16px] font-semibold leading-[1.3] text-white lg:text-[17px]">
+        {step.title}
+      </p>
+      <p className="mt-1.5 font-sans text-[14px] leading-[1.5] text-white/70">
+        {step.description}
+      </p>
+    </div>
   </article>
 );
 

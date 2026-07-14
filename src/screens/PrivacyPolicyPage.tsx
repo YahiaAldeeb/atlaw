@@ -93,7 +93,7 @@ export const PrivacyPolicyPage = (): JSX.Element => {
 
       <Header />
 
-      <main className="privacy-page">
+      <main id="main-content" className="privacy-page">
         {/* ── 01 — HERO (compact, light) ── */}
         <section className="border-b border-[#0E1B2C]/10">
           <div className="mx-auto flex min-h-[50vh] w-full max-w-[1180px] flex-col justify-center px-6 pb-14 pt-20 sm:px-10 md:pt-24 lg:px-16">

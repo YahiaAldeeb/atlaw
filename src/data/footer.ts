@@ -14,6 +14,7 @@ export const companyLinks: NavLink[] = [
   { label: "About", to: "/about" },
   { label: "Our Team", to: "/team" },
   { label: "Areas Served", to: "/areas-served" },
+  { label: "News", to: "/news" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -29,4 +30,4 @@ export const legalLinks: { label: string; to: string }[] = [
 ];
 
 export const MAP_URL =
-  "https://www.google.com/maps/search/?api=1&query=3+Park+Ln+Blvd+Suite+1500%2C+Dearborn%2C+MI+48126";
+  "https://www.google.com/maps/search/?api=1&query=3+Park+Lane+Blvd+Suite+400W%2C+Dearborn%2C+MI+48126";

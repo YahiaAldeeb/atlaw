@@ -1,10 +1,6 @@
 import { useState } from "react";
-import { NAVY, INK, GOLD, Reveal, Eyebrow, Period, Cta, ArrowRight, grain, SECTION, PAD } from "./primitives";
+import { NAVY, INK, GOLD, Reveal, Eyebrow, Period, Cta, grain, SECTION, PAD } from "./primitives";
 import { timelineEvents, firmValues, founderBio, byTheNumbers } from "../../data/about";
-
-const TYPEFORM = "https://j098jiq3pk7.typeform.com/to/Mslg7Y7f";
-const PHONE_DISPLAY = "(313) 406-7606";
-const PHONE_HREF = "tel:+13134067606";
 
 /* ══ 02 — FOUNDER FEATURE (two-column, personal story) ═══════════ */
 export const FounderFeatureSection = (): JSX.Element => {
@@ -306,64 +302,3 @@ export const ByTheNumbersSection = (): JSX.Element => (
   </section>
 );
 
-/* ══ 07 — INLINE INTAKE CTA ═════════════════════════════════════ */
-export const InlineIntakeCta = (): JSX.Element => (
-  <section
-    aria-labelledby="intake-heading"
-    className="relative isolate w-full overflow-hidden"
-    style={{ backgroundColor: NAVY }}
-  >
-    <img
-      aria-hidden="true"
-      alt=""
-      className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20"
-      src="/assets/dewnya/dewnya-navy-pinstripe.avif"
-    />
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1b33] via-[rgba(14,27,51,0.92)] to-[rgba(14,27,51,0.6)]"
-    />
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay"
-      style={{ backgroundImage: grain }}
-    />
-
-    <div className={`relative ${SECTION} py-20 md:py-28 lg:py-[120px]`}>
-      <div className="max-w-[620px]">
-        <Reveal>
-          <h2
-            id="intake-heading"
-            className="font-serifDisplay text-[clamp(34px,5vw,58px)] font-normal leading-[1.06] tracking-[-0.02em] text-white"
-          >
-            See How We Can Help<Period />
-          </h2>
-        </Reveal>
-        <Reveal delay={100}>
-          <p className="mt-5 font-sans text-[18px] leading-[1.6] text-white/75 lg:text-[19px]">
-            Free consultation. No obligation. You pay nothing unless we win.
-          </p>
-        </Reveal>
-        <Reveal delay={180}>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a
-              className="group inline-flex h-[60px] items-center justify-center gap-2.5 rounded-full bg-[#C6A04A] px-9 font-sans text-[15px] font-medium uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#d4b35a] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e1b33] lg:h-[64px]"
-              href={TYPEFORM}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Get a Free Case Review
-              <ArrowRight className="group-hover:translate-x-1" />
-            </a>
-            <a
-              className="group inline-flex h-[60px] items-center justify-center gap-2.5 rounded-full border border-white/40 px-8 font-sans text-[15px] font-medium text-white transition-all duration-[240ms] hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e1b33] lg:h-[64px]"
-              href={PHONE_HREF}
-            >
-              Call {PHONE_DISPLAY}
-            </a>
-          </div>
-        </Reveal>
-      </div>
-    </div>
-  </section>
-);

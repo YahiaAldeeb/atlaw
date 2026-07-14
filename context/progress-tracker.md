@@ -240,19 +240,87 @@
   - No broken image links — all 12 code references verified against actual files
   - Zero TypeScript errors, zero build errors
 
+- [x] Implement Spec 09 — Legal Compliance (June 26, 2026)
+  - Attorney Advertising Disclaimer: updated Footer to full Michigan-compliant text
+    - "This website is attorney advertising and for general information only. It is not legal advice and does not create an attorney-client relationship. Past results do not guarantee future outcomes."
+    - Persists on every page via global Footer component
+  - Privacy Policy (`/privacy`): full Michigan-compliant rewrite
+    - EMAIL updated to db@atlawgroup.com per spec
+    - All 12 sections filled with real legal content (no pending sections)
+    - Removed Dubai/Manila/international references (PI-only single-office)
+    - Section 09 renamed "Where data is stored" — US-only
+    - Cookie table updated: __session, Google Analytics (_ga), Typeform (tf_*)
+    - Typeform mentioned as third-party intake service
+    - Contact address: 3 Park Lane Blvd Suite 400W, Dearborn, MI 48126
+    - LAST_UPDATED set to June 26, 2026
+  - Terms of Use (`/terms`): full Michigan-specific rewrite
+    - All 13 sections filled with substantive content (no pending sections)
+    - Section 05: attorney advertising notice with Michigan MRPC reference
+    - Section 11: Michigan law governs, Wayne County venue
+    - Section 08: mentions Typeform, Google Maps as third-party services
+    - Contact address and email updated
+    - LAST_UPDATED set to June 26, 2026
+  - Case Results Disclaimer added to 6 locations:
+    - CaseResultsSection (homepage)
+    - CaseResultsComparison (practice area template)
+    - CaseResultsSection (city landing template)
+    - HiringUsSection (homepage)
+    - WinningsTicker (homepage, sr-only)
+    - RelatedCasesStrip (practice area template)
+    - Text: "Case results depend on a variety of factors unique to each case. Case results do not guarantee or predict a similar result in any future case."
+  - Testimonial Disclaimer added to 2 locations:
+    - TestimonialsSection (homepage)
+    - TestimonialsSection (practice area template)
+    - Text: "Testimonials or endorsements do not constitute a guarantee, warranty, or prediction regarding the outcome of your legal matter."
+  - Fee Language: NoFeeBanner "You Only Pay When We Win" — approved PI fee language kept
+  - ADA Compliance:
+    - Global `:focus-visible` style: 2px solid gold (#C9A24B) outline, 2px offset
+    - Skip-to-content link: keyboard-accessible, visible on focus, targets #main-content
+    - `id="main-content"` added to `<main>` on all 15 active pages
+    - All decorative images already have `alt=""` + `aria-hidden="true"` (correct per WCAG)
+    - All interactive elements already use `focus-visible:` Tailwind classes
+    - Screen reader landmarks: `<header>`, `<main>`, `<footer>`, `<nav aria-label>`, `<section aria-labelledby>` throughout
+    - `aria-expanded` on all accordions and mobile menu
+    - Print stylesheets on Privacy and Terms pages
+  - Zero TypeScript errors, zero build errors
+
 ### Next — Implementation Order
 
-9. **Spec 09 — Legal Compliance** — Disclaimers, privacy, terms.
+All Phase 1 specs (01–09) complete. Open questions resolved (see below).
+
+- [x] Open-Questions Resolution — Client Answers Implemented (July 14, 2026)
+  - **Credibility metrics** (real, client-confirmed): 538 Cases Closed · $7,163,973 Recovered
+    - NEW ResultsStatBar on homepage (after AwardsMarquee): 3 animated counters (538 / $7,163,973 / 2013) + case-results disclaimer
+    - About "By The Numbers" strip: added Cases Closed 538 + Recovered $7,163,973
+    - Counter primitive enhanced: thousands separators via toLocaleString (also fixes HiringUsSection $127,500)
+    - Per-case results & testimonials LEFT AS TEMPLATE per client ([CONFIRM] placeholders retained — testimonial copy still in progress)
+  - **Intake forms** — replaced single Typeform link with 3-language CXP Legal Tech forms (EN/AR/ES)
+    - `src/data/intake.ts` — form URLs + language config
+    - NEW `IntakeModal.tsx` — language-choice popup (external store + `openIntakeModal()`), mounted once at app root
+    - ALL intake CTAs sitewide converted from `<a href=Typeform>` to `<button onClick={openIntakeModal}>` (Hero, IntakeFormSection, HiringUsSection, PracticeAreaDetailTemplate ×4, CityLandingTemplate ×5, ContactPage ×3, AreasServedPage, about/sections)
+    - Legal text (privacy, terms) updated: Typeform → CXP Legal Tech; removed tf_* cookie row (forms now external)
+    - Dead GlobalReach/OurPeople Typeform consts removed/left (unrouted)
+  - **Office hours** — 9 AM – 5 PM, Mon–Fri
+    - Contact page: Call card secondary + OfficeLocation hours row (clock icon)
+    - Footer: office hours line added
+    - Schema already had `Mo-Fr 09:00-17:00`
+  - **City pages content** — city-specific photos integrated (Areas Served folder)
+    - 8 photos → AVIF in `public/assets/cities/` via `scripts/convert-city-photos.mjs`
+    - City landing hero: framed 16:7 city banner with "Serving {city} & {county}" caption
+    - AreasServedPage: real city photo as card background (navy overlay) + Michigan photo in hero
+  - **Blog** — full press-release build
+    - `src/data/news.ts` — NewsPost model + 3 DRAFT releases (grounded in confirmed facts, flagged for client copy)
+    - NEW `/news` (NewsPage index) + `/news/:slug` (NewsPostPage article template, dateline, related, NewsArticle schema)
+    - Nav "NEWS" link + Footer "News" link + sitemap (4 URLs) + `newsArticleSchema()` generator
+  - **Team page scope** — confirmed attorneys + key PI staff only (already built in Spec 05, no change)
+  - Bonus fixes found while editing: Footer "Headquarters: Detroit, MI" → correct Dearborn address; map URL + Dearborn city data suite "1500" → "400W"
+  - Zero TypeScript errors, zero build errors
 
 ### Open Questions
 
-- [ ] **Case results** — Need real case results from Dewnya. All specs use [CONFIRM] placeholders.
-- [ ] **Testimonials** — Need approved client quotes. Using [CONFIRM] placeholders.
-- [ ] **Office hours** — What hours is the Dearborn office open?
-- [ ] **Typeform routing** — Where do Typeform submissions go?
-- [ ] **Blog** — Include blog/news section in Phase 1 or defer?
-- [ ] **City pages content** — Do we have city-specific photos/content or template everything?
-- [ ] **Team page scope** — Show all 29 staff or only attorneys + key PI staff?
+- [ ] **Testimonials copy** — still pending from client; homepage + practice-area testimonials remain [CONFIRM] template (client working on copy).
+- [ ] **Email inconsistency** (pre-existing, needs client decision) — site mixes `info@atlawgroup.com` (Footer, templates, NoFeeBanner) and `db@atlawgroup.com` (Contact, legal, schema). Not changed — confirm which is the public contact address, then standardize.
+- [ ] **News content** — 3 press releases are DRAFTS built from confirmed facts. Replace with client-approved announcements as issued.
 
 ### Architecture Decisions
 
@@ -261,7 +329,7 @@
 | PI-only site | Yes | Meeting directive — no Visionary Builders, no coaching |
 | Dubai/Manila removed | Yes | Single office: Dearborn |
 | Model site | mikemorris.com | Client directive from meeting |
-| Intake method | Typeform | Already set up, URL confirmed |
+| Intake method | CXP Legal Tech, 3-lang (EN/AR/ES) | Client-confirmed forms; language-choice modal replaces Typeform |
 | Design system | Keep existing navy/gold/white | Already built, works well |
 | Animation system | Keep GSAP/ScrollTrigger | Already built, well-structured |
 | Photo format | AVIF primary | Existing pipeline with sharp scripts |

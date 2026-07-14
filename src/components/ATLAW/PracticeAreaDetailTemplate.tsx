@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import type { PracticeAreaPI } from "../../data/practice/pi/types";
+import { openIntakeModal } from "./IntakeModal";
+import { TestimonialsSection } from "./TestimonialsSection";
+import { IntakeFormSection } from "./IntakeFormSection";
+import { ProcessSection } from "./ProcessSection";
+import { practiceAreaBySlug } from "../../data/practice/pi";
 
 const GOLD = "#C9A24B";
 const GOLD_ACCENT = "#B88A2D";
@@ -8,7 +13,6 @@ const GOLD_BRIGHT = "#C6A04A";
 const INK = "#0B1F3A";
 const STONE = "#3A4A63";
 const NAVY_CANVAS = "linear-gradient(180deg, #0E1B33 0%, #0A1428 100%)";
-const TYPEFORM_URL = "https://j098jiq3pk7.typeform.com/to/Mslg7Y7f";
 
 const headlineAxes = "'opsz' 144, 'wght' 360, 'SOFT' 0, 'WONK' 0";
 const subHeadAxes = "'opsz' 96, 'wght' 400, 'SOFT' 0, 'WONK' 0";
@@ -60,12 +64,6 @@ const MailIcon = () => (
   <svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} viewBox="0 0 24 24">
     <rect height="16" rx="2" width="20" x="2" y="4" />
     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-  </svg>
-);
-
-const StarIcon = ({ size = 18 }: { size?: number }) => (
-  <svg aria-hidden="true" fill={GOLD_BRIGHT} style={{ height: size, width: size }} viewBox="0 0 20 20">
-    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
   </svg>
 );
 
@@ -161,7 +159,8 @@ const Hero = ({ data }: { data: PracticeAreaPI }) => (
   >
     <Grain opacity="0.03" />
 
-    <div className="relative mx-auto w-full max-w-[1180px] px-6 pb-12 pt-16 sm:px-10 md:pb-16 md:pt-20 lg:px-16 lg:pb-20 lg:pt-24">
+    <div className="relative mx-auto flex w-full max-w-[1180px] flex-col gap-10 px-6 pb-12 pt-16 sm:px-10 md:pb-16 md:pt-20 lg:flex-row lg:items-center lg:gap-14 lg:px-16 lg:pb-20 lg:pt-24">
+      <div className={data.heroImage ? "lg:basis-[56%]" : "w-full"}>
       <nav
         aria-label="Breadcrumb"
         className="pi-reveal mb-6 font-sans text-[11.5px] font-semibold uppercase leading-none tracking-[0.2em]"
@@ -204,16 +203,38 @@ const Hero = ({ data }: { data: PracticeAreaPI }) => (
         {data.tagline}
       </p>
 
-      <a
+      <button
         className="pi-reveal group mt-8 inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full px-9 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-white transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_8px_24px_rgba(14,27,44,0.3)] lg:h-[60px]"
-        href={TYPEFORM_URL}
-        rel="noopener noreferrer"
+        onClick={openIntakeModal}
         style={{ animationDelay: "340ms", backgroundColor: "#0E1B2C" }}
-        target="_blank"
+        type="button"
       >
         Start Your Free Case Review
         <ArrowRight className="group-hover:translate-x-1" />
-      </a>
+      </button>
+      </div>
+
+      {data.heroImage && (
+        <div className="pi-reveal lg:basis-[44%]" style={{ animationDelay: "200ms" }}>
+          <div className="relative mx-auto w-full max-w-[440px] lg:ml-auto lg:mr-0">
+            <div
+              aria-hidden="true"
+              className="absolute -inset-3 rounded-[24px] bg-[radial-gradient(circle_at_70%_30%,rgba(198,160,74,0.18),transparent_70%)] blur-xl"
+            />
+            <div className="relative overflow-hidden rounded-[20px] border border-[#0B1F3A]/10 shadow-[0_20px_50px_rgba(11,31,58,0.18)]">
+              <img
+                alt={data.heroImageAlt ?? `${data.title} representation at ATLAW`}
+                className="aspect-[16/10] w-full object-cover object-center"
+                src={data.heroImage}
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(11,31,58,0.26)] via-transparent to-transparent"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   </section>
 );
@@ -252,15 +273,14 @@ const SidebarCTA = () => (
         Email Us
       </a>
 
-      <a
+      <button
         className="flex h-[50px] items-center justify-center gap-2.5 rounded-full font-sans text-[13px] font-semibold uppercase tracking-[0.06em] text-[#0E1B2C] transition-all duration-200 hover:shadow-[0_6px_18px_rgba(198,160,74,0.35)]"
-        href={TYPEFORM_URL}
-        rel="noopener noreferrer"
+        onClick={openIntakeModal}
         style={{ backgroundColor: GOLD_BRIGHT }}
-        target="_blank"
+        type="button"
       >
         Free Case Review
-      </a>
+      </button>
     </div>
 
     <p className="relative mt-5 text-center font-sans text-[12px] leading-[1.5] text-white/60">
@@ -412,6 +432,11 @@ const CaseResultsComparison = ({ data }: { data: PracticeAreaPI }) => {
             ))}
           </div>
         </div>
+
+        <p className="mx-auto mt-10 max-w-[600px] text-center font-sans text-[12px] leading-[1.6] text-white/45">
+          Case results depend on a variety of factors unique to each case. Case
+          results do not guarantee or predict a similar result in any future case.
+        </p>
       </div>
     </section>
   );
@@ -419,63 +444,11 @@ const CaseResultsComparison = ({ data }: { data: PracticeAreaPI }) => {
 
 /* ─────────────────── 5. What to Do (Steps) + No Fee Banner ─────────────────── */
 
-const stepGradients = [
-  "linear-gradient(170deg, #162d50 0%, #0e1b33 40%, #0a1428 100%)",
-  "linear-gradient(170deg, #1a2a3e 0%, #12243c 35%, #0e1b33 70%, #0a1428 100%)",
-  "linear-gradient(170deg, #0e1b33 0%, #0a1428 100%)",
-  "linear-gradient(170deg, #142640 0%, #0f1e35 50%, #0c1729 100%)",
-];
-
-const WhatToDoSection = ({ data }: { data: PracticeAreaPI }) => (
+const WhatToDoSection = () => (
   <>
-    <section
-      aria-labelledby="pa-steps-heading"
-      className="relative w-full overflow-hidden bg-white"
-      id="what-to-do"
-      style={{ scrollMarginTop: "48px" }}
-    >
-      <Grain opacity="0.03" />
-
-      <div className="relative mx-auto w-full max-w-[1180px] px-6 py-16 sm:px-10 md:py-20 lg:px-16 lg:py-24">
-        <h2
-          className="text-center font-serifDisplay font-normal leading-[1.08] tracking-[-0.02em]"
-          id="pa-steps-heading"
-          style={{ fontSize: "clamp(28px, 4.5vw, 52px)", fontVariationSettings: headlineAxes, color: INK }}
-        >
-          What to Do After{" "}
-          <span style={{ color: GOLD }}>{data.title === "Personal Injury" ? "an Injury" : data.title.startsWith("A") || data.title.startsWith("Auto") ? `an ${data.title} Case` : `a ${data.title} Case`}</span>
-        </h2>
-
-        <div className="mt-12 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-2 lg:mt-16 lg:gap-6 xl:grid-cols-4">
-          {data.steps.map((step, i) => (
-            <article
-              className="group relative flex min-h-[260px] flex-col overflow-hidden rounded-[16px] px-7 pb-8 pt-9 shadow-[0_10px_30px_rgba(5,15,28,0.18)] transition-all duration-[250ms] hover:-translate-y-[3px] hover:shadow-[0_18px_42px_rgba(5,15,28,0.30)] lg:min-h-[300px]"
-              key={step.number}
-              style={{ background: stepGradients[i] || stepGradients[0] }}
-            >
-              <Grain opacity="0.05" />
-              <span
-                className="relative font-serifDisplay font-normal leading-none tracking-[-0.02em] text-[clamp(40px,4.5vw,64px)]"
-                style={{ fontVariationSettings: subHeadAxes, color: GOLD_BRIGHT }}
-              >
-                {String(step.number).padStart(2, "0")}
-              </span>
-              <span aria-hidden="true" className="relative mt-5 block h-px w-10 bg-gradient-to-r from-[#B88A2D] to-[#B88A2D]/20" />
-              <h3
-                className="relative mt-5 font-serifDisplay text-[20px] font-normal leading-[1.18] tracking-[-0.01em] text-white lg:text-[22px]"
-                style={{ fontVariationSettings: "'opsz' 48, 'wght' 400" }}
-              >
-                {step.title}
-              </h3>
-              <p className="relative mt-3 font-sans text-[14px] leading-[1.6] text-white/70">
-                {step.description}
-              </p>
-              <span aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#B88A2D]/25 to-transparent" />
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div id="what-to-do" style={{ scrollMarginTop: "48px" }}>
+      <ProcessSection />
+    </div>
 
     {/* No Fee Banner */}
     <section aria-labelledby="pa-nofee-heading" className="w-full" style={{ background: NAVY_CANVAS }}>
@@ -537,110 +510,18 @@ const LongFormContent = ({ data }: { data: PracticeAreaPI }) => (
         </article>
       ))}
 
-      <a
+      <button
         className="group mt-10 inline-flex h-[52px] items-center justify-center gap-2.5 rounded-full px-8 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-white transition-all duration-[240ms] hover:shadow-[0_8px_24px_rgba(14,27,44,0.3)] lg:mt-12"
-        href={TYPEFORM_URL}
-        rel="noopener noreferrer"
+        onClick={openIntakeModal}
         style={{ backgroundColor: "#0E1B2C" }}
-        target="_blank"
+        type="button"
       >
         Contact Us Today
         <ArrowRight className="group-hover:translate-x-1" />
-      </a>
+      </button>
     </div>
   </section>
 );
-
-/* ─────────────────── 7. Testimonials ─────────────────── */
-
-const TestimonialsSection = ({ data }: { data: PracticeAreaPI }) => {
-  const [page, setPage] = useState(0);
-  const perPage = 3;
-  const maxPage = Math.ceil(data.testimonials.length / perPage) - 1;
-  const visible = data.testimonials.slice(page * perPage, page * perPage + perPage);
-
-  return (
-    <section
-      aria-labelledby="pa-testimonials-heading"
-      className="relative isolate w-full overflow-hidden bg-[#F7F7F5]"
-      id="testimonials"
-      style={{ scrollMarginTop: "48px" }}
-    >
-      <Grain opacity="0.03" />
-
-      <div className="relative mx-auto w-full max-w-[1180px] px-6 py-16 sm:px-10 md:py-20 lg:px-16 lg:py-24">
-        <header className="flex flex-col items-center text-center">
-          <div className="flex gap-0.5">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <StarIcon key={i} size={20} />
-            ))}
-          </div>
-
-          <h2
-            className="mt-4 font-serifDisplay font-normal leading-[1.08] tracking-[-0.02em]"
-            id="pa-testimonials-heading"
-            style={{ fontSize: "clamp(28px, 4.5vw, 52px)", fontVariationSettings: headlineAxes, color: INK }}
-          >
-            Backed by Our Clients<span style={{ color: GOLD_ACCENT }}>.</span>
-          </h2>
-        </header>
-
-        <div className="relative mt-12 md:mt-14">
-          {maxPage > 0 && (
-            <div className="absolute -left-2 -right-2 top-[38%] z-10 hidden -translate-y-1/2 items-center justify-between lg:flex">
-              <button
-                aria-label="Previous testimonials"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#0B1F3A]/15 bg-white text-[#0B1F3A] shadow-sm transition-all hover:border-[#0B1F3A] hover:bg-[#0B1F3A] hover:text-white disabled:opacity-30"
-                disabled={page === 0}
-                onClick={() => setPage((p) => p - 1)}
-                type="button"
-              >
-                <ChevronLeft />
-              </button>
-              <button
-                aria-label="Next testimonials"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#0B1F3A]/15 bg-white text-[#0B1F3A] shadow-sm transition-all hover:border-[#0B1F3A] hover:bg-[#0B1F3A] hover:text-white disabled:opacity-30"
-                disabled={page >= maxPage}
-                onClick={() => setPage((p) => p + 1)}
-                type="button"
-              >
-                <ChevronRight />
-              </button>
-            </div>
-          )}
-
-          <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-            {visible.map((t) => (
-              <div className="flex flex-col items-center" key={t.name}>
-                <article className="relative flex w-full flex-1 flex-col rounded-[16px] bg-white px-7 pb-7 pt-6 shadow-[0_4px_24px_rgba(11,31,58,0.08)] transition-all duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_12px_36px_rgba(11,31,58,0.14)]">
-                  <div className="flex gap-0.5">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <StarIcon key={i} size={14} />
-                    ))}
-                  </div>
-                  <blockquote className="mt-3 flex-1">
-                    <span aria-hidden="true" className="block font-serifDisplay text-[36px] leading-[0.6]" style={{ color: GOLD_BRIGHT }}>&ldquo;</span>
-                    <p className="mt-2 font-serifDisplay text-[14px] italic leading-[1.75] tracking-[-0.005em] lg:text-[15px]" style={{ color: STONE }}>
-                      {t.quote}
-                    </p>
-                  </blockquote>
-                  <div aria-hidden="true" className="absolute -bottom-[10px] left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 bg-white shadow-[4px_4px_8px_rgba(11,31,58,0.04)]" />
-                </article>
-                <div className="mt-4 flex flex-col items-center">
-                  <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full shadow-sm" style={{ backgroundColor: GOLD_BRIGHT }}>
-                    <span className="font-sans text-[13px] font-bold text-white">{t.initials}</span>
-                  </div>
-                  <p className="mt-2 font-sans text-[13px] font-semibold" style={{ color: INK }}>{t.name}</p>
-                  <p className="mt-0.5 font-sans text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: GOLD_ACCENT }}>{t.date}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 /* ─────────────────── 8. FAQ Accordion ─────────────────── */
 
@@ -704,7 +585,7 @@ const RelatedCasesStrip = ({ data }: { data: PracticeAreaPI }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: number) => {
-    scrollRef.current?.scrollBy({ left: dir * 280, behavior: "smooth" });
+    scrollRef.current?.scrollBy({ left: dir * 512, behavior: "smooth" });
   };
 
   if (!data.relatedCases.length) return null;
@@ -741,26 +622,44 @@ const RelatedCasesStrip = ({ data }: { data: PracticeAreaPI }) => {
           </div>
         </div>
 
-        <div
-          className="-mx-2 mt-6 flex gap-5 overflow-x-auto px-2 pb-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10"
-          ref={scrollRef}
-        >
-          {data.relatedCases.map((c, i) => (
-            <div
-              className="flex min-w-[220px] shrink-0 flex-col items-center rounded-[12px] border border-white/10 bg-white/5 px-6 py-6"
-              key={i}
-            >
-              <p
-                className="font-serifDisplay font-normal leading-none tracking-[-0.02em]"
-                style={{ fontSize: "clamp(24px, 3vw, 32px)", fontVariationSettings: subHeadAxes, color: GOLD_BRIGHT }}
+        <div className="relative mt-8">
+          {/* edge fades signal more cards without a raw scrollbar */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#0b1830] to-transparent" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#0b1830] to-transparent" />
+
+          <div
+            className="scrollbar-hide flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2"
+            ref={scrollRef}
+          >
+            {data.relatedCases.map((c, i) => (
+              <article
+                className="group relative flex min-w-[236px] shrink-0 snap-start flex-col items-center overflow-hidden rounded-[16px] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.02)_100%)] px-7 py-8 shadow-[0_10px_30px_rgba(5,15,28,0.28)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[4px] hover:border-[#C6A04A]/40 hover:shadow-[0_20px_46px_rgba(5,15,28,0.42)]"
+                key={i}
               >
-                ${fmt(c.amount)}
-              </p>
-              <p className="mt-2 font-sans text-[12px] text-white/80">{c.caseType}</p>
-              <p className="mt-0.5 font-sans text-[10px] uppercase tracking-[0.1em] text-white/40">{c.county}</p>
-            </div>
-          ))}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#C6A04A]/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+                  Recovered
+                </p>
+                <p
+                  className="mt-2 font-serifDisplay font-normal leading-none tracking-[-0.02em]"
+                  style={{ fontSize: "clamp(30px, 3.4vw, 42px)", fontVariationSettings: subHeadAxes, color: GOLD_BRIGHT }}
+                >
+                  ${fmt(c.amount)}
+                </p>
+                <span aria-hidden="true" className="mt-4 block h-px w-9 bg-gradient-to-r from-transparent via-[#B88A2D]/55 to-transparent transition-all duration-300 group-hover:w-14" />
+                <p className="mt-4 font-sans text-[13.5px] font-medium text-white/85">{c.caseType}</p>
+                <p className="mt-1 font-sans text-[10px] uppercase tracking-[0.14em] text-white/40">{c.county}</p>
+              </article>
+            ))}
+          </div>
         </div>
+
+        <p className="mt-6 text-center font-sans text-[11px] leading-[1.5] text-white/35">
+          Case results do not guarantee or predict a similar result in any future case.
+        </p>
       </div>
     </section>
   );
@@ -787,71 +686,42 @@ const RelatedPagesSection = ({ data }: { data: PracticeAreaPI }) => (
       </h2>
 
       <div className="mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-        {data.relatedAreas.map((area) => (
-          <Link
-            className="group relative flex min-h-[180px] flex-col justify-end overflow-hidden rounded-[16px] px-7 pb-7 pt-16 shadow-[0_6px_24px_rgba(5,15,28,0.12)] transition-all duration-[250ms] hover:-translate-y-[3px] hover:shadow-[0_14px_36px_rgba(5,15,28,0.2)] lg:min-h-[200px]"
-            key={area.slug}
-            style={{ background: NAVY_CANVAS }}
-            to={`/personal-injury/${area.slug}`}
-          >
-            <Grain opacity="0.05" />
-            <h3
-              className="relative font-serifDisplay text-[22px] font-normal leading-[1.15] tracking-[-0.01em] text-white lg:text-[24px]"
-              style={{ fontVariationSettings: subHeadAxes }}
+        {data.relatedAreas.map((area) => {
+          const img = practiceAreaBySlug[area.slug]?.heroImage;
+          return (
+            <Link
+              className="group relative flex min-h-[200px] flex-col justify-end overflow-hidden rounded-[16px] px-7 pb-7 pt-16 shadow-[0_6px_24px_rgba(5,15,28,0.12)] transition-all duration-[250ms] hover:-translate-y-[3px] hover:shadow-[0_14px_36px_rgba(5,15,28,0.2)] lg:min-h-[220px]"
+              key={area.slug}
+              style={{ background: NAVY_CANVAS }}
+              to={`/personal-injury/${area.slug}`}
             >
-              {area.title}
-            </h3>
-            <span className="relative mt-3 inline-flex items-center gap-1.5 font-sans text-[13px] font-medium transition-colors group-hover:text-white" style={{ color: GOLD_BRIGHT }}>
-              Learn More
-              <ArrowRight className="group-hover:translate-x-1" />
-            </span>
-          </Link>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-/* ─────────────────── 11. Inline Intake Form ─────────────────── */
-
-const IntakeFormSection = () => (
-  <section
-    aria-labelledby="pa-intake-heading"
-    className="relative isolate w-full overflow-hidden bg-[#0e1b33]"
-  >
-    <img
-      alt=""
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20"
-      src="/assets/dewnya/dewnya-navy-pinstripe.avif"
-    />
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1b33] via-[rgba(14,27,51,0.92)] to-[rgba(14,27,51,0.6)]" />
-    <Grain opacity="0.05" />
-
-    <div className="relative mx-auto flex w-full max-w-[1180px] flex-col justify-center px-6 py-16 sm:px-10 md:py-20 lg:px-16 lg:py-24">
-      <div className="max-w-[560px]">
-        <h2
-          className="font-serifDisplay font-normal leading-[1.06] tracking-[-0.02em] text-white"
-          id="pa-intake-heading"
-          style={{ fontSize: "clamp(32px, 5vw, 56px)", fontVariationSettings: headlineAxes }}
-        >
-          See How Much We Can Win for You<span style={{ color: GOLD_ACCENT }}>.</span>
-        </h2>
-
-        <p className="mt-5 font-sans text-[17px] leading-[1.6] text-white/80 lg:text-[18px]">
-          Pay nothing unless we win.
-        </p>
-
-        <a
-          className="group mt-8 inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full px-9 font-sans text-[14px] font-semibold uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] lg:h-[60px]"
-          href={TYPEFORM_URL}
-          rel="noopener noreferrer"
-          style={{ backgroundColor: GOLD_BRIGHT }}
-          target="_blank"
-        >
-          Get a Free Case Review
-          <ArrowRight className="group-hover:translate-x-1" />
-        </a>
+              {img ? (
+                <>
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                    loading="lazy"
+                    src={img}
+                  />
+                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0a1428] via-[#0a1428]/75 to-[#0a1428]/45 transition-opacity duration-300 group-hover:from-[#0a1428] group-hover:via-[#0a1428]/65" />
+                </>
+              ) : (
+                <Grain opacity="0.05" />
+              )}
+              <h3
+                className="relative font-serifDisplay text-[22px] font-normal leading-[1.15] tracking-[-0.01em] text-white lg:text-[24px]"
+                style={{ fontVariationSettings: subHeadAxes }}
+              >
+                {area.title}
+              </h3>
+              <span className="relative mt-3 inline-flex items-center gap-1.5 font-sans text-[13px] font-medium transition-colors group-hover:text-white" style={{ color: GOLD_BRIGHT }}>
+                Learn More
+                <ArrowRight className="group-hover:translate-x-1" />
+              </span>
+            </Link>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -989,9 +859,11 @@ export const PracticeAreaDetailTemplate = ({ data }: { data: PracticeAreaPI }): 
     <Hero data={data} />
     <OverviewSection data={data} />
     <CaseResultsComparison data={data} />
-    <WhatToDoSection data={data} />
+    <WhatToDoSection />
     <LongFormContent data={data} />
-    <TestimonialsSection data={data} />
+    <div id="testimonials" style={{ scrollMarginTop: "48px" }}>
+      <TestimonialsSection />
+    </div>
     <FAQSection data={data} />
     <RelatedCasesStrip data={data} />
     <RelatedPagesSection data={data} />

@@ -6,5 +6,6 @@ export const navLinks: { label: string; to: string }[] = [
   { label: "PERSONAL INJURY", to: "/personal-injury" },
   { label: "ABOUT", to: "/about" },
   { label: "OUR TEAM", to: "/team" },
+  { label: "NEWS", to: "/news" },
   { label: "CONTACT", to: "/contact" },
 ];

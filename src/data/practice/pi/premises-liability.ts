@@ -4,6 +4,8 @@ export const premisesLiabilityData: PracticeAreaPI = {
   slug: "premises-liability",
   title: "Premises Liability",
   heroTitle: "Michigan Premises Liability Lawyer",
+  heroImage: "/assets/practice/premises-liability.webp",
+  heroImageAlt: "Premises liability hazard in Michigan",
   tagline: "Property owners have a legal duty to keep their premises safe. When they fail, we hold them accountable.",
   seoTitle: "Premises Liability & Slip and Fall Attorney | Dearborn | ATLAW",
   seoDescription: "Injured on someone else’s property in Michigan? ATLAW handles slip and fall, unsafe conditions, and premises liability claims. Free consultation.",

@@ -2,6 +2,8 @@ export interface PracticeAreaPI {
   slug: string;
   title: string;
   heroTitle: string;
+  heroImage?: string;
+  heroImageAlt?: string;
   tagline: string;
   seoTitle: string;
   seoDescription: string;

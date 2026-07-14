@@ -1,3 +1,5 @@
+import { openIntakeModal } from "./IntakeModal";
+
 const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
@@ -82,15 +84,14 @@ export const Hero = (): JSX.Element => {
 
           <div className="hero-fade" style={{ animationDelay: "800ms" }}>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center lg:mt-9">
-              <a
+              <button
                 className="group inline-flex h-[56px] items-center justify-center gap-2.5 rounded-full bg-[#C6A04A] px-8 font-sans text-[15px] font-semibold uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#d4a94f] hover:shadow-[0_8px_24px_rgba(198,160,74,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e1b33] lg:h-[60px] lg:px-9"
-                href="https://j098jiq3pk7.typeform.com/to/Mslg7Y7f"
-                rel="noopener noreferrer"
-                target="_blank"
+                onClick={openIntakeModal}
+                type="button"
               >
                 Start Your Free Case Review
                 <ArrowRight className="group-hover:translate-x-1" />
-              </a>
+              </button>
             </div>
 
             <p className="mt-6 flex items-center gap-2.5 font-sans text-[14px] font-medium uppercase tracking-[0.08em] text-[rgba(255,255,255,0.55)] lg:mt-7 lg:text-[15px]">

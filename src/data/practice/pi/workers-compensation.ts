@@ -4,6 +4,8 @@ export const workersCompensationData: PracticeAreaPI = {
   slug: "workers-compensation",
   title: "Workers' Compensation",
   heroTitle: "Michigan Workers' Compensation Lawyer",
+  heroImage: "/assets/practice/workers-compensation.jpg",
+  heroImageAlt: "Injured worker in Michigan workers' compensation case",
   tagline: "You got hurt on the job. We make the insurer cover what it's supposed to.",
   seoTitle: "Workers' Compensation Attorney | Dearborn & Detroit | ATLAW",
   seoDescription: "Hurt at work in Michigan? ATLAW handles denied claims, lost wages, and disability benefits. Free consultation. No fee unless we win your case.",

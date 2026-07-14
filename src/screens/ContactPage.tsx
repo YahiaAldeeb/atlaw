@@ -6,8 +6,10 @@ import { MobileFloatingCTA } from "../components/ATLAW/MobileFloatingCTA";
 import { RevealText, RevealBlock, RevealStagger } from "../motion/primitives";
 import { STAGGER } from "../motion/config";
 import { contactPageSchema } from "../data/schema-org";
-
-const TYPEFORM_URL = "https://j098jiq3pk7.typeform.com/to/Mslg7Y7f";
+import { openIntakeModal } from "../components/ATLAW/IntakeModal";
+import { TestimonialsSection } from "../components/ATLAW/TestimonialsSection";
+import { IntakeFormSection } from "../components/ATLAW/IntakeFormSection";
+import { ProcessSection } from "../components/ATLAW/ProcessSection";
 
 const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
@@ -105,7 +107,7 @@ const ContactHero = () => (
     <img
       aria-hidden="true"
       alt=""
-      className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20"
+      className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_40%] opacity-20"
       src="/assets/dewnya/dewnya-navy-pinstripe.avif"
     />
     <div
@@ -165,15 +167,14 @@ const ContactHero = () => (
             <p className="mt-3 font-sans text-[15px] leading-[1.6] text-white/70">
               Tell us what happened. We&rsquo;ll review your case and advise on your options &mdash; at no cost to you.
             </p>
-            <a
+            <button
               className="group mt-7 inline-flex h-[60px] w-full items-center justify-center gap-2.5 rounded-full bg-[#C6A04A] px-9 font-sans text-[15px] font-medium uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#d4b35a] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e1b33] lg:h-[64px]"
-              href={TYPEFORM_URL}
-              rel="noopener noreferrer"
-              target="_blank"
+              onClick={openIntakeModal}
+              type="button"
             >
               Start Your Free Case Review
               <ArrowRight className="group-hover:translate-x-1" />
-            </a>
+            </button>
           </div>
         </RevealBlock>
       </div>
@@ -227,7 +228,7 @@ const contactMethods: ContactMethod[] = [
     icon: <PhoneIcon className="h-8 w-8 text-[#C6A04A]" />,
     title: "Call",
     primary: "(313) 406-7606",
-    secondary: "Available Monday–Friday",
+    secondary: "Monday–Friday, 9 AM – 5 PM",
     href: "tel:+13134067606",
   },
   {
@@ -291,92 +292,6 @@ const DirectContact = () => (
               {method.secondary}
             </p>
           </a>
-        ))}
-      </RevealStagger>
-    </div>
-  </section>
-);
-
-/* ─── Section 4: What to Expect — 3-Step Process ─────────────────────── */
-
-type ProcessStep = {
-  number: string;
-  title: string;
-  description: string;
-};
-
-const processSteps: ProcessStep[] = [
-  {
-    number: "01",
-    title: "Free Consultation",
-    description: "Tell us what happened. We listen.",
-  },
-  {
-    number: "02",
-    title: "Case Evaluation",
-    description: "Our team reviews your situation and advises on options.",
-  },
-  {
-    number: "03",
-    title: "We Get to Work",
-    description: "If we take your case, you pay nothing unless we win.",
-  },
-];
-
-const WhatToExpect = () => (
-  <section aria-labelledby="what-to-expect-heading" className="relative isolate w-full overflow-hidden bg-[#F7F7F5]">
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-multiply"
-      style={{ backgroundImage: grain }}
-    />
-
-    <div className="relative mx-auto w-full max-w-[1440px] px-6 py-16 sm:px-10 md:py-20 lg:px-20">
-      <header className="flex flex-col items-center text-center">
-        <RevealBlock
-          as="p"
-          className="font-sans text-[12px] font-semibold uppercase leading-none tracking-[0.22em] text-[#B88A2D]"
-        >
-          02 &mdash; Process
-        </RevealBlock>
-        <RevealText
-          as="h2"
-          className="mt-5 font-serifDisplay font-normal leading-[1.08] tracking-[-0.02em] text-[#0B1F3A] text-[clamp(30px,4.5vw,52px)]"
-          id="what-to-expect-heading"
-          style={{ fontVariationSettings: headlineAxes }}
-        >
-          What Happens Next<span className="text-[#B88A2D]">.</span>
-        </RevealText>
-      </header>
-
-      <RevealStagger
-        amount={STAGGER.items}
-        className="mx-auto mt-14 grid max-w-[1080px] gap-6 sm:grid-cols-3 lg:mt-16"
-      >
-        {processSteps.map((step) => (
-          <article
-            key={step.number}
-            className="relative flex flex-col overflow-hidden rounded-[16px] px-7 pb-9 pt-10 shadow-[0_10px_30px_rgba(5,15,28,0.12)] lg:px-8 lg:pb-10 lg:pt-12"
-            style={{ background: "linear-gradient(170deg, #162d50 0%, #0e1b33 40%, #0a1428 100%)" }}
-          >
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay"
-              style={{ backgroundImage: grain }}
-            />
-            <span
-              className="relative font-serifDisplay font-normal leading-none tracking-[-0.02em] text-[#C6A04A] text-[clamp(40px,4.5vw,60px)]"
-              style={{ fontVariationSettings: "'opsz' 96, 'wght' 360, 'SOFT' 0, 'WONK' 0" }}
-            >
-              {step.number}
-            </span>
-            <h3 className="relative mt-5 font-serifDisplay text-[22px] font-normal leading-[1.18] tracking-[-0.01em] text-white lg:text-[24px]">
-              {step.title}
-            </h3>
-            <p className="relative mt-3 font-sans text-[15px] leading-[1.6] text-white/75 lg:text-[16px]">
-              {step.description}
-            </p>
-          </article>
         ))}
       </RevealStagger>
     </div>
@@ -459,6 +374,22 @@ const OfficeLocation = () => (
                 db@atlawgroup.com
               </a>
             </div>
+
+            <div className="mt-3 flex items-center gap-3">
+              <svg
+                aria-hidden="true"
+                className="h-5 w-5 shrink-0 text-[#B88A2D]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="9" strokeWidth={1.5} />
+                <path d="M12 7v5l3.5 2" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+              </svg>
+              <p className="font-sans text-[16px] font-medium text-[#0B1F3A]">
+                Monday–Friday, 9 AM – 5 PM
+              </p>
+            </div>
           </address>
 
           <p className="mt-8 font-sans text-[15px] leading-[1.6] text-[#3A4A63] lg:text-[16px]">
@@ -501,15 +432,14 @@ const ReassuranceSection = () => (
       </RevealBlock>
 
       <RevealBlock className="mt-10">
-        <a
+        <button
           className="group inline-flex h-[60px] items-center justify-center gap-2.5 rounded-full bg-[#C6A04A] px-9 font-sans text-[15px] font-medium uppercase tracking-[0.04em] text-[#0E1B2C] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#d4b35a] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A04A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e1b33] lg:h-[64px] lg:px-10"
-          href={TYPEFORM_URL}
-          rel="noopener noreferrer"
-          target="_blank"
+          onClick={openIntakeModal}
+          type="button"
         >
           Start Your Free Case Review
           <ArrowRight className="group-hover:translate-x-1" />
-        </a>
+        </button>
       </RevealBlock>
     </div>
   </section>
@@ -613,80 +543,6 @@ const ContactFAQ = () => (
   </section>
 );
 
-/* ─── Section 8: Intake + Final CTA ────────────────────────────────────── */
-
-const IntakeCTA = () => (
-  <section aria-labelledby="contact-intake-heading" className="w-full">
-    <div className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#0e1b33_0%,#0a1428_100%)] text-white">
-      <img
-        aria-hidden="true"
-        alt=""
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-15"
-        src="/assets/dewnya/dewnya-navy-pinstripe.avif"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1b33] via-[rgba(14,27,51,0.92)] to-[rgba(14,27,51,0.6)]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
-        style={{ backgroundImage: grain }}
-      />
-
-      <div className="relative mx-auto flex w-full max-w-[1180px] flex-col items-center px-6 py-14 text-center sm:px-10 md:py-16 lg:px-20 lg:py-20">
-        <RevealText
-          as="h2"
-          className="font-serifDisplay font-normal leading-[1.06] tracking-[-0.02em] text-white text-[clamp(34px,5.5vw,64px)]"
-          id="contact-intake-heading"
-          style={{ fontVariationSettings: headlineAxes }}
-        >
-          Get a FREE Case Evaluation Today!
-        </RevealText>
-
-        <RevealBlock
-          as="p"
-          className="mt-5 font-sans text-[17px] leading-[1.5] text-white/75 lg:text-[19px]"
-        >
-          You Pay Nothing Unless We Win Your Case &mdash; Guaranteed.
-        </RevealBlock>
-
-        <RevealBlock className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-          <a
-            className="group inline-flex h-[60px] w-full max-w-[320px] items-center justify-center gap-2.5 rounded-full bg-[#C6A04A] px-8 font-sans text-[15px] font-semibold uppercase tracking-[0.04em] text-[#0B1F3A] transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#d4b05e] hover:shadow-[0_8px_24px_rgba(198,160,74,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A] sm:w-auto lg:h-[64px]"
-            href="tel:+13134067606"
-          >
-            <PhoneIcon className="h-[18px] w-[18px]" />
-            CALL
-          </a>
-          <a
-            className="group inline-flex h-[60px] w-full max-w-[320px] items-center justify-center gap-2.5 rounded-full border border-white/40 bg-transparent px-8 font-sans text-[15px] font-semibold uppercase tracking-[0.04em] text-white transition-all duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B88A2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1F3A] sm:w-auto lg:h-[64px]"
-            href="mailto:db@atlawgroup.com"
-          >
-            <MailIcon className="h-[18px] w-[18px]" />
-            EMAIL
-          </a>
-        </RevealBlock>
-      </div>
-    </div>
-
-    <div className="w-full bg-[#081120]">
-      <div className="mx-auto flex max-w-[1180px] flex-col items-center gap-2 px-6 py-8 text-center sm:px-10 lg:py-10">
-        <a
-          className="font-serifDisplay font-normal leading-none tracking-[-0.02em] text-white transition-colors duration-200 hover:text-[#C6A04A] text-[clamp(28px,4.5vw,48px)]"
-          href="tel:+13134067606"
-          style={{ fontVariationSettings: headlineAxes }}
-        >
-          (313) 406-7606
-        </a>
-        <p className="font-sans text-[14px] tracking-[0.02em] text-white/55 lg:text-[15px]">
-          We&rsquo;re here to help.
-        </p>
-      </div>
-    </div>
-  </section>
-);
-
 /* ─── Page Assembly ────────────────────────────────────────────────────── */
 
 export const ContactPage = (): JSX.Element => {
@@ -699,15 +555,16 @@ export const ContactPage = (): JSX.Element => {
         schema={contactPageSchema()}
       />
       <Header />
-      <main>
+      <main id="main-content">
         <ContactHero />
         <StatsBar />
         <DirectContact />
-        <WhatToExpect />
+        <ProcessSection />
         <OfficeLocation />
         <ReassuranceSection />
         <ContactFAQ />
-        <IntakeCTA />
+        <TestimonialsSection />
+        <IntakeFormSection />
       </main>
       <MobileFloatingCTA />
       <Footer />

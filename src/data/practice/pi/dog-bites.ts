@@ -4,6 +4,8 @@ export const dogBitesData: PracticeAreaPI = {
   slug: "dog-bites",
   title: "Dog Bite Injuries",
   heroTitle: "Michigan Dog Bite Injury Lawyer",
+  heroImage: "/assets/practice/dog-bites.webp",
+  heroImageAlt: "Dog bite injury representation in Michigan",
   tagline: "Michigan law holds dog owners strictly liable. If their dog bit you, they owe you — regardless of the dog's history.",
   seoTitle: "Dog Bite Injury Attorney | Dearborn & Detroit | ATLAW",
   seoDescription: "Bitten by a dog in Michigan? Strict liability means the owner is responsible. ATLAW handles dog bite injury claims. No fee unless we win. Free case review.",

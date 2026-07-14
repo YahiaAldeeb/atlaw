@@ -55,6 +55,10 @@ export const Header = (): JSX.Element => {
   mobileOpenRef.current = mobileOpen;
 
   return (
+    <>
+    <a href="#main-content" className="skip-to-content">
+      Skip to main content
+    </a>
     <header
       ref={headerRef}
       className={`sticky top-0 z-50 w-full border-b border-white/10 transition-colors duration-300 ${
@@ -162,5 +166,6 @@ export const Header = (): JSX.Element => {
         </nav>
       )}
     </header>
+    </>
   );
 };

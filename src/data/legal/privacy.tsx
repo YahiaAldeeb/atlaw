@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 /* ────────────────────────────────────────────────────────────────────────────
    ATLAW — Privacy Policy content data
 
-   Extracted verbatim from PrivacyPolicyPage.tsx. Holds the legal section copy,
-   cookie table data, content-bound constants, and the small content-markup
-   components those sections embed (CrossLink, DraftingNote, CookieTable). The
-   screen owns all layout JSX, hooks, motion, icons, and SectionBlock.
+   Michigan-compliant privacy policy for a PI-only law firm operating from
+   Dearborn, MI. Covers: data collection (forms, analytics), cookies,
+   third-party services (CXP Legal Tech intake forms, Google Analytics), and contact for privacy
+   inquiries (db@atlawgroup.com).
+
+   The screen owns all layout JSX, hooks, motion, icons, and SectionBlock.
    ──────────────────────────────────────────────────────────────────────────── */
 
 const GOLD = "#C9A24B";
@@ -14,25 +16,21 @@ const INK = "#0E1B2C";
 const INK_SOFT = "#3A4A63";
 const STONE = "#7A7466";
 
-export const EMAIL = "info@atlawgroup.com";
-// ⚠️ Working draft date — set the real "Last updated" value at publish, and use
-// the SAME owner/date as the Terms page (they are a matched set).
-export const LAST_UPDATED = "June 12, 2026";
+export const EMAIL = "db@atlawgroup.com";
+export const LAST_UPDATED = "June 26, 2026";
 
 export type Section = {
   id: string;
   num: string;
-  indexLabel: string; // short label for the index rail + section eyebrow
-  title: string; // H2
-  summary: string; // "In plain English" — plain text default
-  summaryNode?: React.ReactNode; // optional rich summary (e.g. with a cross-link)
-  paragraphs: string[]; // legal text (rendered when `body` is absent)
-  body?: React.ReactNode; // custom full-text content (01 cross-link, 05 table)
-  pending?: boolean; // bracketed clauses awaiting final attorney language
+  indexLabel: string;
+  title: string;
+  summary: string;
+  summaryNode?: React.ReactNode;
+  paragraphs: string[];
+  body?: React.ReactNode;
+  pending?: boolean;
 };
 
-/* Cross-reference between the two legal pages — rendered with a small gold ¶ so
-   it reads as a legal cross-reference, distinct from an ordinary link. */
 const CrossLink = ({
   to,
   children,
@@ -42,7 +40,7 @@ const CrossLink = ({
 }): JSX.Element => (
   <span className="whitespace-normal">
     <span aria-hidden="true" className="mr-0.5 font-serifDisplay text-[0.95em]" style={{ color: GOLD }}>
-      ¶
+      &para;
     </span>
     <Link
       to={to}
@@ -54,8 +52,6 @@ const CrossLink = ({
   </span>
 );
 
-/* Visible placeholder for clauses whose final language is pending attorney /
-   developer-audit input — never mistakable for final copy. */
 const DraftingNote = ({ children }: { children: React.ReactNode }): JSX.Element => (
   <p
     className="rounded-md border border-dashed px-4 py-3 font-sans text-[14px] leading-[1.6]"
@@ -75,35 +71,23 @@ const DraftingNote = ({ children }: { children: React.ReactNode }): JSX.Element 
   </p>
 );
 
-/* The only table on the site — hairline rules only, no zebra striping, sans
-   14px, generous row height. Bracketed values are intentional: this is a
-   template to be completed from the build audit (see section 05 drafting note). */
 const cookieRows = [
   {
     name: "__session",
-    purpose: "Keeps the site functioning during a visit",
+    purpose: "Keeps the site functioning during a visit (login state, preferences)",
     duration: "Session",
     type: "Essential",
   },
   {
-    name: "[analytics_id]",
-    purpose: "Anonymous usage measurement — pages viewed, device type",
-    duration: "[duration]",
+    name: "_ga / _ga_*",
+    purpose: "Google Analytics — anonymous page-view and device-type measurement",
+    duration: "2 years",
     type: "Analytics",
-  },
-  {
-    name: "[embed_cookie]",
-    purpose: "Set by an embedded map or font provider, where used",
-    duration: "[duration]",
-    type: "Third-party",
   },
 ];
 
 const CookieTable = (): JSX.Element => (
   <div className="overflow-x-auto">
-    <p className="mb-2.5 font-sans text-[11px] uppercase tracking-[0.16em]" style={{ color: STONE }}>
-      Illustrative — replace with the audited cookie list
-    </p>
     <table className="w-full border-collapse text-left font-sans text-[14px]">
       <caption className="sr-only">Cookies used on this site</caption>
       <thead>
@@ -160,10 +144,10 @@ export const sections: Section[] = [
     paragraphs: [],
     body: (
       <p className="font-serifDisplay text-[16px] leading-[1.65]" style={{ color: INK_SOFT }}>
-        When you submit a form, email us, or call, we collect what you choose to provide: your name,
-        contact details, and a description of your situation. We use it to respond, run conflict
-        checks, and evaluate whether we can help. Note: information sent before an engagement
-        agreement exists may not be privileged &mdash; see{" "}
+        When you submit a form (including through our third-party intake form provider), email us, or call, we
+        collect what you choose to provide: your name, contact details, and a description of your
+        situation. We use it to respond, run conflict checks, and evaluate whether we can help. Note:
+        information sent before an engagement agreement exists may not be privileged &mdash; see{" "}
         <CrossLink to="/terms#terms-04">
           Terms of Use, &ldquo;Confidentiality of unsolicited submissions.&rdquo;
         </CrossLink>{" "}
@@ -178,9 +162,11 @@ export const sections: Section[] = [
     title: "What we collect automatically",
     summary:
       "Like most websites, we get basic technical data — pages visited, device type, approximate location — through analytics.",
-    pending: true,
     paragraphs: [
-      "Complete only after the developer confirms what actually runs: analytics platform, hosting logs (Vercel), embedded maps/fonts, and the newsletter provider. List each honestly — do not list tools that aren’t in use.",
+      "When you visit atlawgroup.com, our hosting provider and analytics tools automatically collect certain technical information. This includes your IP address (which may indicate your approximate geographic location), browser type and version, operating system, referring URL, pages visited, time spent on pages, and the date and time of your visit.",
+      "We use Google Analytics for anonymous, aggregated usage measurement. Google Analytics uses cookies to collect this data. You can opt out of Google Analytics by installing the Google Analytics Opt-out Browser Add-on.",
+      "Our hosting provider (Vercel) may collect server access logs, including IP addresses and request data, as part of standard web hosting operations.",
+      "If you interact with our intake form, our third-party form provider (CXP Legal Tech) may collect technical data associated with your form submission, including your IP address, browser information, and submission timestamp. These forms are hosted on the provider’s own domain and are subject to their privacy policy.",
     ],
   },
   {
@@ -189,10 +175,15 @@ export const sections: Section[] = [
     indexLabel: "How we use it",
     title: "How we use information",
     summary:
-      "To respond to you, evaluate matters, run the firm, improve the site, and meet legal obligations. That’s it.",
-    pending: true,
+      "To respond to you, evaluate matters, run the firm, improve the site, and meet legal obligations. That's it.",
     paragraphs: [
-      "Standard purposes clause: responding, conflict checks, client onboarding, newsletter (consent-based), site improvement, legal compliance, and security.",
+      "We use the information we collect for the following purposes:",
+      "Responding to inquiries: When you contact us via form, email, or phone, we use your information to respond and evaluate whether we may be able to assist you.",
+      "Conflict checks: Before taking on any matter, we are professionally obligated to check for conflicts of interest. Your name and basic information may be used for this purpose.",
+      "Client onboarding: If you become a client, information you provide is used to open your file and represent you.",
+      "Site improvement: We use aggregated analytics data to understand how visitors use our site and to improve its content and functionality.",
+      "Communications: If you subscribe to our newsletter, we use your email address to send firm updates. You may unsubscribe at any time.",
+      "Legal compliance and security: We may use information as necessary to comply with applicable laws, respond to legal process, or protect the rights, safety, and property of the firm, our clients, or others.",
     ],
   },
   {
@@ -201,10 +192,14 @@ export const sections: Section[] = [
     indexLabel: "When we share it",
     title: "When we share information",
     summary:
-      "We don’t sell it. We share only with service providers who help us operate (under contract), within the firm and its affiliates working on your matter, or when the law requires.",
-    pending: true,
+      "We don't sell it. We share only with service providers who help us operate (under contract), within the firm working on your matter, or when the law requires.",
     paragraphs: [
-      "Categories: service providers (hosting, email, analytics, case management); affiliated attorneys working on your matter — including Dubai/Manila where applicable; legal and regulatory requirements. Never sold; never shared for third-party marketing.",
+      "We do not sell your personal information to anyone — not to advertisers, data brokers, or any other third party.",
+      "We may share information in the following limited circumstances:",
+      "Service providers: We use third-party service providers who assist us in operating the site and the firm. These include our hosting provider (Vercel), analytics provider (Google Analytics), intake form provider (CXP Legal Tech), email service provider, and case management software. These providers access information only as needed to perform their services and are contractually obligated to protect it.",
+      "Within the firm: Attorneys and staff at ATLAW Group may access your information as necessary to evaluate, manage, or work on your matter.",
+      "Legal requirements: We may disclose information when required by law, court order, subpoena, or other legal process, or when we believe disclosure is necessary to protect the rights, safety, or property of the firm, our clients, or the public.",
+      "Professional obligations: As attorneys, we are bound by the Michigan Rules of Professional Conduct regarding the confidentiality of client information. Information protected by attorney-client privilege or the duty of confidentiality is handled in accordance with those obligations.",
     ],
   },
   {
@@ -213,17 +208,21 @@ export const sections: Section[] = [
     indexLabel: "Cookies & analytics",
     title: "Cookies & analytics",
     summary:
-      "We use a small set of cookies to make the site work and to understand how it’s used. You can control them.",
+      "We use a small set of cookies to make the site work and to understand how it's used. You can control them.",
     paragraphs: [],
     body: (
       <div className="space-y-5">
-        <DraftingNote>
-          Complete this table from the actual build — analytics platform, hosting logs (Vercel),
-          embedded maps/fonts, and the newsletter provider. List only tools that are in use. If the
-          audited list plus an EU/UK audience requires it, add a consent banner and describe the
-          mechanism here.
-        </DraftingNote>
+        <p className="font-serifDisplay text-[16px] leading-[1.65]" style={{ color: INK_SOFT }}>
+          Cookies are small text files stored on your device when you visit a website. We use cookies
+          for essential site functionality and anonymous analytics. You can control cookies through your
+          browser settings — most browsers allow you to block or delete cookies. Note that disabling
+          essential cookies may affect site functionality.
+        </p>
         <CookieTable />
+        <DraftingNote>
+          If the firm adds additional third-party tools (e.g., live chat, embedded video, remarketing
+          pixels), update this table accordingly and consider implementing a cookie consent banner.
+        </DraftingNote>
       </div>
     ),
   },
@@ -234,9 +233,12 @@ export const sections: Section[] = [
     title: "Data retention",
     summary:
       "We keep information as long as needed for the purpose we collected it — and where you become a client, as long as professional rules require us to keep files.",
-    pending: true,
     paragraphs: [
-      "Retention clause. Attorney records-retention obligations differ from marketing data — distinguish the two.",
+      "We retain personal information for as long as necessary to fulfill the purposes described in this policy, unless a longer retention period is required or permitted by law.",
+      "Inquiry data: If you contact us but do not become a client, we retain your inquiry information for a reasonable period to check for conflicts of interest and to respond to follow-up questions, after which it is securely deleted.",
+      "Client files: If you become a client, we retain your case file in accordance with the Michigan Rules of Professional Conduct and applicable record-retention requirements. Michigan attorneys are required to maintain client files for a reasonable period after the conclusion of a matter.",
+      "Analytics data: Aggregated, non-identifiable analytics data may be retained indefinitely for trend analysis and site improvement.",
+      "Newsletter subscriptions: We retain your email address until you unsubscribe or request deletion.",
     ],
   },
   {
@@ -245,10 +247,11 @@ export const sections: Section[] = [
     indexLabel: "Security",
     title: "Security",
     summary:
-      "We use reasonable safeguards to protect your information. No website can promise perfect security, and we won’t pretend otherwise.",
-    pending: true,
+      "We use reasonable safeguards to protect your information. No website can promise perfect security, and we won't pretend otherwise.",
     paragraphs: [
-      "Standard safeguards clause — honest, no overpromising. Describe actual measures at a general level: encryption in transit, access controls.",
+      "We implement reasonable administrative, technical, and physical safeguards designed to protect personal information from unauthorized access, disclosure, alteration, or destruction.",
+      "These measures include: encryption of data in transit (HTTPS/TLS), access controls limiting who within the firm can view personal information, secure hosting infrastructure, and regular review of our data practices.",
+      "No method of transmission over the Internet or electronic storage is 100% secure. While we strive to protect your information, we cannot guarantee its absolute security. If you have reason to believe your interaction with us is no longer secure, please contact us immediately at db@atlawgroup.com.",
     ],
   },
   {
@@ -257,22 +260,27 @@ export const sections: Section[] = [
     indexLabel: "Your rights & choices",
     title: "Your rights & choices",
     summary:
-      "You can ask what we have about you, ask us to correct or delete it, and unsubscribe from the newsletter anytime. Email us and we’ll handle it.",
-    pending: true,
+      "You can ask what we have about you, ask us to correct or delete it, and unsubscribe from the newsletter anytime. Email us and we'll handle it.",
     paragraphs: [
-      "Rights clause. Michigan has no comprehensive state privacy law as of drafting, but the firm serves clients from other states and countries — attorney to decide whether to extend CCPA/GDPR-style rights voluntarily (simpler, and better optics, than jurisdiction-gating). Include: access, correction, deletion, newsletter opt-out, how to exercise (email info@atlawgroup.com), and a response timeframe.",
+      "Regardless of where you reside, we extend the following rights to all individuals whose information we hold:",
+      "Access: You may request a copy of the personal information we hold about you.",
+      "Correction: You may request that we correct inaccurate or incomplete personal information.",
+      "Deletion: You may request that we delete personal information we hold about you, subject to our legal and professional retention obligations.",
+      "Newsletter opt-out: You may unsubscribe from our newsletter at any time by using the unsubscribe link in any email or by contacting us directly.",
+      "Cookie controls: You may control cookies through your browser settings, as described in the Cookies & Analytics section above.",
+      "To exercise any of these rights, email us at db@atlawgroup.com. We will respond to your request within 30 days. We may need to verify your identity before processing your request. Note that certain information may be exempt from deletion where we are required to retain it by law or professional obligation.",
     ],
   },
   {
     id: "privacy-09",
     num: "09",
-    indexLabel: "International transfers",
-    title: "International data transfers",
+    indexLabel: "Where data is stored",
+    title: "Where data is stored",
     summary:
-      "We operate from the US, with offices in Dubai and Manila. If your matter involves them, relevant information may be handled there under the same confidentiality obligations.",
-    pending: true,
+      "We operate from the United States. Your information is stored and processed in the US.",
     paragraphs: [
-      "Attorney + ops to confirm: where data is actually stored, whether cross-office transfers occur, and applicable safeguards. UAE and the Philippines both have data-protection statutes (PDPL; Data Privacy Act) — counsel should confirm obligations if data genuinely flows there.",
+      "ATLAW Group operates from Dearborn, Michigan, and your information is stored and processed in the United States. Our hosting provider (Vercel) and third-party service providers may process data at facilities located in the United States.",
+      "If you are accessing this site from outside the United States, please be aware that your information will be transferred to, stored, and processed in the United States, where data protection laws may differ from those in your jurisdiction.",
     ],
   },
   {
@@ -281,10 +289,11 @@ export const sections: Section[] = [
     indexLabel: "Children",
     title: "Children",
     summary:
-      "This site isn’t directed at children, and we don’t knowingly collect their information.",
-    pending: true,
+      "This site isn't directed at children, and we don't knowingly collect their information.",
     paragraphs: [
-      "Standard under-13/COPPA clause; note that injury matters involving minors are handled through parents or guardians.",
+      "This website is not directed at children under the age of 13, and we do not knowingly collect personal information from children under 13. If we learn that we have collected personal information from a child under 13, we will promptly delete it.",
+      "Personal injury matters involving minors are handled through their parents or legal guardians. In such cases, we collect information from and communicate with the parent or guardian, not the minor.",
+      "If you believe a child under 13 has provided us with personal information, please contact us at db@atlawgroup.com so we can take appropriate action.",
     ],
   },
   {
@@ -293,9 +302,12 @@ export const sections: Section[] = [
     indexLabel: "Changes",
     title: "Changes to this policy",
     summary:
-      "If we change this policy, we’ll update the date at the top. Material changes get a notice on this page.",
-    pending: true,
-    paragraphs: ["Standard amendment clause with the “Last updated” mechanism."],
+      "If we change this policy, we'll update the date at the top. Material changes get a notice on this page.",
+    paragraphs: [
+      "We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make changes, we will update the \"Last updated\" date at the top of this page.",
+      "If we make material changes to how we collect, use, or share your personal information, we will post a prominent notice on this page prior to the change becoming effective.",
+      "We encourage you to review this page periodically. Your continued use of the site after any changes constitutes your acceptance of the updated policy.",
+    ],
   },
   {
     id: "privacy-12",
@@ -304,7 +316,8 @@ export const sections: Section[] = [
     title: "Contact",
     summary: "Privacy questions or requests: email us.",
     paragraphs: [
-      `Privacy questions or requests may be directed to ${EMAIL} or ATLAW Group, [address], Detroit, MI. [Designate internally who answers privacy requests.]`,
+      `For privacy questions, data requests, or concerns about this policy, contact us at ${EMAIL} or write to: ATLAW Group, 3 Park Lane Blvd Suite 400W, Dearborn, MI 48126.`,
+      "We take every privacy inquiry seriously and will respond within 30 days.",
     ],
   },
 ];

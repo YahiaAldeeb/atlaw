@@ -160,7 +160,10 @@ export const Footer = (): JSX.Element => {
                     Headquarters:
                   </p>
                   <p className="font-sans text-[15px] leading-[1.5] text-white">
-                    Detroit, MI
+                    3 Park Lane Blvd., Suite 400W
+                  </p>
+                  <p className="font-sans text-[15px] leading-[1.5] text-white">
+                    Dearborn, MI 48126
                   </p>
                   <a
                     href={MAP_URL}
@@ -175,6 +178,11 @@ export const Footer = (): JSX.Element => {
                   </a>
                 </div>
               </div>
+
+              <p className="mt-5 font-sans text-[13px] leading-[1.4] text-white/55">
+                Office hours:{" "}
+                <span className="text-white/80">Mon–Fri, 9 AM – 5 PM</span>
+              </p>
             </address>
           </div>
         </RevealStagger>
@@ -253,9 +261,10 @@ export const Footer = (): JSX.Element => {
 
           {/* Attorney advertising disclaimer + careers (replaces the Careers link) */}
           <div className="mt-6 flex flex-col items-center gap-3 text-center lg:flex-row lg:justify-between lg:gap-8 lg:text-left">
-            <p className="max-w-[640px] font-sans text-[12px] leading-[1.6] text-white/45">
-              This website is attorney advertising. Prior results do not guarantee a
-              similar outcome.
+            <p className="max-w-[740px] font-sans text-[12px] leading-[1.6] text-white/45">
+              This website is attorney advertising and for general information only.
+              It is not legal advice and does not create an attorney-client
+              relationship. Past results do not guarantee future outcomes.
             </p>
             <p className="shrink-0 font-sans text-[12px] leading-[1.6] text-white/45">
               Interested in joining ATLAW?{" "}

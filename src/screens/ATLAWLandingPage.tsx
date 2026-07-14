@@ -2,6 +2,7 @@ import { Header } from "../components/ATLAW/Header";
 import { PageMeta } from "../components/ATLAW/PageMeta";
 import { Hero } from "../components/ATLAW/Hero";
 import { AwardsMarquee } from "../components/ATLAW/AwardsMarquee";
+import { ResultsStatBar } from "../components/ATLAW/ResultsStatBar";
 import { CaseResultsSection } from "../components/ATLAW/CaseResultsSection";
 import { NoFeeBanner } from "../components/ATLAW/NoFeeBanner";
 import { CapabilitiesSection } from "../components/ATLAW/CapabilitiesSection";
@@ -27,9 +28,10 @@ export const ATLAWLandingPage = (): JSX.Element => {
         schema={homepageSchema()}
       />
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <AwardsMarquee />
+        <ResultsStatBar />
         <CaseResultsSection />
         <NoFeeBanner />
         <CapabilitiesSection />
