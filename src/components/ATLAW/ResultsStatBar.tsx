@@ -31,14 +31,14 @@ export const ResultsStatBar = (): JSX.Element => {
         <RevealBlock>
           <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-3 sm:gap-y-0 sm:divide-x sm:divide-white/10">
             <div className="flex flex-col items-center px-4 text-center">
-              <Counter as="p" className={statClass} duration={1.4} value={538} />
+              <Counter as="p" className={statClass} duration={1.4} suffix="+" value={10000} />
               <p className="mt-3 font-sans text-[12px] font-semibold uppercase tracking-[0.16em] text-[#C6A04A]">
                 Cases Closed
               </p>
             </div>
 
             <div className="flex flex-col items-center px-4 text-center">
-              <Counter as="p" className={statClass} duration={1.6} prefix="$" value={7163973} />
+              <Counter as="p" className={statClass} duration={1.6} prefix="$" suffix="M+" value={100} />
               <p className="mt-3 font-sans text-[12px] font-semibold uppercase tracking-[0.16em] text-[#C6A04A]">
                 Recovered for Clients
               </p>

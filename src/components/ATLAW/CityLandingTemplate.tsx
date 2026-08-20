@@ -439,7 +439,6 @@ const CaseResultsSection = ({ practice }: { practice: PracticeAreaPI }) => {
                   <span className="font-sans text-[14px] font-bold text-[#0E1B2C]">{r.initials}</span>
                 </div>
                 <p className="mt-3 font-sans text-[14px] font-semibold text-white">{r.name}</p>
-                <p className="mt-0.5 font-sans text-[10px] font-medium uppercase tracking-[0.14em] text-white/40">[CONFIRM] Placeholder</p>
 
                 <div className="mt-5 flex flex-col items-center gap-0.5">
                   <p className="font-sans text-[10px] font-medium uppercase tracking-[0.12em] text-white/50">Insurance Offer</p>

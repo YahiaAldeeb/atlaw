@@ -56,10 +56,6 @@ const ResultCard = ({ result }: { result: CaseResult }) => (
       {result.name}
     </p>
 
-    <p className="mt-0.5 font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-[#3A4A63]/50">
-      [CONFIRM] Placeholder
-    </p>
-
     <div className="mt-6 flex flex-col items-center gap-0.5">
       <p className="font-sans text-[11px] font-medium uppercase tracking-[0.12em] text-[#3A4A63]/60">
         Insurance Offer

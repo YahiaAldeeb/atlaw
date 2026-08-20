@@ -88,9 +88,6 @@ export const HiringUsSection = (): JSX.Element => {
               <p className="mt-3 font-serifDisplay text-[clamp(32px,5vw,48px)] font-normal leading-none tracking-[-0.02em] text-white/40 line-through decoration-[#C6A04A]/50 decoration-2">
                 $15,000
               </p>
-              <p className="mt-2 font-sans text-[12px] tracking-[0.06em] text-white/30">
-                [CONFIRM] Placeholder
-              </p>
             </div>
 
             <DownArrow />
@@ -109,7 +106,7 @@ export const HiringUsSection = (): JSX.Element => {
                 value={127500}
               />
               <p className="mt-2 font-sans text-[12px] tracking-[0.06em] text-white/30">
-                [CONFIRM] Placeholder &mdash; Auto Accident
+                Auto Accident
               </p>
             </div>
 

@@ -33,7 +33,7 @@ export const WinningsTicker = (): JSX.Element => {
       aria-label="Case results"
       className="w-full overflow-hidden bg-[#081120] py-5 sm:py-6"
     >
-      <p className="sr-only">[CONFIRM] Placeholder amounts — pending client approval. Case results depend on a variety of factors unique to each case and do not guarantee or predict a similar result in any future case.</p>
+      <p className="sr-only">Case results depend on a variety of factors unique to each case and do not guarantee or predict a similar result in any future case.</p>
 
       <div className="relative flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_5%,black_95%,transparent)]">
         <div className="animate-marquee-slow flex shrink-0 items-center">

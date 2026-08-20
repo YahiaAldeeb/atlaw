@@ -22,7 +22,7 @@ export const ATLAWLandingPage = (): JSX.Element => {
   return (
     <div className="min-h-screen bg-ivory text-ink [zoom:1.12]">
       <PageMeta
-        title="ATLAW — Dearborn Personal Injury Lawyers"
+        title="ATLAW"
         description="Dearborn personal injury lawyers fighting for injured clients across Southeast Michigan. Auto accidents, medical malpractice, wrongful death. Free consultation — no fee unless we win."
         canonical="/"
         schema={homepageSchema()}
